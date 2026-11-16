@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Suyuqlikning xossalari — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+.f{font:600 17px system-ui,sans-serif;text-align:center;padding:6px;border:1px dashed var(--ac);border-radius:8px;margin:8px 0}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+table{border-collapse:collapse;font:14px system-ui,sans-serif;width:100%}td,th{border:1px solid var(--bd);padding:4px 8px;text-align:left}
+</style></head><body>
+<h1>Suyuqlikning xossalari</h1>
+<p class="sub">9-sinf fizika · 1-bob · 31-mavzu. Har bir reja: qisqa nazariya, jonli simulatsiya, savol va topshiriqlar.</p>
+
+<section><h2>1. Suyuqlikning oquvchanligi</h2>
+<p>Suyuqlik molekulalari bir-biriga nisbatan oson siljiydi. Shu sabab suyuqlik oʻz shaklini saqlamaydi, idish shaklini oladi, lekin hajmini saqlaydi. Siljishga qarshilik — <b>qovushoqlik</b> (ichki ishqalanish). Qovushoqlik qancha katta boʻlsa, oquvchanlik shuncha kichik. Temperatura oshsa, qovushoqlik kamayadi.</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><label>Temperatura: <b id="t1">20</b> °C</label><input id="T1" type="range" min="0" max="80" value="20"><button onclick="B=[0,0,0];run=true">Sharchani tashla</button></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Sirt taranglik hodisasi</h2>
+<p>Suyuqlik molekulalari oʻzaro tortishadi. Ichkaridagi molekulani hamma tomondan teng tortadi, kuchlar bir-birini yoʻqotadi. Sirtdagi molekula esa faqat pastdan va yonlardan tortiladi, natijada <b>ichkariga yoʻnalgan kuch</b> paydo boʻladi. Sirt qatlami tarang parda kabi sirtni kichraytirishga intiladi. Shu sababli tomchi sharsimon, igna suvda suzadi, suv hasharotlari suv ustida yuradi.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="out">Kulrang strelkalar — tortish kuchlari. Qizil strelka — sirtdagi molekulaning natijaviy kuchi.</div>
+<div id="q2"></div></section>
+
+<section><h2>3. Sirt taranglik kuchi</h2>
+<p>Sirt taranglik kuchi sirtga urinma boʻylab, sirt chegarasiga perpendikulyar yoʻnaladi va sirtni qisqartirishga intiladi. Chegara uzunligi <i>l</i> boʻlsa, <b>F = σ·l</b>. Sovun plyonkasi ikki sirtli (oldi va orqasi) boʻlgani uchun <b>F = 2σl</b>.</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><label>σ: <b id="s3">0.04</b> N/m</label><input id="S3" type="range" min="0.02" max="0.08" step="0.01" value="0.04"></div>
+<div class="row"><label>l: <b id="l3">5</b> cm</label><input id="L3" type="range" min="2" max="10" step="1" value="5"><button id="b3" onclick="free=!free">Qoʻyib yubor</button></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<section><h2>4. Sirt taranglik koeffitsiyentini aniqlash</h2>
+<p><b>σ = F / l</b>, birligi N/m. Usullar: (1) <b>kapillyar naychada</b> koʻtarilish balandligi h boʻyicha: h = 2σ/(ρgr), bundan <b>σ = ρghr/2</b>; (2) <b>tomchi usuli</b>: tomchi uzilish paytida mg = σ·πd, σ = mg/(πd); (3) halqani suyuqlikdan uzish uchun kerak boʻlgan kuch boʻyicha dinamometr bilan.</p>
+<canvas id="c4" width="320" height="220"></canvas>
+<div class="row"><select id="M4" onchange="">
+<option value="0">Suv (σ=0.072)</option><option value="1">Spirt (σ=0.022)</option><option value="2">Glitserin (σ=0.064)</option></select>
+<label>r: <b id="r4">0.5</b> mm</label><input id="R4" type="range" min="0.2" max="1" step="0.1" value="0.5"></div>
+<div class="out" id="o4"></div>
+<h3>Jadval: 20 °C dagi σ</h3>
+<table><tr><th>Suyuqlik</th><th>σ, N/m</th></tr><tr><td>Spirt</td><td>0.022</td></tr><tr><td>Sovun eritmasi</td><td>0.040</td></tr><tr><td>Glitserin</td><td>0.064</td></tr><tr><td>Suv</td><td>0.072</td></tr></table>
+<div id="q4"></div></section>
+
+<section><h2>5. Sirt energiyasi</h2>
+<p>Sirt qatlami molekulalarining potensial energiyasi ichkaridagilarnikidan katta. Sirt yuzi S boʻlsa, <b>E = σ·S</b>. Yuzani ΔS ga oshirish uchun bajariladigan ish: <b>A = σ·ΔS</b>. Tizim energiyani kamaytirishga intiladi, shuning uchun berilgan hajmda eng kichik sirtli shakl — shar hosil boʻladi. σ ning boshqa birligi: J/m².</p>
+<canvas id="c5" width="320" height="220"></canvas>
+<div class="row"><label>σ: <b id="s5">0.04</b> N/m</label><input id="S5" type="range" min="0.02" max="0.08" step="0.01" value="0.04"></div>
+<div class="row"><label>ΔS: <b id="d5">40</b> cm²</label><input id="D5" type="range" min="0" max="100" step="5" value="40"></div>
+<div class="out" id="o5"></div>
+<div id="q5"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function arr(x,x0,y0,dx,dy,c,w){x.strokeStyle=c;x.fillStyle=c;x.lineWidth=w||2;x.beginPath();x.moveTo(x0,y0);x.lineTo(x0+dx,y0+dy);x.stroke();const a=Math.atan2(dy,dx);x.beginPath();x.moveTo(x0+dx,y0+dy);x.lineTo(x0+dx-8*Math.cos(a-.4),y0+dy-8*Math.sin(a-.4));x.lineTo(x0+dx-8*Math.cos(a+.4),y0+dy-8*Math.sin(a+.4));x.fill()}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+
+/* 1 */
+const L=[["Suv",1,'#4aa3e8'],["Moy",30,'#e0b43a'],["Asal",300,'#c9822b']];
+let B=[0,0,0],lt=0,run=false;
+function u1(){const k=Math.exp(-(+$('T1').value-20)/25);$('t1').textContent=$('T1').value;$('o1').textContent='Qovushoqlik (nisbiy): suv '+(k).toFixed(1)+', moy '+(30*k).toFixed(0)+', asal '+(300*k).toFixed(0)}
+$('T1').oninput=u1;u1();
+mk('c1',(x,t,c)=>{const dt=Math.min(t-lt,.05);lt=t;const k=Math.exp(-(+$('T1').value-20)/25);
+L.forEach((l,i)=>{const v=400/Math.pow(l[1]*k,.45);if(run&&B[i]<170)B[i]=Math.min(170,B[i]+v*dt);const X=60+i*100;
+x.fillStyle=l[2]+'99';x.fillRect(X-25,20,50,180);x.strokeStyle=c.fg;x.lineWidth=1;x.strokeRect(X-25,20,50,180);
+x.beginPath();x.arc(X,30+B[i],9,0,7);x.fillStyle=c.fg;x.fill();T(x,l[0],X,214,c.fg,'center')})});
+Q('q1',[["Nega issiq asal sovuq asalga qaraganda tez oqadi?","Qizdirilganda molekulalar orasidagi bogʻlanish zaiflashadi, qovushoqlik kamayadi, oquvchanlik ortadi."],["Simulatsiyada qaysi sharcha birinchi tushadi va nega?","Suvdagi. Suvning qovushoqligi eng kichik, shuning uchun qarshilik kuchi kam."],["Topshiriq: uyda bir xil qoshiqdan suv, moy va asalni bir xil qiyalikdagi tarnovda oqizing.","Har birining oqib tushish vaqtini sekundomerda oʻlchab, qaysi biri koʻproq qovushoq ekanini aniqlang. Tajribani issiq va sovuq asal bilan takrorlang."]]);
+
+/* 2 */
+mk('c2',(x,t,c)=>{x.fillStyle=c.ac+'33';x.fillRect(0,90,320,130);x.strokeStyle=c.ac;x.lineWidth=2;x.beginPath();x.moveTo(0,90);x.lineTo(320,90);x.stroke();
+for(let i=0;i<10;i++)for(let j=0;j<5;j++){x.beginPath();x.arc(20+i*32+3*Math.sin(t*3+i*j),106+j*28+3*Math.cos(t*2.6+i+j),6,0,7);x.fillStyle=c.ac;x.fill()}
+for(let a=0;a<8;a++){const g=a*Math.PI/4;arr(x,116,162,26*Math.cos(g),26*Math.sin(g),c.mu,1.5)}
+[[-1,0],[1,0],[-.7,.7],[0,1],[.7,.7]].forEach(d=>arr(x,212,106,d[0]*24,d[1]*24,c.mu,1.5));
+const p=1+.15*Math.sin(t*4);arr(x,212,106,0,52*p,'#e24b4a',3);
+T(x,'ichkarida: kuchlar muvozanatda',116,200,c.fg,'center');T(x,'sirtda: kuch ichkariga',212,72,c.fg,'center')});
+Q('q2',[["Nega yomgʻir tomchisi sharsimon?","Sirt qatlami kichrayishga intiladi. Berilgan hajmda eng kichik sirtga shar ega."],["Nega igna suv ustida choʻkmaydi?","Igna suv sirtini egadi, elastik parda kabi tarang sirt qatlami uni yuqoriga koʻtaradi."],["Topshiriq: stakan toʻla suvga ehtiyotlik bilan qogʻoz ustida ignani qoʻying, soʻng suvga bir tomchi sovun tomizing.","Igna choʻkadi, chunki sovun σ ni kamaytiradi. Nima uchun shunday boʻlishini tushuntiring."]]);
+
+/* 3 */
+let free=false,xb=200;
+mk('c3',(x,t,c)=>{const s=+$('S3').value,l=+$('L3').value;$('s3').textContent=s.toFixed(2);$('l3').textContent=l;$('b3').textContent=free?'Ushlab tur':'Qoʻyib yubor';
+const h=l*14,y0=110-h/2,y1=110+h/2;xb+=((free?70:200)-xb)*.06;
+x.fillStyle=c.ac+'55';x.fillRect(40,y0,xb-40,h);x.strokeStyle=c.fg;x.lineWidth=3;x.beginPath();x.moveTo(280,y0);x.lineTo(40,y0);x.lineTo(40,y1);x.lineTo(280,y1);x.stroke();
+x.lineWidth=6;x.beginPath();x.moveTo(xb,y0);x.lineTo(xb,y1);x.stroke();
+const F=2*s*l/100*1000;arr(x,xb,110,-Math.min(F*5,60)-8,0,'#e24b4a',3);if(!free)arr(x,xb,130,Math.min(F*5,60)+8,0,c.ac,3);
+T(x,'F sirt tarangligi (qizil)',50,208,'#e24b4a');if(!free)T(x,'tashqi kuch',230,208,c.ac);
+$('o3').textContent='F = 2σl = 2·'+s.toFixed(2)+'·'+(l/100).toFixed(2)+' = '+F.toFixed(1)+' mN'});
+Q('q3',[["Sovun plyonkasi uchun nega 2 raqami bor?","Plyonkaning ikki tomoni (oldi va orqasi) bor, har biri l uzunlikdagi chegarani tortadi."],["σ=0.04 N/m, l=5 cm boʻlsa F nechaga teng?","F = 2·0.04·0.05 = 0.004 N = 4 mN."],["Topshiriq: l ni ikki marta oshiring. F qanday oʻzgaradi?","F ikki marta ortadi, chunki F l ga toʻgʻri proporsional."]]);
+
+/* 4 */
+const M=[[.072,1000,'#4aa3e8'],[.022,790,'#9ad06b'],[.064,1260,'#d9a441']];let cur=0;
+mk('c4',(x,t,c)=>{const m=M[$('M4').value],r=+$('R4').value;$('r4').textContent=r.toFixed(1);
+const h=2*m[0]/(m[1]*9.8*r/1000)*1000;cur+=(h-cur)*.06;const w=6+r*22,top=190-Math.min(cur,62)*2.7;
+x.fillStyle=m[2]+'88';x.fillRect(0,190,320,30);x.fillRect(160-w,top,2*w,215-top);
+x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();x.moveTo(160-w-2,10);x.lineTo(160-w-2,215);x.moveTo(160+w+2,10);x.lineTo(160+w+2,215);x.stroke();
+x.strokeStyle=c.fg;x.beginPath();x.arc(160,top,w,0,Math.PI);x.stroke();
+x.lineWidth=1;for(let i=0;i<=6;i++){const y=190-i*27;x.beginPath();x.moveTo(250,y);x.lineTo(270,y);x.stroke();T(x,i*10+'',275,y+4,c.fg)}T(x,'h, mm',250,14,c.fg);
+$('o4').textContent='h = 2σ/(ρgr) = '+h.toFixed(1)+' mm. Teskari: σ = ρghr/2 = '+(m[1]*9.8*(h/1000)*r/1000/2).toFixed(3)+' N/m'});
+Q('q4',[["r=0.5 mm kapillyarda suv necha mm koʻtariladi?","h = 2·0.072/(1000·9.8·0.0005) ≈ 0.029 m ≈ 29 mm."],["Naycha ingichkalashsa balandlik qanday oʻzgaradi?","h ~ 1/r, ingichka naychada suv balandroq koʻtariladi."],["Topshiriq: tomchi usuli. 20 tomchi suv massasi 1.4 g, tomchi bogʻi diametri 2 mm. σ ni toping.","m = 1.4/20 = 0.07 g = 7·10⁻⁵ kg; σ = mg/(πd) = 7·10⁻⁵·9.8/(3.14·0.002) ≈ 0.11 N/m. Tajriba xatosi bor, 0.072 ga yaqin boʻlishi uchun tomchini sekin tomizing."]]);
+
+/* 5 */
+mk('c5',(x,t,c)=>{const s=+$('S5').value,d=+$('D5').value;$('s5').textContent=s.toFixed(2);$('d5').textContent=d;
+const w=40+d*1.6,h=40+d*.9;x.fillStyle=c.ac+'55';x.fillRect(20,20,w,h);x.strokeStyle=c.ac;x.lineWidth=2;x.strokeRect(20,20,w,h);
+const E=s*d/10;x.fillStyle=c.mu;x.fillRect(20,175,280,14);x.fillStyle='#e24b4a';x.fillRect(20,175,E/.8*280,14);T(x,'sirt energiyasi',20,205,c.fg);
+$('o5').textContent='A = E = σ·ΔS = '+s.toFixed(2)+'·'+(d/10000).toFixed(4)+' = '+E.toFixed(2)+' mJ'});
+Q('q5',[["Nega sovun pufagi shar shaklini oladi?","Sirt energiyasi E=σS. Berilgan havo hajmida shar eng kichik S ga ega, demak eng kichik energiyaga ega."],["σ=0.072 N/m, sirt yuzi 20 cm² ga oshsa, qancha ish bajariladi?","A = σΔS = 0.072·0.002 = 1.44·10⁻⁴ J."],["Topshiriq: σ=N/m=J/m² ekanini isbotlang.","N/m = (N·m)/m² = J/m²."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

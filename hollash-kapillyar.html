@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Hoʻllash. Kapillyar hodisalar — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+table{border-collapse:collapse;font:14px system-ui,sans-serif;width:100%}td,th{border:1px solid var(--bd);padding:4px 8px;text-align:left}
+</style></head><body>
+<h1>Hoʻllash. Kapillyar hodisalar</h1>
+<p class="sub">9-sinf fizika · 1-bob · 32-mavzu. Har bir reja: nazariya, jonli simulatsiya, savol va topshiriqlar.</p>
+
+<section><h2>1. Hoʻllash va hoʻllamaslik</h2>
+<p>Suyuqlik qattiq jism bilan tegib turganda ikki xil kuch kurashadi: <b>adgeziya</b> (suyuqlik va qattiq jism molekulalarining tortishishi) va <b>kogeziya</b> (suyuqlikning oʻz molekulalari orasidagi tortishish). Adgeziya katta boʻlsa, suyuqlik sirtda yoyiladi — <b>hoʻllaydi</b> (suv–shisha). Kogeziya katta boʻlsa, tomchi sharsimon yigʻiladi — <b>hoʻllamaydi</b> (suv–parafin, simob–shisha).</p>
+<p>Hoʻllashning oʻlchovi — <b>chetki burchak θ</b>: suyuqlik sirtiga urinma bilan qattiq sirt orasidagi, suyuqlik ichidagi burchak. θ &lt; 90° hoʻllash, θ &gt; 90° hoʻllamaslik.</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><select id="P1"><option value="1.8">Suv – shisha</option><option value="1.95">Spirt – shisha</option><option value="0.5">Suv – parafin</option><option value="0.25">Simob – shisha</option></select>
+<label>Adgeziya/kogeziya: <b id="a1">1.8</b></label><input id="A1" type="range" min="0.2" max="1.95" step="0.05" value="1.8"></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Suyuqlik sirtining egrilanishi</h2>
+<p>Naychada suyuqlik sirti <b>menisk</b> deb ataluvchi egri sirt hosil qiladi. Hoʻllaydigan suyuqlikda menisk <b>botiq</b>, hoʻllamaydiganida <b>qavariq</b>. Egri sirt tagida qoʻshimcha <b>Laplas bosimi</b> paydo boʻladi: <b>Δp = 2σ·cosθ / r</b>. Botiq meniskda sirt tagidagi bosim atmosfera bosimidan kichik, qavariq meniskda katta. Aynan shu bosim farqi suyuqlikni naychada koʻtaradi yoki pasaytiradi.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><select id="M2"><option value="0">Suv (θ=0°)</option><option value="1">Spirt (θ=0°)</option><option value="2">Simob (θ=140°)</option></select>
+<label>r: <b id="r2">0.5</b> mm</label><input id="R2" type="range" min="0.2" max="1" step="0.1" value="0.5"></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Kapillyar hodisalar</h2>
+<p>Juda ingichka naychalarda (<b>kapillyarlarda</b>) hoʻllaydigan suyuqlik idishdagi sathdan <b>baland</b> koʻtariladi, hoʻllamaydigani esa <b>pastroq</b> tushadi. Balandlik: <b>h = 2σ·cosθ / (ρ·g·r)</b>. Naycha qancha ingichka boʻlsa, h shuncha katta.</p>
+<p>Misollar: oʻsimlik ildizlari va poyasida suvning koʻtarilishi, sochiq, lampa pilikasi, qogʻoz va gʻisht orqali namlikning oʻtishi, tuproqdagi suvning koʻtarilishi. Yer yuzasidagi namlikni saqlash uchun tuproqni yumshatib kapillyarlar buziladi, qurilishda poydevorga gidroizolyatsiya qilinadi.</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="M3"><option value="0">Suv</option><option value="1">Spirt</option><option value="2">Simob</option></select></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function arr(x,x0,y0,dx,dy,c,w){x.strokeStyle=c;x.fillStyle=c;x.lineWidth=w||2;x.beginPath();x.moveTo(x0,y0);x.lineTo(x0+dx,y0+dy);x.stroke();const a=Math.atan2(dy,dx);x.beginPath();x.moveTo(x0+dx,y0+dy);x.lineTo(x0+dx-8*Math.cos(a-.4),y0+dy-8*Math.sin(a-.4));x.lineTo(x0+dx-8*Math.cos(a+.4),y0+dy-8*Math.sin(a+.4));x.fill()}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const LQ=[[.072,1000,0,'#4aa3e8'],[.022,790,0,'#9ad06b'],[.47,13600,140,'#9aa5b1']];
+const RAD=Math.PI/180;
+
+/* 1 */
+$('P1').onchange=()=>{$('A1').value=$('P1').value};
+mk('c1',(x,t,c)=>{const a=+$('A1').value;$('a1').textContent=a.toFixed(2);
+let th=Math.acos(Math.max(-1,Math.min(1,a-1)));th=Math.max(20*RAD,Math.min(165*RAD,th));
+const y0=165,cx=160,rho=Math.sqrt(4000/(th-Math.sin(th)*Math.cos(th))),cy=y0+rho*Math.cos(th),b=rho*Math.sin(th);
+x.fillStyle=c.mu+'55';x.fillRect(0,y0,320,55);x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();x.moveTo(0,y0);x.lineTo(320,y0);x.stroke();
+const aL=Math.atan2(-Math.cos(th),-Math.sin(th));let aR=Math.atan2(-Math.cos(th),Math.sin(th));if(aR<aL)aR+=2*Math.PI;
+x.beginPath();x.arc(cx,cy,rho,aL,aR,false);x.closePath();x.fillStyle=c.ac+'88';x.fill();x.strokeStyle=c.ac;x.stroke();
+const px=cx-b,tx=Math.cos(th),ty=-Math.sin(th);x.strokeStyle='#e24b4a';x.lineWidth=2;x.beginPath();x.moveTo(px-45*tx,y0-45*ty);x.lineTo(px+45*tx,y0+45*ty);x.stroke();
+x.beginPath();x.arc(px,y0,22,-th,0);x.stroke();T(x,'θ = '+(th/RAD).toFixed(0)+'°',Math.max(4,px+26),y0-8,'#e24b4a');
+const f=Math.min(a,2)*22,k=22;arr(x,cx,200,-Math.min(f,0)+0,0,c.fg,1);arr(x,30,200,f,0,c.ac,3);arr(x,290,200,-k,0,c.mu,3);
+T(x,'adgeziya',30,214,c.ac);T(x,'kogeziya',290,214,c.mu,'right');
+$('o1').textContent='θ ≈ '+(th/RAD).toFixed(0)+'° → '+(th<Math.PI/2?'hoʻllaydi':'hoʻllamaydi')});
+Q('q1',[["Nega suv parafinda tomchi boʻlib turadi, shishada esa yoyiladi?","Suv–shisha adgeziyasi suvning kogeziyasidan katta, suv yoyiladi. Suv–parafin adgeziyasi kichik, kogeziya gʻalaba qiladi va tomchi yigʻiladi."],["Nega yogʻlangan kiyim yoki gazlama suv oʻtkazmaydi?","Yogʻ suvni hoʻllamaydi: θ > 90°, suv tomchi shaklida dumalab tushadi."],["Topshiriq: toza shisha va mumlangan qogʻozga bir xil tomchi tomizing.","Qaysi biri koʻproq yoyilishini taqqoslang va θ ni taxminan chizib baholang. Simulatsiyadagi natija bilan solishtiring."]]);
+
+/* 2 */
+mk('c2',(x,t,c)=>{const m=LQ[$('M2').value],r=+$('R2').value;$('r2').textContent=r.toFixed(1);
+const th=m[2]*RAD,cs=Math.cos(th),w=10+r*45,ye=100,rho=w/Math.max(.2,Math.abs(cs)),sag=rho-Math.sqrt(Math.max(0,rho*rho-w*w)),s=cs>=0?sag:-sag;
+x.fillStyle=m[3]+'88';x.beginPath();x.moveTo(160-w,ye);x.quadraticCurveTo(160,ye+2*s,160+w,ye);x.lineTo(160+w,215);x.lineTo(160-w,215);x.closePath();x.fill();
+x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();x.moveTo(160-w-2,10);x.lineTo(160-w-2,215);x.moveTo(160+w+2,10);x.lineTo(160+w+2,215);x.stroke();
+x.strokeStyle=c.ac;x.beginPath();x.moveTo(160-w,ye);x.quadraticCurveTo(160,ye+2*s,160+w,ye);x.stroke();
+const dp=-2*m[0]*cs/(r/1000);
+if(dp<0){arr(x,160,ye+s+22,0,-28,'#e24b4a',3);T(x,'tagida bosim kamayadi',160,ye+s+44,c.fg,'center')}else{arr(x,160,ye+s-28,0,26,'#e24b4a',3);T(x,'tagida bosim ortadi',160,ye+s-34,c.fg,'center')}
+T(x,cs>=0?'botiq menisk':'qavariq menisk',10,20,c.fg);T(x,'havo (atmosfera)',310,20,c.mu,'right');
+$('o2').textContent='R = r/|cosθ| = '+(r/Math.max(.2,Math.abs(cs))).toFixed(2)+' mm; menisk tagidagi bosim oʻzgarishi = '+(dp>0?'+':'')+dp.toFixed(0)+' Pa'});
+Q('q2',[["Nega simob menisk qavariq?","Simob shishani hoʻllamaydi (θ=140° > 90°), kogeziya adgeziyadan katta, sirt yuqoriga qavariq boʻladi."],["r=0.5 mm naychada suv uchun Laplas bosimini toping.","|Δp| = 2σ/r = 2·0.072/0.0005 = 288 Pa. Botiq menisk tagida bosim 288 Pa ga kam."],["Topshiriq: naycha ingichkalashsa Δp qanday oʻzgaradi? Slayderda tekshiring.","Δp ~ 1/r, ingichka naychada Laplas bosimi katta, shuning uchun suyuqlik balandroq koʻtariladi."]]);
+
+/* 3 */
+const RR=[1,.5,.25];let cur=[0,0,0];
+mk('c3',(x,t,c)=>{const m=LQ[$('M3').value],y0=150,res=[];
+x.fillStyle=m[3]+'66';x.fillRect(0,y0,320,70);x.strokeStyle=m[3];x.lineWidth=2;x.beginPath();x.moveTo(0,y0);x.lineTo(320,y0);x.stroke();
+RR.forEach((r,i)=>{const h=2*m[0]*Math.cos(m[2]*RAD)/(m[1]*9.8*r/1000)*1000;res.push(h);cur[i]+=(h-cur[i])*.06;
+const X=60+i*100,w=6+r*8,top=y0-cur[i]*2;x.fillStyle=m[3]+'aa';x.fillRect(X-w,top,2*w,215-top);
+x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();x.moveTo(X-w-2,10);x.lineTo(X-w-2,215);x.moveTo(X+w+2,10);x.lineTo(X+w+2,215);x.stroke();
+T(x,'r='+r+' mm',X,Math.min(top,y0)-(top<y0?8:-0)+(top<y0?0:-8)-2,c.fg,'center');T(x,'h='+h.toFixed(1),X,top<y0?top-20:top+22,c.fg,'center')});
+$('o3').textContent='h = '+res.map((h,i)=>h.toFixed(1)+' mm (r='+RR[i]+')').join(', ')+(res[0]<0?'. Hoʻllamaydigan suyuqlik pasayadi.':'. Ingichka naychada balandroq.')});
+Q('q3',[["Nega sochiq suvni tez soʻradi?","Sochiq tolalari orasida ingichka kapillyar kanallar bor. Suv tolalarni hoʻllaydi va kapillyarlar boʻylab koʻtariladi."],["r=0.25 mm kapillyarda suv necha mm koʻtariladi?","h = 2·0.072/(1000·9.8·0.00025) ≈ 0.059 m ≈ 59 mm."],["Nega simob kapillyarda pasayadi?","Simob shishani hoʻllamaydi, cosθ &lt; 0, h manfiy. Bosim farqi suyuqlikni pastga itaradi."],["Topshiriq: oziq rangli suvga qogʻoz sochiq chetini tushiring va 1 daqiqada qancha koʻtarilishini oʻlchang.","Koʻtarilgan balandlikni sm da yozing. Ikki qavat qogʻoz yoki mato bilan takrorlab, tolalar zichligi qanday ta’sir qilishini muhokama qiling."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

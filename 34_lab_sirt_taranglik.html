@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>34-§ Sirt taranglik koeffitsiyenti — interaktiv laboratoriya</title>
+<style>
+:root{--blue:#087eaa;--teal:#12a6a0;--ink:#173042;--bg:#f3f8fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);font:16px/1.55 system-ui,Arial;color:var(--ink)}
+header{padding:28px 18px;background:linear-gradient(120deg,#075985,#0e9f9a);color:white}
+header .wrap,main{max-width:1050px;margin:auto}h1{font-size:clamp(25px,4vw,38px);line-height:1.2;margin:5px 0}
+header p{margin:8px 0 0;opacity:.94}.tag{display:inline-block;background:#ffffff25;border:1px solid #ffffff55;border-radius:99px;padding:4px 11px;font-size:13px}
+main{padding:18px}.card{background:white;border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 4px 18px #1231}
+h2{color:#086d91;margin-top:0;font-size:23px}h3{margin-bottom:6px;color:#087eaa}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:12px}
+.note{background:#e8f6f8;border-left:4px solid var(--teal);padding:12px;border-radius:8px}
+.formula{font-size:24px;text-align:center;background:#f0f8fb;padding:14px;border-radius:12px;margin:12px 0}
+label{display:block;font-weight:650;margin:10px 0 4px}input[type=range]{width:100%;accent-color:#078e9b}
+input[type=number]{padding:9px;border:1px solid #b8ccd6;border-radius:8px;width:100%;font-size:16px}
+button{background:#087eaa;color:white;border:0;border-radius:9px;padding:10px 15px;font-weight:650;cursor:pointer;margin:5px 4px 5px 0}
+button.secondary{background:#e4f1f5;color:#07536e}canvas{width:100%;height:250px;border:1px solid #c8e0e9;border-radius:12px;background:linear-gradient(#f9fdff,#e7f6fb)}
+.stat{font-size:20px;font-weight:750;color:#087eaa}.small{font-size:14px;color:#587080}
+table{width:100%;border-collapse:collapse;margin:10px 0}td,th{border:1px solid #d5e2e8;padding:8px;text-align:left}th{background:#eaf5f8}
+.q{padding:12px;border:1px solid #d6e5eb;border-radius:10px;margin:10px 0}.q label{font-weight:400}
+#feedback{font-weight:700;margin-top:10px}.pill{display:inline-block;padding:3px 9px;background:#e3f4ef;border-radius:99px;color:#087b62;font-size:13px}
+footer{text-align:center;padding:25px;color:#617987}
+</style>
+</head>
+<body>
+<header><div class="wrap"><span class="tag">9-sinf fizika · IV bob · 34-§</span>
+<h1>Laboratoriya ishi: Suyuqlikning sirt taranglik koeffitsiyentini aniqlash</h1>
+<p>Nazariya · animatsion modellar · tajriba hisoblagichi · nazorat savollari</p></div></header>
+<main>
+<section class="card"><h2>Dars rejasi</h2>
+<ol><li>Sirt tarangligi hodisasi va uning fizik mohiyati.</li><li>Sirt taranglik kuchi va koeffitsiyenti.</li><li>Koeffitsiyentga ta’sir etuvchi omillar.</li><li>Tomchi usulida laboratoriya tajribasi.</li><li>Natijalarni hisoblash va xatoliklarni tahlil qilish.</li></ol>
+<div class="note"><b>Dars maqsadi:</b> suyuqlik sirtining o‘z yuzasini kamaytirishga intilishini tushunish, sirt taranglik koeffitsiyentini tajriba ma’lumotlari asosida hisoblash.</div></section>
+
+<section class="card"><h2>1. Sirt tarangligi nima?</h2>
+<p>Suyuqlik ichidagi molekulaga atrofdagi molekulalar har tomondan ta’sir qiladi va kuchlar taxminan muvozanatlashadi. Sirt qatlamidagi molekulalar esa yuqori tomondan kamroq qo‘shnilarga ega. Natijada ularga suyuqlik ichkarisi tomon yo‘nalgan natijaviy ta’sir yuzaga keladi. Suyuqlik sirti yuzasini kamaytirishga intiladi. Bu hodisa <b>sirt tarangligi</b> deyiladi.</p>
+<div class="grid"><div><h3>Tomchi</h3><p>Suv tomchisi shar shakliga yaqinlashadi, chunki shar bir xil hajm uchun eng kichik sirt yuzasiga ega.</p></div><div><h3>Sovun pufagi</h3><p>Yupqa suyuqlik pardasi tarang tortilib, pufak shaklini hosil qiladi.</p></div><div><h3>Suv yuzasidagi hasharot</h3><p>Sirt qatlamining tarangligi hasharot og‘irligini ko‘tarishga yordam beradi.</p></div></div>
+<canvas id="molecule" width="900" height="250"></canvas><p class="small">Animatsiya: sirt molekulalariga ta’sir etuvchi kuchlar va suyuqlik ichidagi molekulaning muvozanati.</p>
+</section>
+
+<section class="card"><h2>2. Sirt taranglik kuchi</h2>
+<div class="formula">F = σ · l &nbsp;&nbsp; → &nbsp;&nbsp; σ = F / l</div>
+<p><b>F</b> — sirt taranglik kuchi (N); <b>l</b> — sirt chegarasining uzunligi (m); <b>σ</b> — sirt taranglik koeffitsiyenti (N/m).</p>
+<p>Koeffitsiyent suyuqlik turiga, haroratga va aralashmalarga bog‘liq. Odatda harorat oshganda sirt tarangligi kamayadi; sovun yoki detergent qo‘shilishi ham suvning sirt tarangligini pasaytirishi mumkin.</p>
+</section>
+
+<section class="card"><h2>3. Interaktiv simulyatsiya: tomchi va sirt tarangligi</h2>
+<p>Harorat va sovun miqdorini o‘zgartirib, modeldagi sirt taranglik ko‘rsatkichining qanday o‘zgarishini kuzating. Bu sifat jihatdan ko‘rsatuvchi o‘quv modeli, aniq laboratoriya o‘lchovi emas.</p>
+<div class="grid">
+<div><label for="temp">Harorat: <span id="tempV">20</span> °C</label><input id="temp" type="range" min="0" max="80" value="20">
+<label for="soap">Sovun miqdori: <span id="soapV">0</span> shartli birlik</label><input id="soap" type="range" min="0" max="10" value="0">
+<p class="stat">Nisbiy sirt tarangligi: <span id="sigmaV">1.00</span></p></div>
+<div><canvas id="drop" width="500" height="250"></canvas><p class="small">Tomchi shakli parametrlar o‘zgarganda vizual tarzda o‘zgaradi.</p></div>
+</div></section>
+
+<section class="card"><h2>4. Laboratoriya tajribasi: tomchi usuli</h2>
+<h3>Kerakli jihozlar</h3><p>Suv, tomizgich (pipetka), tarozi, o‘lchov silindri yoki kichik idish, shtativ va chizg‘ich yoki kalibr.</p>
+<h3>Ish tartibi</h3><ol><li>Tomizgichga suv oling va tomchilarni bir xil sharoitda tushiring.</li><li>Ma’lum sondagi tomchilar massasini tarozida o‘lchang.</li><li>Bitta tomchining massasini toping: m = M / N.</li><li>Tomizgich uchining radiusini r o‘lchang.</li><li>Soddalashtirilgan model bo‘yicha σ = mg/(2πr) ni hisoblang.</li></ol>
+<div class="note"><b>Eslatma:</b> tomchi uzilishida kapillyar chetidagi sirt taranglik kuchi tomchi og‘irligiga teng deb olinadi. Haqiqiy natijaga tomchi shakli, ho‘llash burchagi va kapillyar geometriyasi ta’sir qiladi. Maktab hisobida quyidagi soddalashtirilgan formula ishlatiladi.</div>
+<div class="formula">mg = 2πrσ &nbsp;&nbsp; → &nbsp;&nbsp; σ = mg/(2πr)</div>
+<div class="grid">
+<div><label>Tomchilar soni N</label><input id="n" type="number" min="1" value="20">
+<label>Tomchilarning umumiy massasi M (g)</label><input id="mass" type="number" min="0.001" step="0.001" value="0.800">
+<label>Tomizgich uchi radiusi r (mm)</label><input id="radius" type="number" min="0.01" step="0.01" value="1.00">
+<button onclick="calculate()">Hisoblash</button><button class="secondary" onclick="resetCalc()">Qayta boshlash</button></div>
+<div><h3>Hisoblash natijasi</h3><p>Bitta tomchi massasi: <span class="stat" id="oneMass">—</span></p><p>Tomchi og‘irligi: <span class="stat" id="weight">—</span></p><p>Sirt taranglik koeffitsiyenti: <span class="stat" id="result">—</span></p><p class="small" id="steps">Qiymatlarni kiriting va “Hisoblash” tugmasini bosing.</p></div>
+</div>
+</section>
+
+<section class="card"><h2>5. Animatsion tajriba: tomchining uzilishi</h2><p>“Tomchi hosil qilish” tugmasini bosing. Tomchi kattalashib, bo‘yin qismi ingichkalashadi va uziladi. Bu jarayonning soddalashtirilgan tasviridir.</p>
+<canvas id="fall" width="900" height="260"></canvas><button onclick="startDrop()">Tomchi hosil qilish</button><button class="secondary" onclick="stopDrop()">To‘xtatish</button>
+</section>
+
+<section class="card"><h2>6. Nazorat savollari</h2>
+<div class="q"><b>1. Sirt tarangligi qanday hodisa?</b><label><input type="radio" name="q1" value="a"> Suyuqlikning qaynashi</label><label><input type="radio" name="q1" value="b"> Suyuqlik sirtining yuzasini kamaytirishga intilishi</label><label><input type="radio" name="q1" value="c"> Suyuqlikning muzlashi</label></div>
+<div class="q"><b>2. Sirt taranglik koeffitsiyentining SI dagi birligi qaysi?</b><label><input type="radio" name="q2" value="a"> N/m</label><label><input type="radio" name="q2" value="b"> kg/m³</label><label><input type="radio" name="q2" value="c"> J/kg</label></div>
+<div class="q"><b>3. Harorat oshishi bilan ko‘pchilik suyuqliklarda sirt tarangligi qanday o‘zgaradi?</b><label><input type="radio" name="q3" value="a"> Ortadi</label><label><input type="radio" name="q3" value="b"> O‘zgarmaydi</label><label><input type="radio" name="q3" value="c"> Kamayadi</label></div>
+<div class="q"><b>4. Tomchi usulida bitta tomchi massasi qanday topiladi?</b><label><input type="radio" name="q4" value="a"> m = M·N</label><label><input type="radio" name="q4" value="b"> m = M/N</label><label><input type="radio" name="q4" value="c"> m = N/M</label></div>
+<button onclick="checkQuiz()">Javoblarni tekshirish</button><p id="feedback"></p></section>
+
+<section class="card"><h2>7. Mustaqil topshiriqlar</h2>
+<ol><li>Nima sababdan suv tomchisi dumaloq shaklga intiladi? Molekulyar nuqtayi nazardan izohlang.</li><li>Bir xil tomizgichdan 30 ta tomchi massasi 1,20 g bo‘lsa, bitta tomchi massasini toping.</li><li>Tomizgich radiusi 0,8 mm, bitta tomchi massasi 0,040 g bo‘lsa, σ ni soddalashtirilgan formula bilan hisoblang. g = 9,8 m/s².</li><li>Suvga sovun qo‘shilsa, suv yuzasidagi hasharotning turishi nega qiyinlashishi mumkin?</li><li>Tajriba aniqligini oshirish uchun kamida uchta taklif yozing.</li></ol>
+<h3>Uyga vazifa</h3><p>Sirt tarangligi kundalik hayotda uchraydigan 5 ta holatni toping. Har biriga qisqa fizik izoh yozing.</p></section>
+<section class="card"><h2>8. Xulosa</h2><p>Suyuqlik sirt tarangligi molekulalararo o‘zaro ta’sir natijasida yuzaga keladi. Sirt taranglik koeffitsiyenti sirt taranglik kuchining chegaraviy uzunlikka nisbatini ifodalaydi. Tomchi usulida uning qiymatini tajriba ma’lumotlari orqali taxminan aniqlash mumkin. O‘lchashdagi xatoliklar va tajriba sharoitlari yakuniy natijaga ta’sir qiladi.</p></section>
+</main><footer>9-sinf fizika · IV bob · 34-§ · Interaktiv laboratoriya materiali</footer>
+<script>
+const mol=document.getElementById('molecule').getContext('2d');
+function drawMolecules(){let c=document.getElementById('molecule'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.fillStyle='#bce8f3';x.fillRect(0,100,c.width,150);
+for(let row=0;row<5;row++)for(let col=0;col<17;col++){let px=35+col*50+(row%2)*10,py=125+row*27;x.beginPath();x.arc(px,py,7,0,Math.PI*2);x.fillStyle='#1686a5';x.fill();if(row===0){x.strokeStyle='#e16a35';x.lineWidth=3;x.beginPath();x.moveTo(px,py-10);x.lineTo(px,py-40);x.stroke();x.beginPath();x.moveTo(px,py-40);x.lineTo(px-5,py-31);x.lineTo(px+5,py-31);x.stroke();}}}
+drawMolecules();
+const temp=document.getElementById('temp'),soap=document.getElementById('soap');
+function updateModel(){let t=+temp.value,s=+soap.value;document.getElementById('tempV').textContent=t;document.getElementById('soapV').textContent=s;
+let rel=Math.max(.35,1-.004*(t-20)-.045*s);document.getElementById('sigmaV').textContent=rel.toFixed(2);
+let c=document.getElementById('drop'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);let r=45+rel*42;
+x.beginPath();x.ellipse(250,135,r,r*(1+.22*(1-rel)),0,0,Math.PI*2);let g=x.createRadialGradient(225,105,5,250,135,r);g.addColorStop(0,'#e9fbff');g.addColorStop(1,'#168fca');x.fillStyle=g;x.fill();x.strokeStyle='#087eaa';x.lineWidth=3;x.stroke();x.fillStyle='#173042';x.font='16px Arial';x.fillText('Model tomchisi',175,238);}
+temp.addEventListener('input',updateModel);soap.addEventListener('input',updateModel);updateModel();
+function calculate(){let N=+document.getElementById('n').value,M=+document.getElementById('mass').value,rmm=+document.getElementById('radius').value;
+if(N<=0||M<=0||rmm<=0){alert('Barcha qiymatlar musbat bo‘lishi kerak.');return;}
+let m=(M/1000)/N,r=rmm/1000,g=9.8,F=m*g,sigma=F/(2*Math.PI*r);
+document.getElementById('oneMass').textContent=(m*1000).toFixed(5)+' g';
+document.getElementById('weight').textContent=F.toExponential(3)+' N';
+document.getElementById('result').textContent=sigma.toFixed(4)+' N/m';
+document.getElementById('steps').textContent=`m = (${M} g / 1000) / ${N} = ${m.toExponential(3)} kg; σ = mg/(2πr), r = ${r.toExponential(3)} m.`;}
+function resetCalc(){document.getElementById('n').value=20;document.getElementById('mass').value=.8;document.getElementById('radius').value=1;['oneMass','weight','result'].forEach(id=>document.getElementById(id).textContent='—');document.getElementById('steps').textContent='Qiymatlarni kiriting va “Hisoblash” tugmasini bosing.'}
+let anim=null,frame=0;
+function drawFall(){let c=document.getElementById('fall'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);x.fillStyle='#9babb3';x.fillRect(390,20,120,18);x.fillRect(440,38,20,35);x.strokeStyle='#1686a5';x.lineWidth=4;x.beginPath();x.moveTo(450,73);x.lineTo(450,90);x.stroke();
+let grow=Math.min(frame/35,1),y=95+Math.max(0,frame-35)*3,rad=8+grow*27;
+if(frame<85){x.beginPath();x.moveTo(450,88);x.quadraticCurveTo(450-rad*.3,105,450,105+rad*1.6);x.quadraticCurveTo(450+rad*.3,105,450,88);x.fillStyle='#36a9df';x.fill();x.beginPath();x.ellipse(450,y,rad*.7,rad,0,0,Math.PI*2);x.fill();}
+else{x.beginPath();x.ellipse(450,Math.min(240,y),rad*.7,rad,0,0,Math.PI*2);x.fillStyle='#36a9df';x.fill();x.fillStyle='#173042';x.font='18px Arial';x.fillText('Tomchi uzildi',485,215);}
+x.fillStyle='#173042';x.font='16px Arial';x.fillText('Tomizgich uchi',535,55);}
+function startDrop(){stopDrop();frame=0;anim=setInterval(()=>{frame++;drawFall();if(frame>105){clearInterval(anim);anim=null;}},35)}
+function stopDrop(){if(anim)clearInterval(anim);anim=null}
+drawFall();
+function checkQuiz(){let ans={q1:'b',q2:'a',q3:'c',q4:'b'},score=0;for(let k in ans){let v=document.querySelector(`input[name=${k}]:checked`);if(v&&v.value===ans[k])score++}document.getElementById('feedback').textContent=`Natija: ${score}/4 ta to‘g‘ri javob.`;document.getElementById('feedback').style.color=score>=3?'#087b62':'#b45309';}
+</script></body></html>

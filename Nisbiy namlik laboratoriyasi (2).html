@@ -1,0 +1,285 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Nisbiy namlik laboratoriyasi</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* layout: single reading column, lab-bench sections, one simulation as the centerpiece */
+:root{--bg:#f3f7f9;--card:#ffffff;--fg:#13222c;--muted:#52656f;--line:#d3e0e6;--accent:#0a7396;--accent-soft:#dff1f7;--water:#2b8fd6;--hot:#d9483b;--ok:#1f8a5b;--ok-soft:#dff3e9;--bad:#b3362c;--bad-soft:#fbe4e1;--head:"Space Grotesk",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a21;--card:#15252e;--fg:#e6f0f4;--muted:#9bb0ba;--line:#26404c;--accent:#5cc3e4;--accent-soft:#16384a;--water:#5aaeea;--hot:#ef6d60;--ok:#5fd3a0;--ok-soft:#163a2d;--bad:#f08a80;--bad-soft:#40201d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a21;--card:#15252e;--fg:#e6f0f4;--muted:#9bb0ba;--line:#26404c;--accent:#5cc3e4;--accent-soft:#16384a;--water:#5aaeea;--hot:#ef6d60;--ok:#5fd3a0;--ok-soft:#163a2d;--bad:#f08a80;--bad-soft:#40201d;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--head);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,6vw,40px);font-weight:700}
+h2{font-size:24px;font-weight:700}
+h3{font-size:17px;font-weight:500;margin-bottom:8px}
+p{margin:0 0 10px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.lead{color:var(--muted);font-size:17px;max-width:60ch}
+nav{display:flex;flex-wrap:wrap;gap:8px}
+nav a{padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:var(--fg);text-decoration:none;font-size:14px;background:var(--card)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.formula{font-family:var(--head);font-size:20px;text-align:center;padding:14px;background:var(--accent-soft);border-radius:8px;color:var(--fg)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid2>*{min-width:0}
+ul,ol{margin:0;padding-left:20px;display:flex;flex-direction:column;gap:6px}
+.steps{list-style:none;padding:0;counter-reset:s;gap:10px}
+.steps li{counter-increment:s;display:grid;grid-template-columns:32px 1fr;gap:12px;align-items:start}
+.steps li::before{content:counter(s);width:32px;height:32px;border-radius:50%;background:var(--accent);color:var(--bg);display:grid;place-items:center;font-family:var(--head);font-weight:700}
+.note{border-left:3px solid var(--accent);padding:6px 0 6px 14px;color:var(--muted)}
+.sim svg{width:100%;height:auto;display:block;max-width:420px;margin:0 auto}
+.sim .row{display:flex;align-items:center;gap:12px;margin:8px 0}
+.sim label{min-width:92px;font-size:14px;color:var(--muted)}
+.sim input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+.sim output{min-width:48px;font-weight:600;text-align:right}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.stat{background:var(--bg);border-radius:8px;padding:12px}
+.stat small{display:block;color:var(--muted);font-size:13px}
+.stat b{font-family:var(--head);font-size:26px}
+button{font:inherit;font-weight:500;padding:10px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
+button.ghost{background:transparent;color:var(--accent)}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+th{background:var(--accent-soft);font-weight:600}
+td.hl{background:var(--accent);color:var(--bg);font-weight:600}
+tbody th:first-child{position:sticky;left:0}
+.q{display:flex;flex-direction:column;gap:10px}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--card);color:var(--fg);border:1px solid var(--line)}
+.opt:hover{border-color:var(--accent)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok);color:var(--fg)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad);color:var(--fg)}
+.fb{font-size:14px;color:var(--muted);min-height:1.4em}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--card)}
+summary{cursor:pointer;font-weight:500}
+details p{margin:10px 0 0;color:var(--muted)}
+.tag{display:inline-block;font-size:12px;padding:2px 8px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-weight:600}
+footer{color:var(--muted);font-size:13px}
+@media (prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+
+<main class="wrap">
+<header>
+<div class="eyebrow">9-sinf fizika · 4-bob · 3-mavzu</div>
+<h1>Laboratoriya ishi: havoning nisbiy namligini aniqlash</h1>
+<p class="lead">Nazariya, tajriba tartibi, virtual psixrometr va tekshiruv savollari bir sahifada.</p>
+</header>
+
+<nav aria-label="Bo'limlar">
+<a href="#p1">1. Maqsad va nazariya</a>
+<a href="#p2">2. Ishni bajarish</a>
+<a href="#p3">3. Tahlil va xulosa</a>
+<a href="#p4">Savollar</a>
+</nav>
+
+<section id="p1">
+<h2>1. Ishning maqsadi va jihozlari</h2>
+<div class="panel">
+<h3>Maqsad</h3>
+<p>Psixrometr yordamida xona havosining nisbiy namligini o'lchash va uni sanitariya me'yori bilan solishtirish.</p>
+<h3>Jihozlar</h3>
+<ul>
+<li>Psixrometr (quruq va nam termometr) yoki ikkita bir xil termometr</li>
+<li>Paxta yoki doka latta, ip</li>
+<li>Xona haroratidagi suv solingan stakan</li>
+<li>Psixrometrik jadval</li>
+</ul>
+</div>
+
+<div class="panel">
+<h3>Nazariy qism</h3>
+<p>Havodagi suv bug'ining miqdori absolyut namlik ρ bilan o'lchanadi (g/m³). Bir xil haroratda havo ma'lum chegaragacha bug' sig'diradi. Shu chegaradagi zichlik to'yingan bug' zichligi ρ₀ deyiladi va u harorat ortishi bilan o'sadi.</p>
+<div class="formula">φ = ρ / ρ₀ · 100 %</div>
+<p style="margin-top:12px">φ nisbiy namlik. Uni bug' bosimlari orqali ham yozish mumkin: φ = p / p₀ · 100 %, bunda p havodagi bug' bosimi, p₀ shu haroratdagi to'yingan bug' bosimi.</p>
+<div class="grid2">
+<div><span class="tag">Psixrometr ishlashi</span><p style="margin-top:8px">Nam termometrning latta bilan o'ralgan rezervuaridan suv bug'lanadi. Bug'lanish uchun energiya kerak, shuning uchun u sovib, quruq termometrdan past harorat ko'rsatadi.</p></div>
+<div><span class="tag">Farq nimani bildiradi</span><p style="margin-top:8px">Havo qanchalik quruq bo'lsa, bug'lanish shunchalik tez va Δt = t₁ − t₂ shunchalik katta. Havo to'yingan bo'lsa (φ = 100 %), Δt = 0.</p></div>
+</div>
+<p class="note">Qulay nisbiy namlik: 40 % dan 60 % gacha.</p>
+</div>
+</section>
+
+<section id="p2">
+<h2>2. Ishni bajarish tartibi</h2>
+<div class="panel">
+<ol class="steps">
+<li><div>Ikkala termometrni xonada bir xil joyga, issiqlik manbasi va deraza yonidan uzoqqa osing. Ularni 5 daqiqa tuting va ko'rsatkichlari bir xil ekanini tekshiring.</div></li>
+<li><div>Termometrlardan birining rezervuarini ho'l lattaga o'rang va lattaning uchini suvli stakanga tushiring. Bu nam termometr.</div></li>
+<li><div>5–7 daqiqa kuting, nam termometr ko'rsatkichi o'zgarmay qolishi kerak.</div></li>
+<li><div>Quruq termometrning t₁ va nam termometrning t₂ ko'rsatkichlarini yozing, ko'zni shkala balandligida tuting.</div></li>
+<li><div>Δt = t₁ − t₂ ni hisoblang va psixrometrik jadvaldan φ ni toping: t₁ qator, Δt ustun bo'yicha.</div></li>
+<li><div>O'lchashni 3 marta takrorlang va φ ning o'rtacha qiymatini oling.</div></li>
+</ol>
+</div>
+
+<div class="panel sim">
+<h3>Virtual psixrometr</h3>
+<p style="color:var(--muted);font-size:14px">Slayderlarni suring: nam termometrdan ko'tarilayotgan bug' zarralari havo quruqlashganda ko'payadi.</p>
+<svg viewBox="0 0 380 250" role="img" aria-label="Quruq va nam termometr">
+<rect x="84" y="30" width="12" height="165" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<rect x="244" y="30" width="12" height="165" rx="6" fill="var(--bg)" stroke="var(--line)"/>
+<circle cx="90" cy="208" r="15" fill="var(--hot)"/>
+<circle cx="250" cy="208" r="15" fill="var(--hot)"/>
+<rect id="m1" x="88" y="100" width="4" height="100" fill="var(--hot)"/>
+<rect id="m2" x="248" y="120" width="4" height="80" fill="var(--hot)"/>
+<ellipse cx="250" cy="208" rx="21" ry="20" fill="var(--water)" fill-opacity=".35" stroke="var(--water)"/>
+<g id="pg"></g>
+<text x="90" y="16" text-anchor="middle" font-size="13" font-weight="600" fill="var(--fg)">Quruq</text>
+<text x="250" y="16" text-anchor="middle" font-size="13" font-weight="600" fill="var(--fg)">Nam (ho'l latta)</text>
+<text id="t1" x="90" y="242" text-anchor="middle" font-size="14" fill="var(--fg)">20 °C</text>
+<text id="t2" x="250" y="242" text-anchor="middle" font-size="14" fill="var(--fg)">15 °C</text>
+<text x="170" y="118" text-anchor="middle" font-size="13" fill="var(--muted)">Δt</text>
+<text id="dtx" x="170" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="var(--fg)">5 °C</text>
+</svg>
+<div class="row"><label for="a">Quruq t₁</label><input type="range" id="a" min="15" max="30" step="1" value="20"><output id="ao">20 °C</output></div>
+<div class="row"><label for="b">Farq Δt</label><input type="range" id="b" min="0" max="10" step="1" value="5"><output id="bo">5 °C</output></div>
+<div class="stats">
+<div class="stat"><small>Nisbiy namlik φ</small><b id="rh">58 %</b></div>
+<div class="stat"><small>Baho</small><b id="st" style="font-size:17px">Qulay</b></div>
+</div>
+<div class="btns"><button id="add">Natijani jadvalga yozish</button><button class="ghost" id="clr">Tozalash</button></div>
+</div>
+
+<div class="panel">
+<h3>Natijalar jadvali</h3>
+<div class="scroll"><table>
+<thead><tr><th>№</th><th>t₁, °C</th><th>t₂, °C</th><th>Δt, °C</th><th>φ, %</th></tr></thead>
+<tbody id="log"><tr><td colspan="5" style="color:var(--muted)">Simulyatsiyada qiymat tanlab, «Natijani jadvalga yozish» tugmasini bosing.</td></tr></tbody>
+</table></div>
+<p style="margin-top:12px">O'rtacha φ: <b id="avg">–</b></p>
+</div>
+
+<div class="panel">
+<h3>Psixrometrik jadval (φ, %)</h3>
+<p style="color:var(--muted);font-size:14px">Qator t₁ bo'yicha, ustun Δt bo'yicha. Simulyatordagi joriy katak ajratib ko'rsatiladi. Qiymatlar hisoblangan, darslikdagi jadvaldan 1–2 % farq qilishi mumkin.</p>
+<div class="scroll"><table id="ptab"></table></div>
+</div>
+</section>
+
+<section id="p3">
+<h2>3. Natijalarni tahlil qilish va xulosa</h2>
+<div class="panel">
+<h3>Tahlil rejasi</h3>
+<ol>
+<li>Har bir o'lchash uchun Δt va φ ni jadvalga yozing.</li>
+<li>O'rtacha qiymat: φ<sub>o'rt</sub> = (φ₁ + φ₂ + φ₃) / 3.</li>
+<li>Absolyut xatolik: Δφ = |φ<sub>o'rt</sub> − φᵢ| ning eng kattasi.</li>
+<li>Natijani 40–60 % me'yori bilan solishtiring.</li>
+</ol>
+</div>
+<div class="panel">
+<h3>Hisoblash namunasi</h3>
+<p>t₁ = 20 °C, t₂ = 15 °C bo'lsin. Δt = 20 − 15 = 5 °C. Jadvaldan φ ≈ 58 %. Bu qulay oraliqda: havo na quruq, na nam.</p>
+<p>Xulosa namunasi: «Ishda psixrometr yordamida xona havosining nisbiy namligi aniqlandi, φ = … %. Natija 40–60 % me'yoriga (mos keladi / mos kelmaydi). Xatolik asosan termometr shkalasini o'qish aniqligi va nam termometr to'liq barqarorlashmaganidan kelib chiqadi.»</p>
+<p class="note">Namlik past bo'lsa xonani namlash, yuqori bo'lsa shamollatish kerak.</p>
+</div>
+</section>
+
+<section id="p4">
+<h2>Savollar va topshiriqlar</h2>
+<div id="quiz" class="panel q"></div>
+<div class="panel q">
+<h3>Masalalar</h3>
+<details><summary>1. t₁ = 24 °C, t₂ = 18 °C. Δt va φ ni toping.</summary><p>Δt = 6 °C. Jadvaldan φ ≈ 55 %.</p></details>
+<details><summary>2. 20 °C da ρ₀ = 17,3 g/m³. φ = 60 % bo'lsa, ρ nechaga teng?</summary><p>ρ = φ · ρ₀ = 0,6 · 17,3 ≈ 10,4 g/m³.</p></details>
+<details><summary>3. Nega nam termometr doim kamroq ko'rsatadi?</summary><p>Suv bug'langanda eng tez molekulalar chiqib ketadi va rezervuar energiya yo'qotib soviydi.</p></details>
+<details><summary>4. Xonada φ = 30 %. Namlikni oshirish uchun nima qilasiz?</summary><p>Havoni namlagich bilan namlash, ochiq idishda suv qo'yish, o'simliklar saqlash.</p></details>
+</div>
+</section>
+
+<footer>Virtual tajriba taxminiy formula bo'yicha hisoblanadi. Real o'lchashda darslikdagi psixrometrik jadvaldan foydalaning.</footer>
+</main>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function es(t){return 6.112*Math.exp(17.62*t/(243.12+t))}
+function rhf(t,tw){var e=es(tw)-0.00066*(1+0.00115*tw)*1013*(t-tw);return Math.max(0,Math.min(100,100*e/es(t)))}
+function Y(t){return 195-(t-5)*165/35}
+var phi=58;
+function ptab(){
+var h='<thead><tr><th>t₁ \\ Δt</th>';
+for(var d=0;d<=10;d++)h+='<th>'+d+'</th>';
+h+='</tr></thead><tbody>';
+for(var t=15;t<=30;t++){h+='<tr><th>'+t+'</th>';for(var d=0;d<=10;d++){h+='<td id="c'+t+'_'+d+'">'+Math.round(rhf(t,t-d))+'</td>'}h+='</tr>'}
+$('ptab').innerHTML=h+'</tbody>';
+}
+ptab();
+var last=null;
+function upd(){
+var t=+$('a').value,d=+$('b').value,tw=t-d;
+$('ao').textContent=t+' °C';$('bo').textContent=d+' °C';
+$('t1').textContent=t+' °C';$('t2').textContent=tw+' °C';$('dtx').textContent=d+' °C';
+$('m1').setAttribute('y',Y(t));$('m1').setAttribute('height',200-Y(t));
+$('m2').setAttribute('y',Y(tw));$('m2').setAttribute('height',200-Y(tw));
+phi=rhf(t,tw);
+$('rh').textContent=Math.round(phi)+' %';
+$('st').textContent=phi<30?'Juda quruq':phi<40?'Quruqroq':phi<=60?'Qulay':phi<85?'Nam':'Juda nam';
+if(last)last.classList.remove('hl');
+last=$('c'+t+'_'+d);if(last)last.classList.add('hl');
+}
+$('a').oninput=upd;$('b').oninput=upd;upd();
+
+var rows=[];
+function renderLog(){
+var b=$('log');
+if(!rows.length){b.innerHTML='<tr><td colspan="5" style="color:var(--muted)">Simulyatsiyada qiymat tanlab, «Natijani jadvalga yozish» tugmasini bosing.</td></tr>';$('avg').textContent='–';return}
+var h='',s=0;
+rows.forEach(function(r,i){s+=r.p;h+='<tr><td>'+(i+1)+'</td><td>'+r.t+'</td><td>'+r.tw+'</td><td>'+r.d+'</td><td>'+Math.round(r.p)+'</td></tr>'});
+b.innerHTML=h;$('avg').textContent=Math.round(s/rows.length)+' %';
+}
+$('add').onclick=function(){
+var t=+$('a').value,d=+$('b').value;
+if(rows.length>=3)rows.shift();
+rows.push({t:t,tw:t-d,d:d,p:rhf(t,t-d)});renderLog();
+};
+$('clr').onclick=function(){rows=[];renderLog()};
+
+var g=$('pg'),ps=[],reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!reduce){setInterval(function(){
+var prob=(100-phi)/100*0.6;
+if(Math.random()<prob&&ps.length<40){
+var c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+c.setAttribute('r','2.5');c.setAttribute('fill','var(--water)');g.appendChild(c);
+ps.push({c:c,x:250+(Math.random()*30-15),y:185,l:0,v:0.8+Math.random()});
+}
+for(var i=ps.length-1;i>=0;i--){
+var p=ps[i];p.l++;p.y-=p.v;p.x+=Math.sin(p.l/5)*0.6;
+p.c.setAttribute('cx',p.x);p.c.setAttribute('cy',p.y);
+p.c.setAttribute('opacity',Math.max(0,1-p.l/70));
+if(p.l>70){g.removeChild(p.c);ps.splice(i,1)}
+}
+},40)}
+
+var Q=[
+{q:"Nisbiy namlik formulasi qaysi?",o:["φ = ρ₀ / ρ · 100 %","φ = ρ / ρ₀ · 100 %","φ = ρ · ρ₀","φ = ρ − ρ₀"],a:1,e:"Havodagi bug' zichligi to'yingan bug' zichligiga nisbati olinadi."},
+{q:"Nam termometr nima uchun quruqdan past ko'rsatadi?",o:["Suv og'ir","Latta sovuq","Suv bug'lanib, rezervuarni sovitadi","Termometr buzuq"],a:2,e:"Bug'lanish energiya talab qiladi va rezervuar soviydi."},
+{q:"Havo bug'ga to'yingan (φ = 100 %). Δt nechaga teng?",o:["0 °C","5 °C","10 °C","Aniqlab bo'lmaydi"],a:0,e:"Bug'lanish to'xtaydi, ikkala termometr bir xil harorat ko'rsatadi."},
+{q:"Δt oshsa, nisbiy namlik qanday o'zgaradi?",o:["Ortadi","O'zgarmaydi","Kamayadi","Avval ortadi, keyin kamayadi"],a:2,e:"Katta Δt quruq havoni bildiradi."},
+{q:"Xona uchun qulay nisbiy namlik oralig'i?",o:["10–20 %","40–60 %","70–80 %","90–100 %"],a:1,e:"Sanitariya me'yori 40–60 %."}
+];
+var qh=$('quiz');
+qh.innerHTML='<h3>Test: bilimingizni tekshiring</h3>';
+Q.forEach(function(it,i){
+var d=document.createElement('div');d.className='q';
+d.innerHTML='<p style="margin:0;font-weight:500">'+(i+1)+'. '+it.q+'</p><div class="opts"></div><div class="fb" aria-live="polite"></div>';
+var ob=d.querySelector('.opts'),fb=d.querySelector('.fb'),done=false;
+it.o.forEach(function(t,k){
+var b=document.createElement('button');b.className='opt';b.type='button';b.textContent=t;
+b.onclick=function(){
+if(done)return;
+if(k===it.a){done=true;b.classList.add('right');fb.textContent='To\'g\'ri. '+it.e}
+else{b.classList.add('wrong');fb.textContent='Noto\'g\'ri, yana urinib ko\'ring.'}
+};
+ob.appendChild(b);
+});
+qh.appendChild(d);
+});
+</script>
+
+</body></html>

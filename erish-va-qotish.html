@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qattiq jismlarning erishi va qotishi — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+</style></head><body>
+<h1>Qattiq jismlarning erishi va qotishi</h1>
+<p class="sub">9-sinf fizika · 1-bob · 38-mavzu. Har bir reja: nazariya, jonli simulatsiya, savol va topshiriqlar.</p>
+
+<section><h2>1. Erish jarayoni</h2>
+<p><b>Erish</b> — moddaning qattiq holatdan suyuq holatga oʻtishi. Qattiq jismga issiqlik berilganda zarralarning tebranishi kuchayadi. Erish temperaturasiga yetganda tebranish shunchalik kuchayadiki, kristall panjara tugunlaridagi bogʻlanishlar uzila boshlaydi. Berilayotgan energiya endi zarralar tezligini emas, <b>panjarani buzishga</b> (potensial energiyani oshirishga) sarflanadi. Shu sabab erish davomida temperatura <b>oʻzgarmaydi</b>.</p>
+<p>Erish uchun kerak boʻlgan issiqlik: <b>Q = λ·m</b>, λ — <b>solishtirma erish issiqligi</b> (J/kg): 1 kg modda erish temperaturasida toʻliq erishi uchun kerak boʻlgan issiqlik. Muz uchun λ ≈ 3.34·10⁵ J/kg.</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><label>Isitgich quvvati: <b id="p1">3</b></label><input id="P1" type="range" min="1" max="5" step="1" value="3"><button onclick="Q1=0;run1=true">Qizdirish</button></div>
+<div class="out" id="o1">1 kg muz −20 °C da. “Qizdirish” tugmasini bosing.</div>
+<div id="q1"></div></section>
+
+<section><h2>2. Erish temperaturasi</h2>
+<p><b>Erish temperaturasi</b> — kristall modda eriydigan temperatura. Har bir modda uchun oʻziga xos: simob −39 °C da, qoʻrgʻoshin 327 °C da, temir 1538 °C da eriydi. U zarralar orasidagi bogʻlanish kuchiga bogʻliq: bogʻlanish qancha kuchli boʻlsa, erish temperaturasi shuncha yuqori. Erish temperaturasi tashqi bosimga ham biroz bogʻliq. <b>Amorf jismlar</b>da aniq erish temperaturasi yoʻq.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><select id="S2"></select><label>m: <b id="m2">500</b> g</label><input id="M2" type="range" min="100" max="2000" step="100" value="500"></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Kristall jismlarning qotishi</h2>
+<p><b>Qotish (kristallanish)</b> — suyuqlikning qattiq (kristall) holatga oʻtishi, erishga teskari jarayon. Suyuqlik sovib, <b>qotish temperaturasi</b>ga yetadi. U erish temperaturasiga <b>teng</b>. Zarralar sekinlashib, <b>kristallanish markazlari</b> atrofida panjaraga joylashadi. Qotishda issiqlik <b>ajralib chiqadi</b> (Q = λm), shu sabab qotish davomida temperatura oʻzgarmaydi.</p>
+<p>Kristallar soni sovitish tezligiga bogʻliq: <b>sekin sovitilsa</b> markazlar kam, kristallar yirik; <b>tez sovitilsa</b> markazlar koʻp, kristallar mayda boʻladi. Simulatsiyada maktab tajribasidagi <b>naftalin</b> (qotish temperaturasi ≈ 80 °C) olingan.</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><label>Sovitish tezligi: <b id="r3">3</b></label><input id="R3" type="range" min="1" max="5" step="1" value="3"><button onclick="u3=0;go3=true">Sovitishni boshlash</button></div>
+<div class="out" id="o3">Sovitish grafigini koʻrish uchun tugmani bosing.</div>
+<div id="q3"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c';
+
+/* 1 */
+const NP=24,PA=[];for(let j=0;j<3;j++)for(let i=0;i<8;i++)PA.push({bx:40+i*34,by:140+j*28,ph:Math.random()*6.3,x:40+i*34,y:140+j*28,tx:0,ty:0,nt:0,rk:0});
+[...Array(NP).keys()].sort(()=>Math.random()-.5).forEach((r,i)=>PA[i].rk=r);
+let Q1=0,run1=false,lt1=0;
+const TQ=q=>q<42?-20+q/42*20:q<376?0:q<460?(q-376)/84*20:20;
+const GX=q=>40+q/460*260,GY=v=>105-(v+20)/40*90;
+mk('c1',(x,t,c)=>{const dt=Math.min(t-lt1,.05);lt1=t;const pw=+$('P1').value;$('p1').textContent=pw;
+if(run1){Q1=Math.min(460,Q1+dt*pw*20);if(Q1>=460)run1=false}
+const Tt=TQ(Q1),f=Q1<42?0:Q1<376?(Q1-42)/334:1;
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(40,8);x.lineTo(40,105);x.lineTo(305,105);x.stroke();T(x,'T, °C',46,16,c.fg);T(x,'Q, kJ',300,118,c.fg,'right');
+x.setLineDash([3,3]);x.beginPath();x.moveTo(40,GY(0));x.lineTo(305,GY(0));x.stroke();x.setLineDash([]);T(x,'0',30,GY(0)+4,c.mu,'right');
+x.strokeStyle=c.mu;x.lineWidth=2;x.beginPath();[[0,-20],[42,0],[376,0],[460,20]].forEach((p,i)=>i?x.lineTo(GX(p[0]),GY(p[1])):x.moveTo(GX(p[0]),GY(p[1])));x.stroke();
+x.strokeStyle=c.ac;x.lineWidth=3.5;x.beginPath();x.moveTo(GX(0),GY(-20));for(let q=5;q<Q1;q+=5)x.lineTo(GX(q),GY(TQ(q)));x.lineTo(GX(Q1),GY(Tt));x.stroke();
+x.beginPath();x.arc(GX(Q1),GY(Tt),5,0,7);x.fillStyle=OR;x.fill();
+x.strokeStyle=c.mu;x.lineWidth=1;x.strokeRect(10,122,300,92);const A=1+(Tt+20)/20*2;
+PA.forEach(p=>{const liq=p.rk<f*NP;if(!liq){p.x+=(p.bx+A*Math.sin(t*6+p.ph)-p.x)*.25;p.y+=(p.by+A*Math.cos(t*5+p.ph)-p.y)*.25}
+else{if(t>p.nt){p.tx=22+Math.random()*276;p.ty=135+Math.random()*72;p.nt=t+.5+Math.random()*.6}p.x+=(p.tx-p.x)*.04;p.y+=(p.ty-p.y)*.04}
+x.beginPath();x.arc(p.x,p.y,8,0,7);x.fillStyle=liq?OR:c.ac;x.fill()});
+const st=Q1===0?'Boshlanish':Q1<42?'Muz isiyapti':Q1<376?'ERISH: temperatura oʻzgarmaydi, panjara buzilmoqda':Q1<460?'Suv isiyapti':'Tugadi';
+$('o1').textContent=st+' · Q = '+Q1.toFixed(0)+' kJ, T = '+Tt.toFixed(1)+' °C, erigan qismi '+(f*100).toFixed(0)+'%'});
+Q('q1',[["Nega erish paytida isitgich ishlasa ham temperatura oshmaydi?","Berilgan energiya kristall panjarani buzishga, ya’ni zarralarning potensial energiyasini oshirishga sarflanadi, kinetik energiya (temperatura) oʻzgarmaydi."],["2 kg muzni 0 °C da eritish uchun qancha issiqlik kerak? (λ = 3.34·10⁵ J/kg)","Q = λm = 3.34·10⁵·2 = 6.68·10⁵ J ≈ 668 kJ."],["Erish paytida jismning qaysi energiyasi oʻzgaradi?","Ichki energiya (zarralarning potensial energiyasi) ortadi, kinetik energiya oʻzgarmaydi."],["Topshiriq: stakanga muz va termometr qoʻying, har daqiqada temperaturani yozing.","Muz erib boʻlguncha T ≈ 0 °C ekanini grafikda koʻring. Erib boʻlgach T oshadi."]]);
+
+/* 2 */
+const SB=[["Simob",-39,12],["Muz",0,334],["Qoʻrgʻoshin",327,25],["Alyuminiy",660,390],["Oltin",1064,67],["Mis",1085,210],["Temir",1538,270]];
+$('S2').innerHTML=SB.map((s,i)=>'<option value="'+i+'"'+(i===5?' selected':'')+'>'+s[0]+'</option>').join('');
+const bw=SB.map(()=>0);
+mk('c2',(x,t,c)=>{const si=+$('S2').value,m=+$('M2').value;$('m2').textContent=m;
+SB.forEach((s,i)=>{const y=14+i*28,w=(s[1]+50)/1600*190;bw[i]+=(w-bw[i])*.08;
+T(x,s[0],6,y+13,i===si?c.fg:c.mu);x.fillStyle=i===si?(Math.sin(t*5)>0?OR:'#f0a860'):c.ac+'88';x.fillRect(86,y,Math.max(2,bw[i]),20);T(x,s[1]+' °C',90+bw[i],y+14,c.fg)});
+T(x,'Erish temperaturalari',160,212,c.mu,'center');
+const s=SB[si];$('o2').textContent=s[0]+': T erish = '+s[1]+' °C, λ = '+s[2]+' kJ/kg → '+m+' g ni eritish uchun Q = λm = '+(s[2]*m/1000).toFixed(1)+' kJ'});
+Q('q2',[["Nega simob xona temperaturasida suyuq, temir esa juda yuqori temperaturada eriydi?","Simob zarralari orasidagi bogʻlanish kuchsiz (T erish = −39 °C), temirda kuchli bogʻlanish bor, panjarani buzish uchun koʻp energiya kerak."],["500 g misni erish temperaturasida eritish uchun qancha issiqlik kerak? (λ = 2.1·10⁵ J/kg)","Q = λm = 2.1·10⁵·0.5 = 1.05·10⁵ J = 105 kJ."],["Nega amorf jism uchun erish temperaturasini aytib boʻlmaydi?","Amorf jism qizdirilganda asta yumshaydi, panjara yoʻqligi uchun bogʻlanishlar bir vaqtda uzilmaydi."],["Topshiriq: simulatsiyada oltin va qoʻrgʻoshinni taqqoslang. Qaysi birini eritish uchun bir xil massada koʻproq issiqlik kerak?","Oltin: λ = 67 kJ/kg, qoʻrgʻoshin: 25 kJ/kg, demak oltinni eritish uchun koʻproq issiqlik kerak. Eslatma: erish nuqtasigacha isitishga ham energiya ketadi."]]);
+
+/* 3 */
+let u3=0,go3=false,lt3=0;const SD=Array.from({length:24},()=>[Math.random(),Math.random(),Math.random()*360]);
+const T3=u=>u<.25?100-u/.25*20:u<.65?80:80-(u-.65)/.35*50,X3=u=>40+u*260,Y3=v=>105-(v-30)/70*90;
+mk('c3',(x,t,c)=>{const dt=Math.min(t-lt3,.05);lt3=t;const r=+$('R3').value;$('r3').textContent=r;if(go3){u3=Math.min(1,u3+dt*.12);if(u3>=1)go3=false}
+const N=[3,6,10,16,24][r-1];
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(40,8);x.lineTo(40,105);x.lineTo(305,105);x.stroke();T(x,'T, °C',46,16,c.fg);T(x,'vaqt',300,118,c.fg,'right');
+x.setLineDash([3,3]);x.beginPath();x.moveTo(40,Y3(80));x.lineTo(305,Y3(80));x.stroke();x.setLineDash([]);T(x,'80',30,Y3(80)+4,c.mu,'right');
+x.strokeStyle=c.mu;x.lineWidth=2;x.beginPath();for(let u=0;u<=1.001;u+=.01)u?x.lineTo(X3(u),Y3(T3(u))):x.moveTo(X3(u),Y3(T3(u)));x.stroke();
+x.strokeStyle=c.ac;x.lineWidth=3.5;x.beginPath();for(let u=0;u<=u3;u+=.01)u?x.lineTo(X3(u),Y3(T3(u))):x.moveTo(X3(u),Y3(T3(u)));x.stroke();
+x.beginPath();x.arc(X3(u3),Y3(T3(u3)),5,0,7);x.fillStyle=OR;x.fill();
+x.save();x.beginPath();x.rect(20,122,280,92);x.clip();x.fillStyle=OR+'55';x.fillRect(20,122,280,92);
+const mx=1.7*Math.sqrt(280*92/(N*Math.PI));
+for(let k=0;k<N;k++){const s=SD[k],st=.25+k/N*.1,g=Math.max(0,Math.min(1,(u3-st)/.4));if(g<=0)continue;
+x.beginPath();x.arc(20+s[0]*280,122+s[1]*92,g*mx,0,7);x.fillStyle='hsla('+(200+s[2]%60)+',65%,55%,.8)';x.fill();x.strokeStyle=c.fg;x.lineWidth=1;x.stroke()}
+x.restore();x.strokeStyle=c.mu;x.strokeRect(20,122,280,92);
+const z=u3===0?'Sovitish grafigini koʻrish uchun tugmani bosing.':u3<.25?'Suyuq naftalin soviyapti.':u3<.65?'QOTISH: T oʻzgarmaydi, issiqlik ajralmoqda. Kristallanish markazlari: '+N:u3<1?'Qattiq naftalin soviyapti.':'Tugadi: '+N+' ta kristall hosil boʻldi'+(N<=6?' (yirik)':N>=16?' (mayda)':'');
+$('o3').textContent=z});
+Q('q3',[["Qotish paytida nega temperatura oʻzgarmaydi?","Zarralar panjaraga joylashganda issiqlik ajralib chiqadi, u sovishni kompensatsiya qiladi. T qotish temperaturasida turadi."],["200 g naftalin qotganda qancha issiqlik ajraladi? (λ = 1.5·10⁵ J/kg)","Q = λm = 1.5·10⁵·0.2 = 3·10⁴ J = 30 kJ."],["Nega sekin sovitilsa yirik kristallar hosil boʻladi?","Kristallanish markazlari kam hosil boʻladi, har biri atrofida panjara uzoq oʻsib, yirik kristallga aylanadi."],["Topshiriq: tezlikni 1 dan 5 gacha oʻzgartirib kristallar sonini taqqoslang.","Tezlik oshsa kristallar soni ortadi, hajmi kichrayadi. Metall quyishda bu xossa hisobga olinadi: mayda donali metall mustahkamroq."],["Nega baʼzi toza suyuqliklar qotish temperaturasidan pastroqqacha sovib suyuq qolishi mumkin?","Kristallanish markazi (chang, notekislik) boʻlmasa, qotish boshlanmaydi: suyuqlik “oʻta sovigan” holatda qoladi."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

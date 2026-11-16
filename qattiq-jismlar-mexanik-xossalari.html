@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Qattiq jismlarning mexanik xossalari — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+</style></head><body>
+<h1>Qattiq jismlarning mexanik xossalari</h1>
+<p class="sub">9-sinf fizika · 1-bob · 36-mavzu. Har bir reja: nazariya, jonli simulatsiya, savol va topshiriqlar.</p>
+
+<section><h2>1. Deformatsiya</h2>
+<p><b>Deformatsiya</b> — tashqi kuch ta’sirida jism shakli yoki oʻlchamining oʻzgarishi. Turlari: <b>choʻzilish, siqilish, egilish, siljish, buralish</b>.</p>
+<p><b>Elastik deformatsiya</b> — kuch olingach jism avvalgi shaklini tiklaydi (prujina, rezina). <b>Plastik deformatsiya</b> — kuch olingach shakl qisman yoki butunlay tiklanmaydi, qoldiq deformatsiya qoladi (plastilin, qoʻrgʻoshin, kuchli bukilgan sim). Elastik kuch deformatsiyaga proporsional: <b>Guk qonuni F = k·|Δl|</b>, k — qattiqlik koeffitsiyenti (N/m).</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><select id="Y1"><option value="0">Choʻzilish</option><option value="1">Siqilish</option><option value="2">Egilish</option><option value="3">Siljish</option><option value="4">Buralish</option></select>
+<select id="P1"><option value="0">Elastik jism</option><option value="1">Plastik jism</option></select></div>
+<div class="row"><label>Kuch: <b id="a1">60</b>%</label><input id="A1" type="range" min="0" max="100" step="5" value="60"><button id="b1" onclick="rl()">Yukni olib tashla</button></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Choʻzilish diagrammasi</h2>
+<p>Namunani choʻzib, <b>kuchlanish σ</b> va <b>nisbiy choʻzilish ε = Δl/l₀</b> orasidagi bogʻlanish chiziladi. Poʻlat uchun diagramma:</p>
+<p><b>OA</b> — proporsionallik chegarasigacha, Guk qonuni bajariladi (toʻgʻri chiziq). <b>AB</b> — elastiklik chegarasigacha, deformatsiya hali qaytadi. <b>BC</b> — <b>oquvchanlik</b>: kuchlanish deyarli oshmasdan jism choʻzilaveradi. <b>CD</b> — <b>mustahkamlanish</b>, D — eng katta kuchlanish. <b>DE</b> — namunada <b>“boʻyin”</b> hosil boʻlib, E nuqtada uziladi.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><label>Choʻzilish:</label><input id="E2" type="range" min="0" max="100" step="0.5" value="0"><button onclick="pl2=true;if(+$('E2').value>=100)$('E2').value=0">Sinovni boshlash</button></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Mexanik kuchlanish</h2>
+<p><b>Mexanik kuchlanish</b> — jism kesim yuzi birligiga toʻgʻri keladigan ichki kuch: <b>σ = F / S</b>. Birligi: paskal (Pa); 1 MPa = 10⁶ Pa = 1 N/mm². Nisbiy choʻzilish <b>ε = Δl / l₀</b> oʻlchamsiz kattalik. Elastik chegarada <b>σ = E·ε</b>, E — <b>Yung moduli</b> (poʻlat uchun taxminan 200 GPa).</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="M3"></select></div>
+<div class="row"><label>F: <b id="f3">2000</b> N</label><input id="F3" type="range" min="100" max="20000" step="100" value="2000"></div>
+<div class="row"><label>d: <b id="d3">4</b> mm</label><input id="D3" type="range" min="1" max="10" step="0.5" value="4"></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<section><h2>4. Mustahkamlik chegarasi</h2>
+<p><b>Mustahkamlik chegarasi σₘ</b> — jism uzilmasdan bardosh bera oladigan eng katta kuchlanish. Uzuvchi kuch: <b>F = σₘ·S</b>. Inshootlarda xavfsizlik uchun <b>ruxsat etilgan kuchlanish σ = σₘ / n</b> olinadi, n — <b>zaxira koeffitsiyenti</b> (n &gt; 1). Shu sabab koʻprik, kran va arqonlar uzilish yukidan bir necha barobar kam yukga hisoblanadi. (Qiymatlar taxminiy, markaga qarab farq qiladi.)</p>
+<canvas id="c4" width="320" height="220"></canvas>
+<div class="row"><select id="M4"></select></div>
+<div class="row"><label>d: <b id="d4">6</b> mm</label><input id="D4" type="range" min="1" max="10" step="0.5" value="6"></div>
+<div class="row"><label>Zaxira n: <b id="n4">4</b></label><input id="N4" type="range" min="1" max="6" step="0.5" value="4"></div>
+<div class="out" id="o4"></div>
+<div id="q4"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function arr(x,x0,y0,dx,dy,c,w){x.strokeStyle=c;x.fillStyle=c;x.lineWidth=w||2;x.beginPath();x.moveTo(x0,y0);x.lineTo(x0+dx,y0+dy);x.stroke();const a=Math.atan2(dy,dx);x.beginPath();x.moveTo(x0+dx,y0+dy);x.lineTo(x0+dx-8*Math.cos(a-.4),y0+dy-8*Math.sin(a-.4));x.lineTo(x0+dx-8*Math.cos(a+.4),y0+dy-8*Math.sin(a+.4));x.fill()}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c',RD='#e24b4a',GR='#3aa86b';
+const MAT=[["Poʻlat",400,200],["Mis",220,110],["Alyuminiy",100,70],["Choʻyan",150,100],["Shisha",50,70]];
+['M3','M4'].forEach(id=>$(id).innerHTML=MAT.map((m,i)=>'<option value="'+i+'">'+m[0]+' (σₘ≈'+m[1]+' MPa)</option>').join(''));
+
+/* 1 */
+let dA=0,rel=false,peak=.6;
+function rl(){rel=!rel;$('b1').textContent=rel?'Yukni qaytadan qoʻy':'Yukni olib tashla'}
+$('A1').oninput=()=>{rel=false;peak=+$('A1').value/100;$('b1').textContent='Yukni olib tashla'};
+mk('c1',(x,t,c)=>{const ty=+$('Y1').value,pl=$('P1').value==='1',sl=+$('A1').value/100;$('a1').textContent=Math.round(sl*100);
+const tg=rel?(pl?.6*peak:0):sl;dA+=(tg-dA)*.08;const a=dA;
+x.fillStyle=c.mu;for(let k=0;k<8;k++)x.fillRect(28,70+k*10,12,4);x.fillRect(38,60,3,100);
+x.setLineDash([4,4]);x.strokeStyle=c.mu;x.lineWidth=1;x.strokeRect(40,90,160,40);x.setLineDash([]);
+x.fillStyle=(pl&&rel?OR:c.ac)+'99';x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();
+if(ty===0){const L=160+a*60,h=40-a*8;x.rect(40,110-h/2,L,h);arr(x,40+L,110,28,0,RD,3)}
+else if(ty===1){const L=160-a*50,h=40+a*10;x.rect(40,110-h/2,L,h);arr(x,40+L+28,110,-26,0,RD,3)}
+else if(ty===2){const d=a*70;x.moveTo(40,90);x.quadraticCurveTo(120,90,200,90+d);x.lineTo(200,130+d);x.quadraticCurveTo(120,130,40,130);x.closePath();arr(x,200,70+d,0,-0,RD,1);arr(x,200,60+d,0,26,RD,3)}
+else if(ty===3){const s=a*40;x.moveTo(40+s,90);x.lineTo(200+s,90);x.lineTo(200,130);x.lineTo(40,130);x.closePath();arr(x,110+s,78,34,0,RD,3)}
+else{x.rect(40,90,160,40)}
+x.fill();x.stroke();
+if(ty===4){x.strokeStyle=c.fg;x.lineWidth=1.5;for(let k=0;k<=4;k++){const s=a*35*(k/4);x.beginPath();x.moveTo(40+k*40+s,90);x.lineTo(40+k*40,130);x.stroke()}arr(x,210,110,0,0,RD,1);x.strokeStyle=RD;x.lineWidth=3;x.beginPath();x.arc(212,110,20,-1.2,1.8);x.stroke()}
+T(x,'qoʻzgʻalmas devor',34,176,c.mu);T(x,'chiziq — dastlabki shakl',210,200,c.mu,'right');
+const res=Math.abs(a)>.03&&rel&&pl;
+$('o1').textContent=rel?(pl?(res?'Plastik: kuch olindi, qoldiq deformatsiya qoldi.':'Plastik, ammo deformatsiya kichik edi.'):'Elastik: kuch olindi, shakl toʻliq tiklandi.'):'Kuch ta’sirida jism deformatsiyalanmoqda.'});
+Q('q1',[["Elastik va plastik deformatsiyaning farqi nima?","Elastikda kuch olingach shakl tiklanadi, plastikda tiklanmaydi (qoldiq deformatsiya qoladi)."],["Prujinaga 2 N kuch qoʻyilsa u 4 cm choʻzildi. k ni toping.","k = F/Δl = 2/0.04 = 50 N/m."],["Topshiriq: rezina arqon va plastilin boʻlagini bir xil kuch bilan choʻzing, qoʻyib yuboring.","Qaysi biri shaklini tiklashini kuzating. Rezina elastik, plastilin plastik ekanini tushuntiring."]]);
+
+/* 2 */
+const CP=[[0,0],[1.5,200],[1.9,230],[2.2,240],[3.5,240],[5,320],[6.5,380],[8,400],[9,370],[10,310]];
+const sg=v=>{for(let i=1;i<CP.length;i++)if(v<=CP[i][0]){const a=CP[i-1],b=CP[i];return a[1]+(b[1]-a[1])*(v-a[0])/(b[0]-a[0])}return 310};
+const PX=v=>40+v/10*260,PY=s=>150-s/420*140;let pl2=false,lt2=0;
+mk('c2',(x,t,c)=>{const dt=Math.min(t-lt2,.05);lt2=t;const S=$('E2');if(pl2){S.value=Math.min(100,+S.value+dt*14);if(+S.value>=100)pl2=false}
+const v=+S.value/10,sg0=sg(v);
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(40,8);x.lineTo(40,150);x.lineTo(305,150);x.stroke();T(x,'σ, MPa',46,16,c.fg);T(x,'ε',300,164,c.fg);
+x.strokeStyle=c.mu;x.lineWidth=2;x.beginPath();CP.forEach((p,i)=>i?x.lineTo(PX(p[0]),PY(p[1])):x.moveTo(PX(p[0]),PY(p[1])));x.stroke();
+x.strokeStyle=c.ac;x.lineWidth=3.5;x.beginPath();x.moveTo(PX(0),PY(0));for(let u=.1;u<v;u+=.1)x.lineTo(PX(u),PY(sg(u)));x.lineTo(PX(v),PY(sg0));x.stroke();
+[['A',1],['B',2],['C',3],['D',7],['E',9]].forEach(([n,i])=>{const p=CP[i];x.beginPath();x.arc(PX(p[0]),PY(p[1]),3,0,7);x.fillStyle=c.fg;x.fill();T(x,n,PX(p[0])+(n==='E'?5:-2),PY(p[1])-(n==='E'?-12:7),c.fg)});
+x.beginPath();x.arc(PX(v),PY(sg0),5,0,7);x.fillStyle=OR;x.fill();
+const broke=v>=9.95,L=70+v*14,my=195,mid=30+L/2;x.fillStyle=c.ac+'cc';
+const neck=v>8?(v-8)*4.5:0,seg=(a,b,h)=>x.fillRect(a,my-h/2,b-a,h);
+if(broke){seg(30,mid-4,14);seg(mid+4,30+L+30,10)}else{seg(30,mid-22,14);seg(mid+22,30+L,14);seg(mid-22,mid+22,14-neck)}
+x.fillStyle=c.mu;x.fillRect(22,my-12,8,24);x.fillRect(30+L,my-12,8,24);
+const z=v<1.5?'OA: proporsionallik, Guk qonuni':v<1.9?'AB: elastiklik chegarasi':v<3.5?'BC: oquvchanlik':v<8?'CD: mustahkamlanish':broke?'E: namuna uzildi':'DE: “boʻyin” hosil boʻldi';
+$('o2').textContent=z+' · σ ≈ '+sg0.toFixed(0)+' MPa'});
+Q('q2',[["Guk qonuni diagrammaning qaysi qismida bajariladi?","OA qismida (proporsionallik chegarasigacha): σ ~ ε, grafik toʻgʻri chiziq."],["BC qismida (oquvchanlik) nima sodir boʻladi?","Kuchlanish deyarli oʻzgarmasdan namuna choʻzilaveradi. Bunda deformatsiya plastik boʻla boshlaydi."],["Namuna qaysi nuqtada uziladi, eng katta kuchlanish qaysi nuqtada?","E nuqtada uziladi; eng katta kuchlanish D nuqtada (mustahkamlik chegarasi)."],["Topshiriq: Guk qonuni tajribasi. Rezina yoki prujinaga 1, 2, 3 ta bir xil yuk osib, uzayishini oʻlchang.","Jadval tuzing va F–Δl grafigini chizing. Toʻgʻri chiziq chiqsa, Guk qonuni bajariladi."]]);
+
+/* 3 */
+let wy=132,br=false;
+mk('c3',(x,t,c)=>{const m=MAT[$('M3').value],F=+$('F3').value,d=+$('D3').value;$('f3').textContent=F;$('d3').textContent=d;
+const S=Math.PI*d*d/4,sig=F/S,bro=sig>m[1],eps=sig/(m[2]*1000);wy+=((bro?185:132)-wy)*.07;
+x.fillStyle=c.mu;x.fillRect(40,6,110,8);const w=4+d*1.6;x.fillStyle=bro?RD:c.fg;
+if(bro){x.fillRect(95-w/2,14,w,50)}else{x.fillRect(95-w/2,14,w,wy-14)}
+const s=18+F/20000*40;x.fillStyle=c.mu;x.fillRect(95-s/2,wy,s,s);T(x,'F',95,wy+s/2+4,'#fff','center');arr(x,95+s/2+10,wy+s/2,0,24,RD,3);
+x.fillStyle=c.ac+'88';x.strokeStyle=c.fg;x.lineWidth=2;x.beginPath();x.arc(250,60,d*3.6,0,7);x.fill();x.stroke();T(x,'kesim yuzi S',250,100,c.mu,'center');
+x.strokeStyle=c.mu;x.strokeRect(190,125,110,16);const fr=Math.min(1,sig/m[1]/1.5);x.fillStyle=bro?RD:sig>m[1]*.67?OR:GR;x.fillRect(190,125,110*fr,16);
+x.fillStyle=c.fg;x.fillRect(190+110/1.5,121,2,24);T(x,'σₘ',190+110/1.5,156,c.fg,'center');T(x,'σ / σₘ',190,118,c.mu);
+$('o3').textContent='S = '+S.toFixed(1)+' mm², σ = F/S = '+sig.toFixed(0)+' MPa, ε = σ/E ≈ '+(eps*100).toFixed(3)+'% (1 m sim da Δl ≈ '+(eps*1000).toFixed(2)+' mm)'+(bro?' → σ > σₘ: sim UZILDI!':'')});
+Q('q3',[["F=2000 N, d=4 mm boʻlsa σ nechaga teng?","S = πd²/4 = 12.57 mm², σ = 2000/12.57 ≈ 159 MPa."],["Sim uzunligi 2 m, 1 mm choʻzildi. ε ni toping.","ε = Δl/l₀ = 1/2000 = 0.0005 = 0.05%."],["σ=100 MPa, ε=0.0005 boʻlsa E ni toping.","E = σ/ε = 10⁸/5·10⁻⁴ = 2·10¹¹ Pa = 200 GPa (poʻlat)."],["Topshiriq: simulatsiyada d ni ikki marta oshiring. σ qanday oʻzgaradi?","S 4 marta ortadi, σ 4 marta kamayadi: σ ~ 1/d²."]]);
+
+/* 4 */
+let h1=0,h2=0;
+mk('c4',(x,t,c)=>{const m=MAT[$('M4').value],d=+$('D4').value,n=+$('N4').value;$('d4').textContent=d;$('n4').textContent=n;
+const S=Math.PI*d*d/4,Fu=m[1]*S,Fr=Fu/n,mx=400*78.54;h1+=(Fu/mx*140-h1)*.1;h2+=(Fr/mx*140-h2)*.1;
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(30,185);x.lineTo(310,185);x.stroke();
+x.fillStyle=RD;x.fillRect(70,185-h1,70,h1);x.fillStyle=GR;x.fillRect(190,185-h2,70,h2);
+T(x,'Uzuvchi kuch',105,200,c.fg,'center');T(x,(Fu/1000).toFixed(2)+' kN',105,180-h1,c.fg,'center');
+T(x,'Ruxsat etilgan',225,200,c.fg,'center');T(x,(Fr/1000).toFixed(2)+' kN',225,180-h2,c.fg,'center');
+$('o4').textContent='σ ruxsat = σₘ/n = '+(m[1]/n).toFixed(0)+' MPa; F uzuvchi = σₘS = '+Fu.toFixed(0)+' N; F ruxsat = '+Fr.toFixed(0)+' N'});
+Q('q4',[["σₘ=400 MPa, n=4 boʻlsa ruxsat etilgan kuchlanish nechaga teng?","σ = 400/4 = 100 MPa."],["d=10 mm poʻlat sim qancha yukni xavfsiz koʻtaradi (n=4)?","S = 78.5 mm², F = 100·78.5 ≈ 7850 N ≈ 7.9 kN, bu taxminan 800 kg yuk."],["Nega kranning trosi uzilish yukidan ancha kam yukka mo‘ljallanadi?","Xavfsizlik uchun: material nuqsonlari, zarbalar, zanglash va hisoblash xatolarini hisobga olib, zaxira koeffitsiyenti n olinadi."],["Topshiriq: bir xil d li mis va poʻlat sim uchun F uzuvchi ni solishtiring.","F = σₘS: poʻlatniki mis dan taxminan 400/220 ≈ 1.8 marta katta."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Kristal va amorf jismlar — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+</style></head><body>
+<h1>Kristal va amorf jismlar</h1>
+<p class="sub">9-sinf fizika · 1-bob · 35-mavzu. Har bir reja: nazariya, jonli simulatsiya, savol va topshiriqlar.</p>
+
+<section><h2>1. Kristal jismlar</h2>
+<p>Kristal jismlarda atom, ion yoki molekulalar <b>qat’iy tartib bilan</b> joylashib, <b>kristall panjara</b>ni hosil qiladi. Zarralar panjara tugunlarida joylashgan va shu nuqtalar atrofida tebranadi. Tartib uzoq masofagacha saqlanadi (uzoq tartib).</p>
+<p><b>Xossalari:</b> (1) aniq <b>erish temperaturasi</b> bor, erish davomida temperatura oʻzgarmaydi; (2) <b>monokristallar anizotropik</b>: xossalari (mustahkamlik, issiqlik oʻtkazuvchanlik) yoʻnalishga bogʻliq, masalan slyuda bir yoʻnalishda qatlamlarga oson ajraladi; (3) tashqi shakli toʻgʻri geometrik. Koʻpchilik metallar mayda kristallchalardan iborat <b>polikristall</b>, ular yoʻnalish boʻyicha izotrop. Misollar: osh tuzi, kvars, olmos, qor uchqunlari, muz. Olmos va grafit bir xil uglerod atomlaridan, lekin panjarasi boshqa, shu sabab xossalari butunlay boshqacha.</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><label>Temperatura: <b id="t1">20</b> °C (shartli erish nuqtasi 60 °C)</label><input id="T1" type="range" min="0" max="100" value="20"></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Amorf jismlar</h2>
+<p>Amorf jismlarda zarralar <b>tartibsiz</b> joylashgan; tartib faqat yaqin masofada (bir-ikki zarra oraligʻida) bor, xuddi qotib qolgan suyuqlikdek. Misollar: shisha, smola, plastmassa, asfalt, jelatin, sovun.</p>
+<p><b>Xossalari:</b> (1) aniq erish temperaturasi <b>yoʻq</b>: qizdirilganda asta yumshaydi va suyuqlikka aylanadi; (2) <b>izotrop</b>: xossalari hamma yoʻnalishda bir xil; (3) sinish joyi notekis, shakli aniq emas. Amorf jism juda sekin oqadi: oʻta sovitilgan suyuqlik deb qarash mumkin. Vaqt oʻtishi bilan baʼzi amorf jismlar kristallanishi mumkin (masalan, eski shisha xiralashadi).</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><button onclick="u=0;go=true">Qizdirishni boshlash</button></div>
+<div class="out" id="o2">Qizdirish grafigini koʻrish uchun tugmani bosing.</div>
+<div id="q2"></div></section>
+
+<section><h2>3. Beruniy — mineralog olim</h2>
+<p><b>Abu Rayhon Beruniy</b> (973–1048) Xorazmning Kat shahrida tugʻilgan, buyuk ensiklopedist olim: astronom, geograf, tarixchi, fizik, mineralog. Mineralogiyaga bagʻishlangan asari — <b>“Javohirlarni bilish haqida maʼlumotlar toʻplami”</b>. Unda yoqut, zumrad, olmos, togʻ billuri, shuningdek oltin, kumush, mis, temir kabi moddalarning rangi, qattiqligi va <b>solishtirma ogʻirligi</b> tavsiflangan. Bu toshlarning aksariyati kristall jismlardir.</p>
+<p>Beruniy zichlikni <b>suv siqib chiqarish usuli</b> bilan oʻlchagan: toʻla suvli konussimon idishga namuna tushiriladi, tashqariga chiqqan suv hajmi oʻlchanadi. Namuna massasi m va siqib chiqarilgan suv hajmi V boʻlsa, <b>ρ = m / V</b>. U oʻlchagan qiymatlar hozirgi zamon qiymatlariga ancha yaqin, bu asrlar oldingi tajribaning aniqligini koʻrsatadi. Quyida bu usulni oʻzingiz sinab koʻring (zichliklar hozirgi qiymatlar).</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="M3"><option value="0">Oltin</option><option value="1">Qoʻrgʻoshin</option><option value="2">Mis</option><option value="3">Temir</option><option value="4">Yoqut</option><option value="5">Togʻ billuri</option></select>
+<label>m: <b id="w3">100</b> g</label><input id="W3" type="range" min="20" max="200" step="10" value="100"><button onclick="drop()">Tushirish</button></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c';
+
+/* 1 */
+const P=[];for(let j=0;j<5;j++)for(let i=0;i<8;i++)P.push({bx:42+i*34,by:35+j*34,ph:Math.random()*6.3,x:42+i*34,y:35+j*34,tx:0,ty:0,nt:0});
+mk('c1',(x,t,c)=>{const Tm=+$('T1').value,sol=Tm<60;$('t1').textContent=Tm;
+if(sol){x.strokeStyle=c.ac+'66';x.lineWidth=1.5;P.forEach((p,k)=>{if(k%8<7){x.beginPath();x.moveTo(p.x,p.y);x.lineTo(P[k+1].x,P[k+1].y);x.stroke()}if(k<32){x.beginPath();x.moveTo(p.x,p.y);x.lineTo(P[k+8].x,P[k+8].y);x.stroke()}})}
+P.forEach(p=>{if(sol){const A=1+Tm/12;p.x+=(p.bx+A*Math.sin(t*6+p.ph)-p.x)*.25;p.y+=(p.by+A*Math.cos(t*5+p.ph)-p.y)*.25}
+else{if(t>p.nt){p.tx=15+Math.random()*290;p.ty=15+Math.random()*190;p.nt=t+.6+Math.random()*.6}p.x+=(p.tx-p.x)*.03;p.y+=(p.ty-p.y)*.03}
+x.beginPath();x.arc(p.x,p.y,8,0,7);x.fillStyle=sol?c.ac:OR;x.fill()});
+$('o1').textContent=sol?'Kristall: zarralar tugunlarda tebranadi, tebranish T bilan ortadi.':'Erigan: panjara buzildi, zarralar erkin harakatlanadi.'});
+Q('q1',[["Kristal jismlarni qanday belgilari bilan taniysiz?","Aniq erish temperaturasi, zarralarning tartibli joylashuvi, monokristallarda anizotropiya, toʻgʻri geometrik shakl."],["Nega olmos juda qattiq, grafit esa yumshoq, ikkisi ham uglerod?","Uglerod atomlarining panjarasi har xil: olmosda barcha yoʻnalishda mustahkam bogʻlangan, grafitda esa qatlamlar oʻzaro zaif bogʻlangan."],["Topshiriq: osh tuzi donasini lupa bilan qarang va shaklini chizing.","Tuz kristallari kub shaklida boʻladi. Panjara tartibi tashqi shaklda namoyon boʻlishini tushuntiring."]]);
+
+/* 2 */
+let u=0,go=false,lt2=0;
+const cr=v=>20+(v<.35?v/.35*40:v<.65?40:40+(v-.65)/.35*40),am=v=>20+80*v;
+const X0=40,Y0=190,W=260,H=165;
+const px=v=>X0+v*W,py=T=>Y0-(T-20)/90*H;
+mk('c2',(x,t,c)=>{const dt=Math.min(t-lt2,.05);lt2=t;if(go){u=Math.min(1,u+dt*.15);if(u>=1)go=false}
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(X0,10);x.lineTo(X0,Y0);x.lineTo(310,Y0);x.stroke();T(x,'T',28,18,c.fg);T(x,'vaqt',280,208,c.fg);
+x.setLineDash([4,4]);x.beginPath();x.moveTo(X0,py(60));x.lineTo(310,py(60));x.stroke();x.setLineDash([]);T(x,'T erish',4,py(60)+4,c.mu);
+[[cr,c.ac],[am,OR]].forEach(([f,cl])=>{x.strokeStyle=cl;x.lineWidth=3;x.beginPath();for(let v=0;v<=u+1e-6;v+=.01){v?x.lineTo(px(v),py(f(v))):x.moveTo(px(v),py(f(v)))}x.stroke()});
+T(x,'Kristall',200,60,c.ac);T(x,'Amorf',200,76,OR);
+const dot=(bx,by,ord,cl)=>{x.strokeStyle=c.mu;x.strokeRect(bx,by,44,44);x.fillStyle=cl;for(let i=0;i<3;i++)for(let j=0;j<3;j++){const ox=ord?0:Math.sin(i*7+j*3)*5,oy=ord?0:Math.cos(i*5+j*9)*5;x.beginPath();x.arc(bx+8+i*14+ox,by+8+j*14+oy,3.5,0,7);x.fill()}};
+dot(210,135,1,c.ac);dot(262,135,0,OR);
+const pl=u>.35&&u<.65;$('o2').textContent=u===0?'Qizdirish grafigini koʻrish uchun tugmani bosing.':pl?'Kristall erimoqda: T oʻzgarmaydi (gorizontal qism). Amorf jism esa isishda davom etadi.':'Amorf jismda gorizontal qism yoʻq: u asta yumshaydi.'});
+Q('q2',[["Grafikda kristal va amorf jism qanday farq qiladi?","Kristal grafikda erish paytida gorizontal qism bor, amorfda yoʻq: temperatura tekis oshadi, jism asta yumshaydi."],["Nega shishani aniq nuqtada eritib boʻlmaydi?","Shisha amorf, unda barcha zarralar uchun bogʻlanish bir paytda uzilmaydi, shuning uchun aniq erish temperaturasi yoʻq."],["Topshiriq: muz va smola (yoki sovun) boʻlagini ayni issiqlikda qizdiring (xavfsizlikka rioya qiling).","Muz 0 °C da erib, harorat oʻzgarmasligini, smola esa asta yumshashini kuzating va grafik chizing."],["Slyuda bir yoʻnalishda qatlamlarga oson ajraladi. Bu qaysi xossaga misol?","Anizotropiyaga: monokristalda mustahkamlik yoʻnalishga bogʻliq. Amorf shisha esa izotrop."]]);
+
+/* 3 */
+const MAT=[19.3,11.3,8.9,7.9,4.0,2.65];let bp=0,cup=0,Vt=0,st=0,lt3=0,Mm=0,Dd=0;
+function drop(){Mm=+$('W3').value;Dd=MAT[$('M3').value];Vt=Mm/Dd;bp=0;cup=0;st=1}
+mk('c3',(x,t,c)=>{const dt=Math.min(t-lt3,.05);lt3=t;$('w3').textContent=$('W3').value;
+if(st===1){bp+=dt*.8;if(bp>=1){bp=1;st=2}}else if(st===2&&cup<Vt){cup=Math.min(Vt,cup+dt*Vt*.6)}
+x.fillStyle=c.ac+'44';x.beginPath();x.moveTo(90,70);x.lineTo(190,70);x.lineTo(165,185);x.lineTo(115,185);x.closePath();x.fill();x.strokeStyle=c.fg;x.lineWidth=2;x.stroke();
+x.beginPath();x.moveTo(190,76);x.lineTo(222,96);x.stroke();T(x,'quyilish naychasi',222,88,c.mu);
+x.strokeRect(215,125,70,75);x.fillStyle=c.ac+'99';const hh=cup/76*75;x.fillRect(216,200-hh,68,hh);T(x,'oʻlchov stakani',250,216,c.mu,'center');
+if(st===2&&cup<Vt){x.fillStyle=c.ac;for(let k=0;k<4;k++){const f=((t*2+k/4)%1);x.beginPath();x.arc(222+f*8,96+f*(125-96)+0,2.5,0,7);x.fill()}}
+const r=Math.max(4,Math.cbrt(Mm/(Dd||1))*4),by=st?20+bp*(132-20):20;if(!st&&!Mm){Mm=100;Dd=19.3}
+x.beginPath();x.arc(140,by,r,0,7);x.fillStyle=c.fg;x.fill();T(x,'namuna',140,12,c.mu,'center');
+$('o3').textContent=st===0?'Namunani tanlang va “Tushirish” tugmasini bosing.':cup>=Vt?'V = '+Vt.toFixed(1)+' sm³ suv siqib chiqarildi → ρ = m/V = '+Mm+'/'+Vt.toFixed(1)+' = '+Dd.toFixed(2)+' g/sm³':'Suv siqib chiqarilmoqda...'});
+Q('q3',[["Beruniy zichlikni qanday oʻlchagan?","Toʻla suvli idishga namuna tushirib, siqib chiqarilgan suv hajmini oʻlchagan, soʻng ρ = m/V formulasi bilan zichlikni hisoblagan."],["Namuna 193 g oltin boʻlsa (ρ=19.3 g/sm³), qancha suv siqib chiqaradi?","V = m/ρ = 193/19.3 = 10 sm³."],["Nega yoqut va oltinning siqib chiqargan suvi bir xil massada har xil?","Zichligi har xil: ρ oltinda katta, shuning uchun bir xil massada hajmi kichik va siqib chiqargan suv kam. Yoqutning hajmi kattaroq."],["Topshiriq: mis tanga (yoki kichik tosh) massasini tarozida oʻlchang, stakan suvga botirib suv sathining koʻtarilishidan hajmini toping.","ρ = m/V ni hisoblab, jadvaldagi qiymat bilan solishtiring va xato sababini yozing."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>37-§. Masalalar yechish — 9-sinf fizika</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#65718a;--blue:#1769aa;--cyan:#16a6c0;--gold:#e5a13b;--green:#16845b;--red:#c63d4f;--line:#dce4ef;--soft:#eaf3fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(120deg,#103b67,#147b9d);color:white;padding:38px 20px;text-align:center}
+header .tag{display:inline-block;border:1px solid #ffffff70;border-radius:30px;padding:5px 13px;font-size:.85rem;margin:4px}
+header h1{font-size:clamp(1.5rem,4vw,2.5rem);line-height:1.2;margin:14px auto;max-width:900px}
+header p{max-width:800px;margin:auto;color:#e4f4ff}
+main{max-width:1050px;margin:24px auto;padding:0 16px 50px}
+nav{display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 24px}
+nav a{background:#fff;border:1px solid var(--line);border-radius:20px;padding:7px 12px;color:var(--blue);text-decoration:none;font-size:.9rem}
+section,.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 5px 18px #1b35500a}
+h2{color:#125b89;font-size:1.45rem;margin:0 0 12px}h3{margin:18px 0 8px;color:#23415f}
+p{margin:9px 0}.muted,small{color:var(--muted)}.formula{background:#eef6fc;border-left:4px solid var(--cyan);padding:12px 16px;border-radius:8px;margin:12px 0;font-size:1.12rem;overflow-wrap:anywhere}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.tile{background:#f8fbff;border:1px solid var(--line);border-radius:13px;padding:15px}
+.answer{background:#eaf7f0;border:1px solid #b8e1ca;border-radius:9px;padding:10px 13px;display:inline-block;color:#126342;font-weight:700;margin:8px 0}
+button{background:var(--blue);color:#fff;border:0;border-radius:10px;padding:10px 15px;font-weight:650;cursor:pointer}
+button.secondary{background:#e8f0f7;color:#174c75}button:disabled{opacity:.45;cursor:not-allowed}
+input[type=range]{width:100%;accent-color:var(--blue)}input[type=number]{padding:9px;border:1px solid #bdcada;border-radius:8px;width:100%;font:inherit}
+label{display:block;font-weight:600;margin:9px 0 3px}
+.sim{background:linear-gradient(180deg,#f7fbff,#edf5fc);border:1px solid var(--line);border-radius:14px;padding:16px;margin:12px 0}
+.sim svg{width:100%;max-height:180px;display:block}
+.metrics{display:flex;flex-wrap:wrap;gap:12px;margin-top:10px}
+.metric{background:white;border:1px solid var(--line);padding:9px 13px;border-radius:10px;min-width:145px;flex:1}
+.metric strong{display:block;font-size:1.25rem;color:#126b8a}
+.problem{border:1px solid var(--line);border-radius:12px;padding:15px;margin:12px 0}
+details{background:#f8fafc;border-radius:9px;padding:10px 13px;margin-top:9px}
+summary{cursor:pointer;font-weight:650;color:#185d88}
+.question{padding:13px 0;border-bottom:1px solid var(--line)}.question:last-child{border:0}
+.question label{font-weight:400;display:flex;gap:9px;align-items:flex-start;margin:7px 0}
+.result{font-weight:700;margin-top:12px}
+footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:600px){section,.card{padding:16px}header{padding:30px 15px}}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">9-sinf fizika</span><span class="tag">IV bob</span><span class="tag">45 daqiqalik interaktiv dars</span>
+  <h1>37-§. MASALALAR YECHISH</h1>
+  <p>Qattiq jismlarning mexanik xossalari: deformatsiya, Guk qonuni, mexanik kuchlanish va Yung moduli bo‘yicha nazariya, masalalar va virtual tajribalar.</p>
+</header>
+<main>
+<nav>
+  <a href="#reja">Dars rejasi</a><a href="#deform">Deformatsiya</a><a href="#hooke">Guk qonuni</a><a href="#stress">Kuchlanish</a><a href="#young">Yung moduli</a><a href="#test">Test</a>
+</nav>
+
+<section id="reja">
+<h2>1. Dars rejasi va maqsadi</h2>
+<div class="grid">
+ <div class="tile"><b>1.</b> Deformatsiya va uning turlari bo‘yicha masalalar.</div>
+ <div class="tile"><b>2.</b> Guk qonuni va elastiklik kuchiga doir masalalar.</div>
+ <div class="tile"><b>3.</b> Mexanik kuchlanish va nisbiy uzayishni hisoblash.</div>
+ <div class="tile"><b>4.</b> Yung moduli va elastik xossalarga doir masalalar.</div>
+ <div class="tile"><b>5.</b> Amaliy masalalar, simulyatsiyalar va bilimlarni tekshirish.</div>
+</div>
+<p><b>Dars maqsadi:</b> o‘quvchilarda qattiq jismlarning mexanik xossalariga oid fizik masalalarni formulalar asosida mustaqil yechish ko‘nikmasini shakllantirish.</p>
+<p><b>Kutilayotgan natija:</b> o‘quvchi deformatsiya turlarini farqlaydi, Guk qonunidan foydalanadi, mexanik kuchlanish, nisbiy uzayish va Yung modulini hisoblaydi.</p>
+</section>
+
+<section id="deform">
+<h2>2. Deformatsiya va uning turlari</h2>
+<p><b>Deformatsiya</b> — tashqi kuch ta’sirida jismning shakli yoki o‘lchamining o‘zgarishi.</p>
+<div class="grid">
+ <div class="tile"><b>Cho‘zilish</b><p>Jism uzunligi ortadi. Masalan, tortilgan sim.</p></div>
+ <div class="tile"><b>Siqilish</b><p>Jism uzunligi kamayadi. Masalan, siqilgan prujina.</p></div>
+ <div class="tile"><b>Egilish</b><p>Jism bukiladi. Masalan, yuk ta’siridagi taxta.</p></div>
+ <div class="tile"><b>Buralish</b><p>Jism o‘z o‘qi atrofida buriladi.</p></div>
+ <div class="tile"><b>Siljish</b><p>Jism qatlamlari bir-biriga nisbatan siljiydi.</p></div>
+</div>
+<h3>Deformatsiyaning ikki ko‘rinishi</h3>
+<p><b>Elastik deformatsiya:</b> tashqi kuch olib tashlanganda jism dastlabki shakli va o‘lchamiga qaytadi.</p>
+<p><b>Plastik deformatsiya:</b> kuch olib tashlangandan keyin ham jismning o‘zgargan shakli saqlanib qoladi.</p>
+<div class="problem">
+ <b>1-masala. Simning uzayishi</b>
+ <p>Uzunligi 2 m bo‘lgan sim cho‘zilgach, 2,004 m bo‘ldi. Sim qancha uzaygan?</p>
+ <div class="formula">Δl = l − l₀ = 2,004 − 2 = 0,004 m = 4 mm</div>
+ <span class="answer">Javob: 4 mm</span>
+</div>
+</section>
+
+<section id="hooke">
+<h2>3. Guk qonuni va elastiklik kuchi</h2>
+<p>Elastik deformatsiya chegarasida elastiklik kuchining moduli deformatsiya kattaligiga to‘g‘ri proporsional bo‘ladi. Bu bog‘lanish Guk qonuni deyiladi.</p>
+<div class="formula"><b>F<sub>el</sub> = k · Δl</b></div>
+<ul><li><b>F<sub>el</sub></b> — elastiklik kuchi, N;</li><li><b>k</b> — prujina bikrligi, N/m;</li><li><b>Δl</b> — uzayish yoki siqilish, m.</li></ul>
+<p>Bikrlik katta bo‘lsa, prujinani bir xil miqdorda cho‘zish uchun kattaroq kuch kerak bo‘ladi.</p>
+<h3>Virtual tajriba 1. Prujinani cho‘zish</h3>
+<div class="sim">
+ <label for="force">Ta’sir etuvchi kuch: <output id="forceOut">4</output> N</label>
+ <input id="force" type="range" min="0" max="20" step="1" value="4">
+ <label for="stiff">Prujina bikrligi: <output id="stiffOut">200</output> N/m</label>
+ <input id="stiff" type="range" min="100" max="500" step="50" value="200">
+ <svg viewBox="0 0 520 150" role="img" aria-label="Kuch ta’sirida cho‘zilayotgan prujina">
+  <path d="M35 25 V125 M35 75 H65" stroke="#40536c" stroke-width="5" fill="none"/>
+  <path id="spring" d="" stroke="#16a6c0" stroke-width="5" fill="none" stroke-linejoin="round"/>
+  <rect id="mass" x="300" y="55" width="58" height="42" rx="7" fill="#e5a13b"/>
+  <text id="massText" x="329" y="82" text-anchor="middle" font-size="16" fill="#382400">Yuk</text>
+  <path d="M380 75 H470 M470 75 l-13 -9 M470 75 l-13 9" stroke="#c66b22" stroke-width="3" fill="none"/>
+  <text x="425" y="58" text-anchor="middle" font-size="13" fill="#8b4b12">F</text>
+ </svg>
+ <div class="metrics">
+  <div class="metric">Uzayish<strong id="elong">2,00 cm</strong></div>
+  <div class="metric">Elastiklik kuchi<strong id="elastic">4,0 N</strong></div>
+ </div>
+ <p class="muted">Slayderlarni o‘zgartiring: kuch ortganda uzayish ortadi, bikrlik ortganda esa bir xil kuchdagi uzayish kamayadi.</p>
+ <button class="secondary" id="resetSpring">Boshlang‘ich holat</button>
+</div>
+<div class="problem">
+ <b>2-masala. Guk qonuni</b>
+ <p>Bikrligi 300 N/m bo‘lgan prujina 0,02 m ga cho‘zildi. Elastiklik kuchini toping.</p>
+ <div class="formula">F = k · Δl = 300 · 0,02 = 6 N</div>
+ <span class="answer">Javob: 6 N</span>
+</div>
+</section>
+
+<section id="stress">
+<h2>4. Mexanik kuchlanish va nisbiy uzayish</h2>
+<p>Mexanik kuchlanish — jism ko‘ndalang kesim yuzasiga ta’sir qiluvchi kuchning shu yuzaga nisbatidir.</p>
+<div class="formula"><b>σ = F / S</b></div>
+<p>σ — mexanik kuchlanish (Pa), F — kuch (N), S — ko‘ndalang kesim yuzi (m²).</p>
+<p><b>Nisbiy uzayish</b> absolyut uzayishning boshlang‘ich uzunlikka nisbatidir:</p>
+<div class="formula"><b>ε = Δl / l₀</b></div>
+<div class="problem">
+ <b>3-masala. Mexanik kuchlanish</b>
+ <p>Kesim yuzasi 2 mm² bo‘lgan sim 100 N kuch bilan tortilmoqda. Mexanik kuchlanishni toping.</p>
+ <p>SI ga o‘tkazamiz: 2 mm² = 2 · 10⁻⁶ m².</p>
+ <div class="formula">σ = 100 / (2 · 10⁻⁶) = 5 · 10⁷ Pa = 50 MPa</div>
+ <span class="answer">Javob: 50 MPa</span>
+</div>
+<h3>Virtual tajriba 2. Mexanik kuchlanish kalkulyatori</h3>
+<div class="sim">
+ <label for="tforce">Simga ta’sir etuvchi kuch (N)</label><input id="tforce" type="number" min="1" max="100000" value="100">
+ <label for="area">Ko‘ndalang kesim yuzi (mm²)</label><input id="area" type="number" min="0.01" max="100000" step="0.1" value="2">
+ <div class="metrics"><div class="metric">Mexanik kuchlanish<strong id="stressOut">50 MPa</strong></div><div class="metric">SI dagi qiymat<strong id="stressPa">50 000 000 Pa</strong></div></div>
+ <p class="muted">Hisoblashda kesim yuzi avtomatik ravishda m² ga o‘tkaziladi.</p>
+</div>
+</section>
+
+<section id="young">
+<h2>5. Yung moduli va elastik xossalar</h2>
+<p>Yung moduli moddaning elastik xususiyatini tavsiflaydi. Elastiklik chegarasida u mexanik kuchlanishning nisbiy uzayishga nisbatiga teng.</p>
+<div class="formula"><b>E = σ / ε = (F · l₀) / (S · Δl)</b></div>
+<ul><li>E — Yung moduli (Pa);</li><li>F — cho‘zuvchi kuch (N);</li><li>l₀ — boshlang‘ich uzunlik (m);</li><li>S — ko‘ndalang kesim yuzi (m²);</li><li>Δl — uzayish (m).</li></ul>
+<div class="problem">
+ <b>4-masala. Yung modulini aniqlash</b>
+ <p>Uzunligi 2 m, kesim yuzasi 1 mm² bo‘lgan simga 100 N kuch ta’sir ettirilganda u 1 mm ga uzaydi. Yung modulini toping.</p>
+ <p>S = 10⁻⁶ m²; Δl = 0,001 m.</p>
+ <div class="formula">E = (100 · 2) / (10⁻⁶ · 0,001) = 2 · 10¹¹ Pa</div>
+ <span class="answer">Javob: 200 GPa</span>
+</div>
+<h3>Masala yechish algoritmi</h3>
+<ol><li>Masala shartini o‘qib, berilgan va topiladigan kattaliklarni yozing.</li><li>Barcha kattaliklarni SI birliklariga o‘tkazing.</li><li>Mos formulani tanlang.</li><li>Son qiymatlarini formulaga qo‘yib hisoblang.</li><li>Javobni birlik bilan yozib, fizik ma’nosini tekshiring.</li></ol>
+</section>
+
+<section id="amaliy">
+<h2>6. Mustaqil ishlash uchun masalalar</h2>
+<div class="problem"><b>1-masala.</b> Bikrligi 500 N/m bo‘lgan prujina 4 cm ga cho‘zildi. Elastiklik kuchini toping.<details><summary>Yechimini ko‘rish</summary>4 cm = 0,04 m. F = kΔl = 500 · 0,04 = <b>20 N</b>.</details></div>
+<div class="problem"><b>2-masala.</b> 200 N kuch ta’sirida sim 2 mm ga uzaydi. Simning bikrligini aniqlang.<details><summary>Yechimini ko‘rish</summary>2 mm = 0,002 m. k = F/Δl = 200/0,002 = <b>100 000 N/m</b>.</details></div>
+<div class="problem"><b>3-masala.</b> Kesim yuzasi 4 mm² bo‘lgan simga 80 N kuch ta’sir qilmoqda. Mexanik kuchlanishni hisoblang.<details><summary>Yechimini ko‘rish</summary>S = 4 · 10⁻⁶ m². σ = 80/(4 · 10⁻⁶) = <b>20 MPa</b>.</details></div>
+<div class="problem"><b>4-masala.</b> Uzunligi 3 m bo‘lgan sim 6 mm ga uzaydi. Nisbiy uzayishni aniqlang.<details><summary>Yechimini ko‘rish</summary>6 mm = 0,006 m. ε = 0,006/3 = <b>0,002</b> yoki 0,2%.</details></div>
+<div class="problem"><b>5-masala.</b> Uzunligi 1 m, kesim yuzasi 2 mm² bo‘lgan sim 200 N kuch ta’sirida 0,5 mm ga uzaydi. Yung modulini toping.<details><summary>Yechimini ko‘rish</summary>S = 2 · 10⁻⁶ m²; Δl = 0,0005 m. E = (200 · 1)/(2 · 10⁻⁶ · 0,0005) = <b>2 · 10¹¹ Pa</b>.</details></div>
+</section>
+
+<section id="video">
+<h2>7. Video va animatsion namoyishlar</h2>
+<p>Quyidagi lavhalarni darsda o‘qituvchi namoyish qilishi yoki o‘quvchilar bilan tajriba sifatida bajarishi mumkin. Sahifada tashqi videolar o‘rniga ishlaydigan ichki simulyatsiyalar berilgan.</p>
+<div class="grid">
+ <div class="tile"><b>1. Elastik va plastik deformatsiya</b><p>Prujinani cho‘zib qo‘yib yuborish, plastilin yoki simning shakli o‘zgarishini taqqoslash.</p><small>1–2 daqiqa</small></div>
+ <div class="tile"><b>2. Guk qonuni</b><p>Prujinaga turli yuklar osib, kuch va uzayish orasidagi bog‘lanishni kuzatish.</p><small>1–2 daqiqa</small></div>
+ <div class="tile"><b>3. Material mustahkamligi</b><p>Tortish sinovida namuna deformatsiyasini, elastiklik chegarasi va uzilishni muhokama qilish.</p><small>2–3 daqiqa</small></div>
+</div>
+</section>
+
+<section id="test">
+<h2>8. Interaktiv test</h2>
+<p>Har bir savol uchun bitta javobni tanlang. Barcha savollarga javob bergach, natijani tekshiring.</p>
+<form id="quiz">
+<div class="question"><b>1. Deformatsiya deb nimaga aytiladi?</b>
+<label><input type="radio" name="q0" value="0"> Jism massasining ortishiga</label><label><input type="radio" name="q0" value="1"> Jism shakli yoki o‘lchamining o‘zgarishiga</label><label><input type="radio" name="q0" value="2"> Jism haroratining o‘zgarishiga</label><label><input type="radio" name="q0" value="3"> Jismning erishiga</label></div>
+<div class="question"><b>2. Guk qonunining formulasi qaysi?</b>
+<label><input type="radio" name="q1" value="0"> F = ma</label><label><input type="radio" name="q1" value="1"> Q = cmΔt</label><label><input type="radio" name="q1" value="2"> F = kΔl</label><label><input type="radio" name="q1" value="3"> p = F/S</label></div>
+<div class="question"><b>3. Prujina bikrligi qaysi birlikda o‘lchanadi?</b>
+<label><input type="radio" name="q2" value="0"> N</label><label><input type="radio" name="q2" value="1"> Pa</label><label><input type="radio" name="q2" value="2"> N/m</label><label><input type="radio" name="q2" value="3"> J</label></div>
+<div class="question"><b>4. Mexanik kuchlanish formulasi qaysi?</b>
+<label><input type="radio" name="q3" value="0"> σ = F/S</label><label><input type="radio" name="q3" value="1"> E = mc²</label><label><input type="radio" name="q3" value="2"> A = Fs</label><label><input type="radio" name="q3" value="3"> v = s/t</label></div>
+<div class="question"><b>5. Nisbiy uzayish qanday aniqlanadi?</b>
+<label><input type="radio" name="q4" value="0"> l₀/Δl</label><label><input type="radio" name="q4" value="1"> Δl/l₀</label><label><input type="radio" name="q4" value="2"> F/S</label><label><input type="radio" name="q4" value="3"> k/F</label></div>
+<div class="question"><b>6. Yung moduli qaysi kattaliklar nisbati bilan aniqlanadi?</b>
+<label><input type="radio" name="q5" value="0"> Kuch va massa</label><label><input type="radio" name="q5" value="1"> Kuchlanish va nisbiy uzayish</label><label><input type="radio" name="q5" value="2"> Massa va hajm</label><label><input type="radio" name="q5" value="3"> Ish va vaqt</label></div>
+<div class="question"><b>7. Plastik deformatsiyada nima sodir bo‘ladi?</b>
+<label><input type="radio" name="q6" value="0"> Jism darhol avvalgi shakliga qaytadi</label><label><input type="radio" name="q6" value="1"> Jismning massasi yo‘qoladi</label><label><input type="radio" name="q6" value="2"> Kuch olib tashlanganda deformatsiya saqlanadi</label><label><input type="radio" name="q6" value="3"> Jism harakatlanmay qoladi</label></div>
+<button type="submit">Natijani tekshirish</button> <button type="reset" class="secondary">Qayta ishlash</button>
+<div id="quizResult" class="result" aria-live="polite"></div>
+</form>
+</section>
+
+<section id="yakun">
+<h2>9. Dars yakunida savol-javob</h2>
+<ol><li>Deformatsiya nima?</li><li>Elastik va plastik deformatsiyaning farqi nimada?</li><li>Guk qonuni qanday ifodalanadi?</li><li>Prujina bikrligi nimani anglatadi?</li><li>Mexanik kuchlanish qanday aniqlanadi?</li><li>Yung moduli nimani tavsiflaydi?</li><li>Nima sababdan simning kesim yuzasi kichrayganda, bir xil kuchda mexanik kuchlanish ortadi?</li></ol>
+<h3>Uyga vazifa</h3>
+<ol><li>Guk qonuniga doir 3 ta masala tuzing va yeching.</li><li>Mexanik kuchlanishga doir 2 ta masala yeching.</li><li>Elastik va plastik deformatsiyaga hayotdan 3 tadan misol toping.</li><li>Prujina va yuk yordamida oddiy tajriba bajarib, natijalarni yozing.</li></ol>
+</section>
+<footer>9-sinf fizika · IV bob · 37-§. Masalalar yechish</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function updateSpring(){
+ const F=+$('force').value,k=+$('stiff').value,dl=F/k;
+ $('forceOut').textContent=F;$('stiffOut').textContent=k;
+ $('elong').textContent=(dl*100).toFixed(2)+' cm';$('elastic').textContent=(k*dl).toFixed(1)+' N';
+ const end=65+Math.min(330,dl*1500),n=14,pts=[];
+ for(let i=0;i<=n;i++){let x=65+(end-65)*i/n;let y=75+(i===0||i===n?0:(i%2? -13:13));pts.push((i?'L':'M')+x+' '+y)}
+ $('spring').setAttribute('d',pts.join(' '));$('mass').setAttribute('x',Math.min(430,end+4));$('massText').setAttribute('x',Math.min(459,end+33));
+}
+$('force').addEventListener('input',updateSpring);$('stiff').addEventListener('input',updateSpring);
+$('resetSpring').addEventListener('click',()=>{$('force').value=4;$('stiff').value=200;updateSpring()});
+function updateStress(){
+ const F=+$('tforce').value,S=+$('area').value;
+ if(F>0&&S>0){const pa=F/(S*1e-6);$('stressOut').textContent=(pa/1e6).toLocaleString('uz-UZ',{maximumFractionDigits:3})+' MPa';$('stressPa').textContent=Math.round(pa).toLocaleString('uz-UZ')+' Pa'}
+ else{$('stressOut').textContent='Qiymat kiriting';$('stressPa').textContent='—'}
+}
+$('tforce').addEventListener('input',updateStress);$('area').addEventListener('input',updateStress);
+updateSpring();updateStress();
+$('quiz').addEventListener('submit',e=>{
+ e.preventDefault();const key=[1,2,2,0,1,1,2];let score=0,missing=0;
+ key.forEach((v,i)=>{const chosen=document.querySelector('input[name="q'+i+'"]:checked');if(!chosen)missing++;else if(+chosen.value===v)score++});
+ $('quizResult').textContent=missing?`Iltimos, barcha savollarga javob bering. Javobsiz savollar: ${missing}.`:`Natija: ${score}/7 ta to‘g‘ri javob. ${score===7?'A’lo!':score>=5?'Yaxshi natija!':'Mavzuni yana bir bor takrorlang.'}`;
+});
+$('quiz').addEventListener('reset',()=>{$('quizResult').textContent=''});
+</script>
+</body>
+</html>

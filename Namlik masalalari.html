@@ -1,0 +1,219 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Namlik masalalari</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@500;700&display=swap">
+<style>
+/* layout: one reading column; formula card, particle simulation, worked problems, practice generator */
+:root{--bg:#f3f7f9;--card:#ffffff;--fg:#13222c;--muted:#52656f;--line:#d3e0e6;--accent:#0a7396;--accent-soft:#dff1f7;--water:#2b8fd6;--hot:#d9483b;--ok:#1f8a5b;--ok-soft:#dff3e9;--bad:#b3362c;--bad-soft:#fbe4e1;--head:"Space Grotesk",system-ui,sans-serif;--body:"Inter",system-ui,sans-serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1a21;--card:#15252e;--fg:#e6f0f4;--muted:#9bb0ba;--line:#26404c;--accent:#5cc3e4;--accent-soft:#16384a;--water:#5aaeea;--hot:#ef6d60;--ok:#5fd3a0;--ok-soft:#163a2d;--bad:#f08a80;--bad-soft:#40201d;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1a21;--card:#15252e;--fg:#e6f0f4;--muted:#9bb0ba;--line:#26404c;--accent:#5cc3e4;--accent-soft:#16384a;--water:#5aaeea;--hot:#ef6d60;--ok:#5fd3a0;--ok-soft:#163a2d;--bad:#f08a80;--bad-soft:#40201d;color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font:16px/1.65 var(--body);padding-block:24px 56px;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:760px;margin:0 auto;display:flex;flex-direction:column;gap:28px}
+h1,h2,h3{font-family:var(--head);line-height:1.2;text-wrap:balance;margin:0}
+h1{font-size:clamp(28px,6vw,40px);font-weight:700}
+h2{font-size:24px;font-weight:700}
+h3{font-size:17px;font-weight:500;margin-bottom:8px}
+p{margin:0 0 10px}
+.eyebrow{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:8px}
+.lead{color:var(--muted);font-size:17px;max-width:60ch}
+nav{display:flex;flex-wrap:wrap;gap:8px}
+nav a{padding:8px 14px;border:1px solid var(--line);border-radius:999px;color:var(--fg);text-decoration:none;font-size:14px;background:var(--card)}
+nav a:hover,nav a:focus-visible{border-color:var(--accent);outline:none}
+section{display:flex;flex-direction:column;gap:16px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px}
+.formula{font-family:var(--head);font-size:19px;text-align:center;padding:12px;background:var(--accent-soft);border-radius:8px}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}
+.grid2>*{min-width:0}
+.scroll{overflow-x:auto;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14px;font-variant-numeric:tabular-nums}
+th,td{padding:8px 10px;text-align:center;border-bottom:1px solid var(--line);white-space:nowrap}
+th{background:var(--accent-soft);font-weight:600}
+.sim svg{width:100%;height:auto;display:block;max-width:420px;margin:0 auto;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.row{display:flex;align-items:center;gap:12px;margin:8px 0}
+.row label{min-width:104px;font-size:14px;color:var(--muted)}
+.row input[type=range]{flex:1;min-width:0;accent-color:var(--accent)}
+.row output{min-width:64px;font-weight:600;text-align:right}
+.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.stat{background:var(--bg);border-radius:8px;padding:12px}
+.stat small{display:block;color:var(--muted);font-size:13px}
+.stat b{font-family:var(--head);font-size:24px}
+button{font:inherit;font-weight:500;padding:10px 16px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:var(--bg);cursor:pointer}
+button.ghost{background:transparent;color:var(--accent)}
+input[type=number]{font:inherit;padding:9px 10px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--fg);width:120px}
+button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px;align-items:center}
+details{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:var(--card)}
+summary{cursor:pointer;font-weight:500}
+.sol{display:grid;grid-template-columns:96px 1fr;gap:6px 12px;margin-top:12px;font-size:15px}
+.sol dt{color:var(--accent);font-weight:600}
+.sol dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.fb{font-size:14px;min-height:1.4em;margin-top:8px}
+.fb.ok{color:var(--ok)}.fb.no{color:var(--bad)}
+.opts{display:grid;gap:8px}
+.opt{text-align:left;background:var(--card);color:var(--fg);border:1px solid var(--line)}
+.opt.right{background:var(--ok-soft);border-color:var(--ok)}
+.opt.wrong{background:var(--bad-soft);border-color:var(--bad)}
+.note{border-left:3px solid var(--accent);padding:6px 0 6px 14px;color:var(--muted)}
+.q{display:flex;flex-direction:column;gap:10px}
+footer{color:var(--muted);font-size:13px}
+</style>
+
+<main class="wrap">
+<header>
+<div class="eyebrow">9-sinf fizika · 4-bob</div>
+<h1>Masalalar yechish: havo namligi</h1>
+<p class="lead">Formulalar, zarralar simulyatsiyasi, yechimli masalalar va mustaqil mashq generatori.</p>
+</header>
+
+<nav aria-label="Bo'limlar">
+<a href="#f">Formulalar</a>
+<a href="#s">Simulyatsiya</a>
+<a href="#m">Yechimli masalalar</a>
+<a href="#t">Mustaqil mashq</a>
+</nav>
+
+<section id="f">
+<h2>Kerakli formulalar</h2>
+<div class="panel">
+<div class="grid2">
+<div class="formula">φ = ρ / ρ₀ · 100 %</div>
+<div class="formula">ρ = φ · ρ₀ / 100 %</div>
+<div class="formula">m = ρ · V</div>
+<div class="formula">Δt = t₁ − t₂</div>
+</div>
+<p style="margin-top:12px">ρ havodagi bug' zichligi (g/m³), ρ₀ shu haroratdagi to'yingan bug' zichligi, φ nisbiy namlik, m bug' massasi, V xona hajmi. Shudring nuqtasi: havo to'yinadigan harorat, ya'ni shu haroratda ρ₀ = ρ bo'ladi.</p>
+<h3>To'yingan bug' zichligi ρ₀ (g/m³)</h3>
+<div class="scroll"><table>
+<thead><tr><th>t, °C</th><th>0</th><th>5</th><th>10</th><th>15</th><th>20</th><th>25</th><th>30</th></tr></thead>
+<tbody><tr><th>ρ₀</th><td>4,8</td><td>6,8</td><td>9,4</td><td>12,8</td><td>17,3</td><td>23,0</td><td>30,3</td></tr></tbody>
+</table></div>
+<p class="note" style="margin-top:12px">Masala yechish tartibi: Berilgan → Formula → Hisoblash → Javob.</p>
+</div>
+</section>
+
+<section id="s">
+<h2>Simulyatsiya: yopiq idishdagi bug'</h2>
+<div class="panel sim">
+<p style="color:var(--muted);font-size:14px">Harorat va bug' zichligini o'zgartiring. Harorat pasayib ρ₀ ≤ ρ bo'lsa, ortiqcha bug' suvga aylanib, pastga tushadi (shudring).</p>
+<svg viewBox="0 0 380 190" role="img" aria-label="Idishdagi bug' zarralari">
+<rect x="4" y="4" width="372" height="182" fill="none" stroke="var(--line)"/>
+<g id="drops"></g>
+<g id="mol"></g>
+</svg>
+<div class="row"><label for="T">Harorat t</label><input type="range" id="T" min="5" max="35" step="1" value="25"><output id="To">25 °C</output></div>
+<div class="row"><label for="R">Bug' ρ</label><input type="range" id="R" min="2" max="30" step="0.5" value="12.8"><output id="Ro">12,8 g/m³</output></div>
+<div class="stats">
+<div class="stat"><small>ρ₀ shu haroratda</small><b id="r0">–</b></div>
+<div class="stat"><small>Nisbiy namlik φ</small><b id="ph">–</b></div>
+<div class="stat"><small>Shudring nuqtasi</small><b id="dp">–</b></div>
+<div class="stat"><small>Holat</small><b id="stt" style="font-size:16px">–</b></div>
+</div>
+</div>
+</section>
+
+<section id="m">
+<h2>Yechimli masalalar</h2>
+<div class="panel q">
+<details open><summary>1. 20 °C da havoning bug' zichligi 10,4 g/m³. φ ni toping.</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>t = 20 °C, ρ = 10,4 g/m³, ρ₀ = 17,3 g/m³ (jadvaldan)</dd><dt>Formula</dt><dd>φ = ρ / ρ₀ · 100 %</dd><dt>Hisoblash</dt><dd>φ = 10,4 / 17,3 · 100 % ≈ 60 %</dd><dt>Javob</dt><dd>φ ≈ 60 %</dd></dl></details>
+<details><summary>2. 25 °C da φ = 40 %. Bug' zichligi ρ nechaga teng?</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>t = 25 °C, φ = 40 %, ρ₀ = 23,0 g/m³</dd><dt>Formula</dt><dd>ρ = φ · ρ₀</dd><dt>Hisoblash</dt><dd>ρ = 0,40 · 23,0 = 9,2 g/m³</dd><dt>Javob</dt><dd>ρ = 9,2 g/m³</dd></dl></details>
+<details><summary>3. Xona 6 m × 5 m × 3 m, t = 20 °C, φ = 50 %. Havodagi bug' massasi qancha?</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>V = 6·5·3 = 90 m³, ρ₀ = 17,3 g/m³, φ = 50 %</dd><dt>Formula</dt><dd>ρ = φ · ρ₀, m = ρ · V</dd><dt>Hisoblash</dt><dd>ρ = 0,5 · 17,3 = 8,65 g/m³; m = 8,65 · 90 ≈ 779 g</dd><dt>Javob</dt><dd>m ≈ 0,78 kg</dd></dl></details>
+<details><summary>4. 25 °C da bug' zichligi 12,8 g/m³. φ va shudring nuqtasini toping.</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>t = 25 °C, ρ = 12,8 g/m³, ρ₀(25 °C) = 23,0 g/m³</dd><dt>Formula</dt><dd>φ = ρ / ρ₀ · 100 %; shudring nuqtasida ρ₀ = ρ</dd><dt>Hisoblash</dt><dd>φ = 12,8 / 23,0 · 100 % ≈ 56 %. Jadvalda ρ₀ = 12,8 g/m³ 15 °C ga to'g'ri keladi.</dd><dt>Javob</dt><dd>φ ≈ 56 %, shudring nuqtasi 15 °C</dd></dl></details>
+<details><summary>5. Psixrometr: quruq 22 °C, nam 16 °C. φ qancha?</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>t₁ = 22 °C, t₂ = 16 °C</dd><dt>Formula</dt><dd>Δt = t₁ − t₂, so'ng psixrometrik jadval</dd><dt>Hisoblash</dt><dd>Δt = 6 °C. Jadvalda t₁ = 22 qator va Δt = 6 ustun kesishmasi taxminan 53 %.</dd><dt>Javob</dt><dd>φ ≈ 53 %</dd></dl></details>
+<details><summary>6. 30 °C, φ = 50 %. Stakan sirti qaysi haroratdan pastga tushganda unda shudring paydo bo'ladi?</summary>
+<dl class="sol"><dt>Berilgan</dt><dd>t = 30 °C, φ = 50 %, ρ₀ = 30,3 g/m³</dd><dt>Formula</dt><dd>ρ = φ · ρ₀; shudring nuqtasida ρ₀(t_sh) = ρ</dd><dt>Hisoblash</dt><dd>ρ = 0,5 · 30,3 ≈ 15,2 g/m³. Jadvalda 15,2 g/m³ 15 °C (12,8) va 20 °C (17,3) orasida, taxminan 18 °C.</dd><dt>Javob</dt><dd>t_sh ≈ 18 °C</dd></dl></details>
+</div>
+</section>
+
+<section id="t">
+<h2>Mustaqil mashq</h2>
+<div class="panel">
+<h3>Mashq generatori</h3>
+<p id="gq" style="font-weight:500"></p>
+<div class="btns"><input type="number" id="ga" step="any" inputmode="decimal" aria-label="Javob"><button id="gc">Tekshirish</button><button class="ghost" id="gn">Yangi masala</button></div>
+<div class="fb" id="gf" aria-live="polite"></div>
+</div>
+<div class="panel q" id="quiz"></div>
+</section>
+
+<footer>Simulyatsiya sxematik. ρ₀ qiymatlari o'rta maktab jadvalidan olingan.</footer>
+</main>
+
+<script>
+var $=function(i){return document.getElementById(i)};
+function es(t){return 6.112*Math.exp(17.62*t/(243.12+t))}
+function r0f(t){return 216.7*es(t)/(t+273.15)}
+function dpf(r,t){var e=r*(t+273.15)/216.7,l=Math.log(e/6.112);return 243.12*l/(17.62-l)}
+function f1(x){return (Math.round(x*10)/10).toString().replace('.',',')}
+
+var NS='http://www.w3.org/2000/svg',mol=$('mol'),dr=$('drops'),P=[];
+for(var i=0;i<45;i++){var c=document.createElementNS(NS,'circle');c.setAttribute('r','4');c.setAttribute('fill','var(--hot)');mol.appendChild(c);var a=Math.random()*6.28;P.push({c:c,x:20+Math.random()*340,y:20+Math.random()*130,dx:Math.cos(a),dy:Math.sin(a)})}
+var nv=0,sp=1;
+function upd(){
+var T=+$('T').value,R=+$('R').value,r0=r0f(T);
+$('To').textContent=T+' °C';$('Ro').textContent=f1(R)+' g/m³';
+$('r0').textContent=f1(r0)+' g/m³';
+var ph=Math.min(100,100*R/r0);
+$('ph').textContent=Math.round(ph)+' %';
+var dp=dpf(R,T);
+$('dp').textContent=Math.round(dp)+' °C';
+var sat=R>=r0;
+$('stt').textContent=sat?'Shudring tushdi':ph>=60?'Nam havo':ph>=40?'Qulay':'Quruq';
+nv=Math.round(Math.min(R,r0)*1.45);
+var nc=sat?Math.round((R-r0)*1.45):0;
+sp=0.5+T/35*1.5;
+for(var i=0;i<P.length;i++)P[i].c.style.display=i<nv?'':'none';
+dr.innerHTML='';
+for(var k=0;k<nc&&k<45;k++){var d=document.createElementNS(NS,'circle');d.setAttribute('r','4.5');d.setAttribute('fill','var(--water)');d.setAttribute('cx',12+(k%36)*10);d.setAttribute('cy',176-Math.floor(k/36)*10);dr.appendChild(d)}
+}
+$('T').oninput=upd;$('R').oninput=upd;upd();
+var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+function step(){
+for(var i=0;i<nv;i++){var p=P[i];p.x+=p.dx*sp;p.y+=p.dy*sp;
+if(p.x<10||p.x>370)p.dx=-p.dx;if(p.y<10||p.y>150)p.dy=-p.dy;
+p.c.setAttribute('cx',p.x);p.c.setAttribute('cy',p.y)}
+if(!reduce)requestAnimationFrame(step);
+}
+step();
+
+var T0={10:9.4,15:12.8,20:17.3,25:23.0,30:30.3},ks=[10,15,20,25,30],cur=null;
+function gen(){
+var t=ks[Math.floor(Math.random()*5)],mode=Math.floor(Math.random()*3);
+if(mode===0){var ph=[30,40,50,60,70,80][Math.floor(Math.random()*6)];cur={a:ph/100*T0[t],tol:0.15,u:'g/m³',q:t+' °C da havoning nisbiy namligi '+ph+' %. Bug\' zichligi ρ nechaga teng (g/m³)?',h:'ρ = φ · ρ₀ = '+ph/100+' · '+T0[t]+' g/m³'}}
+else if(mode===1){var ph2=[30,40,50,60,70,80][Math.floor(Math.random()*6)],r=Math.round(ph2/100*T0[t]*10)/10;cur={a:100*r/T0[t],tol:1.5,u:'%',q:t+' °C da havodagi bug\' zichligi '+f1(r)+' g/m³. Nisbiy namlik φ necha foiz?',h:'φ = ρ / ρ₀ · 100 % = '+f1(r)+' / '+T0[t]+' · 100 %'}}
+else{var V=[40,60,80,100][Math.floor(Math.random()*4)],ph3=[40,50,60][Math.floor(Math.random()*3)];cur={a:ph3/100*T0[t]*V,tol:0.03*ph3/100*T0[t]*V+1,u:'g',q:'Xona hajmi '+V+' m³, harorat '+t+' °C, φ = '+ph3+' %. Havodagi bug\' massasi necha gramm?',h:'m = φ · ρ₀ · V = '+ph3/100+' · '+T0[t]+' · '+V}}
+$('gq').textContent=cur.q;$('ga').value='';$('gf').textContent='';$('gf').className='fb';
+}
+$('gc').onclick=function(){
+var v=parseFloat($('ga').value.replace(',','.')),fb=$('gf');
+if(isNaN(v)){fb.className='fb no';fb.textContent='Avval javobni kiriting.';return}
+if(Math.abs(v-cur.a)<=cur.tol){fb.className='fb ok';fb.textContent='To\'g\'ri. Javob: '+f1(cur.a)+' '+cur.u+'.'}
+else{fb.className='fb no';fb.textContent='Noto\'g\'ri. Maslahat: '+cur.h}
+};
+$('gn').onclick=gen;gen();
+
+var Q=[
+{q:'Havoda bug\' zichligi ortsa, harorat o\'zgarmasa, φ qanday o\'zgaradi?',o:['Kamayadi','Ortadi','O\'zgarmaydi'],a:1,e:'ρ₀ o\'zgarmaydi, ρ ortgani uchun φ ortadi.'},
+{q:'Havo sovutilganda φ nima uchun ortadi?',o:['ρ ortadi','ρ₀ kamayadi','Bug\' bosimi nolga teng bo\'ladi'],a:1,e:'Sovuq havo kamroq bug\' sig\'diradi, ρ₀ kamayadi.'},
+{q:'φ = 100 % bo\'lganda sovutishni davom ettirsak nima bo\'ladi?',o:['Bug\' ortadi','Ortiqcha bug\' suvga aylanadi','Hech narsa'],a:1,e:'Bu shudring hosil bo\'lishi.'}
+];
+var qh=$('quiz');qh.innerHTML='<h3>Qisqa test</h3>';
+Q.forEach(function(it,i){
+var d=document.createElement('div');d.className='q';
+d.innerHTML='<p style="margin:0;font-weight:500">'+(i+1)+'. '+it.q+'</p><div class="opts"></div><div class="fb" aria-live="polite"></div>';
+var ob=d.querySelector('.opts'),fb=d.querySelector('.fb'),done=false;
+it.o.forEach(function(t,k){var b=document.createElement('button');b.className='opt';b.type='button';b.textContent=t;
+b.onclick=function(){if(done)return;
+if(k===it.a){done=true;b.classList.add('right');fb.className='fb ok';fb.textContent='To\'g\'ri. '+it.e}
+else{b.classList.add('wrong');fb.className='fb no';fb.textContent='Noto\'g\'ri, yana urinib ko\'ring.'}};
+ob.appendChild(b)});
+qh.appendChild(d);
+});
+</script>
+
+</body></html>
