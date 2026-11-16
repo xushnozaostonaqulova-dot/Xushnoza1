@@ -3,44 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fizika fanidan mavzular ro'yxati (1-50)</title>
+    <title>Fizika fanidan mavzular ro'yxati</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             background-color: #f4f7f6;
             margin: 0;
-            padding: 20px;
+            padding: 15px;
         }
         .container {
             max-width: 800px;
             margin: 0 auto;
             background: #ffffff;
-            padding: 20px 30px;
+            padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         h1 {
             text-align: center;
             color: #2c3e50;
-            font-size: 24px;
-            margin-bottom: 20px;
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box;
         }
         ul {
             list-style: none;
             padding: 0;
+            margin: 0;
         }
         li {
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         a {
             display: block;
-            padding: 12px 15px;
+            padding: 10px 14px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
             border-radius: 6px;
             transition: background 0.3s;
-            font-size: 16px;
+            font-size: 15px;
         }
         a:hover {
             background-color: #2980b9;
@@ -50,19 +60,74 @@
 <body>
 
 <div class="container">
-    <h1>Fizika fanidan mavzular ro'yxati</h1>
-    <ul>
-        <!-- Har bir mavzu uchun havola (href qismiga o'z fayllaringiz nomini yozasiz) -->
-        <li><a href="7-MAVZU.index.html">1-mavzu: Molekulyar-kinetik nazariya asoslari</a></li>
-        <li><a href="ideal-gaz---9-sinf-fizika.html">2-mavzu: Ideal gaz. 9-sinf fizika</a></li>
-        <li><a href="Modda-miqdori---9-sinf-fizika-int.html">3-mavzu: Modda miqdori</a></li>
-        <li><a href="izotermik_jarayon.html">4-mavzu: Izotermik jarayon</a></li>
-        <li><a href="izobarik-jarayon.html">5-mavzu: Izobarik jarayon</a></li>
-        <li><a href="izoxorik_jarayon.html">6-mavzu: Izoxorik jarayon</a></li>
-        <!-- 50 gacha bo'lgan boshqa mavzularni shu tarzda qo'shib ketishingiz mumkin -->
-        <li><a href="#">7-mavzu: (Tez kunda qo'shiladi)</a></li>
+    <h1>Fizika Fanidan Mavzular Va Topshiriqlar</h1>
+    <input type="text" id="searchBox" placeholder="Mavzu nomini qidirish..." onkeyup="filterFiles()">
+    
+    <ul id="fileList">
+        <li><a href="1-bob.nazorat.html">1-bob nazorat</a></li>
+        <li><a href="13.html">13-mavzu</a></li>
+        <li><a href="15.html">15-mavzu</a></li>
+        <li><a href="17.html">17-mavzu</a></li>
+        <li><a href="21.html">21-mavzu</a></li>
+        <li><a href="22.html">22-mavzu</a></li>
+        <li><a href="23.html">23-mavzu</a></li>
+        <li><a href="24_§_Issiqlik_jarayonlarining_qaytar_va_qaytmasligi.html">24-§. Issiqlik jarayonlarining qaytar va qaytmasligi</a></li>
+        <li><a href="25_mavzu_laboratoriya_ishi_(1).html">25-mavzu. Laboratoriya ishi</a></li>
+        <li><a href="2_bob_nazorat_imtihoni_(1).html">2-bob nazorat imtihoni</a></li>
+        <li><a href="34_§ob_sirti_taranglik.html">34-§. Suyuqlik sirti taranglik</a></li>
+        <li><a href="37.html">37-mavzu</a></li>
+        <li><a href="3.bob_nazorat_imtihoni.html">3-bob nazorat imtihoni</a></li>
+        <li><a href="4.nazorat.html">4-nazorat</a></li>
+        <li><a href="7-MAVZU.index.html">7-mavzu indeks</a></li>
+        <li><a href="9-sinf_fizika_1li-bob_masalalar_yechish.html">9-sinf fizika I-bob masalalar yechish</a></li>
+        <li><a href="9-sinf_fizika_ii_bob_masalalar_2_.html">9-sinf fizika II-bob masalalar</a></li>
+        <li><a href="9-sinf_fizika_issiq-k_mashinalari_tsikli.html">9-sinf fizika issiqlik mashinalari tsikli</a></li>
+        <li><a href="Fizika 9-sinf-_Molekularning massasi va o`lchami.html">Fizika 9-sinf: Molekulaning massasi va o'lchami</a></li>
+        <li><a href="ideal gaz - 9-sinf fizika.html">Ideal gaz - 9-sinf fizika</a></li>
+        <li><a href="Modda miqdori - 9-sinf fizika (Int).html">Modda miqdori - 9-sinf fizika</a></li>
+        <li><a href="Molekular-kinetik nazariya (9-sinf fizika Int).html">Molekular-kinetik nazariya</a></li>
+        <li><a href="Namlik masalalari.html">Namlik masalalari</a></li>
+        <li><a href="Nisbiy namlik laboratoriyasi (2).html">Nisbiy namlik laboratoriyasi</a></li>
+        <li><a href="Termodinamik ish.html">Termodinamik ish</a></li>
+        <li><a href="atmosfera.html">Atmosfera</a></li>
+        <li><a href="buglanish_konden-satsiya.html">Bug'lanish va kondensatsiya</a></li>
+        <li><a href="erish-va-qotish.html">Erish va qotish</a></li>
+        <li><a href="issiq_xossajig.html">Issiqlik xossalari</a></li>
+        <li><a href="fizika_9-sinf_18_masalalar.html">Fizika 9-sinf 18-masalalar</a></li>
+        <li><a href="gaz-qonunlari-masalalar.html">Gaz qonunlari masalalar</a></li>
+        <li><a href="hollash-kapillyar.html"> Ho'llash va kapillyarlik</a></li>
+        <li><a href="ichki-yonuv-dvigatellari (1).html">Ichki yonuv dvigatellari</a></li>
+        <li><a href="ideal-gaz-masalalar.html">Ideal gaz masalalari</a></li>
+        <li><a href="isiqlik dvigateli-FIK (1).html">Issiqlik dvigateli va FIK</a></li>
+        <li><a href="izobarik-jarayon.html">Izobarik jarayon</a></li>
+        <li><a href="izotermik_jarayon.html">Izotermik jarayon</a></li>
+        <li><a href="izoxorik_jarayon.html">Izoxorik jarayon</a></li>
+        <li><a href="kristal-amorf-beruniy.html">Kristal va amorf jismlar</a></li>
+        <li><a href="masalalar_mkt (1).html">MKT masalalari (1)</a></li>
+        <li><a href="masalalar_mkt.html">MKT masalalari</a></li>
+        <li><a href="qattiq-jisimlar-mexanik-xossalari (1).html">Qattiq jismlar mexanik xossalari</a></li>
+        <li><a href=" suyuqlik-xossalari.html">Suyuqlik xossalari</a></li>
+        <li><a href="temperatura (1).html">Temperatura</a></li>
     </ul>
 </div>
+
+<script>
+function filterFiles() {
+    let input = document.getElementById('searchBox').value.toLowerCase();
+    let ul = document.getElementById('fileList');
+    let li = ul.getElementsByTagName('li');
+    
+    for (let i = 0; i < li.length; i++) {
+        let a = li[i].getElementsByTagName('a')[0];
+        let textValue = a.textContent || a.innerText;
+        if (textValue.toLowerCase().indexOf(input) > -1) {
+            li[i].style.display = "";
+        } else {
+            li[i].style.display = "none";
+        }
+    }
+}
+</script>
 
 </body>
 </html>
