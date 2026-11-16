@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ichki yonuv dvigatellari – 9-sinf fizika</title>
+<style>
+:root{--bg1:#dcefd0;--bg2:#a9d29a;--card:#fbfdf7;--ink:#1f2d1a;--mut:#4d6045;--ac:#2f6b3a;--hot:#d9541e;--line:#c4d9b8;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#16251a;--bg2:#0f1a12;--card:#1d2e21;--ink:#e6f0df;--mut:#a5bd9b;--ac:#7fcf8a;--line:#34503a;color-scheme:dark}}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,var(--bg1),var(--bg2));min-height:100vh}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:.4em 0}h2{font-size:1.25rem;margin:.2em 0 .5em}h3{font-size:1.05rem;margin:1em 0 .3em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}
+nav{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg1);padding:8px 0;z-index:5}
+button{font:inherit;padding:8px 12px;border:1px solid var(--ac);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer}
+button.on,button:hover{background:var(--ac);color:#fff}
+button:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+canvas{width:100%;max-width:100%;background:#eef7e8;border:1px solid var(--line);border-radius:8px;display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0;align-items:center}
+.box{background:rgba(127,160,110,.15);border-left:4px solid var(--ac);padding:8px 12px;margin:10px 0}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.wrap{overflow-x:auto}
+section{display:none}section.show{display:block}
+.q button{display:block;width:100%;text-align:left;margin:5px 0}
+.ok{background:#2f8f4a!important;color:#fff}.bad{background:#b83a2a!important;color:#fff}
+small{color:var(--mut)}
+</style></head><body><main>
+<h1>III-bob. Ichki yonuv dvigatellari</h1>
+<small>9-sinf fizika · interaktiv dars materiali</small>
+<nav id="nav"></nav>
+
+<section id="s0" class="show">
+<div class="card"><h2>1. Ichki yonuv dvigateli</h2>
+<p><b>Ichki yonuv dvigateli</b> – yoqilg‘i bevosita dvigatel silindrining ichida yonadigan va yonish energiyasi mexanik ishga aylanadigan issiqlik dvigatelidir. Avtomobil, mototsikl, traktor va generatorlarda ishlatiladi.</p>
+<h3>Asosiy qismlari</h3>
+<ul><li><b>Silindr</b> – ish bajariladigan bo‘shliq.</li><li><b>Porshen</b> – silindr ichida yuqoriga-pastga harakatlanadi.</li><li><b>Shatun va tirsakli val</b> – porshenning ilgarilanma harakatini aylanma harakatga aylantiradi.</li><li><b>Klapanlar</b> – kirish (aralashma kiradi) va chiqish (gaz chiqadi).</li><li><b>Svecha</b> – benzinli dvigatelda uchqun beradi.</li></ul>
+<h3>To‘rt taktli ish sikli</h3>
+<p>Bir sikl davomida porshen 4 marta yo‘l bosadi (tirsakli val 2 marta aylanadi):</p>
+<ol><li><b>Kirish</b> – porshen pastga tushadi, kirish klapani ochiq, silindrga yonilg‘i va havo aralashmasi kiradi.</li><li><b>Siqish</b> – ikkala klapan yopiq, porshen yuqoriga chiqib aralashmani siqadi; bosim va harorat ortadi.</li><li><b>Ish yurishi</b> – svecha uchqun beradi, aralashma yonadi, gaz kengayib porshenni pastga itaradi. <i>Foydali ish aynan shu taktda bajariladi.</i></li><li><b>Chiqarish</b> – chiqish klapani ochiladi, porshen yuqoriga chiqib yonib bo‘lgan gazni haydab chiqaradi.</li></ol>
+<div class="box">Energiya aylanishi: yoqilg‘ining ichki energiyasi → gazning ichki energiyasi → mexanik ish. Dvigatelning FIK: <b>η = A<sub>foydali</sub> / Q<sub>yoqilg‘i</sub> · 100%</b>. Benzinli dvigatelda taxminan 25–30 %.</div>
+<h3>Animatsion simulyatsiya</h3>
+<p>«Takt» tugmalari bilan har bir yurishni alohida ko‘ring yoki «Boshlash» ni bosing.</p>
+<div class="row" id="ctl"></div>
+<canvas id="cv" width="640" height="340" aria-label="Dvigatel simulyatsiyasi"></canvas>
+<p id="phase" class="box"></p>
+</div></section>
+
+<section id="s1"><div class="card"><h2>2. Dizel dvigateli</h2>
+<p>1897-yilda nemis muhandisi <b>Rudolf Dizel</b> yaratgan. Yuqoridagi simulyatsiyada «Dizel» rejimini tanlab, farqni ko‘ring.</p>
+<h3>Ishlash tamoni</h3>
+<ul><li>Kirish taktida silindrga faqat <b>havo</b> kiradi.</li><li>Siqish taktida havo juda kuchli siqiladi (siqish darajasi 16–22), harorati <b>500–700 °C</b> ga yetadi.</li><li>Siqish oxirida <b>forsunka</b> orqali dizel yonilg‘isi purkaladi va u o‘zi alangalanadi – svecha kerak emas.</li><li>Keyin ish yurishi va chiqarish takti benzinli dvigateldagidek.</li></ul>
+<div class="wrap"><table><tr><th></th><th>Benzinli</th><th>Dizel</th></tr>
+<tr><td>Silindrga kiradi</td><td>yonilg‘i + havo</td><td>faqat havo</td></tr>
+<tr><td>Alangalanish</td><td>svecha uchquni</td><td>siqilgan havoning issiqligi</td></tr>
+<tr><td>Siqish darajasi</td><td>8–12</td><td>16–22</td></tr>
+<tr><td>FIK</td><td>25–30 %</td><td>35–45 %</td></tr>
+<tr><td>Qayerda</td><td>yengil avtomobil, mototsikl</td><td>yuk mashinasi, traktor, kema, teplovoz</td></tr></table></div>
+<div class="box">Nima uchun dizel tejamkor? Havo kuchliroq siqiladi, shuning uchun gaz yuqoriroq haroratgacha qiziydi va FIK katta bo‘ladi.</div>
+<p><button onclick="go(0);setType('diesel')">Simulyatsiyada dizelni ko‘rish</button></p>
+</div></section>
+
+<section id="s2"><div class="card"><h2>3. Reaktiv dvigatellar</h2>
+<p>Reaktiv dvigatel <b>reaktiv kuch</b> (tortish kuchi) hosil qiladi: yonish mahsulotlari katta tezlik bilan orqaga otilib chiqadi, dvigatel esa Nyutonning III qonuniga ko‘ra <b>oldinga</b> harakatlanadi. Samolyot va raketalarda qo‘llaniladi.</p>
+<h3>Turbo-reaktiv dvigatel qismlari</h3>
+<ol><li><b>Havo kirishi</b> – havoni oladi.</li><li><b>Kompressor</b> – havoni siqadi.</li><li><b>Yonish kamerasi</b> – siqilgan havoga kerosin purkalib yoqiladi.</li><li><b>Turbina</b> – qaynoq gaz oqimi turbinani aylantiradi, u kompressorni harakatga keltiradi.</li><li><b>Soplo</b> – gaz katta tezlik bilan otilib chiqadi.</li></ol>
+<div class="box">Raketa dvigatelida havo kerak emas: yoqilg‘i va <b>oksidlovchi</b> (kislorod) raketaning o‘zida bo‘ladi. Shu sababli u kosmosda ham ishlaydi.</div>
+<p>Simulyatsiya: gaz zarralari chapdan o‘ngga o‘tadi. Rangiga e’tibor bering: ko‘k – sovuq havo, to‘q sariq-qizil – qaynoq gaz.</p>
+<canvas id="jet" width="640" height="260" aria-label="Reaktiv dvigatel simulyatsiyasi"></canvas>
+<p>Tortish kuchi: <b>F = Δp / Δt</b> = m·(v<sub>chiqish</sub> − v<sub>kirish</sub>) / Δt. Gaz qancha ko‘p va qancha tez otilsa, kuch shuncha katta.</p>
+</div></section>
+
+<section id="s3"><div class="card"><h2>Savol va topshiriqlar</h2>
+<p>Savolga javob bering (o‘yin: to‘g‘ri javoblar soni hisoblanadi).</p>
+<div id="quiz"></div><p><b id="score"></b></p>
+<h3>Masalalar</h3>
+<ol><li>Dvigatel yoqilg‘i yonishidan 200 kJ issiqlik oldi va 50 kJ foydali ish bajardi. FIK ni toping. <small>(Javob: 25 %)</small></li>
+<li>Dizel dvigateli 40 MJ issiqlik olib, 14 MJ ish bajardi. FIK nechaga teng? <small>(Javob: 35 %)</small></li>
+<li>2 kg benzin yonganda 92 MJ issiqlik ajraladi (q = 46 MJ/kg). Dvigatelning FIK 30 % bo‘lsa, foydali ishni toping. <small>(Javob: 27,6 MJ)</small></li>
+<li>Nima uchun dizel dvigatelida svecha yo‘q?</li>
+<li>Reaktiv dvigatelning ishlashida Nyutonning qaysi qonuni qo‘llaniladi? Tushuntiring.</li></ol>
+</div></section>
+
+<section id="s4"><div class="card"><h2>Uyga topshiriq</h2>
+<ol><li>Mavzuni o‘qing, to‘rt taktli siklning sxemasini daftarga chizing va har bir taktni izohlang.</li>
+<li>Benzinli va dizel dvigatellarini solishtiruvchi jadval tuzing (kamida 5 ta farq).</li>
+<li>FIK ga oid 3 ta masala yeching (darslikdagi mashq yoki yuqoridagi masalalar).</li>
+<li>Ijodiy topshiriq: «Reaktiv dvigatel» yoki «Raketa» mavzusida mini-taqdimot (5 ta slayd) tayyorlang.</li>
+<li>Qo‘shimcha: YouTube’da «four stroke engine animation», «diesel engine animation», «turbojet engine animation» deb qidirib, bittasini ko‘ring va 3 gapda xulosa yozing.</li></ol>
+<h3>45 minutlik dars rejasi</h3>
+<div class="wrap"><table><tr><th>Vaqt</th><th>Bosqich</th></tr>
+<tr><td>5 daq</td><td>Tashkiliy qism, o‘tgan mavzuni takrorlash (issiqlik dvigatellari, FIK)</td></tr>
+<tr><td>5 daq</td><td>Motivatsiya: «Avtomobil nima bilan yuradi?» – savol-javob</td></tr>
+<tr><td>12 daq</td><td>Yangi mavzu: ichki yonuv dvigateli, simulyatsiya bilan 4 takt</td></tr>
+<tr><td>8 daq</td><td>Dizel va reaktiv dvigatel, taqqoslash jadvali</td></tr>
+<tr><td>8 daq</td><td>Mustahkamlash: test-o‘yin va masalalar</td></tr>
+<tr><td>4 daq</td><td>Xulosa, baholash</td></tr>
+<tr><td>3 daq</td><td>Uyga vazifa</td></tr></table></div>
+</div></section>
+</main>
+<script>
+var tabs=["1. Ichki yonuv","2. Dizel","3. Reaktiv","Savol-topshiriq","Uyga vazifa"];
+function go(i){tabs.forEach(function(_,k){document.getElementById("s"+k).classList.toggle("show",k===i);nb[k].classList.toggle("on",k===i)});window.scrollTo(0,0)}
+var nb=[];tabs.forEach(function(t,i){var b=document.createElement("button");b.textContent=t;b.onclick=function(){go(i)};document.getElementById("nav").appendChild(b);nb.push(b)});nb[0].classList.add("on");
+
+/* ENGINE */
+var type="petrol",theta=0,play=false,speed=1;
+var names=["Kirish","Siqish","Ish yurishi","Chiqarish"];
+var txt={petrol:["Porshen pastga tushadi, kirish klapani ochiq: yonilg‘i va havo aralashmasi kiradi.","Klapanlar yopiq. Porshen yuqoriga chiqib aralashmani siqadi, bosim va harorat ortadi.","Svecha uchqun beradi, aralashma yonadi. Gaz kengayib porshenni pastga itaradi – foydali ish bajariladi.","Chiqish klapani ochiq. Porshen yuqoriga chiqib yonib bo‘lgan gazni haydab chiqaradi."],
+diesel:["Porshen pastga tushadi, kirish klapani ochiq: silindrga faqat havo kiradi.","Havo juda kuchli siqiladi va 500–700 °C gacha qiziydi.","Forsunka dizel yonilg‘isini purkaydi, u qaynoq havoda o‘zi alangalanadi. Gaz porshenni pastga itaradi.","Chiqish klapani ochiq. Porshen yonib bo‘lgan gazni haydab chiqaradi."]};
+var cv=document.getElementById("cv"),cx=cv.getContext("2d");
+function mk(t,f){var b=document.createElement("button");b.textContent=t;b.onclick=f;document.getElementById("ctl").appendChild(b);return b}
+var bp=mk("Boshlash",function(){play=!play;bp.textContent=play?"To‘xtatish":"Boshlash"});
+for(var k=0;k<4;k++)(function(k){mk("Takt "+(k+1),function(){play=false;bp.textContent="Boshlash";theta=k*180+90})})(k);
+var bt=mk("Benzinli",function(){setType(type=="petrol"?"diesel":"petrol")});
+function setType(t){type=t;bt.textContent=t=="petrol"?"Benzinli":"Dizel"}
+var sp=document.createElement("select");["Sekin","O‘rta","Tez"].forEach(function(s,i){var o=document.createElement("option");o.value=[.4,1,2][i];o.textContent=s;if(i==1)o.selected=true;sp.appendChild(o)});sp.onchange=function(){speed=+sp.value};sp.setAttribute("aria-label","Tezlik");document.getElementById("ctl").appendChild(sp);
+function lerp(a,b,t){return a+(b-a)*t}
+function col(c){return "rgb("+c.map(Math.round).join(",")+")"}
+function draw(){
+ var w=640,h=340,ph=Math.floor((theta%720)/180),f=(theta%180)/180;
+ cx.clearRect(0,0,w,h);
+ var pos=(1-Math.cos(theta*Math.PI/180))/2,top=70,bot=180,py=lerp(top,bot,pos);
+ var X=200,W=140;
+ // gas colour
+ var c;
+ if(ph==0)c=type=="petrol"?[150,205,235]:[190,225,245];
+ else if(ph==1)c=type=="petrol"?[lerp(150,235,f),lerp(205,200,f),lerp(235,80,f)]:[lerp(190,240,f),lerp(225,120,f),lerp(245,60,f)];
+ else if(ph==2)c=[lerp(255,170,f),lerp(110,120,f),lerp(40,110,f)];
+ else c=[lerp(170,200,1-f),lerp(120,200,1-f),lerp(110,200,1-f)];
+ cx.fillStyle=col(c);cx.fillRect(X,top-20,W,py-top+20);
+ // cylinder walls
+ cx.strokeStyle="#444";cx.lineWidth=6;cx.beginPath();cx.moveTo(X,30);cx.lineTo(X,250);cx.moveTo(X+W,30);cx.lineTo(X+W,250);cx.moveTo(X-3,30);cx.lineTo(X+W+3,30);cx.stroke();
+ // piston
+ cx.fillStyle="#7a7f86";cx.fillRect(X+2,py,W-4,22);
+ cx.fillStyle="#5f646a";cx.fillRect(X+2,py+8,W-4,3);
+ // crank
+ var cxp=X+W/2,cyp=290,r=30,ang=theta*Math.PI/180;
+ var kx=cxp+r*Math.sin(ang),ky=cyp-r*Math.cos(ang)*-1*-1;
+ ky=cyp+(-r*Math.cos(ang))*1; kx=cxp+r*Math.sin(ang);
+ cx.strokeStyle="#333";cx.lineWidth=5;cx.beginPath();cx.moveTo(X+W/2,py+22);cx.lineTo(kx,ky);cx.stroke();
+ cx.beginPath();cx.arc(cxp,cyp,r,0,7);cx.lineWidth=2;cx.stroke();
+ cx.fillStyle="#333";cx.beginPath();cx.arc(kx,ky,6,0,7);cx.fill();
+ // valves
+ function valve(x,open,label){cx.strokeStyle="#333";cx.lineWidth=4;cx.beginPath();cx.moveTo(x,open?30:20);cx.lineTo(x,open?10:0);cx.stroke();cx.fillStyle="#333";cx.fillRect(x-14,open?32:24,28,5);cx.fillStyle="#222";cx.font="13px sans-serif";cx.fillText(label,x-24,open?-0+4:4);}
+ cx.lineWidth=4;
+ cx.strokeStyle="#333";
+ var inO=ph==0,exO=ph==3;
+ cx.fillStyle="#2f6b3a";cx.font="13px sans-serif";
+ cx.fillText("Kirish klapani: "+(inO?"ochiq":"yopiq"),20,24);
+ cx.fillStyle=inO?"#2f8f4a":"#888";cx.fillRect(X+25,inO?36:28,28,5);
+ cx.fillStyle="#2f6b3a";cx.fillText("Chiqish klapani: "+(exO?"ochiq":"yopiq"),X+W+30,24);
+ cx.fillStyle=exO?"#2f8f4a":"#888";cx.fillRect(X+W-53,exO?36:28,28,5);
+ // arrows
+ cx.fillStyle="#2f6b3a";
+ if(inO){cx.fillText("↓ aralashma"+(type=="diesel"?" emas, havo":""),20,50)}
+ if(exO){cx.fillText("↑ gaz chiqadi",X+W+30,50)}
+ // spark or injector
+ var burst=ph==2&&f<.35;
+ if(type=="petrol"){cx.fillStyle="#555";cx.fillRect(X+W/2-4,10,8,22);if(burst||(ph==1&&f>.93)){cx.fillStyle="#ffd400";cx.beginPath();cx.arc(X+W/2,top-10,12,0,7);cx.fill();cx.fillText("uchqun",X+W/2+16,top-6)}else cx.fillText("svecha",X+W/2+10,20)}
+ else{cx.fillStyle="#555";cx.fillRect(X+W/2-4,10,8,22);cx.fillStyle="#888";cx.fillText("forsunka",X+W/2+10,20);if((ph==1&&f>.9)||(ph==2&&f<.25)){cx.fillStyle="#7a4b12";for(var i=0;i<7;i++){cx.fillRect(X+W/2-12+i*4,36+((theta*3+i*9)%30),2,6)}}}
+ // temp meter
+ var T=type=="petrol"?[40,200,2200,700]:[40,600,1800,600];
+ var temp=ph==0?T[0]+20:ph==1?lerp(T[0],T[1],f):ph==2?lerp(T[2],T[3],f):lerp(T[3],300,f);
+ cx.fillStyle="#222";cx.font="14px sans-serif";cx.fillText("Taxminiy harorat: "+Math.round(temp/10)*10+" °C",400,300);
+ cx.fillText("Takt: "+(ph+1)+" – "+names[ph],400,320);
+ document.getElementById("phase").textContent=(ph+1)+"-takt. "+names[ph]+": "+txt[type][ph];
+}
+/* JET */
+var jc=document.getElementById("jet"),jx=jc.getContext("2d"),P=[];
+for(var i=0;i<90;i++)P.push({x:Math.random()*640,y:60+Math.random()*140,v:1+Math.random()});
+function jdraw(t){
+ jx.clearRect(0,0,640,260);
+ jx.fillStyle="#c9d3c4";jx.beginPath();jx.moveTo(80,50);jx.lineTo(480,70);jx.lineTo(560,100);jx.lineTo(560,160);jx.lineTo(480,190);jx.lineTo(80,210);jx.closePath();jx.fill();jx.strokeStyle="#555";jx.lineWidth=2;jx.stroke();
+ var segs=[["Kirish",80],["Kompressor",160],["Yonish kamerasi",290],["Turbina",390],["Soplo",480]];
+ jx.fillStyle="#222";jx.font="12px sans-serif";
+ segs.forEach(function(s,i){jx.fillText(s[0],s[1]+4,240);if(i)jx.beginPath(),jx.moveTo(s[1],55),jx.lineTo(s[1],205),jx.stroke()});
+ // fans
+ [[120,0],[200,0],[420,1]].forEach(function(f){var a=t/90*(f[1]?1:1.3);jx.save();jx.translate(f[0],130);jx.rotate(a);jx.fillStyle=f[1]?"#b3541e":"#4a6a8a";for(var k=0;k<3;k++){jx.rotate(Math.PI*2/3);jx.fillRect(-4,0,8,48)}jx.restore()});
+ P.forEach(function(p){
+  p.x+=p.v*(p.x<160?1.2:p.x<290?1.5:p.x<480?2.4:3.4);
+  if(p.x>640){p.x=40;p.y=60+Math.random()*140}
+  var k=p.x<160?0:p.x<290?(p.x-160)/130*.4:p.x<390?.4+(p.x-290)/100*.6:1;
+  var yy=p.y;if(p.x>480)yy=130+(p.y-130)*(1-Math.min(1,(p.x-480)/100)*.4);
+  var lim=function(y){return Math.max(Math.min(y,205),55)};
+  jx.fillStyle="rgb("+Math.round(60+195*k)+","+Math.round(150-60*k)+","+Math.round(230-200*k)+")";
+  jx.beginPath();jx.arc(p.x,p.x<480?lim(yy):yy,3,0,7);jx.fill();
+ });
+ jx.fillStyle="#2f6b3a";jx.font="bold 14px sans-serif";jx.fillText("Gaz orqaga otiladi →",470,35);jx.fillText("← Tortish kuchi (dvigatel oldinga)",20,35);
+}
+var last=0;
+function loop(t){var d=Math.min(40,t-last);last=t;if(play)theta=(theta+d*.12*speed)%720;draw();jdraw(t);requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+/* QUIZ */
+var Q=[["Ichki yonuv dvigatelida foydali ish qaysi taktda bajariladi?",["Kirish","Siqish","Ish yurishi","Chiqarish"],2],
+["Dizel dvigatelida yonilg‘i nima sababdan alangalanadi?",["Svecha uchquni tufayli","Siqilgan havo qizib ketgani uchun","Elektr toki bilan","Quyosh nuri bilan"],1],
+["Bir to‘liq siklda tirsakli val necha marta aylanadi?",["1","2","3","4"],1],
+["Dizel dvigatelining kirish taktida silindrga nima kiradi?",["Faqat havo","Benzin bug‘i","Yonilg‘i va havo","Faqat yonilg‘i"],0],
+["Reaktiv dvigatel qaysi qonunga asoslanadi?",["Nyutonning I qonuni","Nyutonning III qonuni","Arximed qonuni","Om qonuni"],1],
+["Raketa nima uchun kosmosda ishlaydi?",["Havodan foydalanadi","Oksidlovchisi o‘zida bor","Quyosh energiyasi bilan","Magnit maydon tufayli"],1]];
+var sc=0,ans=0,qd=document.getElementById("quiz");
+Q.forEach(function(q,i){var d=document.createElement("div");d.className="q";d.innerHTML="<p><b>"+(i+1)+". "+q[0]+"</b></p>";var done=false;q[1].forEach(function(o,j){var b=document.createElement("button");b.textContent=o;b.onclick=function(){if(done)return;done=true;ans++;if(j==q[2]){b.className="ok";sc++}else{b.className="bad";d.children[q[2]+1].className="ok"}document.getElementById("score").textContent="Natija: "+sc+" / "+Q.length+(ans==Q.length?(sc>=5?" – a’lo!":sc>=3?" – yaxshi, takrorlang.":" – mavzuni qayta o‘qing."):"")};d.appendChild(b)});qd.appendChild(d)});
+</script></body></html>

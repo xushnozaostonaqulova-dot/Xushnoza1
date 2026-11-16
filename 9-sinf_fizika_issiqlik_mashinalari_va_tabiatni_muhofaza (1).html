@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9-sinf fizika — Issiqlik mashinalari va tabiatni muhofaza qilish</title>
+<style>
+:root{--blue:#174f9b;--blue2:#2878c7;--ink:#192437;--muted:#5e6b7e;--bg:#f2f6fb;--green:#16834a;--orange:#d88b24}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Arial,sans-serif}
+header{background:linear-gradient(125deg,#10366f,#2878c7);color:white;padding:42px 18px}
+.wrap{max-width:1020px;margin:auto;padding:0 18px}header h1{font-size:clamp(27px,5vw,43px);line-height:1.18;margin:10px 0}header p{opacity:.93;margin:8px 0}
+nav{position:sticky;top:0;z-index:5;background:white;padding:12px max(18px,calc((100% - 984px)/2));white-space:nowrap;overflow:auto;box-shadow:0 2px 12px #172b4914}
+nav a{color:var(--blue);text-decoration:none;font-weight:bold;font-size:14px;margin-right:17px}
+main{padding:24px 0 55px}.card{background:white;border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 5px 22px #20385b0b}
+h2{font-size:25px;color:var(--blue);margin:0 0 14px}h3{font-size:19px;color:#205a9e;margin:20px 0 8px}
+p{margin:9px 0}.lead{font-size:18px}.formula{background:#edf4ff;border-left:4px solid var(--blue2);padding:12px 16px;border-radius:8px;font-size:21px;font-weight:bold;margin:12px 0}
+.note{color:var(--muted);font-size:13px}.pill{display:inline-block;background:#e6f5ed;color:#146c3d;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:bold}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #dce4ef;padding:9px;text-align:left}th{background:#edf4ff}
+.example,.info{background:#f7faff;border-radius:10px;padding:15px;margin:12px 0}.sim{border:1px solid #dce4ef;background:#fbfdff;border-radius:14px;padding:18px;margin:16px 0}
+label{display:block;font-weight:600;margin:7px 0}input[type=range]{width:100%;accent-color:var(--blue)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}.stat{background:#eaf6ef;border-radius:10px;padding:13px}.stat.orange{background:#fff3df}.stat b{display:block;font-size:23px}
+button{border:0;border-radius:9px;padding:11px 16px;background:var(--blue);color:white;font-weight:bold;cursor:pointer}button.secondary{background:#e8eef7;color:#174b91}
+.question{padding:14px 0;border-bottom:1px solid #e4e9f0}.question label{font-weight:normal;cursor:pointer}
+.result{font-weight:bold;margin-top:12px}.video a{color:var(--blue);font-weight:bold}details{background:#f7faff;padding:12px;border-radius:10px}summary{cursor:pointer}
+footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:600px){.card{padding:17px}h2{font-size:22px}.formula{font-size:18px}table{font-size:14px}}
+@media print{nav,button,input[type=range]{display:none!important}body{background:white}.card{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div>9-SINF FIZIKA FANIDAN • ELEKTRON DARS ISHLANMASI</div>
+<h1>III BOB. ISSIQLIK MASHINALARI VA TABIATNI MUHOFAZA QILISH</h1>
+<p>Issiqlik energiyasi • Dvigatellar • Foydali ish koeffitsiyenti • Ekologiya</p>
+</div></header>
+<nav>
+<a href="#maqsad">Dars maqsadi</a><a href="#reja1">1. Issiqlik mashinalari</a><a href="#sim1">Simulyatsiya</a><a href="#reja2">2. Tabiatni muhofaza</a><a href="#sim2">Ekologiya modeli</a><a href="#video">Videolar</a><a href="#test">Test</a><a href="#uy">Uyga vazifa</a>
+</nav>
+<main class="wrap">
+<section class="card" id="maqsad">
+<h2>Dars haqida</h2>
+<p class="lead"><b>Mavzu:</b> Issiqlik mashinalari va tabiatni muhofaza qilish.</p>
+<p><b>Dars rejasi:</b></p><ol><li>Issiqlik mashinalari haqida tushuncha.</li><li>Tabiatni muhofaza qilish.</li></ol>
+<p><b>Dars turi:</b> Yangi bilim beruvchi va amaliy mashg‘ulot.</p>
+<p><b>Metodlar:</b> Suhbat, muammoli ta’lim, savol-javob, guruhda ishlash, animatsion simulyatsiya va interaktiv topshiriqlar.</p>
+<h3>Dars maqsadlari</h3>
+<ul><li><b>Ta’limiy:</b> Issiqlik mashinalari, ularning ishlash prinsipi va turlari haqida tushuncha berish; issiqlik energiyasining mexanik energiyaga aylanishini o‘rgatish.</li>
+<li><b>Tarbiyaviy:</b> Tabiatga ehtiyotkorona munosabat, yoqilg‘ini tejash va atrof-muhitni asrash ko‘nikmalarini shakllantirish.</li>
+<li><b>Rivojlantiruvchi:</b> Kuzatish, tahlil qilish, mustaqil fikrlash va fizik jarayonlarni modellashtirish qobiliyatlarini rivojlantirish.</li></ul>
+<p><b>Kutilayotgan natijalar:</b> O‘quvchilar issiqlik mashinalarining ishlashini tushuntiradi, ularning turlarini farqlaydi, tabiatga ta’sirini tahlil qiladi va ekologik muammolarni kamaytirish yo‘llarini taklif qiladi.</p>
+</section>
+
+<section class="card" id="reja1">
+<h2>I. ISSIQLIK MASHINALARI HAQIDA TUSHUNCHA</h2>
+<h3>1. Issiqlik mashinasi nima?</h3>
+<p>Issiqlik mashinasi — yoqilg‘ining ichki energiyasi hisobiga issiqlik energiyasini mexanik energiyaga aylantirib, foydali ish bajaradigan qurilma. Ular transport vositalari, elektr stansiyalari va sanoat korxonalarida keng qo‘llaniladi.</p>
+<p><b>Misollar:</b> avtomobil va mototsikl dvigateli, samolyot dvigateli, bug‘ turbinasi, gaz turbinasi.</p>
+<h3>2. Issiqlik mashinasining asosiy qismlari</h3>
+<ul><li><b>Isitgich</b> — ishchi jismga issiqlik energiyasini beradi.</li><li><b>Ishchi jism</b> — issiqlikni qabul qilib, kengayish orqali ish bajaradi.</li><li><b>Sovitkich</b> — ishchi jismdan ortiqcha issiqlikni qabul qiladi.</li></ul>
+<div class="info"><b>Issiqlik mashinasining ishlash ketma-ketligi:</b><ol><li>Isitgichdan ishchi jismga issiqlik beriladi.</li><li>Ishchi jism qizib, kengayadi va mexanik ish bajaradi.</li><li>Issiqlikning bir qismi sovitkichga uzatiladi.</li><li>Ishchi jism dastlabki holatiga qaytadi va jarayon takrorlanadi.</li></ol></div>
+<div class="formula">Q₁ = A + Q₂</div>
+<p>Bu yerda Q₁ — isitgichdan olingan issiqlik; A — bajarilgan foydali ish; Q₂ — sovitkichga berilgan issiqlik.</p>
+<h3>3. Issiqlik mashinalarining turlari</h3>
+<h3>A. Ichki yonuv dvigateli</h3>
+<p>Ichki yonuv dvigatelida yoqilg‘i silindr ichida yonadi. Hosil bo‘lgan yuqori bosimli gaz porshenni harakatga keltiradi.</p>
+<p><b>To‘rt taktli dvigatel bosqichlari:</b></p><ol><li><b>Kiritish:</b> silindrga havo va yoqilg‘i aralashmasi kiradi.</li><li><b>Siqish:</b> porshen aralashmani siqadi.</li><li><b>Ish yo‘li:</b> aralashma yonadi, gaz kengayib porshenni harakatga keltiradi.</li><li><b>Chiqarish:</b> ishlatilgan gazlar tashqariga chiqariladi.</li></ol>
+<h3>B. Bug‘ turbinasi</h3><p>Suv qizdirilib bug‘ hosil qilinadi. Yuqori bosimli bug‘ turbina parraklariga urilib, valni aylantiradi. Bug‘ turbinasi issiqlik elektr stansiyalarida elektr energiyasi ishlab chiqarishda ishlatiladi.</p>
+<h3>C. Reaktiv dvigatel</h3><p>Yoqilg‘i yonishi natijasida hosil bo‘lgan gazlar katta tezlikda orqaga chiqariladi. Natijada reaktiv kuch yuzaga keladi. Bunday dvigatellar samolyotlarda qo‘llaniladi.</p>
+<h3>4. Foydali ish koeffitsiyenti (FIK)</h3>
+<p>Issiqlik mashinasi olgan energiyaning hammasini foydali ishga aylantira olmaydi. Energiyaning bir qismi sovitkichga va atrof-muhitga uzatiladi.</p>
+<div class="formula">η = (A / Q₁) · 100% = ((Q₁ − Q₂) / Q₁) · 100%</div>
+<p><b>Misol:</b> Mashina 1000 J issiqlik olib, 300 J foydali ish bajarsa:</p>
+<p>η = 300 / 1000 · 100% = 30%.</p><p><span class="pill">Javob: FIK = 30%</span></p>
+<p><b>Xulosa:</b> FIK qancha katta bo‘lsa, mashina energiyadan shuncha samarali foydalanadi. Issiqlik mashinasining FIKi 100% bo‘la olmaydi.</p>
+<h3>5. Issiqlik mashinalarining inson hayotidagi ahamiyati</h3>
+<ul><li><b>Transportda:</b> avtomobil, avtobus, yuk mashinasi va samolyotlarni harakatga keltiradi.</li><li><b>Energetikada:</b> elektr stansiyalarida elektr energiyasi ishlab chiqarishga xizmat qiladi.</li><li><b>Sanoatda:</b> ishlab chiqarish uskunalari va mexanizmlarni harakatga keltiradi.</li><li><b>Qishloq xo‘jaligida:</b> traktor, kombayn va boshqa texnikalarning ishlashini ta’minlaydi.</li></ul>
+</section>
+
+<section class="card" id="sim1">
+<h2>II. INTERAKTIV SIMULYATSIYA: ISSIQLIK MASHINASINING ISHLASHI</h2>
+<p>Slayderlarni o‘zgartirib, isitgichdan olingan issiqlik, foydali ish va sovitkichga uzatilgan issiqlik miqdorini kuzating.</p>
+<div class="sim">
+<label>Isitgichdan olingan issiqlik Q₁: <span id="q1v">1000</span> J</label><input id="q1" type="range" min="500" max="3000" step="100" value="1000">
+<label>Sovitkichga berilgan issiqlik Q₂: <span id="q2v">700</span> J</label><input id="q2" type="range" min="0" max="900" step="50" value="700">
+<div class="stats"><div class="stat"><span>Foydali ish A</span><b id="av">300 J</b></div><div class="stat orange"><span>Sovitkichga berilgan Q₂</span><b id="q2out">700 J</b></div><div class="stat"><span>FIK</span><b id="etav">30%</b></div></div>
+<div style="height:20px;background:#e8a23c;border-radius:10px;overflow:hidden"><div id="abar" style="height:100%;width:30%;background:#16834a"></div></div>
+<p class="note">Formula: A = Q₁ − Q₂; η = A/Q₁ × 100%. Bu o‘quv modeli ideal energiya balansini ko‘rsatadi.</p>
+</div>
+<h3>Simulyatsiya asosida savollar</h3><ol><li>Isitgichdan 1000 J issiqlik olinsa, sovitkichga 700 J berilganda qancha ish bajariladi?</li><li>Sovitkichga beriladigan issiqlik kamaytirilsa, FIK qanday o‘zgaradi?</li><li>Nima uchun mashina issiqlikning bir qismini sovitkichga beradi?</li><li>FIKni 100% ga yetkazish mumkinmi?</li></ol>
+</section>
+
+<section class="card" id="reja2">
+<h2>III. TABIATNI MUHOFAZA QILISH</h2>
+<h3>1. Tabiatni muhofaza qilish nima?</h3>
+<p>Tabiatni muhofaza qilish — atrof-muhitni ifloslanishdan saqlash, tabiiy boyliklardan oqilona foydalanish, o‘simlik va hayvonot dunyosini asrashga qaratilgan tadbirlar majmuasidir.</p>
+<p>Inson faoliyati, sanoat va transport tabiatga turli ta’sir ko‘rsatadi. Ayniqsa, yoqilg‘i yoqadigan issiqlik mashinalari atmosferaga turli gazlar va zararli zarrachalarni chiqarishi mumkin.</p>
+<h3>Tabiatni muhofaza qilishning asosiy yo‘nalishlari</h3>
+<ol><li>Atmosfera havosini toza saqlash.</li><li>Suv resurslarini ifloslanishdan himoya qilish.</li><li>Tuproq unumdorligini saqlash.</li><li>O‘rmonlarni ko‘paytirish.</li><li>Hayvonot va o‘simlik dunyosini asrash.</li><li>Energiya va yoqilg‘idan tejamkor foydalanish.</li></ol>
+<h3>2. Issiqlik mashinalarining tabiatga ta’siri</h3>
+<p>Yoqilg‘i yonishi natijasida atmosferaga turli moddalar chiqarilishi mumkin:</p>
+<ul><li><b>Karbonat angidrid (CO₂):</b> issiqxona gazlaridan biri. Uning miqdori ortishi global isishni kuchaytiradi.</li><li><b>Uglerod oksidi (CO):</b> zaharli gaz; yoqilg‘i to‘liq yonmaganda hosil bo‘lishi mumkin.</li><li><b>Azot oksidlari (NOₓ):</b> havo ifloslanishi va kislotali yog‘inlarga hissa qo‘shadi.</li><li><b>Qurum va mayda zarrachalar:</b> havo sifatiga salbiy ta’sir ko‘rsatadi.</li></ul>
+<h3>A. Atmosfera havosining ifloslanishi</h3><p>Avtomobillar, issiqlik elektr stansiyalari va sanoat korxonalari chiqindilari havoning sifatini yomonlashtirishi mumkin. Bu inson salomatligi va tabiatga zarar yetkazadi.</p>
+<h3>B. Global isish</h3><p>Ko‘mir, neft va gaz kabi qazilma yoqilg‘ilar yoqilganda CO₂ chiqariladi. CO₂ issiqxona gazidir. Uning atmosferadagi miqdori ortishi Yerning issiqlik muvozanatiga ta’sir qilib, global isishni kuchaytiradi.</p>
+<p>Global isish natijasida muzliklar erishi, dengiz sathi ko‘tarilishi, qurg‘oqchilik va issiq to‘lqinlar kuchayishi, ekotizimlar zarar ko‘rishi mumkin.</p>
+<h3>C. Suv va tuproqning ifloslanishi</h3><p>Sanoat va transportdan chiqadigan ayrim ifloslantiruvchi moddalar suv va tuproqqa tushishi mumkin. Bu o‘simliklar, hayvonlar va insonlar hayotiga salbiy ta’sir ko‘rsatadi.</p>
+<h3>3. Tabiatni muhofaza qilish yo‘llari</h3>
+<table><tr><th>Tadbir</th><th>Foydasi</th></tr><tr><td>Jamoat transportidan foydalanish</td><td>Avtomobillar soni va chiqindilarini kamaytirishga yordam beradi.</td></tr><tr><td>Elektr transportini rivojlantirish</td><td>Transportning harakat paytidagi mahalliy chiqindi gazlarini kamaytiradi.</td></tr><tr><td>Quyosh energiyasidan foydalanish</td><td>Yoqilg‘i sarfini kamaytiradi.</td></tr><tr><td>Shamol energiyasidan foydalanish</td><td>Qazilma yoqilg‘iga ehtiyojni kamaytiradi.</td></tr><tr><td>Daraxt ekish</td><td>CO₂ ni yutish va havoni yaxshilashga yordam beradi.</td></tr><tr><td>Yoqilg‘ini tejash</td><td>Keraksiz energiya sarfini kamaytiradi.</td></tr><tr><td>Dvigatellarni soz saqlash</td><td>Yoqilg‘ining samarali yonishiga yordam beradi.</td></tr></table>
+<p><b>Eslatma:</b> Elektr avtomobillari harakat vaqtida o‘zidan chiqindi gaz chiqarmaydi, ammo ularning umumiy ekologik ta’siri elektr energiyasi ishlab chiqarilishi va batareyalarning tayyorlanishi hamda qayta ishlanishiga ham bog‘liq.</p>
+</section>
+
+<section class="card" id="sim2">
+<h2>IV. INTERAKTIV SIMULYATSIYA: AVTOMOBIL VA EKOLOGIYA</h2>
+<p>Quyidagi modelda avtomobilning shartli yoqilg‘i sarfi va transport turiga qarab chiqindi ko‘rsatkichi qanday o‘zgarishini kuzating.</p>
+<div class="sim">
+<label>Avtomobil turi</label>
+<select id="vehicle" style="width:100%;padding:11px;border:1px solid #cbd5e1;border-radius:8px">
+<option value="1">Oddiy benzinli avtomobil</option><option value=".65">Yoqilg‘i tejamkor avtomobil</option><option value="0">Elektr avtomobil (harakat paytida)</option>
+</select>
+<label>Shartli yoqilg‘i sarfi: <span id="fuelv">5</span></label><input id="fuel" type="range" min="1" max="10" step="1" value="5">
+<div class="stats"><div class="stat"><span>Shartli chiqindi ko‘rsatkichi</span><b id="emission">5.00 birlik</b></div><div class="stat orange"><span>Model turi</span><b id="kind">Oddiy</b></div></div>
+<div style="height:18px;background:#e5eaf1;border-radius:10px;overflow:hidden"><div id="ebar" style="height:100%;width:50%;background:#16834a"></div></div>
+<p id="ecoNote" class="note">Yoqilg‘i sarfi ortishi bilan modeldagi chiqindi ko‘rsatkichi ham ortadi.</p>
+<p class="note">Bu faqat taqqoslash uchun yaratilgan shartli o‘quv modeli, haqiqiy CO₂ miqdori emas. Elektr energiyasini ishlab chiqarish bilan bog‘liq chiqindilar hisobga olinmagan.</p>
+</div>
+<h3>Simulyatsiya bo‘yicha savollar</h3><ol><li>Oddiy avtomobilning yoqilg‘i sarfi oshirilganda nima kuzatildi?</li><li>Yoqilg‘i tejamkor avtomobilning afzalligi nimada?</li><li>Elektr avtomobil nima uchun ekologik transport deb hisoblanadi?</li><li>Transport vositalaridan chiqadigan gazlarni kamaytirish uchun qanday choralar ko‘rish kerak?</li></ol>
+</section>
+
+<section class="card">
+<h2>V. GURUHLARDA ISHLASH</h2>
+<div class="example"><b>1-guruh — Issiqlik mashinalari tadqiqotchilari</b><ul><li>Issiqlik mashinasining ishlash prinsipini tushuntiring.</li><li>Isitgich, ishchi jism va sovitkich vazifasini ayting.</li><li>Ichki yonuv dvigatelining to‘rt taktini izohlang.</li></ul></div>
+<div class="example"><b>2-guruh — Ekologlar</b><ul><li>Issiqlik mashinalari tabiatga qanday zarar yetkazishi mumkin?</li><li>Atmosfera ifloslanishining oqibatlarini sanang.</li><li>Tabiatni asrash bo‘yicha 5 ta taklif bering.</li></ul></div>
+<div class="example"><b>3-guruh — Yashil energiya mutaxassislari</b><ul><li>Quyosh va shamol energiyasining afzalliklarini tushuntiring.</li><li>Elektr avtomobillarining ekologik jihatlarini tahlil qiling.</li><li>«Kelajakning ekologik shahri» mavzusida rasm yoki loyiha tayyorlang.</li></ul></div>
+</section>
+
+<section class="card video" id="video">
+<h2>VI. VIDEO VA ANIMATSION RESURSLAR</h2>
+<ul>
+<li><b>PhET — Energy Forms and Changes:</b> energiya uzatilishi va o‘zgarishini o‘rganish. <a href="https://phet.colorado.edu/en/simulations/energy-forms-and-changes" target="_blank" rel="noopener">Virtual simulyatsiyani ochish</a></li>
+<li><b>PhET — Greenhouse Effect:</b> issiqxona effekti va atmosferadagi gazlar ta’sirini o‘rganish. <a href="https://phet.colorado.edu/en/simulations/greenhouse-effect" target="_blank" rel="noopener">Simulyatsiyani ochish</a></li>
+<li><b>To‘rt taktli ichki yonuv dvigateli:</b> <a href="https://www.youtube.com/results?search_query=four+stroke+engine+animation" target="_blank" rel="noopener">Animatsion videolarni ko‘rish</a></li>
+<li><b>Global isish va issiqxona effekti:</b> <a href="https://www.youtube.com/results?search_query=greenhouse+effect+global+warming+animation+educational" target="_blank" rel="noopener">Animatsion videolarni ko‘rish</a></li>
+<li><b>Issiqlik elektr stansiyasi:</b> <a href="https://www.youtube.com/results?search_query=thermal+power+plant+working+animation" target="_blank" rel="noopener">Animatsion videolarni ko‘rish</a></li>
+</ul>
+<p class="note">YouTube havolalari qidiruv natijalarini ochadi. Videolarni darsdan oldin ko‘rib, 9-sinf o‘quvchilariga mosini tanlang. PhET simulyatsiyalarida o‘quvchilar energiya oqimi va issiqlik almashinuvini mustaqil kuzatishlari mumkin.</p>
+</section>
+
+<section class="card" id="test">
+<h2>VII. MUSTAHKAMLASH: SAVOL-JAVOB VA TEST</h2>
+<h3>Tezkor savollar</h3>
+<ol><li>Issiqlik mashinasi deb nimaga aytiladi?</li><li>Issiqlik mashinasining asosiy qismlari qaysilar?</li><li>Isitgich qanday vazifani bajaradi?</li><li>Sovitkich nima uchun kerak?</li><li>Ichki yonuv dvigateli qanday ishlaydi?</li><li>Bug‘ turbinasi qayerlarda ishlatiladi?</li><li>Issiqlik mashinalari tabiatga qanday ta’sir ko‘rsatadi?</li><li>Global isish nima?</li><li>CO₂ qanday gaz?</li><li>Tabiatni muhofaza qilish uchun nimalar qilish kerak?</li></ol>
+<h3>Interaktiv test</h3>
+<form id="quiz">
+<div class="question"><b>1. Issiqlik mashinasi nima?</b><label><input type="radio" name="q1" value="0"> Issiqlik energiyasini mexanik energiyaga aylantiruvchi qurilma</label><label><input type="radio" name="q1" value="1"> Suvni tozalovchi qurilma</label><label><input type="radio" name="q1" value="2"> Faqat yorug‘lik chiqaruvchi qurilma</label></div>
+<div class="question"><b>2. Issiqlik mashinasining asosiy qismlari qaysilar?</b><label><input type="radio" name="q2" value="0"> Isitgich, ishchi jism, sovitkich</label><label><input type="radio" name="q2" value="1"> Porshen, g‘ildirak, rul</label><label><input type="radio" name="q2" value="2"> Nasos, quvur, filtr</label></div>
+<div class="question"><b>3. Ichki yonuv dvigatelida yoqilg‘i qayerda yonadi?</b><label><input type="radio" name="q3" value="0"> Radiatorda</label><label><input type="radio" name="q3" value="1"> Silindr ichida</label><label><input type="radio" name="q3" value="2"> Sovitkichda</label></div>
+<div class="question"><b>4. Issiqlikning bir qismi qayerga uzatiladi?</b><label><input type="radio" name="q4" value="0"> Sovitkichga</label><label><input type="radio" name="q4" value="1"> Faqat isitgichga</label><label><input type="radio" name="q4" value="2"> Yo‘qolib ketadi</label></div>
+<div class="question"><b>5. Karbonat angidridning formulasi qaysi?</b><label><input type="radio" name="q5" value="0"> CO</label><label><input type="radio" name="q5" value="1"> CO₂</label><label><input type="radio" name="q5" value="2"> O₂</label></div>
+<div class="question"><b>6. Global isishga ta’sir qiluvchi gazlardan biri qaysi?</b><label><input type="radio" name="q6" value="0"> CO₂</label><label><input type="radio" name="q6" value="1"> Geliy</label><label><input type="radio" name="q6" value="2"> Neon</label></div>
+<div class="question"><b>7. Qaysi energiya manbai qayta tiklanuvchi?</b><label><input type="radio" name="q7" value="0"> Ko‘mir</label><label><input type="radio" name="q7" value="1"> Neft</label><label><input type="radio" name="q7" value="2"> Quyosh energiyasi</label></div>
+<div class="question"><b>8. Tabiatni muhofaza qilishning to‘g‘ri usuli qaysi?</b><label><input type="radio" name="q8" value="0"> Daraxtlarni ko‘proq kesish</label><label><input type="radio" name="q8" value="1"> Yoqilg‘ini tejash va daraxt ekish</label><label><input type="radio" name="q8" value="2"> Chiqindilarni daryoga tashlash</label></div>
+<button type="button" onclick="checkQuiz()">Javoblarni tekshirish</button> <button type="reset" class="secondary" onclick="document.getElementById('quizResult').textContent=''">Qayta ishlash</button>
+<div class="result" id="quizResult" aria-live="polite"></div>
+</form>
+</section>
+
+<section class="card" id="uy">
+<h2>VIII. UYGA VAZIFA</h2>
+<h3>1-topshiriq. Savollarga yozma javob bering</h3>
+<ol><li>Issiqlik mashinasi nima va u qanday ishlaydi?</li><li>Issiqlik mashinalarining qanday turlarini bilasiz?</li><li>Ichki yonuv dvigatelining ishlash bosqichlarini yozing.</li><li>Issiqlik mashinalari tabiatga qanday zarar yetkazishi mumkin?</li><li>Issiqxona effekti nima?</li><li>Tabiatni muhofaza qilishning qanday usullarini bilasiz?</li></ol>
+<h3>2-topshiriq. Hisoblash masalalari</h3>
+<ol><li>Issiqlik mashinasi isitgichdan 2000 J issiqlik oldi. Sovitkichga 1400 J issiqlik berdi. Mashinaning bajargan ishini aniqlang.</li><li>Issiqlik mashinasi 5000 J issiqlik olib, 1500 J foydali ish bajardi. Uning FIKini hisoblang.</li><li>Issiqlik mashinasining FIKi 25%. Isitgichdan 4000 J issiqlik olinsa, foydali ish qancha bo‘ladi?</li><li>Issiqlik mashinasi 6000 J issiqlik olib, 1800 J foydali ish bajardi. Sovitkichga uzatilgan issiqlikni toping.</li></ol>
+<details><summary><b>O‘qituvchi uchun hisoblash masalalari javoblari</b></summary><ol><li>600 J</li><li>30%</li><li>1000 J</li><li>4200 J</li></ol></details>
+<h3>3-topshiriq. Ijodiy loyiha</h3>
+<p>Quyidagi mavzulardan bittasini tanlab, rasm, slayd yoki videorolik tayyorlang:</p>
+<ul><li>«Issiqlik mashinalari inson hayotida».</li><li>«Kelajakning ekologik avtomobillari».</li><li>«Global isish va uning oqibatlari».</li><li>«Tabiatni asraylik — kelajakni asraylik».</li><li>«Quyosh va shamol energiyasi — toza energiya manbalari».</li></ul>
+<h3>4-topshiriq. Kuzatish va amaliy ish</h3>
+<p>Uyda yoki ko‘chada ishlatilayotgan issiqlik mashinalaridan uchtasini aniqlang. Ularning vazifasi, foydalanadigan energiya manbai va tabiatga ta’siri haqida jadval tuzing.</p>
+<table><tr><th>Qurilma</th><th>Energiya manbai</th><th>Tabiatga ta’siri</th></tr><tr><td>Avtomobil</td><td>Benzin</td><td>Chiqindi gazlar</td></tr><tr><td>Traktor</td><td>Dizel</td><td>Chiqindi gazlar</td></tr><tr><td>Elektr stansiyasi</td><td>Yoqilg‘i</td><td>Atmosferaga chiqindilar</td></tr></table>
+</section>
+
+<section class="card">
+<h2>IX. DARSNI YAKUNLASH VA BAHOLASH</h2>
+<table><tr><th>Faoliyat</th><th>Ball</th></tr><tr><td>Nazariy bilimlar</td><td>2</td></tr><tr><td>Savollarga javob berish</td><td>2</td></tr><tr><td>Interaktiv simulyatsiyada qatnashish</td><td>2</td></tr><tr><td>Test natijasi</td><td>2</td></tr><tr><td>Guruh va ijodiy topshiriqlar</td><td>2</td></tr><tr><th>Jami</th><th>10</th></tr></table>
+<h3>Dars yakunidagi xulosa</h3>
+<p>Bugungi darsda issiqlik mashinalarining tuzilishi, ishlash prinsipi va inson hayotidagi ahamiyati bilan tanishdik. Issiqlik mashinalari transport, sanoat va energetika sohalarida muhim o‘rin tutishini bilib oldik.</p>
+<p>Shuningdek, yoqilg‘i yonishi natijasida atmosferaga chiqariladigan zararli moddalar, global isish va ekologik muammolar haqida ma’lumot oldik.</p>
+<p><b>Bizning asosiy vazifamiz — energiyadan oqilona foydalanish, tabiatni asrash va kelajak avlod uchun toza atrof-muhitni saqlab qolishdir!</b></p>
+</section>
+<footer>9-sinf fizika • III bob. Issiqlik mashinalari va tabiatni muhofaza qilish</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function updateHeat(){
+ let q1=+$('q1').value, q2=Math.min(+$('q2').value,q1-50), a=q1-q2, eta=a/q1*100;
+ $('q2').max=q1-50; $('q2').value=q2;
+ $('q1v').textContent=q1.toLocaleString('uz-UZ');$('q2v').textContent=q2.toLocaleString('uz-UZ');
+ $('av').textContent=a.toLocaleString('uz-UZ')+' J';$('q2out').textContent=q2.toLocaleString('uz-UZ')+' J';
+ $('etav').textContent=eta.toFixed(1)+'%';$('abar').style.width=eta+'%';
+}
+$('q1').addEventListener('input',updateHeat);$('q2').addEventListener('input',updateHeat);
+function updateEco(){
+ let fuel=+$('fuel').value, factor=+$('vehicle').value, val=fuel*factor;
+ $('fuelv').textContent=fuel;$('emission').textContent=val.toFixed(2)+' birlik';
+ $('ebar').style.width=(val/10*100)+'%';$('ebar').style.background=val>5?'#dc704b':'#16834a';
+ let v=$('vehicle').value;
+ $('kind').textContent=v==='1'?'Oddiy':v==='.65'?'Tejamkor':'Elektr';
+ $('ecoNote').textContent=v==='0'?'Harakat paytida avtomobilning o‘zidan chiqindi gaz chiqmaydi. Elektr ishlab chiqarish chiqindilari bu modelda hisobga olinmagan.':'Yoqilg‘i sarfi ortishi bilan modeldagi chiqindi ko‘rsatkichi ham ortadi.';
+}
+$('fuel').addEventListener('input',updateEco);$('vehicle').addEventListener('change',updateEco);
+function checkQuiz(){
+ const key=[0,0,1,0,1,0,2,1];let score=0,answered=0;
+ key.forEach((a,i)=>{let x=document.querySelector('input[name="q'+(i+1)+'"]:checked');if(x){answered++;if(+x.value===a)score++}});
+ $('quizResult').textContent=answered<8?'Barcha savollarga javob bering. Hozircha '+answered+'/8 ta belgilangan.':'Natija: '+score+'/8 ta to‘g‘ri javob.';
+}
+updateHeat();updateEco();
+</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Issiqlik dvigatellarining ishlash prinsipi – 9-sinf fizika</title>
+<style>
+:root{--bg1:#dcefd0;--bg2:#a9d29a;--card:#fbfdf7;--ink:#1f2d1a;--mut:#4d6045;--ac:#2f6b3a;--hot:#d9541e;--line:#c4d9b8;color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg1:#16251a;--bg2:#0f1a12;--card:#1d2e21;--ink:#e6f0df;--mut:#a5bd9b;--ac:#7fcf8a;--line:#34503a;color-scheme:dark}}
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}
+body{margin:0;font:16px/1.6 Georgia,"Times New Roman",serif;color:var(--ink);background:linear-gradient(180deg,var(--bg1),var(--bg2));min-height:100vh}
+main{max-width:760px;margin:0 auto;padding:16px}
+h1{font-size:1.5rem;margin:.4em 0}h2{font-size:1.25rem;margin:.2em 0 .5em}h3{font-size:1.05rem;margin:1em 0 .3em}
+.card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;margin:14px 0}
+nav{display:flex;gap:6px;flex-wrap:wrap;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg1);padding:8px 0;z-index:5}
+button{font:inherit;padding:8px 12px;border:1px solid var(--ac);background:var(--card);color:var(--ink);border-radius:8px;cursor:pointer}
+button.on,button:hover{background:var(--ac);color:#fff}
+button:focus-visible,input:focus-visible{outline:3px solid var(--hot);outline-offset:2px}
+canvas{width:100%;max-width:100%;background:#eef7e8;border:1px solid var(--line);border-radius:8px;display:block}
+.box{background:rgba(127,160,110,.15);border-left:4px solid var(--ac);padding:8px 12px;margin:10px 0}
+table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--line);padding:6px;text-align:left;vertical-align:top}
+.wrap{overflow-x:auto}
+section{display:none}section.show{display:block}
+label{display:block;margin:8px 0 2px}input[type=range]{width:100%}
+.q button{display:block;width:100%;text-align:left;margin:5px 0}
+.ok{background:#2f8f4a!important;color:#fff}.bad{background:#b83a2a!important;color:#fff}
+small{color:var(--mut)}
+</style></head><body><main>
+<h1>III-bob. Issiqlik dvigatellarining ishlash prinsipi</h1>
+<small>9-sinf fizika · interaktiv dars materiali</small>
+<nav id="nav"></nav>
+
+<section id="s0" class="show"><div class="card"><h2>1. Issiqlik dvigatellari</h2>
+<p><b>Issiqlik dvigateli</b> – yoqilg‘i yonganda ajralgan ichki energiyani mexanik energiyaga (ishga) aylantiradigan qurilma.</p>
+<h3>Misollar</h3>
+<ul><li><b>Bug‘ mashinasi</b> va <b>bug‘ turbinasi</b> – elektr stansiyalar, eski teplovozlar.</li><li><b>Ichki yonuv dvigatellari</b> – benzinli va dizel (avtomobil, traktor).</li><li><b>Reaktiv dvigatellar</b> – samolyot va raketalar.</li><li><b>Gaz turbinasi</b> – gaz elektr stansiyalari.</li></ul>
+<h3>Har qanday issiqlik dvigateli 3 qismdan iborat</h3>
+<ol><li><b>Isitkich</b> – yuqori haroratli jism (yonayotgan yoqilg‘i, qozon). Dvigatelga issiqlik miqdori <b>Q₁</b> beradi.</li><li><b>Ishchi jism</b> – gaz yoki bug‘. Kengayib, ish <b>A</b> bajaradi.</li><li><b>Sovitkich</b> – past haroratli jism (atmosfera, radiator, kondensator). Unga issiqlik <b>Q₂</b> uzatiladi.</li></ol>
+<div class="box">Nima uchun sovitkich kerak? Dvigatel uzluksiz ishlashi uchun ishchi jism har safar dastlabki holatiga qaytishi kerak. Buning uchun ishlatilmagan issiqlikning bir qismini sovuq jismga berish shart.</div>
+<h3>Qiziqarli ma’lumot</h3>
+<p>Birinchi amaliy bug‘ mashinasini 1712-yilda T. Nyukomen, takomillashtirilganini esa 1784-yilda Jeyms Vatt yaratgan. Shundan boshlab sanoat inqilobi boshlandi.</p>
+</div></section>
+
+<section id="s1"><div class="card"><h2>2. Issiqlik dvigatellarining ishlash prinsipi</h2>
+<p>Dvigatel siklik ishlaydi: ish sikli yana va yana takrorlanadi. Bir siklda:</p>
+<ol><li>Ishchi jism isitkichdan <b>Q₁</b> issiqlik oladi va qiziydi.</li><li>Gaz kengayib, ish <b>A</b> bajaradi (porshenni suradi, turbinani aylantiradi).</li><li>Qolgan issiqlik <b>Q₂</b> sovitkichga beriladi.</li><li>Ishchi jism dastlabki holatiga qaytadi.</li></ol>
+<div class="box"><b>Energiyaning saqlanish qonuni:</b> Q₁ = A + Q₂, ya’ni foydali ish <b>A = Q₁ − Q₂</b>.</div>
+<h3>Animatsion simulyatsiya</h3>
+<p>Isitkich va sovitkich haroratini o‘zgartiring. Qizil zarralar – isitkichdan kelgan issiqlik, yashil – foydali ishga aylangan qismi, ko‘k – sovitkichga ketgan issiqlik.</p>
+<label for="t1">Isitkich harorati: <b id="t1v"></b> °C</label><input id="t1" type="range" min="150" max="900" step="10" value="527">
+<label for="t2">Sovitkich harorati: <b id="t2v"></b> °C</label><input id="t2" type="range" min="0" max="100" step="5" value="27">
+<label for="rf">Real dvigatelning mukammalligi: <b id="rfv"></b> %</label><input id="rf" type="range" min="20" max="100" step="5" value="50">
+<canvas id="cv" width="640" height="300" aria-label="Issiqlik dvigateli simulyatsiyasi"></canvas>
+<p id="out" class="box"></p>
+</div></section>
+
+<section id="s2"><div class="card"><h2>3. Foydali ish koeffitsiyenti (FIK)</h2>
+<p><b>FIK</b> – foydali ishning isitkichdan olingan issiqlik miqdoriga nisbati. U dvigatel energiyadan qanchalik yaxshi foydalanishini ko‘rsatadi.</p>
+<div class="box"><b>η = A / Q₁ · 100% = (Q₁ − Q₂) / Q₁ · 100%</b></div>
+<p>Yoqilg‘i yonganda ajralgan issiqlik: <b>Q₁ = q·m</b> (q – yoqilg‘ining solishtirma yonish issiqligi, m – massa).</p>
+<h3>Muhim xulosalar</h3>
+<ul><li>FIK har doim <b>100 % dan kichik</b>, chunki Q₂ nolga teng bo‘lmaydi.</li><li>Isitkich harorati T₁ qancha yuqori va sovitkich harorati T₂ qancha past bo‘lsa, FIK shuncha katta.</li><li>Ideal dvigatelning (Karno) eng katta FIK: <b>η = (T₁ − T₂)/T₁ · 100%</b>, bunda haroratlar kelvinda: T(K) = t(°C) + 273.</li></ul>
+<h3>Turli dvigatellarning FIK i</h3>
+<div class="wrap"><table><tr><th>Dvigatel</th><th>FIK (taxminan)</th></tr>
+<tr><td>Bug‘ mashinasi</td><td>8–15 %</td></tr><tr><td>Benzinli dvigatel</td><td>25–30 %</td></tr><tr><td>Bug‘ turbinasi</td><td>30–40 %</td></tr><tr><td>Dizel dvigateli</td><td>35–45 %</td></tr><tr><td>Zamonaviy gaz turbinasi</td><td>40–60 %</td></tr></table></div>
+<p><b>Misol.</b> Dvigatel isitkichdan 500 J oldi, sovitkichga 350 J berdi. A = 500 − 350 = 150 J. η = 150/500 = 0,3 = 30 %.</p>
+<h3>FIK ni oshirish yo‘llari</h3>
+<p>Ishqalanishni kamaytirish, yonishni to‘liq amalga oshirish, T₁ ni oshirish, chiqindi issiqlikdan foydalanish. Chiqindi gazlar atrof-muhitni ifloslantiradi, shuning uchun elektr va gibrid dvigatellarga qiziqish ortmoqda.</p>
+</div></section>
+
+<section id="s3"><div class="card"><h2>Savol va topshiriqlar</h2>
+<div id="quiz"></div><p><b id="score"></b></p>
+<h3>Masalalar</h3>
+<ol><li>Dvigatel isitkichdan 500 J olib, sovitkichga 350 J berdi. A va FIK ni toping. <small>(150 J; 30 %)</small></li>
+<li>Issiqlik dvigatelining isitkichdan olgan issiqligi 800 kJ, bajargan ishi 200 kJ. FIK ni hisoblang. <small>(25 %)</small></li>
+<li>Isitkich harorati 527 °C, sovitkich harorati 27 °C. Ideal dvigatelning eng katta FIK ni toping. <small>(T₁=800 K, T₂=300 K; 62,5 %)</small></li>
+<li>FIK i 20 % bo‘lgan dvigatel 4 MJ issiqlik oldi. Foydali ish va sovitkichga berilgan issiqlikni toping. <small>(0,8 MJ; 3,2 MJ)</small></li>
+<li>Nima uchun FIK i 100 % bo‘lgan issiqlik dvigatelini yasab bo‘lmaydi? Tushuntiring.</li></ol>
+</div></section>
+
+<section id="s4"><div class="card"><h2>Uyga topshiriq</h2>
+<ol><li>Mavzuni o‘qing. Issiqlik dvigateli sxemasini (isitkich, ishchi jism, sovitkich, Q₁, A, Q₂) daftarga chizing.</li>
+<li>Uyingizdagi yoki atrofingizdagi 3 ta issiqlik dvigatelini toping va ularning isitkichi hamda sovitkichi nima ekanini yozing.</li>
+<li>FIK ga oid 3 ta masala tuzib, yeching.</li>
+<li>Ijodiy topshiriq: «Issiqlik dvigatellarining tarixi» mavzusida 5 ta slaydli mini-taqdimot tayyorlang.</li>
+<li>Qo‘shimcha: YouTube’da «heat engine animation», «steam engine animation», «Carnot cycle animation» deb qidirib, bittasini ko‘ring va 3 gapda xulosa yozing.</li></ol>
+<h3>45 minutlik dars rejasi</h3>
+<div class="wrap"><table><tr><th>Vaqt</th><th>Bosqich</th></tr>
+<tr><td>5 daq</td><td>Tashkiliy qism, o‘tgan mavzuni takrorlash (ichki energiya, yonish issiqligi)</td></tr>
+<tr><td>5 daq</td><td>Motivatsiya: «Avtomobil nega qiziydi?» savoli</td></tr>
+<tr><td>12 daq</td><td>Yangi mavzu: issiqlik dvigateli va uning qismlari, ishlash prinsipi, simulyatsiya</td></tr>
+<tr><td>8 daq</td><td>FIK formulasi, jadval, Karno formulasi</td></tr>
+<tr><td>8 daq</td><td>Mustahkamlash: test-o‘yin va masalalar</td></tr>
+<tr><td>4 daq</td><td>Xulosa, baholash</td></tr>
+<tr><td>3 daq</td><td>Uyga vazifa</td></tr></table></div>
+</div></section>
+</main>
+<script>
+var tabs=["1. Dvigatellar","2. Ishlash prinsipi","3. FIK","Savol-topshiriq","Uyga vazifa"],nb=[];
+function go(i){tabs.forEach(function(_,k){document.getElementById("s"+k).classList.toggle("show",k===i);nb[k].classList.toggle("on",k===i)});window.scrollTo(0,0)}
+tabs.forEach(function(t,i){var b=document.createElement("button");b.textContent=t;b.onclick=function(){go(i)};document.getElementById("nav").appendChild(b);nb.push(b)});nb[0].classList.add("on");
+
+var $=function(i){return document.getElementById(i)},cv=$("cv"),cx=cv.getContext("2d"),P=[],ang=0,last=0,acc=0,Q1=1000;
+var ideal,eta,A,Q2;
+function calc(){
+ var t1=+$("t1").value,t2=+$("t2").value,rf=+$("rf").value;
+ if(t2>=t1)t2=t1-10;
+ $("t1v").textContent=t1;$("t2v").textContent=t2;$("rfv").textContent=rf;
+ ideal=(t1-t2)/(t1+273);eta=ideal*rf/100;A=Q1*eta;Q2=Q1-A;
+ $("out").innerHTML="Q₁ = 1000 J. Ideal (Karno) FIK = ("+(t1+273)+" − "+(t2+273)+")/"+(t1+273)+" = <b>"+(ideal*100).toFixed(1)+" %</b>. Real FIK = <b>"+(eta*100).toFixed(1)+" %</b>. Foydali ish A = <b>"+A.toFixed(0)+" J</b>, sovitkichga Q₂ = <b>"+Q2.toFixed(0)+" J</b>.";
+}
+["t1","t2","rf"].forEach(function(i){$(i).oninput=calc});calc();
+function spawn(){P.push({x:90,y:140+Math.random()*30-15,s:0,w:Math.random()<eta})}
+function draw(){
+ cx.clearRect(0,0,640,300);
+ var t1=+$("t1").value,hot=Math.min(1,(t1-150)/750);
+ cx.fillStyle="rgb("+Math.round(200+55*hot)+","+Math.round(110-70*hot)+",40)";cx.fillRect(10,80,90,120);
+ cx.fillStyle="#fff";cx.font="13px sans-serif";cx.fillText("Isitkich",28,135);cx.fillText(t1+" °C",30,155);
+ cx.fillStyle="#6aa7d8";cx.fillRect(540,80,90,120);cx.fillStyle="#fff";cx.fillText("Sovitkich",550,135);cx.fillText($("t2").value+" °C",558,155);
+ // engine
+ cx.save();cx.translate(320,140);cx.fillStyle="#d8dfd2";cx.strokeStyle="#444";cx.lineWidth=2;cx.beginPath();cx.arc(0,0,60,0,7);cx.fill();cx.stroke();
+ cx.rotate(ang);cx.strokeStyle="#555";cx.lineWidth=5;for(var i=0;i<6;i++){cx.rotate(Math.PI/3);cx.beginPath();cx.moveTo(0,0);cx.lineTo(0,48);cx.stroke()}cx.restore();
+ cx.fillStyle="#222";cx.fillText("Ishchi jism",290,225);
+ cx.fillStyle="#d9541e";cx.fillText("Q₁ = 1000 J",110,70);cx.fillStyle="#2f8f4a";cx.fillText("A = "+A.toFixed(0)+" J",335,25);cx.fillStyle="#2b6fb0";cx.fillText("Q₂ = "+Q2.toFixed(0)+" J",460,70);
+ // work arrow
+ cx.strokeStyle="#2f8f4a";cx.lineWidth=2+A/60;cx.beginPath();cx.moveTo(320,78);cx.lineTo(320,40);cx.stroke();
+ P.forEach(function(p){
+  if(p.s==0){p.x+=2.2;if(p.x>=290){p.s=1;p.x=320;p.y=140}}
+  else if(p.w){p.y-=2}else{p.x+=2.2;p.y+=0}
+  var c=p.s==0?"#d9541e":p.w?"#2f8f4a":"#2b6fb0";
+  cx.fillStyle=c;cx.beginPath();cx.arc(p.x,p.y,5,0,7);cx.fill();
+ });
+ P=P.filter(function(p){return p.x<650&&p.y>-10});
+ // bars
+ cx.fillStyle="#222";cx.fillText("FIK",20,255);cx.strokeStyle="#666";cx.lineWidth=1;cx.strokeRect(60,243,500,16);
+ cx.fillStyle="#bbb";cx.fillRect(60,243,500*ideal,16);cx.fillStyle="#2f8f4a";cx.fillRect(60,243,500*eta,16);
+ cx.fillStyle="#222";cx.fillText("kulrang – ideal, yashil – real",60,278);
+}
+function loop(t){var d=Math.min(40,t-last);last=t;acc+=d;if(acc>140){acc=0;spawn()}ang+=d*.002*(0.5+eta*4);draw();requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+
+var Q=[["Issiqlik dvigatelining qismlari qaysilar?",["Isitkich, ishchi jism, sovitkich","Porshen, svecha, klapan","Batareya, motor, g‘ildirak","Qozon, quvur, nasos"],0],
+["Energiyaning saqlanish qonuniga ko‘ra qaysi tenglik to‘g‘ri?",["A = Q₁ + Q₂","Q₁ = A + Q₂","Q₂ = A + Q₁","A = Q₂ − Q₁"],1],
+["FIK formulasi qaysi?",["η = Q₁ / A","η = A / Q₁","η = Q₂ / Q₁","η = A · Q₁"],1],
+["FIK ni oshirish uchun qanday qilish kerak?",["T₁ ni oshirish, T₂ ni kamaytirish","T₁ ni kamaytirish","T₂ ni oshirish","Ishqalanishni ko‘paytirish"],0],
+["Nima uchun FIK 100 % bo‘la olmaydi?",["Isitkich yo‘q","Q₂ sovitkichga berilishi shart","Porshen og‘ir","Yoqilg‘i kam"],1],
+["Ideal dvigatelda T₁ = 600 K, T₂ = 300 K bo‘lsa, eng katta FIK nechaga teng?",["25 %","50 %","75 %","100 %"],1]];
+var sc=0,ans=0;
+Q.forEach(function(q,i){var d=document.createElement("div");d.className="q";d.innerHTML="<p><b>"+(i+1)+". "+q[0]+"</b></p>";var done=false;q[1].forEach(function(o,j){var b=document.createElement("button");b.textContent=o;b.onclick=function(){if(done)return;done=true;ans++;if(j==q[2]){b.className="ok";sc++}else{b.className="bad";d.children[q[2]+1].className="ok"}$("score").textContent="Natija: "+sc+" / "+Q.length+(ans==Q.length?(sc>=5?" – a’lo!":sc>=3?" – yaxshi, takrorlang.":" – mavzuni qayta o‘qing."):"")};d.appendChild(b)});$("quiz").appendChild(d)});
+</script></body></html>

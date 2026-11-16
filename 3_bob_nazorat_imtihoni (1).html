@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — III bob nazorat imtihoni</title>
+<style>
+:root{--blue:#087eaa;--deep:#12334a;--cyan:#dff5fb;--gold:#ffbd45;--green:#198754;--red:#c0392b}
+*{box-sizing:border-box}body{margin:0;background:#f2f6f9;color:#203040;font:16px/1.55 Arial,sans-serif}
+header{background:linear-gradient(120deg,#083b5c,#0789b2);color:white;padding:30px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(22px,4vw,34px)}header p{margin:4px auto;max-width:850px}
+main{max-width:1050px;margin:22px auto;padding:0 14px}.panel{background:white;border-radius:16px;padding:20px;margin:18px 0;box-shadow:0 5px 18px #15344a12}
+h2{color:#087eaa;margin-top:0}h3{color:#16445e}.tag{display:inline-block;background:#e2f5fa;color:#056b91;border-radius:20px;padding:4px 11px;font-size:13px;font-weight:bold}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}.card{background:#f7fbfd;border:1px solid #dcebf1;border-radius:12px;padding:14px}
+button{border:0;border-radius:9px;background:#087eaa;color:white;padding:10px 15px;font-weight:bold;cursor:pointer;margin:4px}
+button:hover{filter:brightness(.92)}button.secondary{background:#426477}button.gold{background:#d98a00}
+.sim{background:#102c3e;color:white;border-radius:14px;padding:16px;overflow:hidden}
+.sim canvas{width:100%;max-width:680px;height:270px;display:block;margin:8px auto;background:#eaf7fb;border-radius:10px}
+.controls{display:flex;flex-wrap:wrap;gap:5px;justify-content:center}.note{background:#fff8e8;border-left:4px solid #f0b33c;padding:10px 13px;border-radius:6px}
+.q{padding:14px 0;border-bottom:1px solid #e5edf1}.q:last-child{border:0}.q p{font-weight:bold;margin:0 0 8px}.q label{display:block;padding:5px 8px;border-radius:7px;cursor:pointer}.q label:hover{background:#eff8fb}
+input[type=radio]{margin-right:8px}.result{padding:16px;border-radius:10px;background:#e7f6ed;margin-top:14px;display:none}
+footer{text-align:center;color:#627787;padding:25px}
+.progress{height:10px;background:#dce8ee;border-radius:20px;overflow:hidden}.progress span{display:block;height:100%;width:0;background:#12a36a;transition:.3s}
+table{border-collapse:collapse;width:100%;margin:10px 0}td,th{border:1px solid #dce6eb;padding:9px;text-align:left}th{background:#eaf5f8}
+@media(max-width:600px){.panel{padding:15px}button{padding:9px 11px}}
+</style>
+</head>
+<body>
+<header>
+ <div class="tag">9-SINF FIZIKA • III BOB</div>
+ <h1>ISSIQLIK DVIGATELLARI</h1>
+ <p>Yakuniy nazorat imtihoni — animatsion simulyatsiyalar, tajribalar va interaktiv testlar</p>
+ <p>26–30-mavzular asosida</p>
+</header>
+<main>
+<section class="panel">
+<h2>Imtihon yo‘riqnomasi</h2>
+<div class="grid">
+ <div class="card"><b>1-qism</b><br>15 ta test savoli</div>
+ <div class="card"><b>2-qism</b><br>3 ta hisoblash masalasi</div>
+ <div class="card"><b>3-qism</b><br>2 ta simulyatsion topshiriq</div>
+ <div class="card"><b>Vaqt</b><br>45 daqiqa</div>
+</div>
+<p class="note">Avval simulyatsiyalarni kuzating, so‘ng savollarga javob bering. Test yakunida “Natijani tekshirish” tugmasini bosing. Har bir to‘g‘ri test javobi 1 ball.</p>
+</section>
+
+<section class="panel">
+<h2>1. Animatsion simulyatsiya: ichki yonuv dvigateli</h2>
+<p>To‘rt taktli benzin dvigatelida porshenning harakati va klapanlarning ochilib-yopilishini kuzating.</p>
+<div class="sim">
+ <b id="strokeTitle">1-takt: So‘rish</b>
+ <canvas id="engine" width="680" height="270"></canvas>
+ <p id="strokeDesc">Porshen pastga harakatlanadi, kirish klapani ochiladi va silindrga havo-yonilg‘i aralashmasi kiradi.</p>
+ <div class="controls">
+  <button onclick="setStroke(0)">1. So‘rish</button><button onclick="setStroke(1)">2. Siqish</button>
+  <button onclick="setStroke(2)">3. Ish yo‘li</button><button onclick="setStroke(3)">4. Chiqarish</button>
+  <button class="gold" onclick="nextStroke()">Keyingi takt ▶</button>
+ </div>
+</div>
+<div class="grid">
+ <div class="card"><b>So‘rish</b><br>Aralashma silindrga kiradi.</div>
+ <div class="card"><b>Siqish</b><br>Porshen yuqoriga ko‘tarilib, aralashmani siqadi.</div>
+ <div class="card"><b>Ish yo‘li</b><br>Yonish natijasidagi gazlar porshenni pastga itaradi.</div>
+ <div class="card"><b>Chiqarish</b><br>Ishlatilgan gazlar silindrdan chiqariladi.</div>
+</div>
+</section>
+
+<section class="panel">
+<h2>2. Animatsion simulyatsiya: issiqlik dvigatelining ishlash prinsipi</h2>
+<p>Issiqlik dvigateli qizdirgichdan energiya oladi, uning bir qismini mexanik ishga aylantiradi, qolgan qismini sovitkichga uzatadi.</p>
+<div class="sim">
+ <canvas id="heat" width="680" height="245"></canvas>
+ <div class="controls"><button onclick="runHeat()">Jarayonni ko‘rsat</button><button class="secondary" onclick="resetHeat()">Qayta boshlash</button></div>
+ <p id="heatText">Qizdirgich → Dvigatel → Sovitkich. Energiya oqimini ko‘rish uchun tugmani bosing.</p>
+</div>
+<p class="note"><b>Foydali ish koeffitsiyenti (FIK):</b> η = A / Q₁ × 100%. Bu yerda A — foydali ish, Q₁ — qizdirgichdan olingan issiqlik miqdori.</p>
+</section>
+
+<section class="panel">
+<h2>3. Animatsion simulyatsiya: ekologiya va issiqlik mashinalari</h2>
+<p>Yoqilg‘i yonishi natijasida atmosferaga turli gazlar chiqarilishi mumkin. Quyidagi boshqaruv orqali shartli chiqindi miqdorining o‘zgarishini kuzating.</p>
+<div class="sim">
+ <canvas id="eco" width="680" height="210"></canvas>
+ <div class="controls"><button onclick="setEco(1)">Oddiy dvigatel</button><button onclick="setEco(2)">Samarador dvigatel</button><button onclick="setEco(3)">Elektr transport</button></div>
+ <p id="ecoText">Transport turini tanlang. Diagramma faqat tushuntirish uchun shartli tasvir.</p>
+</div>
+<p>Atrof-muhitni muhofaza qilish yo‘llari: yoqilg‘ini tejash, dvigatel samaradorligini oshirish, chiqindi gazlarni kamaytirish, jamoat transporti va ekologik toza energiya manbalaridan foydalanish.</p>
+</section>
+
+<section class="panel">
+<h2>4. Nazorat imtihoni — test savollari</h2>
+<p>Har bir savolda faqat bitta to‘g‘ri javobni belgilang.</p>
+<div class="progress"><span id="bar"></span></div>
+<form id="quiz">
+<div class="q"><p>1. Ichki yonuv dvigatelida yoqilg‘i qayerda yonadi?</p>
+<label><input type="radio" name="q1" value="a"> Radiatorda</label><label><input type="radio" name="q1" value="b"> Silindr ichida</label><label><input type="radio" name="q1" value="c"> Uzatmalar qutisida</label></div>
+<div class="q"><p>2. To‘rt taktli dvigatelning taktlarini to‘g‘ri ketma-ketlikda belgilang.</p>
+<label><input type="radio" name="q2" value="a"> Siqish, so‘rish, chiqarish, ish</label><label><input type="radio" name="q2" value="b"> So‘rish, siqish, ish yo‘li, chiqarish</label><label><input type="radio" name="q2" value="c"> Ish, chiqarish, so‘rish, siqish</label></div>
+<div class="q"><p>3. So‘rish taktida qaysi klapan ochiq bo‘ladi?</p>
+<label><input type="radio" name="q3" value="a"> Chiqarish klapani</label><label><input type="radio" name="q3" value="b"> Ikkala klapan ham yopiq</label><label><input type="radio" name="q3" value="c"> Kirish klapani</label></div>
+<div class="q"><p>4. Siqish taktida porshen qanday harakatlanadi?</p>
+<label><input type="radio" name="q4" value="a"> Yuqoriga</label><label><input type="radio" name="q4" value="b"> Pastga</label><label><input type="radio" name="q4" value="c"> Harakatlanmaydi</label></div>
+<div class="q"><p>5. Ish yo‘li taktida porshenni nima pastga itaradi?</p>
+<label><input type="radio" name="q5" value="a"> Sovuq havo</label><label><input type="radio" name="q5" value="b"> Yonish natijasida kengaygan gazlar</label><label><input type="radio" name="q5" value="c"> Sovitkich</label></div>
+<div class="q"><p>6. Issiqlik dvigatelining asosiy vazifasi nima?</p>
+<label><input type="radio" name="q6" value="a"> Mexanik energiyani issiqlikka aylantirish</label><label><input type="radio" name="q6" value="b"> Issiqlik energiyasining bir qismini mexanik ishga aylantirish</label><label><input type="radio" name="q6" value="c"> Moddani muzlatish</label></div>
+<div class="q"><p>7. Issiqlik dvigatelining asosiy qismlaridan biri qaysi?</p>
+<label><input type="radio" name="q7" value="a"> Qizdirgich</label><label><input type="radio" name="q7" value="b"> Kompas</label><label><input type="radio" name="q7" value="c"> Elektromagnit</label></div>
+<div class="q"><p>8. Dvigatel olgan issiqlikning bir qismi nimaga uzatiladi?</p>
+<label><input type="radio" name="q8" value="a"> Faqat qizdirgichga</label><label><input type="radio" name="q8" value="b"> Sovitkichga</label><label><input type="radio" name="q8" value="c"> Hech qayerga uzatilmaydi</label></div>
+<div class="q"><p>9. Foydali ish koeffitsiyenti qaysi formula bilan aniqlanadi?</p>
+<label><input type="radio" name="q9" value="a"> η = Q₁/A × 100%</label><label><input type="radio" name="q9" value="b"> η = A/Q₁ × 100%</label><label><input type="radio" name="q9" value="c"> η = A·Q₁</label></div>
+<div class="q"><p>10. Dvigatelning FIKi 100% bo‘lishi real issiqlik dvigateli uchun qanday?</p>
+<label><input type="radio" name="q10" value="a"> Mumkin emas</label><label><input type="radio" name="q10" value="b"> Har doim mumkin</label><label><input type="radio" name="q10" value="c"> Faqat qishda mumkin</label></div>
+<div class="q"><p>11. Chiqarish taktida nima sodir bo‘ladi?</p>
+<label><input type="radio" name="q11" value="a"> Yangi aralashma kiradi</label><label><input type="radio" name="q11" value="b"> Aralashma siqiladi</label><label><input type="radio" name="q11" value="c"> Ishlatilgan gazlar tashqariga chiqariladi</label></div>
+<div class="q"><p>12. Yoqilg‘ining yonishi natijasida atmosferaga chiqishi mumkin bo‘lgan gazlardan biri qaysi?</p>
+<label><input type="radio" name="q12" value="a"> Kislorodning o‘zi</label><label><input type="radio" name="q12" value="b"> Karbonat angidrid (CO₂)</label><label><input type="radio" name="q12" value="c"> Geliy</label></div>
+<div class="q"><p>13. Transportdan chiqadigan zararli moddalarni kamaytirish usulini toping.</p>
+<label><input type="radio" name="q13" value="a"> Nosoz dvigateldan foydalanish</label><label><input type="radio" name="q13" value="b"> Yoqilg‘ini ko‘proq sarflash</label><label><input type="radio" name="q13" value="c"> Dvigatelni soz saqlash va samaradorligini oshirish</label></div>
+<div class="q"><p>14. Issiqlik mashinalarida energiya qanday o‘zgaradi?</p>
+<label><input type="radio" name="q14" value="a"> Issiqlik energiyasining bir qismi mexanik energiyaga aylanadi</label><label><input type="radio" name="q14" value="b"> Massa butunlay yo‘qoladi</label><label><input type="radio" name="q14" value="c"> Energiya hosil bo‘lmaydi va uzatilmaydi</label></div>
+<div class="q"><p>15. Qaysi tanlov tabiatni muhofaza qilishga ko‘proq yordam beradi?</p>
+<label><input type="radio" name="q15" value="a"> Avtomobilni bekorga ishlatib turish</label><label><input type="radio" name="q15" value="b"> Qisqa masofada piyoda yurish yoki jamoat transportidan foydalanish</label><label><input type="radio" name="q15" value="c"> Chiqindi gazlarni ko‘paytirish</label></div>
+</form>
+<button onclick="grade()">Natijani tekshirish</button>
+<button class="secondary" onclick="document.getElementById('quiz').reset();document.getElementById('result').style.display='none';updateProgress()">Qayta ishlash</button>
+<div class="result" id="result"></div>
+</section>
+
+<section class="panel">
+<h2>5. Hisoblash masalalari</h2>
+<div class="card">
+<b>1-masala.</b> Issiqlik dvigateli qizdirgichdan 800 kJ issiqlik oldi va 240 kJ foydali ish bajardi. Dvigatelning FIKini toping.
+<p><button class="secondary" onclick="toggle('a1')">Yechimini ko‘rsat</button></p><div id="a1" hidden>η = A/Q₁ × 100% = 240/800 × 100% = <b>30%</b>.</div>
+</div>
+<div class="card">
+<b>2-masala.</b> Dvigatel 500 kJ issiqlik olib, 150 kJ ish bajardi. Sovitkichga uzatilgan issiqlik miqdorini aniqlang.
+<p><button class="secondary" onclick="toggle('a2')">Yechimini ko‘rsat</button></p><div id="a2" hidden>Q₂ = Q₁ − A = 500 − 150 = <b>350 kJ</b>.</div>
+</div>
+<div class="card">
+<b>3-masala.</b> Issiqlik dvigatelining FIKi 25%. U 1200 kJ issiqlik olsa, bajargan foydali ishini toping.
+<p><button class="secondary" onclick="toggle('a3')">Yechimini ko‘rsat</button></p><div id="a3" hidden>A = η·Q₁ = 0,25 × 1200 = <b>300 kJ</b>.</div>
+</div>
+</section>
+
+<section class="panel">
+<h2>6. Simulyatsiya asosidagi topshiriqlar</h2>
+<ol>
+<li>To‘rt taktli dvigatel simulyatsiyasida har bir taktni ketma-ket tanlang. Qaysi taktda yonish sodir bo‘lishini va porshen qaysi tomonga harakatlanishini yozing.</li>
+<li>Issiqlik dvigateli simulyatsiyasida qizdirgichdan olingan energiya qayerlarga taqsimlanishini tushuntiring. Nima sababdan barcha issiqlik foydali ishga aylanmaydi?</li>
+<li>Ekologiya simulyatsiyasidagi uchta transport holatini taqqoslang. Atrof-muhitga ta’sirni kamaytirish uchun ikkita taklif yozing.</li>
+</ol>
+</section>
+
+<section class="panel">
+<h2>7. Baholash mezoni</h2>
+<table><tr><th>Natija</th><th>Baho</th><th>Izoh</th></tr>
+<tr><td>18–20 ball</td><td>5</td><td>A’lo</td></tr><tr><td>14–17 ball</td><td>4</td><td>Yaxshi</td></tr><tr><td>10–13 ball</td><td>3</td><td>Qoniqarli</td></tr><tr><td>0–9 ball</td><td>2</td><td>Qo‘shimcha tayyorgarlik zarur</td></tr></table>
+<p class="note">Yakuniy baholashda test natijasiga qo‘shimcha ravishda hisoblash masalalari va simulyatsiya topshiriqlari ham o‘qituvchi tomonidan baholanadi.</p>
+</section>
+
+<section class="panel">
+<h2>8. Yakuniy xulosa</h2>
+<p>Issiqlik dvigatellari yoqilg‘i yoki boshqa manbadan olingan issiqlik energiyasining bir qismini mexanik ishga aylantiradi. Ichki yonuv dvigatelida ishchi aralashma silindr ichida yonadi. Dvigatel samaradorligini oshirish, yoqilg‘ini tejash va chiqindi gazlarni kamaytirish tabiatni muhofaza qilishda muhim ahamiyatga ega.</p>
+<p><b>O‘zingizni tekshiring:</b> “Issiqlik dvigateli qanday ishlaydi?”, “FIK nimani bildiradi?”, “Dvigatellarning atrof-muhitga ta’sirini qanday kamaytirish mumkin?” savollariga mustaqil javob bering.</p>
+</section>
+</main>
+<footer>9-sinf fizika • III bob: Issiqlik dvigatellari • Interaktiv nazorat ishi</footer>
+<script>
+const titles=['1-takt: So‘rish','2-takt: Siqish','3-takt: Ish yo‘li','4-takt: Chiqarish'];
+const desc=[
+'Porshen pastga harakatlanadi, kirish klapani ochiladi va silindrga havo-yonilg‘i aralashmasi kiradi.',
+'Porshen yuqoriga harakatlanadi. Ikkala klapan yopiq, aralashma siqiladi.',
+'Yonish natijasida kengaygan gazlar porshenni pastga itaradi. Ikkala klapan yopiq.',
+'Porshen yuqoriga harakatlanadi, chiqarish klapani ochiladi va ishlatilgan gazlar chiqadi.'
+];
+let stroke=0;
+function drawEngine(){
+ const c=document.getElementById('engine'),x=c.getContext('2d');x.clearRect(0,0,680,270);
+ x.fillStyle='#c5dbe5';x.fillRect(250,35,180,190);x.strokeStyle='#254c60';x.lineWidth=7;x.strokeRect(250,35,180,190);
+ x.fillStyle='#6b8796';x.fillRect(265,35,55,18);x.fillRect(360,35,55,18);
+ x.fillStyle=stroke===0?'#24a4d3':'#879ba5';x.fillRect(270,35,45,stroke===0?9:18);
+ x.fillStyle=stroke===3?'#e46b3f':'#879ba5';x.fillRect(365,35,45,stroke===3?9:18);
+ let py=[145,75,145,145][stroke];x.fillStyle='#b45c35';x.fillRect(263,py,154,23);
+ x.strokeStyle='#333';x.lineWidth=8;x.beginPath();x.moveTo(340,py+23);x.lineTo(340,230);x.stroke();
+ x.fillStyle='#233';x.font='bold 15px Arial';x.fillText('Kirish',175,25);x.fillText('Chiqarish',445,25);
+ if(stroke===0||stroke===1){x.fillStyle='#3badd4';for(let i=0;i<7;i++){x.beginPath();x.arc(285+i*17,py-13,4,0,7);x.fill()}}
+ if(stroke===2){x.fillStyle='#ff9d24';for(let i=0;i<9;i++){x.beginPath();x.arc(285+Math.random()*130,py-18-Math.random()*40,4+Math.random()*4,0,7);x.fill()}}
+ if(stroke===3){x.strokeStyle='#e66b45';x.lineWidth=3;x.beginPath();x.moveTo(340,py-5);x.lineTo(340,15);x.stroke()}
+ x.fillStyle='#15384c';x.font='14px Arial';x.fillText('Porshen',445,190);x.fillText('Silindr',445,210);
+}
+function setStroke(n){stroke=n;document.getElementById('strokeTitle').textContent=titles[n];document.getElementById('strokeDesc').textContent=desc[n];drawEngine()}
+function nextStroke(){setStroke((stroke+1)%4)}
+drawEngine();
+let heatStep=0;
+function drawHeat(){
+ const c=document.getElementById('heat'),x=c.getContext('2d');x.clearRect(0,0,680,245);
+ const boxes=[{x:25,t:'Qizdirgich',col:'#ef9b36'},{x:255,t:'Dvigatel',col:'#51a5c8'},{x:495,t:'Sovitkich',col:'#5599d1'}];
+ boxes.forEach(b=>{x.fillStyle=b.col;x.fillRect(b.x,75,150,85);x.fillStyle='white';x.font='bold 17px Arial';x.fillText(b.t,b.x+25,123)});
+ x.fillStyle='#17384a';x.font='bold 15px Arial';x.fillText('Q₁',190,95);x.fillText('A',430,65);x.fillText('Q₂',430,190);
+ x.strokeStyle='#ffb13b';x.lineWidth=7;x.beginPath();x.moveTo(175,115);x.lineTo(245,115);x.stroke();
+ x.strokeStyle='#2db477';x.beginPath();x.moveTo(405,95);x.lineTo(480,95);x.stroke();
+ x.strokeStyle='#4e9ed0';x.beginPath();x.moveTo(405,145);x.lineTo(480,145);x.stroke();
+ if(heatStep){x.fillStyle='#17384a';x.font='14px Arial';x.fillText('Foydali ish',420,45);x.fillText('Atrofga uzatilgan issiqlik',405,215)}
+}
+function runHeat(){heatStep=1;drawHeat();document.getElementById('heatText').textContent='Q₁ = A + Q₂: olingan issiqlikning bir qismi ishga aylanadi, qolgan qismi sovitkichga uzatiladi.'}
+function resetHeat(){heatStep=0;drawHeat();document.getElementById('heatText').textContent='Qizdirgich → Dvigatel → Sovitkich. Energiya oqimini ko‘rish uchun tugmani bosing.'}
+drawHeat();
+function drawEco(level=0){
+ const c=document.getElementById('eco'),x=c.getContext('2d');x.clearRect(0,0,680,210);
+ x.fillStyle='#b8dbe7';x.fillRect(35,130,610,2);
+ let heights=[0,130,75,18],h=heights[level];
+ x.fillStyle=level===3?'#43a77a':'#d77b48';x.fillRect(115,130-h,100,h);
+ x.fillStyle='#17384a';x.font='bold 16px Arial';x.fillText(level===0?'Transportni tanlang':level===1?'Shartli yuqori':level===2?'Shartli o‘rta':'Shartli past',250,45);
+ x.font='14px Arial';x.fillText('Chiqindi miqdori (shartli ko‘rsatkich)',250,75);
+ x.fillStyle='#17384a';x.fillText('0',85,150);x.fillText('Taqqoslash uchun sxematik diagramma',250,170);
+}
+function setEco(n){drawEco(n);document.getElementById('ecoText').textContent=['','Oddiy dvigatel: yoqilg‘i yonishi chiqindi gazlar hosil qiladi.','Samarador dvigatel: bir xil ish uchun yoqilg‘i sarfi kamayishi mumkin.','Elektr transport: foydalanish joyida chiqindi gaz chiqarmaydi; elektr energiyasi ishlab chiqarishdagi ta’sir ham hisobga olinadi.'][n]}
+drawEco();
+function toggle(id){let e=document.getElementById(id);e.hidden=!e.hidden}
+const answers={q1:'b',q2:'b',q3:'c',q4:'a',q5:'b',q6:'b',q7:'a',q8:'b',q9:'b',q10:'a',q11:'c',q12:'b',q13:'c',q14:'a',q15:'b'};
+function grade(){let score=0,answered=0;for(let k in answers){let v=document.querySelector('input[name='+k+']:checked');if(v){answered++;if(v.value===answers[k])score++}}
+let r=document.getElementById('result');r.style.display='block';let grade=score>=14?'5':score>=11?'4':score>=8?'3':'2';
+r.innerHTML='<h3>Test natijasi: '+score+'/15 ball</h3><p>Javob berilgan: '+answered+'/15. Test bo‘yicha tavsiya etiladigan baho: <b>'+grade+'</b>.</p><p>'+(answered<15?'Barcha savollarga javob berilmagan. Qolganlarini ham belgilang.':score>=12?'Ajoyib! Mavzuni yaxshi o‘zlashtirgansiz.':'Mavzularni qayta ko‘rib, simulyatsiyalarni yana bajaring.')+'</p>';
+r.scrollIntoView({behavior:'smooth',block:'center'})}
+function updateProgress(){let n=0;for(let k in answers)if(document.querySelector('input[name='+k+']:checked'))n++;document.getElementById('bar').style.width=(n/15*100)+'%'}
+document.getElementById('quiz').addEventListener('change',updateProgress);
+</script>
+</body>
+</html>

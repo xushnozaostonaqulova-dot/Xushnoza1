@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>9-sinf fizika — III bob. Masalalar yechish</title>
+<style>
+:root{--ink:#172033;--muted:#5d687b;--blue:#2457a7;--pale:#edf4ff;--line:#dce3ee;--green:#e9f7ed;--orange:#fff3df}
+*{box-sizing:border-box}body{margin:0;background:#f5f7fb;color:var(--ink);font:16px/1.65 Arial, sans-serif}
+header{background:linear-gradient(120deg,#173d78,#3478bd);color:white;padding:38px 20px}
+header .wrap,main{max-width:980px;margin:auto}h1{font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.2;margin:.3em 0}header p{margin:.4em 0;color:#e7efff}
+main{padding:22px 16px 50px}.card{background:white;border:1px solid var(--line);border-radius:15px;padding:20px;margin:18px 0;box-shadow:0 3px 12px #1720330a}
+h2{color:#1d4e91;font-size:1.45rem;margin:.2em 0 .65em}h3{margin:1.1em 0 .4em;color:#243b60}p{margin:.55em 0}ul,ol{padding-left:1.35rem}.formula{background:var(--pale);border-left:4px solid var(--blue);padding:12px 15px;border-radius:8px;margin:12px 0;font-size:1.12rem;font-weight:600;text-align:center}.answer{background:var(--green);padding:12px;border-radius:8px}.muted,small{color:var(--muted)}table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left}th{background:#edf2f9}.step{padding:11px;border-radius:9px;margin:8px 0;background:#f0f5fb;text-align:center}.controls{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:center}.controls input{grid-column:1/-1;width:100%}input[type=range]{accent-color:var(--blue)}.stats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.stat{background:#f3f6fb;padding:12px;border-radius:10px}.stat strong{display:block;font-size:1.35rem;color:#1c579c}button{border:0;border-radius:9px;padding:10px 15px;background:var(--blue);color:white;font-weight:600;cursor:pointer}button.secondary{background:#e8edf5;color:#20324d}.question{padding:13px 0;border-bottom:1px solid var(--line)}.question label{display:block;margin:6px 0;cursor:pointer}.feedback{margin-top:8px;padding:9px;border-radius:8px}.good{background:#e6f6eb}.bad{background:#fff0df}.links a{color:#1d58a5;overflow-wrap:anywhere}.pill{display:inline-block;background:#eaf1fb;color:#244f87;border-radius:30px;padding:3px 10px;font-size:.85rem}footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:600px){.card{padding:15px}.stats{grid-template-columns:1fr}header{padding:28px 17px}table{font-size:.9rem}}
+@media print{body{background:white}.card{box-shadow:none;break-inside:avoid}button,input{display:none}header{background:white;color:black;padding:10px}header p{color:#333}a{color:black}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="pill">9-sinf fizika • dars ishlanmasi</span>
+<h1>III BOB. MASALALAR YECHISH</h1>
+<p><b>Mavzu:</b> “Issiqlik dvigatellari” bobini takrorlash, kombinatsiyalashgan masalalar va testlar</p>
+<p>Asosiy formulalar • hisoblash masalalari • interaktiv simulyatsiyalar • uyga vazifa</p>
+</div></header>
+<main>
+<section class="card">
+<h2>Dars maqsadi va rejasi</h2>
+<p><b>Maqsad:</b> issiqlik dvigatellari, issiqlik balansi, yoqilg‘ining yonish issiqligi va foydali ish koeffitsiyenti (FIK) bo‘yicha bilimlarni mustahkamlash; formulalarni birgalikda qo‘llab masalalar yechish.</p>
+<p><b>Dars turi:</b> takrorlash, masala yechish va bilimlarni mustahkamlash.</p>
+<ol><li>III bob mavzulari bo‘yicha asosiy formula va qonuniyatlarni umumlashtirish.</li><li>Issiqlik balansi va dvigatel FIKini birgalikda qo‘llashga doir kombinatsiyalashgan masalalar.</li><li>Bob yuzasidan test topshiriqlari va yakuniy xulosalar tahlili.</li></ol>
+</section>
+
+<section class="card">
+<h2>I. Asosiy formulalar va qonuniyatlar</h2>
+<h3>1. Issiqlik miqdori</h3>
+<div class="formula">Q = cm(t₂ − t₁) = cmΔt</div>
+<ul><li>Q — issiqlik miqdori (J);</li><li>c — solishtirma issiqlik sig‘imi (J/(kg·°C));</li><li>m — massa (kg);</li><li>Δt — temperatura o‘zgarishi (°C).</li></ul>
+<p><b>Misol:</b> 2 kg suv 20°C dan 50°C gacha isitildi. c = 4200 J/(kg·°C).</p>
+<div class="formula">Q = 4200 · 2 · (50 − 20) = 252 000 J</div>
+<p class="answer">Javob: 252 kJ issiqlik kerak bo‘ladi.</p>
+<h3>2. Yoqilg‘ining yonish issiqligi</h3>
+<div class="formula">Q = qm</div>
+<p>q — solishtirma yonish issiqligi (J/kg), m — yoqilg‘i massasi (kg).</p>
+<p><b>Misol:</b> 0,5 kg yoqilg‘i, q = 4,2·10⁷ J/kg.</p>
+<div class="formula">Q = 4,2·10⁷ · 0,5 = 2,1·10⁷ J = 21 MJ</div>
+<h3>3. Termodinamikaning birinchi qonuni</h3>
+<div class="formula">Q = ΔU + A</div>
+<p>Sistemaga berilgan issiqlik ichki energiyani o‘zgartirishga va ish bajarishga sarflanadi. Q — berilgan issiqlik, ΔU — ichki energiya o‘zgarishi, A — bajarilgan ish.</p>
+<p><b>Misol:</b> gazga 800 J issiqlik berildi, ichki energiyasi 300 J ga ortdi.</p>
+<div class="formula">A = Q − ΔU = 800 − 300 = 500 J</div>
+<h3>4. Issiqlik dvigateli va issiqlik balansi</h3>
+<p>Issiqlik dvigateli issiqlik energiyasining bir qismini mexanik ishga aylantiradi. Uning asosiy qismlari: <b>isitgich</b> (issiqlik beradi), <b>ishchi jism</b> (ish bajaradi), <b>sovitkich</b> (ortiqcha issiqlikni qabul qiladi).</p>
+<div class="formula">Q₁ = A + Q₂ &nbsp;&nbsp; yoki &nbsp;&nbsp; A = Q₁ − Q₂</div>
+<p>Q₁ — isitgichdan olingan issiqlik; A — foydali ish; Q₂ — sovitkichga uzatilgan issiqlik.</p>
+<h3>5. Foydali ish koeffitsiyenti (FIK)</h3>
+<div class="formula">η = (A / Q₁) · 100% = ((Q₁ − Q₂) / Q₁) · 100%</div>
+<p>FIK olingan issiqlikning necha foizi foydali ishga aylanganini ko‘rsatadi. Real dvigatellarda FIK 100% dan kichik.</p>
+<p><b>Misol:</b> Q₁ = 1200 J, Q₂ = 720 J.</p>
+<div class="formula">A = 1200 − 720 = 480 J; &nbsp; η = 480/1200 · 100% = 40%</div>
+<p class="answer">Javob: foydali ish 480 J, FIK 40%.</p>
+</section>
+
+<section class="card">
+<h2>II. Kombinatsiyalashgan masalalar</h2>
+<h3>Masala 1. Yoqilg‘i, issiqlik balansi va FIK</h3>
+<p>0,4 kg yoqilg‘i yondirildi. q = 4,5·10⁷ J/kg. Dvigatel FIKi 30%. Ajralgan issiqlik, foydali ish va sovitkichga uzatilgan issiqlikni toping.</p>
+<p><b>1.</b> Q₁ = qm = 4,5·10⁷ · 0,4 = 18 MJ.</p>
+<p><b>2.</b> A = 0,30 · 18 = 5,4 MJ.</p>
+<p><b>3.</b> Q₂ = Q₁ − A = 18 − 5,4 = 12,6 MJ.</p>
+<p class="answer">Javob: Q₁ = 18 MJ; A = 5,4 MJ; Q₂ = 12,6 MJ.</p>
+<h3>Masala 2. Suvni isitish va dvigatel FIKi</h3>
+<p>2 kg suv 20°C dan 80°C gacha isitiladi. c = 4200 J/(kg·°C). Dvigatel FIKi 25%. Suv olgan issiqlik, dvigatel olishi kerak bo‘lgan issiqlik va foydali ishni toping. Bu masalada suvga uzatilgan 504 kJ issiqlik foydali energiya sifatida qaraladi.</p>
+<p>Q = cmΔt = 4200 · 2 · 60 = 504 000 J.</p>
+<p>η = A/Q₁ dan Q₁ = A/η = 504 000/0,25 = 2 016 000 J.</p>
+<p class="answer">Javob: suv 504 kJ oladi; Q₁ = 2016 kJ; A = 504 kJ.</p>
+<h3>Masala 3. FIK va sovitkichga uzatilgan issiqlik</h3>
+<p>Q₁ = 2500 J, η = 36%. Foydali ish va Q₂ ni toping.</p>
+<p>A = 2500 · 0,36 = 900 J.</p>
+<p>Q₂ = 2500 − 900 = 1600 J.</p>
+<p class="answer">Javob: A = 900 J; Q₂ = 1600 J.</p>
+<h3>Masala yechish algoritmi</h3>
+<div class="step">1. Berilgan kattaliklarni va topilishi kerak bo‘lganlarni yozing.</div>
+<div class="step">2. Kerakli formulani tanlang: Q = qm yoki Q = cmΔt.</div>
+<div class="step">3. Issiqlik balansini qo‘llang: Q₁ = A + Q₂.</div>
+<div class="step">4. FIKni hisoblang: η = A/Q₁ · 100%.</div>
+<div class="step">5. Tekshiring: A + Q₂ = Q₁ va η &lt; 100%.</div>
+</section>
+
+<section class="card">
+<h2>III. Animatsion simulyatsiyalar</h2>
+<h3>1. Energiya shakllari va o‘zgarishlari</h3>
+<p>PhET simulyatsiyasida issiqlik va energiya uzatilishini kuzating. Issiqlik manbai va qabul qiluvchi jismni tanlab, temperatura o‘zgarishini kuzatish mumkin.</p>
+<p class="links"><a href="https://phet.colorado.edu/en/simulations/energy-forms-and-changes" target="_blank" rel="noopener">PhET — Energy Forms and Changes simulyatsiyasini ochish</a></p>
+<h3>2. Issiqlik dvigateli energiya balansi — interaktiv model</h3>
+<p>Slayderlarni o‘zgartiring. Model Q₁, FIK, foydali ish va sovitkichga uzatiladigan issiqlik orasidagi bog‘lanishni ko‘rsatadi.</p>
+<div class="card" style="background:#fbfcff">
+<div class="controls"><label for="heat">Isitgich issiqligi Q₁</label><output id="heatOut">1000 J</output><input id="heat" type="range" min="200" max="3000" step="100" value="1000"></div>
+<div class="controls" style="margin-top:18px"><label for="eff">Dvigatel FIKi η</label><output id="effOut">30%</output><input id="eff" type="range" min="5" max="80" step="5" value="30"></div>
+<div class="stats" style="margin-top:15px"><div class="stat">Foydali ish A<strong id="work">300 J</strong></div><div class="stat">Sovitkichga Q₂<strong id="waste">700 J</strong></div></div>
+<div class="formula" id="balance">1000 = 300 + 700 J</div>
+<p id="explain" class="muted">Energiya balansiga ko‘ra olingan issiqlik foydali ish va sovitkichka uzatilgan issiqlik yig‘indisiga teng.</p>
+</div>
+<h3>Simulyatsiya topshiriqlari</h3>
+<ol><li>Q₁ = 1000 J va FIK = 20% bo‘lganda A va Q₂ ni toping.</li><li>FIKni 50% ga oshiring. Foydali ish qanday o‘zgaradi?</li><li>Q₁ ikki marta oshsa, FIK o‘zgarmaganda foydali ish qanday o‘zgaradi?</li><li>Nima uchun real dvigatelda issiqlikning hammasi foydali ishga aylanmaydi?</li></ol>
+<h3>3. Issiqxona effekti</h3>
+<p>Simulyatsiyada Quyosh nurlarining Yerga kelishi, Yer yuzasining energiyani yutishi va infraqizil nurlanishning atmosferaga tarqalishini kuzating.</p>
+<p class="links"><a href="https://phet.colorado.edu/en/simulations/greenhouse-effect" target="_blank" rel="noopener">PhET — Greenhouse Effect simulyatsiyasini ochish</a></p>
+<p>O‘ylab ko‘ring: yoqilg‘i yonishi natijasida qanday gazlar ajraladi? Issiqlik dvigateli FIKini oshirish yoqilg‘i sarfi va chiqindilarni kamaytirishga qanday yordam beradi?</p>
+</section>
+
+<section class="card">
+<h2>IV. Video animatsion materiallar</h2>
+<ul class="links">
+<li><a href="https://www.youtube.com/results?search_query=four+stroke+engine+animation+educational" target="_blank" rel="noopener">Ichki yonuv dvigatelining 4 taktli ishlashi</a> — kiritish, siqish, ish bajarish va chiqarish.</li>
+<li><a href="https://www.youtube.com/results?search_query=heat+engine+working+principle+animation" target="_blank" rel="noopener">Issiqlik dvigatelining ishlash prinsipi</a> — isitgich, ishchi jism, sovitkich va energiya balansi.</li>
+<li><a href="https://www.youtube.com/results?search_query=steam+turbine+working+animation" target="_blank" rel="noopener">Bug‘ turbinasining ishlashi</a> — bug‘ energiyasining mexanik energiyaga aylanishi.</li>
+<li><a href="https://www.youtube.com/results?search_query=greenhouse+effect+animation+educational" target="_blank" rel="noopener">Issiqxona effekti</a> — atmosfera va infraqizil nurlanish.</li>
+</ul>
+<p class="muted">Havolalar YouTube qidiruv natijalarini ochadi. Darsdan oldin video mazmuni va davomiyligini tekshiring.</p>
+</section>
+
+<section class="card">
+<h2>V. Bob bo‘yicha interaktiv test</h2>
+<p>Har bir savol uchun bitta javobni belgilang va “Testni tekshirish” tugmasini bosing.</p>
+<div id="quiz"></div>
+<button id="check">Testni tekshirish</button> <button class="secondary" id="reset">Qayta ishlash</button>
+<div id="result" aria-live="polite"></div>
+</section>
+
+<section class="card">
+<h2>VI. Guruhlarda ishlash</h2>
+<h3>1-guruh — “Issiqlik balansi”</h3>
+<p>Dvigatel 4000 J issiqlik oldi, sovitkichga 2500 J uzatdi. Foydali ishni va FIKni toping.</p>
+<h3>2-guruh — “Yoqilg‘i va energiya”</h3>
+<p>0,2 kg yoqilg‘i yondirildi, q = 4,0·10⁷ J/kg, FIK = 25%. Ajralgan issiqlik, foydali ish va sovitkichga uzatilgan issiqlikni toping.</p>
+<h3>3-guruh — “Tabiatni muhofaza qilish”</h3>
+<p>Yoqilg‘i yonishidan qanday chiqindilar hosil bo‘ladi? FIKni oshirish nima uchun muhim? Energiya tejashning uchta usulini ayting.</p>
+<details><summary><b>O‘qituvchi uchun javoblar</b></summary>
+<p>1-guruh: A = 4000 − 2500 = 1500 J; η = 37,5%.</p>
+<p>2-guruh: Q₁ = 8 MJ; A = 2 MJ; Q₂ = 6 MJ.</p>
+<p>3-guruh: CO₂, CO, azot oksidlari va mayda zarrachalar misol bo‘ladi. Energiya samaradorligi yoqilg‘i sarfi va chiqindilarni kamaytirishi mumkin.</p>
+</details>
+</section>
+
+<section class="card">
+<h2>VII. Yakuniy xulosa va refleksiya</h2>
+<ul><li>Q = cmΔt — jismni isitish yoki sovitishdagi issiqlik miqdori.</li><li>Q = qm — yoqilg‘i yonganda ajraladigan issiqlik.</li><li>Q = ΔU + A — termodinamikaning birinchi qonuni.</li><li>Q₁ = A + Q₂ — issiqlik dvigatelining energiya balansi.</li><li>η = A/Q₁ · 100% — dvigatelning foydali ish koeffitsiyenti.</li><li>Energiya samaradorligini oshirish va qayta tiklanuvchi manbalardan foydalanish tabiatni muhofaza qilishga yordam beradi.</li></ul>
+<p><b>Refleksiya savollari:</b></p>
+<ol><li>Bugungi darsda qaysi formula siz uchun eng muhim bo‘ldi?</li><li>Kombinatsiyalashgan masalada qaysi bosqich qiyin bo‘ldi?</li><li>Simulyatsiya formulalarni tushunishingizga qanday yordam berdi?</li><li>Issiqlik dvigatellarining tabiatga ta’sirini kamaytirish uchun nima qilish mumkin?</li></ol>
+</section>
+
+<section class="card">
+<h2>VIII. Uyga vazifa</h2>
+<h3>1-topshiriq. Formulalarni yozing</h3>
+<p>Daftaringizga Q = cmΔt, Q = qm, Q = ΔU + A, Q₁ = A + Q₂ va η = A/Q₁ · 100% formulalarini yozing. Har bir kattalikning fizik ma’nosi va o‘lchov birligini izohlang.</p>
+<h3>2-topshiriq. Hisoblash masalalari</h3>
+<ol>
+<li>3 kg suv 15°C dan 65°C gacha isitildi. c = 4200 J/(kg·°C). Suv olgan issiqlikni toping.</li>
+<li>0,3 kg yoqilg‘i yondirildi. q = 4,2·10⁷ J/kg. Ajralgan issiqlikni hisoblang.</li>
+<li>Dvigatel 6000 J issiqlik oldi va 2100 J foydali ish bajardi. FIKni toping.</li>
+<li>Dvigatel 5000 J issiqlik oldi. FIKi 35%. Foydali ish va Q₂ ni toping.</li>
+<li>0,5 kg yoqilg‘i yondirildi. q = 4,0·10⁷ J/kg, FIK = 30%. Q₁, A va Q₂ ni toping.</li>
+</ol>
+<h3>3-topshiriq. Simulyatsiya kuzatuvi</h3>
+<p><a href="https://phet.colorado.edu/en/simulations/energy-forms-and-changes" target="_blank" rel="noopener">PhET simulyatsiyasini</a> ochib, jadvalni to‘ldiring.</p>
+<table><tr><th>Kuzatiladigan kattalik</th><th>Natija</th></tr><tr><td>Boshlang‘ich temperatura</td><td></td></tr><tr><td>Oxirgi temperatura</td><td></td></tr><tr><td>Energiya qaysi yo‘nalishda uzatildi?</td><td></td></tr><tr><td>Jism energiyasi qanday o‘zgardi?</td><td></td></tr><tr><td>Xulosa</td><td></td></tr></table>
+<h3>4-topshiriq. Ijodiy ish</h3>
+<p>“Issiqlik dvigatellari va tabiatni muhofaza qilish” mavzusida 5–7 slaydli taqdimot tayyorlang. Unda dvigatel ishlashi, FIK, yoqilg‘i sarfi, atmosferaga ta’sir, energiya tejash usullari va kamida bitta animatsion video yoki simulyatsiya bo‘lsin.</p>
+<h3>5-topshiriq. Video asosida tahlil</h3>
+<p><a href="https://www.youtube.com/results?search_query=four+stroke+engine+animation+educational" target="_blank" rel="noopener">4 taktli dvigatel animatsiyasini</a> ko‘ring va quyidagilarga yozma javob bering:</p>
+<ol><li>Dvigatelning to‘rt taktini nomlang.</li><li>Qaysi taktda gaz kengayib ish bajaradi?</li><li>Issiqlik energiyasi qanday qilib mexanik energiyaga aylanadi?</li><li>Nima uchun dvigatelga sovitish tizimi kerak?</li></ol>
+<details><summary><b>Uy vazifasi hisoblash masalalari javoblari (o‘qituvchi uchun)</b></summary>
+<ol><li>Q = 630 000 J.</li><li>Q = 12 600 000 J.</li><li>η = 35%.</li><li>A = 1750 J; Q₂ = 3250 J.</li><li>Q₁ = 20 MJ; A = 6 MJ; Q₂ = 14 MJ.</li></ol>
+</details>
+</section>
+<footer>9-sinf fizika • III bob. Masalalar yechish<br>Materialni darsda foydalanish va chop etish uchun tayyorlangan.</footer>
+</main>
+<script>
+const heat=document.getElementById('heat'), eff=document.getElementById('eff');
+function updateModel(){const q=+heat.value,e=+eff.value,a=q*e/100,w=q-a;
+document.getElementById('heatOut').textContent=q+' J';document.getElementById('effOut').textContent=e+'%';
+document.getElementById('work').textContent=a.toFixed(0)+' J';document.getElementById('waste').textContent=w.toFixed(0)+' J';
+document.getElementById('balance').textContent=q+' = '+a.toFixed(0)+' + '+w.toFixed(0)+' J';
+document.getElementById('explain').textContent='Foydali ishga '+e+'% energiya aylanadi; qolgan '+(100-e)+'% issiqlik sovitkichga uzatiladi.'}
+heat.addEventListener('input',updateModel);eff.addEventListener('input',updateModel);updateModel();
+
+const questions=[
+{q:'Issiqlik dvigatelining foydali ishi qaysi formula bilan topiladi?',o:['A = Q₁ + Q₂','A = Q₁ − Q₂','A = Q₂ − Q₁'],a:1,e:'Issiqlik balansi: Q₁ = A + Q₂. Demak, A = Q₁ − Q₂.'},
+{q:'Yoqilg‘i yonganda ajraladigan issiqlik qaysi formula bilan aniqlanadi?',o:['Q = qm','Q = cmΔt','Q = A/Q₁'],a:0,e:'Yoqilg‘i yonish issiqligi Q = qm formula bilan topiladi.'},
+{q:'Dvigatel 2000 J issiqlik oldi va 500 J ish bajardi. FIK qancha?',o:['25%','40%','50%'],a:0,e:'η = 500/2000 · 100% = 25%.'},
+{q:'Dvigatel 900 J issiqlik olib, sovitkichga 600 J uzatdi. Ish qancha?',o:['1500 J','300 J','600 J'],a:1,e:'A = Q₁ − Q₂ = 900 − 600 = 300 J.'},
+{q:'Real issiqlik dvigatelining FIKi qanday bo‘ladi?',o:['100% dan kichik','Har doim 100%','100% dan katta'],a:0,e:'Real dvigatellarda issiqlikning bir qismi sovitkichga uzatiladi.'},
+{q:'Termodinamikaning birinchi qonuni nimani ifodalaydi?',o:['Massaning ortishini','Energiya saqlanishini','Temperatura doimiyligini'],a:1,e:'Energiya yo‘qolmaydi, bir turdan boshqa turga o‘tadi.'},
+{q:'FIK 40% bo‘lgan dvigatel 5000 J issiqlik oldi. Foydali ish qancha?',o:['2000 J','3000 J','5000 J'],a:0,e:'A = 0,40 · 5000 = 2000 J.'},
+{q:'Q₂ = 1200 J, foydali ish 800 J. Isitgich issiqligi qancha?',o:['400 J','2000 J','1200 J'],a:1,e:'Q₁ = A + Q₂ = 800 + 1200 = 2000 J.'}
+];
+const quiz=document.getElementById('quiz');
+function renderQuiz(){quiz.innerHTML='';questions.forEach((q,i)=>{const d=document.createElement('div');d.className='question';d.innerHTML='<b>'+(i+1)+'. '+q.q+'</b>'+q.o.map((o,j)=>'<label><input type="radio" name="q'+i+'" value="'+j+'"> '+o+'</label>').join('')+'<div id="fb'+i+'"></div>';quiz.appendChild(d)})}
+renderQuiz();
+document.getElementById('check').addEventListener('click',()=>{let score=0,answered=0;questions.forEach((q,i)=>{const chosen=document.querySelector('input[name="q'+i+'"]:checked');const fb=document.getElementById('fb'+i);if(chosen){answered++;if(+chosen.value===q.a){score++;fb.className='feedback good';fb.textContent='To‘g‘ri! '+q.e}else{fb.className='feedback bad';fb.textContent='To‘g‘ri javob: '+q.o[q.a]+'. '+q.e}}else{fb.className='feedback bad';fb.textContent='Javob belgilanmagan. To‘g‘ri javob: '+q.o[q.a]+'.'}});document.getElementById('result').innerHTML='<div class="answer"><b>Natija: '+score+' / '+questions.length+'</b><br>'+Math.round(score/questions.length*100)+'% to‘g‘ri javob. Javob berilgan savollar: '+answered+'.</div>'});
+document.getElementById('reset').addEventListener('click',()=>{renderQuiz();document.getElementById('result').innerHTML=''});
+</script>
+</body></html>

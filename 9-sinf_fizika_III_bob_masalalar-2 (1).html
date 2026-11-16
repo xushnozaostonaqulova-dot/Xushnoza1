@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — III bob. Masalalar yechish</title>
+<style>
+:root{--blue:#185abd;--ink:#172033;--muted:#5b6578;--bg:#f3f6fb;--card:#fff;--green:#16834a;--orange:#d88719}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 Arial,sans-serif}
+header{background:linear-gradient(120deg,#123d82,#2878c7);color:white;padding:42px 20px}
+.wrap{max-width:1000px;margin:auto;padding:0 18px}header h1{font-size:clamp(27px,5vw,42px);line-height:1.2;margin:8px 0}header p{margin:8px 0;opacity:.92}
+nav{background:#fff;position:sticky;top:0;z-index:5;box-shadow:0 2px 9px #15233a12;overflow:auto;white-space:nowrap;padding:10px max(18px,calc((100% - 964px)/2))}
+nav a{display:inline-block;color:var(--blue);text-decoration:none;font-weight:bold;font-size:14px;margin-right:18px}
+main{padding:24px 0 60px}.card{background:var(--card);border-radius:16px;padding:24px;margin:18px 0;box-shadow:0 5px 22px #20385b0b}
+h2{font-size:25px;color:#174b91;margin:0 0 14px}h3{color:#174b91;margin:20px 0 8px}
+.lead{font-size:18px}.formula{background:#edf4ff;border-left:4px solid var(--blue);padding:13px 17px;border-radius:8px;font-size:22px;font-weight:bold;margin:12px 0}
+.note{color:var(--muted);font-size:14px}.pill{display:inline-block;background:#e6f5ed;color:#146c3d;padding:3px 10px;border-radius:20px;font-size:13px;font-weight:bold}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #dce3ed;padding:9px;text-align:left}th{background:#edf4ff}
+.example{background:#f8fafc;padding:15px;border-radius:10px;margin:12px 0}
+.sim{border:1px solid #dce3ed;border-radius:14px;padding:18px;margin:16px 0;background:#fbfdff}
+input[type=range]{width:100%;accent-color:var(--blue)}.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:10px;margin:14px 0}
+.stat{padding:13px;border-radius:10px;background:#eaf6ef}.stat.orange{background:#fff3df}.stat b{display:block;font-size:23px}
+button{border:0;border-radius:9px;padding:11px 16px;background:var(--blue);color:white;font-weight:bold;cursor:pointer}
+button.secondary{background:#e8eef7;color:#174b91}.question{padding:14px 0;border-bottom:1px solid #e4e9f0}.question label{display:block;margin:5px 0;cursor:pointer}
+.result{font-weight:bold;margin-top:12px}.video a{color:var(--blue);font-weight:bold}
+footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:600px){.card{padding:17px}h2{font-size:22px}.formula{font-size:19px}table{font-size:14px}}
+@media print{nav,button,input[type=range]{display:none!important}body{background:white}.card{box-shadow:none;break-inside:avoid}.sim{border:1px solid #aaa}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<div>9-SINF FIZIKA FANIDAN • DARS ISHLANMASI</div>
+<h1>III BOB. MASALALAR YECHISH</h1>
+<p>Yoqilg‘i yonishi • Issiqlik dvigateli • FIK • Quvvat va harakat tezligi</p>
+</div></header>
+<nav>
+<a href="#maqsad">Dars maqsadi</a><a href="#reja1">I. Issiqlik va FIK</a><a href="#reja2">II. Foydali ish</a><a href="#reja3">III. Quvvat va tezlik</a><a href="#test">Test</a><a href="#uy">Uyga vazifa</a>
+</nav>
+<main class="wrap">
+<section class="card" id="maqsad">
+<h2>Dars haqida</h2>
+<p class="lead"><b>Mavzu:</b> Yoqilg‘i yonganda ajraladigan issiqlik miqdori, issiqlik dvigatelining foydali ishi, quvvati, harakat tezligi va foydali ish koeffitsiyentiga doir masalalar yechish.</p>
+<p><b>Dars turi:</b> Bilimlarni mustahkamlash va amaliy masalalar yechish.</p>
+<p><b>Metodlar:</b> Muammoli ta’lim, tushuntirish, savol-javob, guruhlarda ishlash, interaktiv simulyatsiya.</p>
+<h3>Dars maqsadlari</h3>
+<ul><li><b>Ta’limiy:</b> Q = qm, FIK, foydali ish va quvvat formulalarini o‘rgatish.</li><li><b>Tarbiyaviy:</b> Yoqilg‘ini tejash, energiyani asrash va ekologik madaniyatni shakllantirish.</li><li><b>Rivojlantiruvchi:</b> Mustaqil fikrlash, hisoblash va fizik hodisalarni tahlil qilish ko‘nikmalarini rivojlantirish.</li></ul>
+<h3>Kutilayotgan natijalar</h3><p>O‘quvchi issiqlik miqdorini, FIKni, foydali ishni, sarflangan yoqilg‘i massasini, dvigatel quvvati va tezligini hisoblay oladi.</p>
+</section>
+
+<section class="card" id="reja1">
+<h2>I. Yoqilg‘i yonganda ajraladigan issiqlik miqdori va FIK</h2>
+<h3>1. Yoqilg‘i yonganda ajraladigan issiqlik</h3>
+<p>Yoqilg‘i yonganda uning kimyoviy energiyasi issiqlik energiyasiga aylanadi. Ajraladigan issiqlik yoqilg‘i turi va massasiga bog‘liq.</p>
+<div class="formula">Q = q · m</div>
+<ul><li><b>Q</b> — ajralgan issiqlik miqdori (J);</li><li><b>q</b> — solishtirma yonish issiqligi (J/kg);</li><li><b>m</b> — yoqilg‘i massasi (kg).</li></ul>
+<table><tr><th>Yoqilg‘i turi</th><th>q, MJ/kg (taxminan)</th></tr><tr><td>O‘tin</td><td>10</td></tr><tr><td>Torf</td><td>15</td></tr><tr><td>Toshko‘mir</td><td>27</td></tr><tr><td>Benzin</td><td>46</td></tr><tr><td>Kerosin</td><td>46</td></tr><tr><td>Dizel yoqilg‘isi</td><td>42</td></tr></table>
+<p class="note">Qiymatlar o‘quv masalalari uchun yaxlitlangan.</p>
+<div class="example"><b>Namunaviy masala.</b> 2 kg toshko‘mir to‘liq yonganda qancha issiqlik ajraladi?<br><b>Berilgan:</b> m = 2 kg; q = 27 MJ/kg.<br><b>Yechish:</b> Q = qm = 27 · 2 = 54 MJ.<br><span class="pill">Javob: 54 MJ</span></div>
+<h3>2. Foydali ish koeffitsiyenti (FIK)</h3>
+<p>Issiqlik dvigatelida yoqilg‘i energiyasining hammasi foydali ishga aylanmaydi. Bir qismi atrof-muhitga, sovitish tizimiga va chiqindi gazlarga uzatiladi.</p>
+<div class="formula">η = (A<sub>f</sub> / Q) · 100%</div>
+<div class="formula">A<sub>f</sub> = (η / 100) · Q</div>
+<p><b>Misol:</b> Dvigatel 1000 J issiqlik olib, FIKi 30% bo‘lsa, foydali ish: A<sub>f</sub> = 0,30 · 1000 = 300 J. Qolgan 700 J energiya foydali ishga aylanmaydi.</p>
+<h3>Interaktiv simulyatsiya: energiya taqsimlanishi</h3>
+<div class="sim">
+<label>Kiruvchi issiqlik: <b><span id="heatVal">1000</span> J</b></label>
+<input id="heat" type="range" min="100" max="5000" step="100" value="1000">
+<label>FIK: <b><span id="effVal">30</span>%</b></label>
+<input id="eff" type="range" min="5" max="80" step="5" value="30">
+<div class="stats"><div class="stat"><span>Foydali ish</span><b id="useful">300 J</b></div><div class="stat orange"><span>Yo‘qotilgan energiya</span><b id="lost">700 J</b></div></div>
+<div style="height:18px;background:#e8a23c;border-radius:10px;overflow:hidden"><div id="bar" style="height:100%;width:30%;background:#16834a"></div></div>
+<p class="note">Slayderlarni o‘zgartirib, foydali ish va yo‘qotilgan energiyaning qanday o‘zgarishini kuzating.</p>
+</div>
+<h3>Tekshiruv savollari</h3><ol><li>Issiqlik miqdori ikki barobar oshsa, FIK o‘zgarmaganda foydali ish qanday o‘zgaradi?</li><li>FIK 30% dan 60% ga oshirilsa, foydali ish qanday o‘zgaradi?</li><li>Nima uchun issiqlik dvigatelining FIKi 100% bo‘la olmaydi?</li></ol>
+</section>
+
+<section class="card" id="reja2">
+<h2>II. Issiqlik dvigatelining foydali ishi va sarflangan yoqilg‘i massasini aniqlash</h2>
+<h3>1. Issiqlik dvigatelining ishlashi</h3>
+<p>Issiqlik dvigateli issiqlik energiyasini mexanik energiyaga aylantirib, ish bajaradigan qurilmadir. Misollar: avtomobil va traktor dvigatellari, mototsikl dvigateli, bug‘ turbinasi.</p>
+<p><b>Ichki yonuv dvigatelining to‘rt takti:</b></p>
+<ol><li><b>Kiritish:</b> silindrga havo va yoqilg‘i aralashmasi kiradi.</li><li><b>Siqish:</b> porshen aralashmani siqadi.</li><li><b>Ish yo‘li:</b> aralashma yonadi, gaz kengayib porshenni harakatga keltiradi.</li><li><b>Chiqarish:</b> ishlatilgan gazlar tashqariga chiqariladi.</li></ol>
+<h3>2. Foydali ishni aniqlash</h3>
+<div class="formula">A<sub>f</sub> = (η · Q) / 100</div><div class="formula">A<sub>f</sub> = (η · q · m) / 100</div>
+<div class="example"><b>Namunaviy masala.</b> Dvigatel 3 kg benzin sarfladi. q = 46 MJ/kg, FIK = 25%.<br>Q = qm = 46 · 3 = 138 MJ.<br>A<sub>f</sub> = 25 · 138 / 100 = 34,5 MJ.<br><span class="pill">Javob: 34,5 MJ</span></div>
+<h3>3. Sarflangan yoqilg‘i massasini aniqlash</h3>
+<div class="formula">m = (100 · A<sub>f</sub>) / (η · q)</div>
+<div class="example"><b>Namunaviy masala.</b> Dvigatel 23 MJ foydali ish bajardi. FIK = 25%, q = 46 MJ/kg.<br>m = (100 · 23) / (25 · 46) = 2 kg.<br><span class="pill">Javob: 2 kg benzin</span></div>
+<h3>Mustaqil masalalar</h3><ol><li>4 kg ko‘mir yonganda qancha issiqlik ajraladi? q = 27 MJ/kg.</li><li>5 kg benzin yonganda ajralgan issiqlikning 30% i foydali ishga aylansa, foydali ishni aniqlang.</li><li>FIK = 20%, foydali ish = 18 MJ, q = 46 MJ/kg. Sarflangan benzin massasini toping.</li></ol>
+</section>
+
+<section class="card" id="reja3">
+<h2>III. Dvigatel quvvati, harakat tezligi va FIK bog‘liqligi</h2>
+<h3>1. Dvigatel quvvati</h3>
+<p>Quvvat — vaqt birligi ichida bajarilgan ishni ifodalovchi fizik kattalik.</p>
+<div class="formula">P = A / t</div><div class="formula">A = P · t</div>
+<p>Quvvat birligi — vatt (W). 1 kW = 1000 W.</p>
+<h3>2. Quvvat va tezlik orasidagi bog‘lanish</h3>
+<div class="formula">P = F · v</div><div class="formula">v = P / F &nbsp;&nbsp; F = P / v</div>
+<p>Bu yerda F — tortish kuchi (N), v — tezlik (m/s). Formula o‘zgarmas tezlikdagi mexanik chiqish quvvati uchun qo‘llanadi.</p>
+<div class="example"><b>Namunaviy masala.</b> Avtomobil dvigatelining foydali quvvati 40 kW, tezligi 20 m/s. Tortish kuchini toping.<br>P = 40 000 W; F = P/v = 40 000/20 = 2000 N.<br><span class="pill">Javob: 2000 N</span></div>
+<h3>3. Quvvat va FIK</h3>
+<p>Agar dvigatel bir sekundda 200 kJ issiqlik energiyasi qabul qilsa va FIKi 30% bo‘lsa:</p>
+<p>P<sub>kir</sub> = 200 000 J / 1 s = 200 000 W.</p><p>P<sub>foydali</sub> = 0,30 · 200 000 = 60 000 W = 60 kW.</p>
+<h3>Interaktiv simulyatsiya: avtomobil harakati</h3>
+<div class="sim">
+<label>Dvigatel quvvati: <b><span id="powerVal">40</span> kW</b></label><input id="power" type="range" min="10" max="100" step="5" value="40">
+<label>Tortish kuchi: <b><span id="forceVal">2000</span> N</b></label><input id="force" type="range" min="500" max="5000" step="100" value="2000">
+<div class="stats"><div class="stat"><span>Tezlik</span><b id="speed">20,00 m/s</b></div><div class="stat"><span>Tezlik</span><b id="speedKmh">72,0 km/soat</b></div></div>
+<p class="note">Model: v = P/F. Quvvat va tortish kuchi o‘zgarmas deb olinadi.</p>
+</div>
+<h3>Guruhlar bilan ishlash</h3>
+<ul><li><b>1-guruh — Yoqilg‘i bilimdonlari:</b> 3 kg ko‘mir yonganda ajraladigan issiqlikni hisoblang. q = 27 MJ/kg.</li><li><b>2-guruh — FIK tadqiqotchilari:</b> Dvigatel 200 MJ issiqlik energiyasidan 50 MJ foydali ish bajardi. FIKni toping.</li><li><b>3-guruh — Quvvat muhandislari:</b> 60 kW quvvatli avtomobil 30 m/s tezlikda harakatlanmoqda. Tortish kuchini aniqlang.</li></ul>
+</section>
+
+<section class="card" id="test">
+<h2>IV. Mustahkamlash: savol-javob va test</h2>
+<h3>Tezkor savollar</h3><ol><li>Yoqilg‘i yonganda qanday energiya ajraladi?</li><li>Solishtirma yonish issiqligi deb nimaga aytiladi?</li><li>Q = qm formulasidagi q nimani anglatadi?</li><li>FIK qanday fizik kattalik?</li><li>Issiqlik dvigatelining FIKi 100% bo‘lishi mumkinmi?</li><li>Quvvat qanday formula bilan aniqlanadi?</li><li>Quvvat va tezlik orasidagi bog‘lanish qanday?</li><li>Dvigatel FIKini oshirish uchun nimalar qilish mumkin?</li></ol>
+<h3>Interaktiv test</h3>
+<form id="quiz">
+<div class="question"><b>1. Yoqilg‘i yonganda ajraladigan issiqlik miqdori qaysi formula bilan aniqlanadi?</b><label><input type="radio" name="q1" value="0"> Q = qm</label><label><input type="radio" name="q1" value="1"> Q = Pt</label><label><input type="radio" name="q1" value="2"> Q = mv</label></div>
+<div class="question"><b>2. FIK qaysi formula bilan aniqlanadi?</b><label><input type="radio" name="q2" value="0"> η = Q/A</label><label><input type="radio" name="q2" value="1"> η = A<sub>f</sub>/Q · 100%</label><label><input type="radio" name="q2" value="2"> η = Pt</label></div>
+<div class="question"><b>3. Quvvatning SI birligi nima?</b><label><input type="radio" name="q3" value="0"> Joul</label><label><input type="radio" name="q3" value="1"> Nyuton</label><label><input type="radio" name="q3" value="2"> Vatt</label></div>
+<div class="question"><b>4. Dvigatel 1000 J energiya olib, 300 J foydali ish bajardi. FIK qancha?</b><label><input type="radio" name="q4" value="0"> 30%</label><label><input type="radio" name="q4" value="1"> 70%</label><label><input type="radio" name="q4" value="2"> 50%</label></div>
+<div class="question"><b>5. P = Fv formulasida v nimani bildiradi?</b><label><input type="radio" name="q5" value="0"> Vaqt</label><label><input type="radio" name="q5" value="1"> Tezlik</label><label><input type="radio" name="q5" value="2"> Massa</label></div>
+<div class="question"><b>6. FIK 25% bo‘lsa, 1000 J energiyaning necha J qismi foydali ishga aylanadi?</b><label><input type="radio" name="q6" value="0"> 250 J</label><label><input type="radio" name="q6" value="1"> 750 J</label><label><input type="radio" name="q6" value="2"> 500 J</label></div>
+<button type="button" onclick="checkQuiz()">Javoblarni tekshirish</button> <button type="reset" class="secondary" onclick="document.getElementById('quizResult').textContent=''">Qayta ishlash</button>
+<div class="result" id="quizResult" aria-live="polite"></div>
+</form>
+</section>
+
+<section class="card" id="uy">
+<h2>V. Uyga vazifa</h2>
+<h3>1-topshiriq. Formulalarni yodlash</h3>
+<p>Quyidagi formulalarni yozing va har biridagi fizik kattaliklar hamda o‘lchov birliklarini tushuntiring:</p>
+<div class="formula">Q = qm</div><div class="formula">η = (A<sub>f</sub>/Q) · 100%</div><div class="formula">A<sub>f</sub> = ηQ/100</div><div class="formula">P = A/t</div><div class="formula">P = Fv</div>
+<h3>2-topshiriq. Hisoblash masalalari</h3>
+<ol><li>6 kg toshko‘mir yonganda qancha issiqlik ajraladi? q = 27 MJ/kg.</li><li>4 kg benzin yonganda 184 MJ issiqlik ajraldi. Dvigatel FIKi 30% bo‘lsa, foydali ishni aniqlang.</li><li>Dvigatelning FIKi 25%, foydali ishi 46 MJ. Benzinning solishtirma yonish issiqligi 46 MJ/kg. Sarflangan benzin massasini toping.</li><li>50 kW quvvatga ega dvigatel 25 m/s tezlikda harakat qilmoqda. Tortish kuchini aniqlang.</li><li>Dvigatel 5 minut davomida 120 kJ foydali ish bajardi. Uning foydali quvvatini hisoblang.</li></ol>
+<details><summary><b>O‘qituvchi uchun javoblar</b></summary><table><tr><th>Masala</th><th>Javob</th></tr><tr><td>1</td><td>162 MJ</td></tr><tr><td>2</td><td>55,2 MJ</td></tr><tr><td>3</td><td>4 kg</td></tr><tr><td>4</td><td>2000 N</td></tr><tr><td>5</td><td>400 W</td></tr></table></details>
+<h3>3-topshiriq. Ijodiy ish</h3>
+<ul><li>Avtomobil dvigatelining ishlash jarayoni rasmini chizing.</li><li>Yoqilg‘i energiyasining foydali ishga va issiqlik yo‘qotishlariga ketadigan qismini ko‘rsating.</li><li>Issiqlik dvigatelining FIKini oshirish yo‘llari haqida 5 ta fikr yozing.</li><li>Biror issiqlik dvigateli haqida 1–2 daqiqalik videorolik tayyorlang.</li></ul>
+</section>
+
+<section class="card">
+<h2>VI. Baholash va dars yakuni</h2>
+<table><tr><th>Baholash mezoni</th><th>Ball</th></tr><tr><td>Formulalarni bilishi</td><td>2</td></tr><tr><td>Masalalarni to‘g‘ri yechishi</td><td>3</td></tr><tr><td>Simulyatsiya bilan ishlashi</td><td>2</td></tr><tr><td>Savollarga javob berishi</td><td>2</td></tr><tr><td>Guruhdagi faolligi</td><td>1</td></tr><tr><th>Jami</th><th>10</th></tr></table>
+<h3>O‘qituvchining xulosasi</h3>
+<p>Bugungi darsda yoqilg‘i yonganda ajraladigan issiqlik miqdorini hisoblash, issiqlik dvigatelining foydali ishi, FIK, quvvat va harakat tezligi orasidagi bog‘lanishlarni o‘rgandik. Energiya yo‘qolmaydi, bir turdan ikkinchi turga aylanadi. Dvigatellarda energiyadan oqilona foydalanish, yoqilg‘ini tejash va atrof-muhitni muhofaza qilish muhimdir.</p>
+</section>
+
+<section class="card video">
+<h2>VII. Video va animatsion resurslar</h2>
+<ul>
+<li><a href="https://phet.colorado.edu/en/simulations/energy-forms-and-changes" target="_blank" rel="noopener">PhET — Energy Forms and Changes:</a> energiyaning uzatilishi va o‘zgarishi.</li>
+<li><a href="https://www.youtube.com/results?search_query=four+stroke+engine+animation" target="_blank" rel="noopener">To‘rt taktli dvigatel animatsiyasi:</a> porshen va klapanlar harakati.</li>
+<li><a href="https://www.youtube.com/results?search_query=thermal+power+plant+working+animation" target="_blank" rel="noopener">Issiqlik elektr stansiyasi animatsiyasi:</a> issiqlikdan mexanik va elektr energiyasi olish.</li>
+<li><a href="https://www.youtube.com/results?search_query=heat+engine+efficiency+animation+physics" target="_blank" rel="noopener">Issiqlik dvigateli va FIK:</a> foydali ish va energiya yo‘qotishlari.</li>
+</ul>
+<p class="note">YouTube havolalari qidiruv natijalarini ochadi. Darsdan oldin 9-sinf darajasiga mos videoni tanlang.</p>
+</section>
+<footer>9-sinf fizika • III bob. Masalalar yechish</footer>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+function energy(){let q=+$('heat').value,e=+$('eff').value,u=q*e/100;$('heatVal').textContent=q.toLocaleString('uz-UZ');$('effVal').textContent=e;$('useful').textContent=u.toLocaleString('uz-UZ')+' J';$('lost').textContent=(q-u).toLocaleString('uz-UZ')+' J';$('bar').style.width=e+'%'}
+$('heat').addEventListener('input',energy);$('eff').addEventListener('input',energy);
+function car(){let p=+$('power').value*1000,f=+$('force').value,v=p/f;$('powerVal').textContent=(p/1000);$('forceVal').textContent=f.toLocaleString('uz-UZ');$('speed').textContent=v.toFixed(2)+' m/s';$('speedKmh').textContent=(v*3.6).toFixed(1)+' km/soat'}
+$('power').addEventListener('input',car);$('force').addEventListener('input',car);
+function checkQuiz(){let key=[0,1,2,0,1,0],score=0,done=0;key.forEach((a,i)=>{let x=document.querySelector('input[name="q'+(i+1)+'"]:checked');if(x){done++;if(+x.value===a)score++}});$('quizResult').textContent=done<6?'Barcha savollarga javob bering. Hozircha '+done+'/6 ta javob belgilangan.':'Natija: '+score+'/6 ta to‘g‘ri javob.'}
+energy();car();
+</script>
+</body></html>
