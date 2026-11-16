@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Amaliy mashg’ulot: molekulalarning o’lchamini baholash</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1b2a41;--mut:#5b6b80;--hot:#e8890c;--hot2:#ffc233;--ok:#2e8b57;--bad:#c0392b;--line:#d5dde6;--wt:#2a7fd4;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--wt:#5aa7f0}}
+:root[data-theme="dark"]{--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--wt:#5aa7f0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Onest,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:25px;line-height:1.15;margin:8px 0 6px;font-weight:800}
+h2{font-size:20px;margin:0 0 8px;font-weight:800}
+p{margin:0 0 10px}
+.sub{color:var(--mut);margin-bottom:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.formula{font-size:26px;font-weight:800;text-align:center;padding:10px;border-radius:10px;background:var(--bg);margin:10px 0;line-height:1.5}
+.formula small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+button,input,textarea{font:inherit;color:inherit}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:20px;padding:6px 11px;cursor:pointer}
+.chip[aria-pressed="true"],.chip.on{background:var(--hot);border-color:var(--hot);color:#fff}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline:3px solid var(--hot2);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--hot)}
+canvas,svg.lab{width:100%;height:auto;background:var(--bg);border-radius:12px;display:block}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+.read{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.read div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.read b{display:block;font-size:18px}
+.read span{font-size:13px;color:var(--mut)}
+.note{margin-top:10px;color:var(--mut)}
+.step{font-weight:800;color:var(--hot);margin:14px 0 4px}
+ol{margin:0 0 10px;padding-left:22px}
+.tw{overflow-x:auto}
+table{border-collapse:collapse;width:100%;font-size:14px;min-width:400px}
+th,td{border:1px solid var(--line);padding:6px;text-align:center}
+th{background:var(--bg)}
+.scene{text-align:center;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--bg);border-radius:12px;padding:14px}
+.big{font-size:58px;line-height:1.1;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) scale(1.06)}}
+.prog{height:5px;background:var(--line);border-radius:3px;margin:10px 0;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--hot)}
+.hw{border-top:1px solid var(--line);padding:12px 0}
+.hw:first-of-type{border-top:0}
+.tag{display:inline-block;font-size:12px;padding:1px 8px;border-radius:10px;background:var(--bg);color:var(--mut);margin-bottom:4px}
+.opts{display:flex;flex-direction:column;gap:6px;margin-top:6px}
+.opts .chip{text-align:left;border-radius:10px}
+.opts .chip.good{background:var(--ok);color:#fff;border-color:var(--ok)}
+.opts .chip.badc{background:var(--bad);color:#fff;border-color:var(--bad)}
+input[type=number]{width:110px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+textarea{width:100%;min-height:64px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg);margin-top:6px}
+.fb{font-weight:600}
+.score{position:sticky;top:env(safe-area-inset-top,0px);background:var(--card);padding:6px 0;font-weight:800;z-index:2}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>13-§. Amaliy mashg’ulot: molekulalarning o’lchamini baholash</h1>
+<p class="sub">9-sinf fizikasi · moy tomchisi usuli, simulyatsiya, video-dars va 16 xil uyga vazifa</p>
+
+<section>
+<h2>1. Maqsad, jihozlar va g’oya</h2>
+<p><b>Maqsad:</b> suv yuzasida moyning yupqa qatlamini hosil qilib, moy molekulasining o’lchamini baholash.</p>
+<p><b>Jihozlar:</b> keng yassi idish (kyuveta), suv, moyning spirtdagi eritmasi, pipetka, o’lchov idishi (menzurka), lineyka, talk yoki likopodiy kukuni (qatlam chegarasini ko’rsatish uchun).</p>
+<p><b>G’oya:</b> moy tomchisi suv yuzasida yoyilib, qalinligi <b>bitta molekula</b> bo’lgan qatlam (monomolekulyar qatlam) hosil qiladi. Molekulalar yonma-yon zich joylashadi va bir-birining ustiga chiqmaydi deb olamiz. Unda qatlam qalinligi molekula diametriga teng.</p>
+<div class="formula">V = S · d &nbsp;⇒&nbsp; d = V / S<small>V — sof moy hajmi, S — dog’ yuzasi, d — molekula diametri (qatlam qalinligi). Dog’ doira bo’lsa: S = πD²/4</small></div>
+<p>Molekulalar juda kichik: ularning o’lchami nanometrlar (1 nm = 10⁻⁹ m) tartibida. Bu usul aniq qiymat bermaydi, faqat <b>tartibini baholaydi</b>.</p>
+</section>
+
+<section>
+<h2>2. Virtual tajriba</h2>
+<p class="step">1-qadam. Tomchidagi sof moy hajmini aniqlash</p>
+<p>1 cm³ eritma n ta tomchidan iborat. Eritmada 1 hajm moyga k hajm spirt to’g’ri keladi (1 : k). Bir tomchidagi sof moy hajmi: V = 1000 / (n·k) mm³.</p>
+<label for="sn">Tomchilar soni n (1 cm³ da): <b id="vn">40</b></label>
+<input id="sn" type="range" min="20" max="60" step="5" value="40">
+<label for="sk">Suyultirish 1 : k, k = <b id="vk">500</b></label>
+<input id="sk" type="range" min="100" max="1000" step="100" value="500">
+<div class="read"><div><b id="rt">25 mm³</b><span>tomchi hajmi</span></div><div><b id="rv">0,05 mm³</b><span>sof moy hajmi V</span></div><div><b id="rm">—</b><span>1 mm³ = 10⁻⁹ m³</span></div></div>
+
+<p class="step">2-qadam. Qatlam hosil qilish</p>
+<div class="chips" id="ch" role="group" aria-label="Suyuqlik turi"></div>
+<canvas id="cv" width="320" height="300" aria-label="Idish ustidan ko’rinish: moy dog’i"></canvas>
+<div class="row"><button class="btn" id="drop">Tomchi tashlash</button><button class="chip" id="clr">Tozalash</button></div>
+<p class="note" id="n2">Idish diametri 40 cm. Moy turini tanlang va tomchi tashlang.</p>
+
+<p class="step">3-qadam. Hisoblash</p>
+<label for="sd">Siz o’lchagan dog’ diametri D: <b id="vd">—</b> cm</label>
+<input id="sd" type="range" min="1" max="40" step="0.5" value="20" disabled>
+<svg class="lab" viewBox="0 0 320 100" aria-label="Qatlam yon tomondan"><rect x="0" y="62" width="320" height="38" fill="#2a7fd4" opacity=".55"/><g id="mol"></g><text id="dl" x="160" y="22" text-anchor="middle" font-size="13" fill="currentColor">Yon tomondan ko’rinish: bitta molekula qalinligidagi qatlam</text></svg>
+<div class="read"><div><b id="rS">—</b><span>S = πD²/4</span></div><div><b id="rd">—</b><span>d = V / S</span></div><div><b id="re">—</b><span>haqiqiy qiymatdan farq</span></div></div>
+<div class="row"><button class="chip" id="rec">Jadvalga yozish</button></div>
+<p class="note">Simulyatsiyada moylar uchun taxminiy qiymatlar ishlatilgan. Dog’ qanchalik aniq o’lchansa, natija shunchalik yaxshi bo’ladi.</p>
+<div class="tw"><table><thead><tr><th>№</th><th>Suyuqlik</th><th>V, mm³</th><th>D, cm</th><th>S, cm²</th><th>d, nm</th></tr></thead><tbody id="tb"><tr><td colspan="6" style="color:var(--mut)">Hali yozuv yo’q</td></tr></tbody></table></div>
+</section>
+
+<section>
+<h2>3. Ishni bajarish tartibi va xulosa</h2>
+<ol>
+<li>Tomchi hajmini aniqlang: 1 cm³ eritmadagi tomchilar sonini sanang.</li>
+<li>Idishga suv quying, yuzasiga yupqa talk sepib, bitta tomchi tomizing.</li>
+<li>Dog’ diametrini lineyka bilan bir necha yo’nalishda o’lchab, o’rtachasini oling.</li>
+<li>S = πD²/4 va d = V/S ni hisoblang.</li>
+<li>Tajribani 3 marta takrorlab, natijalarni solishtiring.</li>
+</ol>
+<p><b>Xulosa namunasi:</b> moy molekulasining diametri taxminan 10⁻⁹ m tartibida chiqdi. Natijaning aniqligi dog’ chegarasini o’lchash va tomchi hajmini aniqlash xatolariga bog’liq.</p>
+</section>
+
+<section>
+<h2>Video-animatsiya: 5 sahnada dars</h2>
+<div class="scene" aria-live="polite"><div class="big" id="sIc">💧</div><p id="sTx" style="margin-top:10px;font-weight:600"></p></div>
+<div class="prog"><i id="sPr"></i></div>
+<div class="row"><button class="btn" id="sPlay">▶ Boshlash</button><button class="chip" id="sNext">Keyingi sahna</button><span id="sNo" style="color:var(--mut)">1/5</span></div>
+</section>
+
+<section>
+<h2>16 xil uyga vazifa</h2>
+<div class="score" id="sc">Bajarildi: 0 / 16</div>
+<div id="hw"></div>
+</section>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+var O=[["Olein kislotasi",1.1],["Zaytun moyi",1.6],["Kungaboqar moyi",1.9]],cur=1,V=.05,Dt=0,St=0,run=0,sp=0,rows=0,rec=false;
+var ch=$("ch");O.forEach(function(o,i){var b=document.createElement("button");b.className="chip";b.textContent=o[0];b.onclick=function(){cur=i;clr()};ch.appendChild(b)});
+function fm(x,n){return x.toFixed(n).replace(".",",")}
+function p1(){var n=+$("sn").value,k=+$("sk").value;V=1000/(n*k);$("vn").textContent=n;$("vk").textContent=k;$("rt").textContent=fm(1000/n,1)+" mm³";$("rv").textContent=fm(V,3)+" mm³";$("rm").textContent=fm(V*1e-9*1e11,2)+"·10⁻¹¹ m³";clr()}
+$("sn").oninput=$("sk").oninput=p1;
+var cv=$("cv"),cx=cv.getContext("2d"),R0=140,K=R0/20;
+function dish(r){cx.clearRect(0,0,320,300);cx.beginPath();cx.arc(160,150,R0,0,6.283);cx.fillStyle="#2a7fd4";cx.globalAlpha=.35;cx.fill();cx.globalAlpha=1;cx.strokeStyle="#8aa0b6";cx.lineWidth=4;cx.stroke();
+if(r>0){var rr=Math.min(r,R0-2);cx.beginPath();cx.arc(160,150,rr,0,6.283);cx.fillStyle="rgba(255,194,51,.75)";cx.fill();cx.strokeStyle="#e8890c";cx.lineWidth=2;cx.stroke()}}
+function mols(d){var g="",h=Math.max(10,d*14),i;for(i=0;i<16;i++){var x=14+i*19;g+='<rect x="'+x+'" y="'+(62-h)+'" width="15" height="'+h+'" rx="6" fill="#ffc233" stroke="#e8890c"/>'}$("mol").innerHTML=g;$("dl").textContent="Qatlam qalinligi = d ≈ "+fm(d,1)+" nm (bitta molekula)"}
+function clr(){run++;rec=false;Dt=0;dish(0);$("sd").disabled=true;$("vd").textContent="—";["rS","rd","re"].forEach(function(i){$(i).textContent="—"});
+var cs=ch.children;for(var i=0;i<cs.length;i++)cs[i].setAttribute("aria-pressed",i==cur);mols(O[cur][1]);$("n2").textContent="Idish diametri 40 cm. Moy turini tanlang va tomchi tashlang."}
+$("clr").onclick=clr;
+$("drop").onclick=function(){clr();var id=run,d=O[cur][1]*1e-9;St=V*1e-9/d*1e4;Dt=Math.sqrt(4*St/Math.PI);var t0=performance.now();
+(function st(t){if(id!=run)return;var a=Math.min(1,(t-t0)/2200),e=1-Math.pow(1-a,3);dish(Dt/2*K*e);
+if(a<1)requestAnimationFrame(st);else{rec=true;var sd=$("sd");sd.disabled=false;sd.min=Math.max(1,Math.round(Dt-4));sd.max=Math.min(60,Math.round(Dt+4));sd.step=.5;sd.value=Math.round(Dt*2)/2;calc();
+$("n2").textContent=Dt>40?"Dog’ idish chegarasidan chiqdi (D ≈ "+fm(Dt,0)+" cm). Eritmani ko’proq suyultiring (k ni oshiring).":"Dog’ hosil bo’ldi. Endi uning diametrini lineyka bilan o’lchang (sirg’aluvchi)."}})(t0)};
+function calc(){var D=+$("sd").value,S=Math.PI*D*D/4,dn=V*1e-9/(S*1e-4)*1e9,tr=O[cur][1];
+$("vd").textContent=fm(D,1);$("rS").textContent=fm(S,0)+" cm²";$("rd").textContent=fm(dn,2)+" nm";$("re").textContent=fm(Math.abs(dn-tr)/tr*100,0)+" %";mols(dn)}
+$("sd").oninput=calc;
+$("rec").onclick=function(){if(!rec){$("n2").textContent="Avval tomchi tashlang.";return}
+if(rows==0)$("tb").innerHTML="";if(rows>=6)return;rows++;var D=+$("sd").value,S=Math.PI*D*D/4,dn=V*1e-9/(S*1e-4)*1e9;
+var tr=document.createElement("tr");tr.innerHTML="<td>"+rows+"</td><td>"+O[cur][0]+"</td><td>"+fm(V,3)+"</td><td>"+fm(D,1)+"</td><td>"+fm(S,0)+"</td><td>"+fm(dn,2)+"</td>";$("tb").appendChild(tr)};
+p1();
+var S=[["💧","Molekulalar ko’zga ko’rinmaydi. Ularning o’lchamini qanday baholash mumkin?"],["🧪","Moy tomchisini suv yuzasiga tomizamiz. U yoyilib, juda yupqa dog’ hosil qiladi."],["📏","Eng yupqa holatda qatlam qalinligi bitta molekula diametriga teng. Dog’ yuzasi S ni o’lchaymiz."],["🧮","Hajm V = S · d, demak d = V / S. S = πD²/4 formulasi bilan yuzani topamiz."],["🔬","Natija: d ≈ 10⁻⁹ m (nanometr). Molekulalar nihoyatda kichik, lekin ularni hisoblab baholash mumkin."]];
+var si=0,tm=null;
+function scene(){$("sIc").textContent=S[si][0];$("sTx").textContent=S[si][1];$("sNo").textContent=(si+1)+"/5";$("sPr").style.width=((si+1)/5*100)+"%"}
+function nx(){si=(si+1)%5;scene()}
+$("sNext").onclick=nx;
+$("sPlay").onclick=function(){if(tm){clearInterval(tm);tm=null;this.textContent="▶ Boshlash"}else{tm=setInterval(nx,5000);this.textContent="⏸ To’xtatish"}};scene();
+var H=[
+["Hisoblash","V = 0,05 mm³ moy S = 250 cm² dog’ hosil qildi. d necha nm? (1 mm³ = 10⁻⁹ m³, 1 cm² = 10⁻⁴ m²)","n",2,"nm"],
+["Hisoblash","1 cm³ eritma 50 tomchidan iborat. Bir tomchi hajmi necha mm³? (1 cm³ = 1000 mm³)","n",20,"mm³"],
+["Hisoblash","Eritma 1 : 500 nisbatda tayyorlangan, tomchi hajmi 25 mm³. Tomchidagi sof moy hajmi necha mm³?","n",0.05,"mm³"],
+["Hisoblash","Dog’ doira, D = 20 cm. Uning yuzasi S necha cm²? (π ≈ 3,14)","n",314,"cm²"],
+["Hisoblash","d = 1,5·10⁻⁹ m, V = 6·10⁻¹¹ m³. Dog’ yuzasi S necha cm² bo’ladi?","n",400,"cm²"],
+["Hayotiy masala","1 mm³ moy suv yuzasida 0,4 m² dog’ hosil qildi. Molekula diametri necha nm?","n",2.5,"nm"],
+["Test","Molekula diametrini topish formulasi qaysi?","t",["d = V · S","d = V / S","d = S / V"],1],
+["Test","Monomolekulyar qatlam nima?","t",["Qalinligi bitta molekula diametriga teng qatlam","Ko’p qavatli qatlam","Bug’ qatlami"],0],
+["Test","Moy nega spirtda eritiladi?","t",["Moy rangini o’zgartirish uchun","Tomchidagi moy hajmi juda kichik bo’lishi va yupqa qatlam hosil bo’lishi uchun","Spirt suvni isitadi"],1],
+["To’g’ri / noto’g’ri","Hisoblashda molekulalar zich joylashgan va bir-birining ustiga chiqmaydi deb olinadi.","t",["To’g’ri","Noto’g’ri"],0],
+["To’g’ri / noto’g’ri","Qatlam qalinligi molekula diametridan kichik bo’lishi mumkin.","t",["To’g’ri","Noto’g’ri"],1],
+["To’g’ri / noto’g’ri","Tomchi hajmi 2 marta katta bo’lsa (d bir xil), dog’ yuzasi ham 2 marta katta bo’ladi.","t",["To’g’ri","Noto’g’ri"],0],
+["Xatoni top","O’quvchi D = 20 cm ni yuza deb olib, d = V / D hisobladi. Xato nimada?","t",["Yuzani πD²/4 bilan topish kerak edi","Hajmni olmaslik kerak edi","Xato yo’q"],0],
+["Uyda tajriba","Keng idishga suv quying, yuzasiga yupqa talk yoki un seping va bir tomchi moy tomizing. Dog’ diametrini telefon kamerasi va lineyka bilan o’lchang. Natija nega monomolekulyar qatlamdan qalinroq chiqishini muhokama qiling (taxminiy tajriba).","c"],
+["Mini-loyiha","«Molekula qanchalik kichik?» mavzusida infografika yoki 30 soniyali video tayyorlang: nanometrni soch tolasi qalinligi (taxminan 0,05–0,1 mm) bilan solishtiring.","c"],
+["Fizika kundaligi","Moy tomchisi usulining 3 ta kamchiligini yozing va ularni qanday kamaytirish mumkinligini taklif qiling.","w"]];
+var hw=$("hw"),dn=0;
+function mark(d){if(d.dataset.d)return;d.dataset.d=1;dn++;$("sc").textContent="Bajarildi: "+dn+" / 16"}
+H.forEach(function(h,i){var d=document.createElement("div");d.className="hw";d.innerHTML='<span class="tag">'+(i+1)+'. '+h[0]+'</span><p>'+h[1]+'</p>';
+if(h[2]=="n"){var r=document.createElement("div");r.className="row";r.innerHTML='<input type="number" step="any" inputmode="decimal" aria-label="Javob"> '+h[4]+' <button class="btn">Tekshirish</button><span class="fb"></span>';
+r.querySelector("button").onclick=function(){var x=parseFloat(r.querySelector("input").value.replace(",",".")),f=r.querySelector(".fb");
+if(isNaN(x)){f.textContent="Son kiriting";f.style.color="var(--mut)";return}
+if(Math.abs(x-h[3])<=Math.max(.005,Math.abs(h[3])*.02)){f.textContent="✓ To’g’ri!";f.style.color="var(--ok)";mark(d)}else{f.textContent="✗ Qayta urining";f.style.color="var(--bad)"}};d.appendChild(r)}
+else if(h[2]=="t"){var o=document.createElement("div");o.className="opts";h[3].forEach(function(t,j){var b=document.createElement("button");b.className="chip";b.textContent=t;b.onclick=function(){if(d.dataset.d)return;if(j==h[4]){b.className="chip good";mark(d)}else b.className="chip badc"};o.appendChild(b)});d.appendChild(o)}
+else{if(h[2]=="w"){var ta=document.createElement("textarea");ta.setAttribute("aria-label","Javobingiz");d.appendChild(ta)}
+var b=document.createElement("button");b.className="chip";b.style.marginTop="8px";b.textContent="Bajardim";b.onclick=function(){if(b.classList.toggle("on")){mark(d)}else if(d.dataset.d){delete d.dataset.d;dn--;$("sc").textContent="Bajarildi: "+dn+" / 16"}};d.appendChild(b)}
+hw.appendChild(d)});
+</script>
+</body>
+</html>

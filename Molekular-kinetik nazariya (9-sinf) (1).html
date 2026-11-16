@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Molekular-kinetik nazariya</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--tx:#1b2a3a;--mu:#4a5d73;--pr:#2f6fed;--ac:#e8691f;--ok:#1f9d63;--no:#d64545;--bd:#d7e1ee;--soft:#eaf1ff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#101823;--card:#1a2535;--tx:#e8eef6;--mu:#a9b8cb;--pr:#6c9bff;--ac:#ff9a5c;--bd:#2c3c52;--soft:#22324a}}
+:root[data-theme=dark]{--bg:#101823;--card:#1a2535;--tx:#e8eef6;--mu:#a9b8cb;--pr:#6c9bff;--ac:#ff9a5c;--bd:#2c3c52;--soft:#22324a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+.w{max-width:900px;margin:0 auto;padding:14px}
+h1{font-size:1.4rem;margin:.2em 0}h2{font-size:1.2rem;margin:.2em 0 .5em;color:var(--pr)}h3{font-size:1rem;margin:0 0 .3em}
+.sub{color:var(--mu);margin:0 0 12px}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tab{flex:1;padding:14px 8px;font-size:1rem;font-weight:600;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:12px;cursor:pointer}
+.tab.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.sec{display:none}.sec.on{display:block}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:14px;margin-bottom:14px}
+.cards{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.rule{background:var(--soft);border-radius:12px;padding:12px;border-left:5px solid var(--ac)}
+.rule b.n{color:var(--ac)}.rule small{display:block;color:var(--mu);margin-top:6px}
+canvas{width:100%;height:auto;display:block;border-radius:12px;background:#10243f}
+.row{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0;align-items:center}
+button.b,.opt{min-height:46px;padding:10px 14px;font-size:1rem;border:2px solid var(--bd);background:var(--card);color:var(--tx);border-radius:10px;cursor:pointer}
+button.b.on{background:var(--pr);border-color:var(--pr);color:#fff}
+.go{background:var(--ok)!important;border-color:var(--ok)!important;color:#fff!important}
+input[type=range]{flex:1;min-width:140px;height:30px;accent-color:var(--pr)}
+.pill{background:var(--soft);padding:6px 12px;border-radius:20px;font-weight:600}
+.hid{display:none!important}
+.q{margin:12px 0}.opt{display:block;width:100%;text-align:left;margin-top:6px}
+.opt.ok{background:var(--ok);border-color:var(--ok);color:#fff}.opt.no{background:var(--no);border-color:var(--no);color:#fff}
+.fb{margin-top:6px;color:var(--mu)}
+.note{background:var(--soft);border-radius:12px;padding:12px}
+ul{margin:.3em 0;padding-left:1.2em}
+</style></head><body><div class="w">
+<h1>⚛️ Modda tuzilishining molekular-kinetik nazariyasi</h1>
+<p class="sub">9-sinf, Fizika · 1-bob, 1-mavzu</p>
+<div class="tabs"><button class="tab on">1. MKN qoidalari</button><button class="tab">2. Broun harakati</button></div>
+
+<!-- ===== 1-BO'LIM ===== -->
+<div class="sec on">
+<div class="box"><h2>Molekular-kinetik nazariya nima?</h2>
+<p>Atrofimizdagi hamma narsa — suv, havo, temir — moddadan iborat. Modda nimadan tuzilgan? Shu savolga <b>molekular-kinetik nazariya (MKN)</b> javob beradi. «Kinetik» so'zi «harakat» degani. <b>Molekula</b> — moddaning xossasini saqlovchi eng kichik zarrasi. <b>Atom</b> — kimyoviy elementning eng kichik zarrasi, <b>ion</b> esa zaryadlangan atomdir. Nazariyaning uchta asosiy qoidasi bor.</p></div>
+<div class="cards">
+<div class="rule"><b class="n">1-qoida</b><h3>Modda mayda zarralardan iborat</h3>Zarralar (molekula, atom, ion) orasida bo'shliqlar bor.<small>🔎 Dalil: gazni siqish mumkin; spirt va suv aralashganda hajm bir oz kamayadi.</small></div>
+<div class="rule"><b class="n">2-qoida</b><h3>Zarralar to'xtovsiz va tartibsiz harakatlanadi</h3>Harorat ko'tarilsa, harakat tezlashadi.<small>🔎 Dalil: diffuziya — hid tarqalishi, issiq choyda shakarning tez erishi. <i>Diffuziya</i> — moddalarning o'z-o'zidan aralashishi.</small></div>
+<div class="rule"><b class="n">3-qoida</b><h3>Zarralar o'zaro ta'sirlashadi</h3>Yaqin masofada itarilish, biroz uzoqda tortishish kuchi bor.<small>🔎 Dalil: qattiq jism bo'laklarga o'z-o'zidan ajralmaydi; suyuqlik va qattiq jismni siqish qiyin.</small></div>
+</div>
+<div class="box" style="margin-top:14px"><h2>🧪 Simulyatsiya 1</h2>
+<div class="row" id="mm"><button class="b on" data-m="state">Agregat holat</button><button class="b" data-m="diff">Diffuziya</button><button class="b" data-m="force">Tortishish va itarilish</button></div>
+<div class="row" id="ss"><button class="b" data-s="solid">Qattiq jism</button><button class="b" data-s="liquid">Suyuqlik</button><button class="b on" data-s="gas">Gaz</button><button class="b" id="vv">Tezlik strelkalari</button></div>
+<div class="row hid" id="dd"><button class="b go" id="rw">To'siqni olib tashlash</button><span class="pill">Aralashish: <span id="mx">0</span>%</span></div>
+<canvas id="c1" width="640" height="380"></canvas>
+<div class="row" id="tt"><label for="t1"><b>Harorat:</b></label><input type="range" id="t1" min="1" max="10" value="5"><span class="pill" id="tv1">5</span></div>
+<div class="row"><button class="b go" id="p1">▶ Boshlash</button><button class="b" id="s1">⏸ Pauza</button><button class="b" id="r1">↻ Qayta boshlash</button></div>
+<div class="note" id="hint1"></div></div>
+<div class="box"><h2>📌 Eslab qol</h2><ul><li>Modda molekula, atom va ionlardan tuzilgan, ular orasida bo'shliq bor.</li><li>Zarralar to'xtovsiz va tartibsiz harakatlanadi.</li><li>Harorat qancha yuqori bo'lsa, zarralar shuncha tez harakatlanadi.</li><li>Zarralar orasida bir vaqtda tortishish va itarilish kuchlari ta'sir qiladi.</li></ul></div>
+<div class="box"><h2>✅ Testlar</h2><div id="qz1"></div></div>
+<div class="box"><h2>💭 O'ylab ko'r</h2><ul><li>Nima uchun issiq choyda shakar sovuq choydagiga qaraganda tezroq eriydi?</li><li>Nima uchun gazni osongina siqish mumkin, suyuqlikni esa deyarli mumkin emas?</li></ul></div>
+</div>
+
+<!-- ===== 2-BO'LIM ===== -->
+<div class="sec">
+<div class="box"><h2>Broun harakati</h2>
+<ul><li>1827-yilda ingliz botanigi <b>Robert Broun</b> suvdagi gul changi zarralarini mikroskopda kuzatdi va ularning to'xtovsiz, tartibsiz harakatini aniqladi.</li>
+<li>Bu harakat zarra atrofidagi suyuqlik molekulalarining har tomondan tartibsiz urilishi natijasidir.</li>
+<li>Keyinchalik <b>A. Eynshteyn</b> va <b>M. Smoluxovskiy</b> buni nazariy tushuntirdi, <b>J. Perren</b> esa tajribada tasdiqladi.</li>
+<li>Broun harakati molekulalar mavjudligining va ularning tartibsiz harakatining bevosita dalilidir.</li></ul></div>
+<div class="box"><h2>🧪 Simulyatsiya 2</h2>
+<canvas id="c2" width="640" height="380"></canvas>
+<div class="row"><label for="t2"><b>Harorat:</b></label><input type="range" id="t2" min="1" max="10" value="5"><span class="pill" id="tv2">5</span></div>
+<div class="row"><label for="z2"><b>Zarra o'lchami:</b></label><input type="range" id="z2" min="8" max="30" value="20"><span class="pill" id="zv2">20</span></div>
+<div class="row"><button class="b" id="bm">Molekulalarni ko'rsat</button><button class="b" id="ba">To'qnashuv strelkalari</button><button class="b" id="bc">Izni tozalash</button></div>
+<div class="row"><button class="b go" id="p2">▶ Boshlash</button><button class="b" id="s2">⏸ Pauza</button><button class="b" id="r2">↻ Qayta boshlash</button></div>
+<div class="row"><span class="pill">Vaqt: <span id="tm">0.0</span> s</span><span class="pill">Siljish: <span id="ds">0</span> px</span></div>
+<div class="note">Kichik zarraga molekulalar zarbasi bir tekis taqsimlanmaydi, shuning uchun u tezroq va betartibroq siljiydi.</div></div>
+<div class="box"><h2>📌 Eslab qol</h2><ul><li>Broun harakati — suyuqlikdagi mayda zarralarning to'xtovsiz tartibsiz harakati.</li><li>Sababi — suyuqlik molekulalarining zarraga tartibsiz urilishi.</li><li>Harorat oshsa va zarra kichik bo'lsa, harakat kuchayadi.</li><li>U molekulalar mavjudligining bevosita dalilidir.</li></ul></div>
+<div class="box"><h2>✅ Testlar</h2><div id="qz2"></div></div>
+<div class="box"><h2>💭 O'ylab ko'r</h2><ul><li>Nima uchun Broun harakatini yalang ko'z bilan emas, faqat mikroskopda ko'rish mumkin?</li><li>Suv haroratini oshirsak, gul changi zarrasining harakati qanday o'zgaradi va nima uchun?</li></ul></div>
+</div>
+</div>
+<script>
+const $=s=>document.querySelector(s),$$=s=>document.querySelectorAll(s);
+const W=640,H=380;let tab=0;
+// ---- Tablar ----
+$$('.tab').forEach((b,i)=>b.onclick=()=>{tab=i;$$('.tab').forEach((x,j)=>x.classList.toggle('on',i==j));$$('.sec').forEach((x,j)=>x.classList.toggle('on',i==j))});
+// ---- Test yasovchi: javob tanlanganda darhol natija ----
+function quiz(el,data){el.innerHTML=data.map((d,i)=>`<div class="q"><b>${i+1}. ${d.q}</b>${d.o.map((o,j)=>`<button class="opt" data-i="${i}" data-j="${j}">${o}</button>`).join('')}<div class="fb"></div></div>`).join('');
+el.onclick=e=>{const b=e.target.closest('.opt');if(!b)return;const q=b.parentNode;if(q.dataset.done)return;q.dataset.done=1;const d=data[+b.dataset.i],ok=+b.dataset.j===d.a;b.classList.add(ok?'ok':'no');if(!ok)q.children[d.a+1].classList.add('ok');q.querySelector('.fb').textContent=(ok?"✅ To'g'ri! ":"❌ Noto'g'ri. ")+d.e}}
+quiz($('#qz1'),[
+{q:"Zarralar orasida bo'shliq borligini qaysi hodisa ko'rsatadi?",o:["Jismning rangi","Gazning siqilishi","Jismning massasi","Jismning shakli"],a:1,e:"Gaz siqilganda zarralar orasidagi bo'shliq kamayadi."},
+{q:"Harorat ko'tarilsa, zarralar harakati qanday o'zgaradi?",o:["Sekinlashadi","To'xtaydi","Tezlashadi","O'zgarmaydi"],a:2,e:"Harorat qancha yuqori bo'lsa, zarralar shuncha tez harakatlanadi."},
+{q:"Qattiq jism nima uchun o'z-o'zidan bo'laklarga ajralmaydi?",o:["Zarralar harakatsiz","Zarralar orasida tortishish kuchi bor","Zarralar bo'sh joysiz","Zarralar juda katta"],a:1,e:"Zarralar bir-biriga tortishish kuchlari bilan bog'langan."}]);
+quiz($('#qz2'),[
+{q:"Suvdagi gul changi harakatini kim kuzatgan?",o:["Robert Broun","Isaak Nyuton","Jeyms Joul","Galileo Galiley"],a:0,e:"1827-yilda Robert Broun buni mikroskopda kuzatgan."},
+{q:"Broun harakati nima sababdan yuz beradi?",o:["Suvning oqimi","Zarraning o'z-o'zidan harakati","Molekulalarning zarraga tartibsiz urilishi","Yorug'lik bosimi"],a:2,e:"Zarraga har tomondan molekulalar turlicha kuch bilan uradi."},
+{q:"Zarra kichikroq bo'lsa, uning harakati qanday bo'ladi?",o:["Sekinroq va tekisroq","Tezroq va betartibroq","O'zgarmaydi","To'xtaydi"],a:1,e:"Kichik zarraga urilishlar bir-birini kam kompensatsiya qiladi."}]);
+// ---- Strelka chizish (umumiy) ----
+function arrow(c,x,y,dx,dy,col,w=4){const l=Math.hypot(dx,dy);if(l<3)return;const a=Math.atan2(dy,dx),h=Math.min(12,l*.5);c.strokeStyle=c.fillStyle=col;c.lineWidth=w;c.beginPath();c.moveTo(x,y);c.lineTo(x+dx,y+dy);c.stroke();c.beginPath();c.moveTo(x+dx,y+dy);c.lineTo(x+dx-h*Math.cos(a-.5),y+dy-h*Math.sin(a-.5));c.lineTo(x+dx-h*Math.cos(a+.5),y+dy-h*Math.sin(a+.5));c.fill()}
+/* ================= SIMULYATSIYA 1 ================= */
+const c1=$('#c1'),x1=c1.getContext('2d'),N=120,R=7;
+let mode='state',st='gas',T=5,run1=true,showV=false,wall=true,d1=200,drag=false,P=[];
+const hints={state:"Agregat holatni tanlang va haroratni o'zgartirib, zarralar harakatini kuzating.",diff:"To'siqni olib tashlang: ikki xil zarralar o'z-o'zidan aralashadi. Bu diffuziya.",force:"Pastki molekulani sichqoncha (yoki barmoq) bilan chapga-o'ngga sudrang. Strelka kuch yo'nalishini ko'rsatadi."};
+const spd=()=>mode==='diff'?.3+T*.3:st==='gas'?.5+T*.5:.3+T*.25;
+function init1(){P=[];wall=true;const s=spd();
+for(let i=0;i<N;i++){const a=Math.random()*6.283,p={x:0,y:0,vx:Math.cos(a)*s,vy:Math.sin(a)*s,c:i%2,nx:0,ny:0};
+if(mode==='diff'){p.x=p.c?W/2+R+Math.random()*(W/2-2*R-4):R+4+Math.random()*(W/2-2*R-4);p.y=R+Math.random()*(H-2*R)}
+else if(st==='solid'){p.x=p.nx=110+(i%15)*30;p.y=p.ny=80+Math.floor(i/15)*30;p.vx=p.vy=0}
+else if(st==='liquid'){p.x=R+(i%41)*15;p.y=H-R-Math.floor(i/41)*15}
+else{p.x=R+Math.random()*(W-2*R);p.y=R+Math.random()*(H-2*R)}
+P.push(p)}$('#mx').textContent=0}
+function step1(){if(mode==='force')return;const solid=mode==='state'&&st==='solid',liq=mode==='state'&&st==='liquid',s=spd();
+for(const p of P){
+if(solid){p.vx+=(p.nx-p.x)*.08+(Math.random()-.5)*.15*T;p.vy+=(p.ny-p.y)*.08+(Math.random()-.5)*.15*T;p.vx*=.9;p.vy*=.9;p.x+=p.vx;p.y+=p.vy;continue}
+if(liq)p.vy+=.08;p.x+=p.vx;p.y+=p.vy;
+const dm=mode==='diff'&&wall,lo=dm&&p.c?W/2+R:R,hi=dm&&!p.c?W/2-R:W-R;
+if(p.x<lo){p.x=lo;p.vx=Math.abs(p.vx)}if(p.x>hi){p.x=hi;p.vx=-Math.abs(p.vx)}
+if(p.y<R){p.y=R;p.vy=Math.abs(p.vy)}if(p.y>H-R){p.y=H-R;p.vy=-Math.abs(p.vy)}}
+if(solid)return;
+// zarralar o'rtasida elastik to'qnashuv (teng massalar)
+for(let i=0;i<N;i++)for(let j=i+1;j<N;j++){const a=P[i],b=P[j],dx=b.x-a.x,dy=b.y-a.y,q=dx*dx+dy*dy;
+if(q<4*R*R&&q>.01){const d=Math.sqrt(q),nx=dx/d,ny=dy/d,o=(2*R-d)/2;a.x-=nx*o;a.y-=ny*o;b.x+=nx*o;b.y+=ny*o;
+const r=(b.vx-a.vx)*nx+(b.vy-a.vy)*ny;if(r<0){a.vx+=r*nx;a.vy+=r*ny;b.vx-=r*nx;b.vy-=r*ny}}}
+// haroratni ushlab turish (yumshoq termostat)
+let m=0;for(const p of P)m+=Math.hypot(p.vx,p.vy);m=m/N||1;const f=1+(s-m)/m*.05;for(const p of P){p.vx*=f;p.vy*=f}
+if(mode==='diff'){let k=0;for(const p of P)if((p.c&&p.x<W/2)||(!p.c&&p.x>W/2))k++;$('#mx').textContent=Math.min(100,Math.round(200*k/N))}}
+function draw1(){x1.fillStyle='#10243f';x1.fillRect(0,0,W,H);x1.strokeStyle='#5d7fb0';x1.lineWidth=3;x1.strokeRect(1.5,1.5,W-3,H-3);
+if(mode==='force'){drawForce();return}
+if(mode==='diff'&&wall){x1.strokeStyle='#cbd5e1';x1.lineWidth=3;x1.beginPath();x1.moveTo(W/2,0);x1.lineTo(W/2,H);x1.stroke()}
+const k=mode==='state'&&st==='solid'?1.2:7;
+for(const p of P){const s=Math.hypot(p.vx,p.vy);x1.fillStyle=mode==='diff'?(p.c?'#4cc3ff':'#ff9248'):`hsl(${200-Math.min(1,s/k)*190} 90% 60%)`;
+x1.beginPath();x1.arc(p.x,p.y,R,0,6.283);x1.fill();
+if(showV){x1.strokeStyle='#fff';x1.lineWidth=1.5;x1.beginPath();x1.moveTo(p.x,p.y);x1.lineTo(p.x+p.vx*4,p.y+p.vy*4);x1.stroke()}}}
+function drawForce(){const ax=150,ay=H/2+20,bx=ax+d1,u=60/d1,f=u**9-u**5,L=Math.max(-110,Math.min(110,f*150));
+x1.fillStyle='#ff9248';x1.beginPath();x1.arc(ax,ay,18,0,6.283);x1.fill();x1.fillStyle='#4cc3ff';x1.beginPath();x1.arc(bx,ay,18,0,6.283);x1.fill();
+arrow(x1,bx,ay-38,L,0,'#ffd166');arrow(x1,ax,ay-38,-L,0,'#ffd166');
+x1.fillStyle='#fff';x1.font='bold 18px system-ui';x1.textAlign='center';
+x1.fillText(f>.02?"Itarilish kuchi":f<-.02?"Tortishish kuchi":"Kuch deyarli yo'q",W/2,40);
+x1.font='14px system-ui';x1.fillText("Masofa: "+(d1/60).toFixed(1)+" birlik · sudrab o'zgartiring",W/2,H-16)}
+function pt(e){const r=c1.getBoundingClientRect();d1=Math.max(36,Math.min(W-170,(e.clientX-r.left)*W/r.width-150))}
+c1.addEventListener('pointerdown',e=>{if(mode==='force'){drag=true;pt(e)}});
+c1.addEventListener('pointermove',e=>{if(drag)pt(e)});addEventListener('pointerup',()=>drag=false);
+function setMode(m){mode=m;$$('#mm .b').forEach(b=>b.classList.toggle('on',b.dataset.m===m));
+$('#ss').classList.toggle('hid',m!=='state');$('#dd').classList.toggle('hid',m!=='diff');$('#tt').classList.toggle('hid',m==='force');
+c1.style.touchAction=m==='force'?'none':'auto';$('#hint1').textContent=hints[m];init1()}
+$$('#mm .b').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+$$('#ss [data-s]').forEach(b=>b.onclick=()=>{st=b.dataset.s;$$('#ss [data-s]').forEach(x=>x.classList.toggle('on',x===b));init1()});
+$('#vv').onclick=e=>{showV=!showV;e.target.classList.toggle('on',showV)};
+$('#rw').onclick=()=>wall=false;
+$('#t1').oninput=e=>{T=+e.target.value;$('#tv1').textContent=T};
+$('#p1').onclick=()=>run1=true;$('#s1').onclick=()=>run1=false;$('#r1').onclick=()=>{run1=true;init1()};
+/* ================= SIMULYATSIYA 2 ================= */
+const c2=$('#c2'),x2=c2.getContext('2d'),NM=150,RM=3;
+let M=[],big,start,trail=[],hits=[],T2=5,Rb=20,showM=false,showA=false,run2=true,t2=0,fr=0;
+const sp2=t=>1+t*.8,mass=()=>Rb*Rb/20;
+function clearTrail(){start={x:big.x,y:big.y};trail=[{x:big.x,y:big.y}];t2=0}
+function init2(){M=[];for(let i=0;i<NM;i++){const a=Math.random()*6.283,s=sp2(T2)*(.6+Math.random()*.8);M.push({x:Math.random()*W,y:Math.random()*H,vx:Math.cos(a)*s,vy:Math.sin(a)*s})}
+big={x:W/2,y:H/2,vx:0,vy:0};hits=[];clearTrail()}
+function step2(){for(const m of M){m.x+=m.vx;m.y+=m.vy;
+if(m.x<RM){m.x=RM;m.vx=Math.abs(m.vx)}if(m.x>W-RM){m.x=W-RM;m.vx=-Math.abs(m.vx)}if(m.y<RM){m.y=RM;m.vy=Math.abs(m.vy)}if(m.y>H-RM){m.y=H-RM;m.vy=-Math.abs(m.vy)}
+const dx=m.x-big.x,dy=m.y-big.y,d=Math.hypot(dx,dy),rr=Rb+RM;
+if(d<rr&&d>.01){const nx=dx/d,ny=dy/d,rel=(m.vx-big.vx)*nx+(m.vy-big.vy)*ny;
+if(rel<0){// elastik to'qnashuv: impuls va energiya saqlanadi
+const mb=mass(),J=2*rel/(1+1/mb);m.vx-=J*nx;m.vy-=J*ny;big.vx+=J*nx/mb;big.vy+=J*ny/mb;
+hits.push({x:big.x+nx*Rb,y:big.y+ny*Rb,dx:-nx,dy:-ny,t:18})}
+m.x=big.x+nx*(rr+.1);m.y=big.y+ny*(rr+.1)}}
+big.x+=big.vx;big.y+=big.vy;
+if(big.x<Rb){big.x=Rb;big.vx=Math.abs(big.vx)}if(big.x>W-Rb){big.x=W-Rb;big.vx=-Math.abs(big.vx)}if(big.y<Rb){big.y=Rb;big.vy=Math.abs(big.vy)}if(big.y>H-Rb){big.y=H-Rb;big.vy=-Math.abs(big.vy)}
+if(++fr%3==0&&trail.length<2500)trail.push({x:big.x,y:big.y});
+hits=hits.filter(h=>--h.t>0);t2+=1/60;
+$('#tm').textContent=t2.toFixed(1);$('#ds').textContent=Math.round(Math.hypot(big.x-start.x,big.y-start.y))}
+function draw2(){x2.fillStyle='#10243f';x2.fillRect(0,0,W,H);
+if(showM){x2.fillStyle='#7fd0ff';for(const m of M){x2.beginPath();x2.arc(m.x,m.y,RM,0,6.283);x2.fill()}}
+x2.strokeStyle='#ff6b6b';x2.lineWidth=1.5;x2.beginPath();trail.forEach((p,i)=>i?x2.lineTo(p.x,p.y):x2.moveTo(p.x,p.y));x2.stroke();
+x2.fillStyle='#ffd23f';x2.strokeStyle='#b8860b';x2.lineWidth=3;x2.beginPath();x2.arc(big.x,big.y,Rb,0,6.283);x2.fill();x2.stroke();
+if(showA)for(const h of hits)arrow(x2,h.x-h.dx*28,h.y-h.dy*28,h.dx*28,h.dy*28,'#7dffb2',3);
+x2.fillStyle='#fff';x2.beginPath();x2.arc(start.x,start.y,3,0,6.283);x2.fill()}
+$('#t2').oninput=e=>{const v=+e.target.value,k=sp2(v)/sp2(T2);M.forEach(m=>{m.vx*=k;m.vy*=k});big.vx*=k;big.vy*=k;T2=v;$('#tv2').textContent=v};
+$('#z2').oninput=e=>{Rb=+e.target.value;$('#zv2').textContent=Rb;big.vx=big.vy=0;clearTrail()};
+$('#bm').onclick=e=>{showM=!showM;e.target.textContent=showM?"Molekulalarni yashir":"Molekulalarni ko'rsat";e.target.classList.toggle('on',showM)};
+$('#ba').onclick=e=>{showA=!showA;e.target.classList.toggle('on',showA)};
+$('#bc').onclick=clearTrail;$('#p2').onclick=()=>run2=true;$('#s2').onclick=()=>run2=false;$('#r2').onclick=()=>{run2=true;init2()};
+/* ---- Asosiy sikl (requestAnimationFrame) ---- */
+function loop(){if(tab===0){if(run1)step1();draw1()}else{if(run2)step2();draw2()}requestAnimationFrame(loop)}
+setMode('state');init2();loop();
+</script></body></html>

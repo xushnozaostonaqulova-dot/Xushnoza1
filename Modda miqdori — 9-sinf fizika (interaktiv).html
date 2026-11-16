@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Modda miqdori — 9-sinf fizika</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#eef2f7;--card:#fff;--tx:#10213a;--mu:#55627a;--ac:#0e7c86;--bt:#fff;--ac2:#f59e0b;--bd:#d3dbe8;--cv:#f1f7fa;--fm:#fff2d1;--ok:#15803d;--bad:#dc2626}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#0b1322;--card:#142038;--tx:#e8eef9;--mu:#9fabc3;--ac:#3cc4cf;--bt:#06222a;--bd:#2a3a5c;--cv:#0f1a30;--fm:#3a2f10;--ok:#4ade80;--bad:#f87171}}
+:root[data-theme=dark]{--bg:#0b1322;--card:#142038;--tx:#e8eef9;--mu:#9fabc3;--ac:#3cc4cf;--bt:#06222a;--bd:#2a3a5c;--cv:#0f1a30;--fm:#3a2f10;--ok:#4ade80;--bad:#f87171}
+*{box-sizing:border-box}
+html,body{margin:0}body{font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--tx)}
+.w{max-width:1000px;margin:0 auto;padding:12px}
+header{display:flex;justify-content:space-between;align-items:center;gap:8px}
+h1{font-size:1.3rem;margin:6px 0}h2{margin:.2em 0 .4em}h3{margin:.6em 0 .3em}
+.sub{color:var(--mu);margin:0;font-size:.9rem}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}
+.tab,.b,.qo{border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:9px 13px;border-radius:10px;font:inherit;cursor:pointer}
+.tab:focus-visible,.b:focus-visible,.qo:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--ac2);outline-offset:2px}
+.tab.on,.b{background:var(--ac);color:var(--bt);border-color:var(--ac);font-weight:600}
+.b.g{background:transparent;color:var(--tx);border-color:var(--bd);font-weight:400}
+.p{display:none;background:var(--card);border:1px solid var(--bd);border-radius:16px;padding:16px}.p.on{display:block}
+.fm{background:var(--fm);border-left:5px solid var(--ac2);padding:10px 14px;border-radius:10px;font-size:1.15rem;margin:10px 0}
+.fm small{display:block;font-size:.85rem;color:var(--mu)}
+.grid{display:grid;grid-template-columns:3fr 2fr;gap:14px;margin:12px 0}
+@media(max-width:760px){.grid{grid-template-columns:1fr}}
+canvas{width:100%;height:auto;background:var(--cv);border-radius:12px;border:1px solid var(--bd);display:block}
+.ctl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:flex-end;margin:8px 0}
+.ctl label{display:flex;flex-direction:column;font-size:.9rem;gap:2px;flex:1;min-width:150px}
+input[type=range]{width:100%;accent-color:var(--ac)}
+select,input[type=text]{padding:8px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit;min-width:0;width:100%}
+.res{background:var(--cv);border-radius:12px;padding:12px;border:1px solid var(--bd);font-size:.95rem;overflow-wrap:anywhere}
+.res div{margin:6px 0}.res i{font-style:normal;color:var(--ac);font-weight:700;margin-right:6px}
+.pr{margin-top:14px;border-top:2px dashed var(--bd);padding-top:6px}
+.ok{color:var(--ok)}.no{color:var(--bad)}
+.tw{overflow-x:auto}table{border-collapse:collapse;width:100%}td,th{border:1px solid var(--bd);padding:7px;text-align:left}
+.bars{display:flex;gap:10px}.bc{flex:1;text-align:center;font-size:.85rem}.bw{height:130px;display:flex;align-items:flex-end}
+.bar{width:100%;border-radius:6px 6px 0 0;min-height:2px;transition:height .3s}
+.hb{height:18px;border-radius:9px;background:var(--ac);min-width:4px;margin:3px 0}.hb.u{background:var(--ac2)}
+.chip{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--bd);border-radius:20px;padding:5px 12px;margin:3px;cursor:pointer}
+.qb{margin:14px 0}.qo{display:block;width:100%;text-align:left;margin:5px 0}
+.qo.ok{border-color:var(--ok);background:rgba(34,197,94,.2);color:var(--tx)}.qo.no{border-color:var(--bad);background:rgba(239,68,68,.18);color:var(--tx)}
+@media(prefers-reduced-motion:reduce){.bar{transition:none}}
+</style></head><body><div class="w">
+<header><div><h1>Modda miqdori</h1><p class="sub">9-sinf fizika · 1-bob · 3-mavzu: molekular-kinetik nazariya asoslari</p></div><button class="b g" id="th">🌓 Rejim</button></header>
+<nav class="tabs">
+<button class="tab on" data-t="1">1. Modda miqdori</button><button class="tab" data-t="2">2. Avogadro doimiysi</button><button class="tab" data-t="3">3. Molekulalar soni</button><button class="tab" data-t="4">4. Konsentratsiya</button></nav>
+
+<section class="p on" id="s1"><h2>1. Modda miqdori</h2>
+<p>Moddada atom va molekulalar shunchalik koʻpki, ularni bittalab sanab boʻlmaydi. Shuning uchun zarralar sonini ifodalovchi “modda miqdori” kattaligi kiritilgan. U ν (nyu) harfi bilan belgilanadi va <b>mol</b> bilan oʻlchanadi. Massa qancha katta boʻlsa, modda miqdori ham shuncha katta boʻladi. 1 mol moddaning massasi molyar massa M deyiladi.</p>
+<div class="fm"><b>ν = N / N<sub>A</sub></b> &nbsp;va&nbsp; <b>ν = m / M</b><small>ν — mol; m — massa (g); M — molyar massa (g/mol); N — zarralar soni</small></div>
+<div class="grid"><div><canvas id="c1" width="560" height="280"></canvas>
+<div class="ctl"><label>Modda<select id="sub1"></select></label><label>Massa: <b><span id="m1v"></span> g</b><input type="range" id="m1" min="0" max="200" step="1" value="36"></label></div></div>
+<div class="res" id="r1"></div></div>
+<h3>1 mol, 2 mol va 0,5 mol massalarini solishtirish</h3><div class="bars" id="bars"></div>
+<div class="pr" id="pr1"></div></section>
+
+<section class="p" id="s2"><h2>2. Avogadro doimiysi</h2>
+<p>Har qanday moddaning 1 molida zarralar soni bir xil. Bu son Avogadro doimiysi deyiladi: N<sub>A</sub> = 6,02·10²³ mol⁻¹. 1 mol suv, temir yoki kislorodning massalari har xil, lekin ulardagi molekula yoki atomlar soni teng. Zarralar ogʻirroq boʻlsa, 1 mol massasi ham katta boʻladi.</p>
+<div class="fm"><b>N<sub>A</sub> = 6,02·10²³ mol⁻¹</b><small>1 moldagi zarralar soni</small></div>
+<div><label class="chip"><input class="ck" type="checkbox" value="H2O" checked>Suv 18 g</label><label class="chip"><input class="ck" type="checkbox" value="Fe" checked>Temir 56 g</label><label class="chip"><input class="ck" type="checkbox" value="O2" checked>Kislorod 32 g</label><label class="chip"><input class="ck" type="checkbox" value="Al">Alyuminiy 27 g</label></div>
+<canvas id="c2" width="640" height="260"></canvas>
+<div class="ctl"><button class="b" id="go2">▶ Sanashni boshlash</button><span>Sanalgan zarralar: <b id="cnt2"></b></span></div>
+<div class="res" id="r2"></div>
+<h3>Masshtab: N<sub>A</sub> qanchalik katta?</h3>
+<div class="ctl"><label>Sanash tezligi: <b id="rl"></b> zarra/s<input type="range" id="rate" min="0" max="9" step="1" value="0"></label></div>
+<div class="res" id="sc"></div>
+<h3>Tez kalkulyator</h3>
+<div class="ctl"><label>ν (mol) kiriting<input type="text" id="ca" inputmode="decimal" value="2"></label><div class="res" style="flex:2" id="ra"></div></div>
+<div class="ctl"><label>N kiriting (masalan 3e24)<input type="text" id="cb" inputmode="decimal" value="1,204e24"></label><div class="res" style="flex:2" id="rb"></div></div>
+<div class="pr" id="pr2"></div></section>
+
+<section class="p" id="s3"><h2>3. Molekulalar soni</h2>
+<p>Moddadagi molekulalar sonini topish uchun avval modda miqdorini hisoblaymiz, keyin uni Avogadro doimiysiga koʻpaytiramiz. Massa ortsa, modda miqdori va molekulalar soni ham shuncha marta ortadi. Simulatsiyada har bir nuqta 10²² ta molekulani bildiradi.</p>
+<div class="fm"><b>N = ν · N<sub>A</sub> = (m / M) · N<sub>A</sub></b><small>N — molekulalar (zarralar) soni, birligi yoʻq (dona)</small></div>
+<div class="grid"><div><canvas id="c3" width="560" height="300"></canvas>
+<p class="sub">● = 10²² ta molekula · Nuqtalar soni: <b id="dc3"></b></p>
+<div class="ctl"><label>Modda<select id="sub3"></select></label><label>Berilgan kattalik<select id="mode3"><option value="g">Massa m (g)</option><option value="mol">Modda miqdori ν (mol)</option></select></label></div>
+<div class="ctl"><label><span id="l3"></span><input type="range" id="m3" min="0" max="200" step="1" value="36"></label><button class="b" id="ex3">🥛 1 stakan suv (200 g)</button></div></div>
+<div class="res" id="r3"></div></div>
+<div class="pr" id="pr3"></div></section>
+
+<section class="p" id="s4"><h2>4. Molekulalar konsentratsiyasi</h2>
+<p>Konsentratsiya n — birlik hajmdagi molekulalar soni. Idish hajmi kichrayganda molekulalar zichroq joylashadi, shuning uchun n ortadi. Hajm oshganda n kamayadi. Molekulalar issiqlik harakatida tasodifiy uchadi va devorlarga uriladi.</p>
+<div class="fm"><b>n = N / V</b> &nbsp;yoki&nbsp; <b>n = ν · N<sub>A</sub> / V</b><small>Birligi: 1/m³ (m⁻³). Qizil rang qancha toʻqroq boʻlsa, zichlik shuncha katta.</small></div>
+<div class="grid"><div><canvas id="c4" width="600" height="300"></canvas>
+<div class="ctl"><label>Hajm V: <b><span id="v4v"></span> dm³</b><input type="range" id="v4" min="1" max="10" step="0.1" value="6"></label><label>Zarralar: <b><span id="n4v"></span> nuqta</b> (● = 10²² ta)<input type="range" id="n4" min="5" max="200" step="1" value="60"></label></div></div>
+<div class="res" id="r4"></div></div>
+<h3>Taxminiy konsentratsiyalar</h3>
+<div class="tw"><table><tr><th>Holat</th><th>Misol</th><th>n, m⁻³</th></tr><tr><td>Gaz</td><td>havo (normal sharoit)</td><td>≈ 2,7·10²⁵</td></tr><tr><td>Suyuqlik</td><td>suv</td><td>≈ 3,3·10²⁸</td></tr><tr><td>Qattiq jism</td><td>temir</td><td>≈ 8,5·10²⁸</td></tr></table></div>
+<div class="pr" id="pr4"></div></section>
+
+<section class="p" style="margin-top:14px"><h2>Xulosa</h2>
+<div class="tw"><table><tr><th>Kattalik</th><th>Formula</th><th>Birligi</th></tr>
+<tr><td>Modda miqdori ν</td><td>ν = N / N<sub>A</sub> = m / M</td><td>mol</td></tr>
+<tr><td>Avogadro doimiysi</td><td>N<sub>A</sub> = 6,02·10²³</td><td>mol⁻¹</td></tr>
+<tr><td>Molekulalar soni N</td><td>N = ν · N<sub>A</sub> = (m / M) · N<sub>A</sub></td><td>dona</td></tr>
+<tr><td>Konsentratsiya n</td><td>n = N / V = ν · N<sub>A</sub> / V</td><td>m⁻³</td></tr></table></div>
+<h2 style="margin-top:18px">Bilimingni sina</h2><div id="quiz"></div><p id="score"><b></b></p></section>
+</div>
+<script>
+const $=s=>document.querySelector(s),NA=6.02e23,pf=s=>parseFloat(String(s).replace(',','.'));
+const SUB={H2O:{n:'Suv (H₂O)',M:18,c:'#3b82f6'},O2:{n:'Kislorod (O₂)',M:32,c:'#ef4444'},Fe:{n:'Temir (Fe)',M:56,c:'#a8a29e'},Al:{n:'Alyuminiy (Al)',M:27,c:'#94a3b8'},C:{n:'Uglerod (C)',M:12,c:'#14b8a6'},NaCl:{n:'Osh tuzi (NaCl)',M:58.5,c:'#a855f7'}};
+const fx=(x,d)=>x.toFixed(d).replace('.',','),f=x=>String(+(+x).toFixed(3)).replace('.',',');
+const sci=(x,d=2)=>{if(!x)return'0';let e=Math.floor(Math.log10(Math.abs(x))),m=x/10**e;if(+m.toFixed(d)>=10){m/=10;e++}return m.toFixed(d).replace('.',',')+'·10<sup>'+String(e).replace('-','−')+'</sup>'};
+const st=a=>a.map(([k,v])=>`<div><i>${k}:</i>${v}</div>`).join('');
+const rnd=(a,b)=>a+Math.floor(Math.random()*(b-a+1)),pick=a=>a[rnd(0,a.length-1)];
+const C={};function rc(){const s=getComputedStyle(document.documentElement);['tx','mu','ac','bd','cv'].forEach(k=>C[k]=s.getPropertyValue('--'+k).trim())}
+const np=b=>{const a=Math.random()*6.283,s=b.sp*(.5+Math.random());return{x:b.x0+5+Math.random()*(b.x1-b.x0-10),y:b.y0+5+Math.random()*(b.y1-b.y0-10),vx:Math.cos(a)*s,vy:Math.sin(a)*s}};
+const adj=(ps,t,b)=>{const d=t-ps.length;if(d>0)for(let i=0;i<Math.ceil(d/12);i++)ps.push(np(b));else if(d<0)ps.length-=Math.ceil(-d/12)};
+const mv=(ps,a,b,c,d,r)=>{for(const p of ps){p.x+=p.vx;p.y+=p.vy;if(p.x<a+r){p.x=a+r;p.vx=Math.abs(p.vx)}if(p.x>c-r){p.x=c-r;p.vx=-Math.abs(p.vx)}if(p.y<b+r){p.y=b+r;p.vy=Math.abs(p.vy)}if(p.y>d-r){p.y=d-r;p.vy=-Math.abs(p.vy)}}};
+const dot=(g,x,y,r,c)=>{g.fillStyle=c;g.beginPath();g.arc(x,y,r,0,7);g.fill()};
+document.querySelectorAll('#sub1,#sub3').forEach(s=>s.innerHTML=Object.keys(SUB).map(k=>`<option value="${k}">${SUB[k].n}, M = ${f(SUB[k].M)} g/mol</option>`).join(''));
+$('#sub1').value='H2O';$('#sub3').value='H2O';
+const F={};let act=1;
+
+/* 1 */
+const g1=$('#c1').getContext('2d'),P1=[],B1={x0:208,y0:110,x1:352,y1:208,sp:1.6};
+function u1(){const s=SUB[$('#sub1').value],m=+$('#m1').value,nu=m/s.M;$('#m1v').textContent=f(m);
+$('#r1').innerHTML=st([['Berilgan',`m = ${f(m)} g; M = ${f(s.M)} g/mol`],['Formula','ν = m / M'],['Hisoblash',`ν = ${f(m)} / ${f(s.M)} = <b>${fx(nu,3)} mol</b>`],['Zarralar',`N = ν·N<sub>A</sub> = ${sci(nu*NA)} ta`]]);
+const mx=Math.max(2*s.M,m,1);
+$('#bars').innerHTML=[['0,5 mol',.5*s.M],['1 mol',s.M],['2 mol',2*s.M],['Hozirgi',m]].map(([l,w])=>`<div class="bc"><div class="bw"><div class="bar" style="height:${w/mx*100}%;background:${s.c}"></div></div><b>${l}</b><br>${f(w)} g<br><small>${sci(w/s.M*NA)} ta</small></div>`).join('')}
+F[1]=()=>{const s=SUB[$('#sub1').value],m=+$('#m1').value,nu=m/s.M;adj(P1,m?Math.min(150,Math.ceil(nu*30)):0,B1);mv(P1,208,110,352,208,4);
+const g=g1;g.clearRect(0,0,560,280);g.textAlign='center';g.strokeStyle=C.tx;g.lineWidth=3;g.beginPath();g.moveTo(200,95);g.lineTo(200,210);g.lineTo(360,210);g.lineTo(360,95);g.stroke();
+g.fillStyle=C.mu;g.fillRect(150,210,260,8);g.fillStyle=C.ac;g.fillRect(120,218,320,52);g.fillStyle='#0b1220';g.fillRect(210,226,140,36);g.fillStyle='#4ade80';g.font='bold 22px monospace';g.fillText(f(m)+' g',280,252);
+P1.forEach(p=>dot(g,p.x,p.y,4,s.c));g.fillStyle=C.tx;g.font='bold 16px system-ui';g.fillText('ν = '+fx(nu,2)+' mol  ·  '+s.n,280,30)};
+$('#sub1').onchange=u1;$('#m1').oninput=u1;
+
+/* 2 */
+const g2=$('#c2').getContext('2d');let p2=1,run=0,tt=0;
+F[2]=()=>{tt+=.05;if(run){p2=Math.min(1,p2+.004);if(p2>=1)run=0;$('#cnt2').innerHTML=sci(p2*NA)+' ta'}
+const sel=[...document.querySelectorAll('.ck:checked')].map(e=>e.value),g=g2,w=640/Math.max(sel.length,1),cnt=Math.floor(p2*40);
+g.clearRect(0,0,640,260);g.textAlign='center';
+sel.forEach((k,j)=>{const s=SUB[k],cx=w*j+w/2;g.strokeStyle=C.bd;g.lineWidth=2;g.strokeRect(cx-75,20,150,110);
+for(let i=0;i<cnt;i++)dot(g,cx-56+(i%8)*16+Math.sin(tt+i)*1.5,42+Math.floor(i/8)*18+Math.cos(tt*1.3+i)*1.5,2.5+Math.cbrt(s.M)*.7,s.c);
+g.fillStyle=C.ac;g.fillRect(cx-70,140,140,42);g.fillStyle='#0b1220';g.fillRect(cx-50,146,100,30);g.fillStyle='#4ade80';g.font='bold 18px monospace';g.fillText(f(s.M)+' g',cx,167);
+g.fillStyle=C.tx;g.font='14px system-ui';g.fillText(s.n,cx,205);g.fillText('1 mol',cx,225)})};
+function u2(){const sel=[...document.querySelectorAll('.ck:checked')].map(e=>SUB[e.value]);
+$('#r2').innerHTML=sel.length?`<div class="tw"><table><tr><th>Modda</th><th>M, g/mol</th><th>1 mol massasi</th><th>Zarralar soni</th></tr>${sel.map(s=>`<tr><td>${s.n}</td><td>${f(s.M)}</td><td>${f(s.M)} g</td><td>${sci(NA)}</td></tr>`).join('')}</table></div><div>Xulosa: massalar har xil, zarralar soni bir xil.</div>`:'Kamida bitta moddani tanlang.';}
+document.querySelectorAll('.ck').forEach(e=>e.onchange=u2);
+$('#go2').onclick=()=>{p2=0;run=1};$('#cnt2').innerHTML=sci(NA)+' ta';
+function us(){const e=+$('#rate').value,r=10**e,y=NA/r/3.156e7,U=1.38e10,mx=Math.max(y,U);$('#rl').innerHTML='10<sup>'+e+'</sup>';
+$('#sc').innerHTML=`<div>t = N<sub>A</sub> / tezlik = ${sci(NA/r)} s ≈ <b>${sci(y)} yil</b> (1 yil ≈ 3,16·10⁷ s)</div><div>Koinot yoshi ≈ 1,38·10¹⁰ yil. Sanash vaqti koinot yoshidan ${sci(y/U)} marta ${y>U?'uzoq':'qisqa'}.</div>
+<div>Sanash vaqti<div class="hb" style="width:${Math.max(1,y/mx*100)}%"></div></div><div>Koinot yoshi<div class="hb u" style="width:${Math.max(1,U/mx*100)}%"></div></div>`}
+$('#rate').oninput=us;
+function uc(){const a=pf($('#ca').value),b=pf($('#cb').value);
+$('#ra').innerHTML=isNaN(a)?'Son kiriting':`N = ν·N<sub>A</sub> = ${f(a)}·6,02·10²³ = <b>${sci(a*NA)}</b> ta`;
+$('#rb').innerHTML=isNaN(b)?'Son kiriting':`ν = N / N<sub>A</sub> = <b>${fx(b/NA,3)} mol</b>`}
+$('#ca').oninput=uc;$('#cb').oninput=uc;
+
+/* 3 */
+const g3=$('#c3').getContext('2d'),P3=[],B3={x0:10,y0:10,x1:550,y1:290,sp:2.2};let T3=0;
+function setM3(g,v){const r=$('#m3');$('#mode3').value=g?'g':'mol';r.max=g?200:10;r.step=g?1:.1;r.value=v;u3()}
+function u3(){const s=SUB[$('#sub3').value],g=$('#mode3').value=='g',v=+$('#m3').value,m=g?v:v*s.M,nu=g?v/s.M:v,N=nu*NA;
+$('#l3').innerHTML=g?`Massa: <b>${f(v)} g</b>`:`Modda miqdori: <b>${f(v)} mol</b>`;T3=Math.min(1000,Math.round(N/1e22));$('#dc3').textContent=T3;
+$('#r3').innerHTML=st([['Berilgan',(g?`m = ${f(m)} g; M = ${f(s.M)} g/mol`:`ν = ${f(nu)} mol`)+'; N<sub>A</sub> = 6,02·10²³ mol⁻¹'],
+['Formula',g?'N = (m / M)·N<sub>A</sub>':'N = ν·N<sub>A</sub>'],
+['Qiymat qoʻyish',g?`N = (${f(m)} / ${f(s.M)})·6,02·10²³ = ${fx(nu,2)}·6,02·10²³`:`N = ${f(nu)}·6,02·10²³`],
+['Javob',`N ≈ <b>${sci(N)}</b> ta molekula`]])}
+F[3]=()=>{adj(P3,T3,B3);mv(P3,10,10,550,290,3);const g=g3,c=SUB[$('#sub3').value].c;g.clearRect(0,0,560,300);g.strokeStyle=C.tx;g.lineWidth=3;g.strokeRect(10,10,540,280);P3.forEach(p=>dot(g,p.x,p.y,3,c))};
+$('#sub3').onchange=u3;$('#m3').oninput=u3;$('#mode3').onchange=()=>setM3($('#mode3').value=='g',$('#mode3').value=='g'?36:2);
+$('#ex3').onclick=()=>{$('#sub3').value='H2O';setM3(true,200)};
+
+/* 4 */
+const g4=$('#c4').getContext('2d'),P4=[];
+function u4(){const V=+$('#v4').value,d=+$('#n4').value,N=d*1e22,Vm=V*1e-3,n=N/Vm,nu=N/NA;$('#v4v').textContent=fx(V,1);$('#n4v').textContent=d;
+$('#r4').innerHTML=st([['Berilgan',`N = ${d}·10²² = ${sci(N)}; V = ${fx(V,1)} dm³ = ${sci(Vm,1)} m³`],['Formula','n = N / V'],['Qiymat qoʻyish',`n = ${sci(N)} / ${sci(Vm,1)}`],['Javob',`n ≈ <b>${sci(n)} m⁻³</b>`],['Tekshiruv',`ν = N/N<sub>A</sub> = ${fx(nu,2)} mol; n = ν·N<sub>A</sub>/V = ${sci(nu*NA/Vm)} m⁻³`]])}
+F[4]=()=>{const V=+$('#v4').value,px=20+V/10*520,L=px-20;adj(P4,+$('#n4').value,{x0:20,y0:40,x1:px,y1:260,sp:4});mv(P4,20,40,px,260,3);
+const g=g4,cs=26,cols=Math.ceil(L/cs),rows=9,cn=new Array(cols*rows).fill(0);g.clearRect(0,0,600,300);g.textAlign='center';
+P4.forEach(p=>{cn[Math.min(rows-1,Math.floor((p.y-40)/cs))*cols+Math.min(cols-1,Math.floor((p.x-20)/cs))]++});
+for(let r=0;r<rows;r++)for(let c=0;c<cols;c++){const x=20+c*cs,y=40+r*cs;g.fillStyle=`rgba(239,68,68,${Math.min(.8,cn[r*cols+c]*.2)})`;g.fillRect(x,y,Math.min(cs,px-x),Math.min(cs,260-y))}
+g.strokeStyle=C.tx;g.lineWidth=4;g.beginPath();g.moveTo(px,40);g.lineTo(20,40);g.lineTo(20,260);g.lineTo(px,260);g.stroke();
+g.fillStyle=C.mu;g.fillRect(px,32,10,236);g.fillRect(px+10,140,575-px,8);g.fillRect(575,120,12,48);
+P4.forEach(p=>dot(g,p.x,p.y,3,C.ac));g.fillStyle=C.tx;g.font='bold 14px system-ui';g.fillText('V = '+fx(V,1)+' dm³',20+L/2,288)};
+$('#v4').oninput=u4;$('#n4').oninput=u4;
+
+/* practice */
+function prac(id,gen){const el=$('#'+id);const nw=()=>{const q=gen();el.innerHTML=`<h3>✍️ Mustaqil sinab koʻr</h3><p>${q.t}</p><div class="ctl"><label>Javob (${q.u})<input type="text" inputmode="decimal"></label><button class="b">Tekshirish</button><button class="b g">Yangi masala</button></div><div class="fb"></div>`;
+const i=el.querySelector('input'),[c,n]=el.querySelectorAll('button'),fb=el.querySelector('.fb');n.onclick=nw;
+c.onclick=()=>{const v=pf(i.value);if(isNaN(v)){fb.innerHTML='<span class="no">Son kiriting.</span>';return}const ok=Math.abs(v-q.a)<=.02*Math.abs(q.a)+.006;
+fb.innerHTML=(ok?'<b class="ok">✅ Toʻgʻri!</b>':'<b class="no">❌ Notoʻgʻri.</b>')+` Toʻgʻri javob: <b>${fx(q.a,2)} ${q.u}</b><br><small>${q.s}</small>`}};nw()}
+prac('pr1',()=>{const s=pick(Object.values(SUB)),m=rnd(20,200);return{t:`${s.n} massasi ${m} g (M = ${f(s.M)} g/mol). Modda miqdori ν ni toping.`,u:'mol',a:m/s.M,s:`ν = m / M = ${m} / ${f(s.M)} ≈ ${fx(m/s.M,2)} mol`}});
+prac('pr2',()=>{const v=pick([.5,1.5,2,3,4,5]);return{t:`Har qanday moddaning ${f(v)} molida nechta zarra bor? Javobni 10²³ birligida yozing (N<sub>A</sub> = 6,02·10²³ mol⁻¹).`,u:'·10²³ ta',a:v*6.02,s:`N = ν·N<sub>A</sub> = ${f(v)}·6,02·10²³ = ${fx(v*6.02,2)}·10²³`}});
+prac('pr3',()=>{const s=pick(Object.values(SUB)),m=rnd(10,200),a=m/s.M*6.02;return{t:`${s.n} massasi ${m} g (M = ${f(s.M)} g/mol). Molekulalar soni N ni 10²³ birligida toping.`,u:'·10²³ ta',a,s:`N = (m / M)·N<sub>A</sub> = (${m} / ${f(s.M)})·6,02·10²³ = ${fx(a,2)}·10²³`}});
+prac('pr4',()=>{const k=rnd(1,9),j=pick([.5,1,2,4,5]);return{t:`Idishda N = ${k}·10²⁴ ta molekula bor, idish hajmi V = ${f(j)} m³. Konsentratsiya n ni 10²⁴ m⁻³ birligida toping.`,u:'·10²⁴ m⁻³',a:k/j,s:`n = N / V = ${k}·10²⁴ / ${f(j)} = ${fx(k/j,2)}·10²⁴ m⁻³`}});
+
+/* quiz */
+const Q=[{q:'36 g suvda (M = 18 g/mol) necha mol modda bor?',o:['0,5 mol','2 mol','18 mol','648 mol'],a:1,e:'ν = m / M = 36 / 18 = 2 mol.'},
+{q:'Avogadro doimiysi nimaga teng?',o:['6,02·10²³ mol⁻¹','6,02·10²³ g/mol','3,01·10²³ mol⁻¹','6,02·10²² mol⁻¹'],a:0,e:'N_A = 6,02·10²³ mol⁻¹ — 1 moldagi zarralar soni.'},
+{q:'3 mol moddada nechta molekula bor?',o:['6,02·10²³','1,806·10²⁴','2,01·10²³','1,8·10²³'],a:1,e:'N = ν·N_A = 3·6,02·10²³ = 1,806·10²⁴.'},
+{q:'Molekulalar konsentratsiyasi n ning SI birligi qaysi?',o:['mol','kg/m³','1/m³','g/mol'],a:2,e:'n = N / V, shuning uchun birligi 1/m³.'},
+{q:'Molekulalar soni oʻzgarmay, idish hajmi 2 marta kamaysa, n qanday oʻzgaradi?',o:['2 marta kamayadi','oʻzgarmaydi','4 marta ortadi','2 marta ortadi'],a:3,e:'n = N / V: V necha marta kamaysa, n shuncha marta ortadi.'}];
+let done=0,pts=0;$('#quiz').innerHTML=Q.map((q,i)=>`<div class="qb"><b>${i+1}. ${q.q}</b>${q.o.map((o,j)=>`<button class="qo" data-i="${i}" data-j="${j}">${'ABCD'[j]}) ${o}</button>`).join('')}<div class="ex"></div></div>`).join('');
+document.querySelectorAll('.qo').forEach(b=>b.onclick=()=>{const q=Q[+b.dataset.i],j=+b.dataset.j,box=b.parentNode;box.querySelectorAll('.qo').forEach((x,k)=>{x.disabled=true;if(k==q.a)x.classList.add('ok')});
+if(j!=q.a)b.classList.add('no');else pts++;box.querySelector('.ex').innerHTML=(j==q.a?'<b class="ok">Toʻgʻri.</b> ':'<b class="no">Notoʻgʻri.</b> ')+`Toʻgʻri javob: ${'ABCD'[q.a]}. ${q.e}`;
+if(++done==Q.length)$('#score b').textContent=`Natija: ${pts} / ${Q.length}`});
+
+/* shell */
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{act=+b.dataset.t;document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('on',x==b));document.querySelectorAll('.p').forEach((s,i)=>{if(i<4)s.classList.toggle('on',i+1==act)})});
+$('#th').onclick=()=>{const d=document.documentElement,c=d.dataset.theme||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');d.dataset.theme=c=='dark'?'light':'dark';rc()};
+matchMedia('(prefers-color-scheme:dark)').onchange=rc;
+rc();u1();u2();us();uc();u3();u4();
+(function loop(){F[act]();requestAnimationFrame(loop)})();
+</script></body></html>

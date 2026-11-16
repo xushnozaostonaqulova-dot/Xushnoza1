@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>9-sinf fizika: I bob imtihoni</title>
+<style>
+:root{--bg:#fff;--fg:#1a1a1a;--card:#f3f5f8;--ac:#1a7f4b;--ok:#1a7f4b;--no:#c0392b;--mut:#666;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15181c;--fg:#e8e8e8;--card:#22272e;--ac:#3fbf7f;--ok:#3fbf7f;--no:#ff7b6b;--mut:#9aa}}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.45 Georgia,serif;padding:12px;max-width:640px;margin:auto}
+h1{font-size:20px;color:var(--ac)}h1+p{color:var(--mut);margin-top:-8px}
+.q{background:var(--card);border-radius:12px;padding:12px;margin:14px 0}
+.q b.s{color:var(--ac)}
+canvas{width:100%;max-width:320px;display:block;margin:8px auto;border:1px solid #8884;border-radius:8px}
+.ctl label{display:block;font-size:14px}.ctl input{width:60%;vertical-align:middle}
+.ro{font-size:14px;color:var(--mut);text-align:center;min-height:20px}
+.o{display:block;padding:6px 4px;border-radius:6px}.o.ok{background:#1a7f4b33}.o.no{background:#c0392b33}
+.e{font-size:14px;color:var(--mut);margin-top:6px}
+button{background:var(--ac);color:#fff;border:0;border-radius:8px;padding:12px 20px;font-size:16px;width:100%}
+#res{font-size:18px;text-align:center;margin:12px 0}
+</style></head><body>
+<h1>I BOB: Modda tuzilishining molekulyar-kinetik nazariyasi asoslari</h1>
+<p>9-sinf fizika · imtihon · har bir savolda simulyatsiyani sinab ko‘ring</p>
+<div id="ex"></div>
+<button onclick="chk()">Tekshirish</button><div id="res"></div>
+<script>
+const Q=[
+{s:"1-§",t:"Molekulalarning uzluksiz tartibsiz harakatini isbotlovchi tajriba qaysi?",o:["Broun harakati","Erkin tushish","Arximed qonuni","Inersiya"],a:0,e:"Suyuqlikdagi mayda zarrachalarning tartibsiz harakati (Broun harakati) molekulalar urilishi natijasidir.",k:"brown"},
+{s:"2-§",t:"Suvning molyar massasi M = 18 g/mol. Bitta suv molekulasining massasi taxminan qancha? (N<sub>A</sub> = 6,02·10²³ mol⁻¹)",o:["3·10⁻²⁶ kg","18·10⁻³ kg","6·10⁻²³ kg","3·10⁻²³ kg"],a:0,e:"m₀ = M/N<sub>A</sub> = 0,018/6,02·10²³ ≈ 3·10⁻²⁶ kg.",k:"mole"},
+{s:"3-§",t:"3 mol moddada nechta molekula bor?",o:["6,02·10²³","1,8·10²⁴","3·10²³","2·10²³"],a:1,e:"N = ν·N<sub>A</sub> = 3·6,02·10²³ ≈ 1,8·10²⁴.",k:"mole"},
+{s:"4-§",t:"Masala: 36 g suvda necha mol modda bor? (M = 18 g/mol)",o:["1 mol","0,5 mol","2 mol","4 mol"],a:2,e:"ν = m/M = 36/18 = 2 mol.",k:"mole"},
+{s:"5-§",t:"Ideal gaz modelida molekulalar haqida qaysi fikr to‘g‘ri?",o:["Doim bir-birini tortadi","Moddiy nuqta deb olinadi, faqat to‘qnashganda ta’sirlashadi","Hajmi juda katta","Harakatsiz"],a:1,e:"Ideal gazda molekulalar o‘lchami e’tiborga olinmaydi va ular faqat to‘qnashuvda ta’sirlashadi.",k:"speed"},
+{s:"6-§",t:"27 °C temperaturani kelvinda ifodalang.",o:["27 K","246 K","300 K","273 K"],a:2,e:"T = t + 273 = 27 + 273 = 300 K.",k:"temp"},
+{s:"7-§",t:"Gaz mutlaq temperaturasi 4 marta ortsa, molekulalarning o‘rtacha tezligi necha marta ortadi?",o:["4","2","16","√2"],a:1,e:"v ~ √T, shuning uchun √4 = 2 marta ortadi.",k:"speed"},
+{s:"9-§",t:"Ideal gaz holat tenglamasi (Mendeleyev–Klapeyron) qaysi?",o:["p = ρgh","pV = νRT","F = ma","Q = cmΔt"],a:1,e:"pV = νRT, bu yerda R = 8,31 J/(mol·K).",k:"iso-V"},
+{s:"10-§",t:"Izotermik jarayonda gaz bosimi 1 atm, hajmi 6 l. Hajm 2 l gacha kamaytirilsa, bosim qancha bo‘ladi?",o:["2 atm","6 atm","3 atm","0,33 atm"],a:2,e:"Boyl–Mariott: p₁V₁ = p₂V₂ → p₂ = 1·6/2 = 3 atm.",k:"iso-T"},
+{s:"11-§",t:"Izobarik jarayonda gaz hajmi 2 l, T = 300 K. Gaz 600 K gacha qizdirilsa hajmi qancha bo‘ladi?",o:["1 l","4 l","6 l","2 l"],a:1,e:"Gey-Lyussak: V₁/T₁ = V₂/T₂ → V₂ = 2·600/300 = 4 l.",k:"iso-P"},
+{s:"12-§",t:"Izoxorik jarayonda gaz bosimi 1 atm, T = 300 K. Gaz 600 K gacha qizdirilsa bosim qancha bo‘ladi?",o:["0,5 atm","1 atm","4 atm","2 atm"],a:3,e:"Sharl qonuni: p₁/T₁ = p₂/T₂ → p₂ = 1·600/300 = 2 atm.",k:"iso-V"},
+{s:"13-§",t:"Moy tomchisining hajmi V = 10⁻¹² m³, suvdagi yupqa parda yuzi S = 10⁻³ m². Molekula o‘lchamini baholang (d = V/S).",o:["10⁻⁹ m","10⁻⁶ m","10⁻¹⁵ m","10⁻³ m"],a:0,e:"d = V/S = 10⁻¹²/10⁻³ = 10⁻⁹ m (taxminan 1 nm).",k:"oil"}
+];
+const sims=[];
+function build(q,h){
+ const c=document.createElement('canvas');c.width=320;c.height=150;
+ const ctl=document.createElement('div');ctl.className='ctl';
+ const ro=document.createElement('div');ro.className='ro';
+ h.append(c,ctl,ro);const g=c.getContext('2d'),k=q.k;
+ const sl=(lab,mn,mx,v,f)=>{const l=document.createElement('label'),i=document.createElement('input');i.type='range';i.min=mn;i.max=mx;i.value=v;l.append(lab+' ',i);ctl.append(l);i.oninput=()=>f(+i.value);};
+ let T=300,V=.7,n=6,S=10;
+ const P=[...Array(30)].map(()=>({x:Math.random()*200,y:Math.random()*150,a:Math.random()*6.28}));
+ let bx=160,by=75,tr=[];
+ if(k=='brown'||k=='speed'||k=='temp'||k=='iso-V')sl('T',150,600,T,v=>T=v);
+ if(k=='iso-P')sl('T',180,600,T,v=>T=v);
+ if(k=='iso-T')sl('V',30,100,70,v=>V=v/100);
+ if(k=='mole')sl('N (×10²³)',1,36,n,v=>n=v);
+ if(k=='oil')sl('S (sm²)',5,100,S,v=>S=v);
+ sims.push(()=>{
+  g.clearRect(0,0,320,150);
+  if(k=='mole'){
+   const m=n/6.02;g.fillStyle='#3a8fdd';
+   for(let i=0;i<Math.min(n,36);i++){g.beginPath();g.arc(15+(i%12)*26,25+Math.floor(i/12)*40,9,0,6.3);g.fill();}
+   ro.textContent='N = '+n+'·10²³ ta; ν = '+m.toFixed(2)+' mol; suv massasi = '+(m*18).toFixed(1)+' g';return;}
+  if(k=='oil'){
+   const r=Math.sqrt(S)*7;g.fillStyle='#3a8fdd88';g.beginPath();g.arc(160,75,r,0,6.3);g.fill();
+   g.fillStyle='#e0a020';g.beginPath();g.arc(30,20,5,0,6.3);g.fill();
+   ro.textContent='V = 10⁻¹² m³; S = '+S+' sm²; d = V/S = '+(10/S).toFixed(2)+' nm';return;}
+  let w=320;
+  if(k=='brown'){
+   const s=2.5*Math.sqrt(T/300);
+   bx+=(Math.random()-.5)*s*3+(160-bx)*.01;by+=(Math.random()-.5)*s*3+(75-by)*.01;
+   tr.push([bx,by]);if(tr.length>80)tr.shift();
+   g.strokeStyle='#e0a020';g.beginPath();tr.forEach((p,i)=>i?g.lineTo(...p):g.moveTo(...p));g.stroke();
+   g.fillStyle='#c0392b';g.beginPath();g.arc(bx,by,12,0,6.3);g.fill();
+   g.fillStyle='#3a8fdd';P.forEach(p=>{p.x+=Math.cos(p.a)*s*2;p.y+=Math.sin(p.a)*s*2;if(p.x<0||p.x>320)p.a=Math.PI-p.a;if(p.y<0||p.y>150)p.a=-p.a;g.beginPath();g.arc((p.x+320)%320,(p.y+150)%150,3,0,6.3);g.fill();});
+   ro.textContent='Katta zarracha molekulalar zarbidan tartibsiz siljiydi · T = '+T+' K';return;}
+  let Vv=V;if(k=='iso-P')Vv=T/600;if(k=='iso-V'||k=='speed'||k=='temp')Vv=.7;if(k=='iso-T')T=300;
+  w=320*Vv;const s=2.2*Math.sqrt(T/300);
+  g.strokeStyle='#888';g.lineWidth=3;g.strokeRect(1,1,w,148);g.lineWidth=1;
+  g.fillStyle=T>400?'#e0603a':'#3a8fdd';
+  P.forEach(p=>{p.x+=Math.cos(p.a)*s;p.y+=Math.sin(p.a)*s;
+   if(p.x<3){p.x=3;p.a=Math.PI-p.a}if(p.x>w-3){p.x=w-3;p.a=Math.PI-p.a}
+   if(p.y<3){p.y=3;p.a=-p.a}if(p.y>147){p.y=147;p.a=-p.a}
+   g.beginPath();g.arc(p.x,p.y,3,0,6.3);g.fill();});
+  const pr=(T/Vv/430).toFixed(2),v=Math.round(515*Math.sqrt(T/300));
+  if(k=='speed'||k=='temp')ro.textContent='T = '+T+' K ('+(T-273)+' °C) · o‘rtacha tezlik ≈ '+v+' m/s';
+  else if(k=='iso-T')ro.textContent='T = 300 K (o‘zgarmas) · V = '+(Vv*100).toFixed(0)+'% · p = '+pr+' (nisbiy) → V↓ p↑';
+  else if(k=='iso-P')ro.textContent='p = o‘zgarmas · T = '+T+' K · V = '+(Vv*100).toFixed(0)+'% → T↑ V↑';
+  else ro.textContent='V = o‘zgarmas · T = '+T+' K · p = '+pr+' (nisbiy) → T↑ p↑';
+ });
+}
+const ex=document.getElementById('ex');
+Q.forEach((q,i)=>{
+ const d=document.createElement('div');d.className='q';
+ d.innerHTML='<b class="s">'+q.s+'</b> · <b>'+(i+1)+'.</b> '+q.t;
+ const sm=document.createElement('div');d.append(sm);build(q,sm);
+ q.o.forEach((o,j)=>{const l=document.createElement('label');l.className='o';l.innerHTML='<input type="radio" name="q'+i+'" value="'+j+'"> '+o;d.append(l);});
+ const e=document.createElement('div');e.className='e';e.id='e'+i;d.append(e);ex.append(d);
+});
+function chk(){let sc=0;
+ Q.forEach((q,i)=>{const ls=document.querySelectorAll('input[name=q'+i+']');
+  ls.forEach((r,j)=>{const p=r.parentElement;p.classList.remove('ok','no');
+   if(j==q.a)p.classList.add('ok');else if(r.checked)p.classList.add('no');
+   if(r.checked&&j==q.a)sc++;});
+  document.getElementById('e'+i).innerHTML='Izoh: '+q.e;});
+ document.getElementById('res').textContent='Natija: '+sc+' / '+Q.length+' ('+Math.round(sc/Q.length*100)+'%)';}
+(function loop(){sims.forEach(f=>f());requestAnimationFrame(loop)})();
+</script></body></html>

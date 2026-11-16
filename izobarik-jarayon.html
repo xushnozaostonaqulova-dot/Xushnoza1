@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>11-§. Izobarik jarayon — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+.fm{font:600 16px system-ui,sans-serif;background:var(--bg);border:1px dashed var(--ac);border-radius:8px;padding:8px 12px;margin:8px 0;line-height:1.9}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+.op{display:block;width:100%;text-align:left;margin:5px 0;font-weight:400}
+.ex{font:14px system-ui,sans-serif;color:var(--mu);margin:2px 0 14px}
+.sc{font:700 16px system-ui,sans-serif}
+</style></head><body>
+<h1>11-§. Izobarik jarayon</h1>
+<p class="sub">9-sinf fizika · Har bir reja: nazariya, jonli simulatsiya va savollar; oxirida mustahkamlash.</p>
+
+<section><h2>1. Izobarik jarayon tushunchasi (p = const)</h2>
+<p><b>Izobarik jarayon</b> — gaz massasi oʻzgarmas (m = const) va <b>bosimi oʻzgarmas</b> (p = const) boʻlganda gaz holatining oʻzgarishi. Gaz hajmi V va absolyut temperatura T oʻzgaradi. Misol: ogʻirligi oʻzgarmas, erkin harakatlanuvchi porshenli silindrdagi gaz. Gaz bosimi p = p₀ + mg/S doimiy, qizdirilganda gaz kengayib, porshenni koʻtaradi.</p>
+<div class="fm">m = const, p = const<br>T = t + 273 (K)</div>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><label>T: <b id="t1">300</b> K</label><input id="T1" type="range" min="200" max="600" step="10" value="300"></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Gey-Lyussak qonuni</h2>
+<p>Berilgan massali gaz uchun <b>p = const</b> da gaz hajmining absolyut temperaturaga nisbati oʻzgarmas: <b>V/T = const</b>. Boshqacha aytganda, hajm absolyut temperaturaga <b>toʻgʻri proporsional</b> (V ~ T).</p>
+<div class="fm">V₁/T₁ = V₂/T₂ &nbsp;⇒&nbsp; V₂ = V₁·T₂/T₁<br>V = V₀·(1 + t/273) (t — °C)</div>
+<p><b>Muhim:</b> temperaturani doim kelvinga aylantiring. Sellsiy shkalasida V ~ t emas. Masalan 0 °C dan 100 °C ga qizdirganda hajm 273:373 nisbatda, “cheksiz” emas.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><label>V₁: <b id="v2">3</b> L</label><input id="V2" type="range" min="1" max="5" step="0.5" value="3"></div>
+<div class="row"><label>t₁: <b id="a2">27</b> °C</label><input id="A2" type="range" min="0" max="100" step="1" value="27"></div>
+<div class="row"><label>t₂: <b id="b2">127</b> °C</label><input id="B2" type="range" min="-50" max="300" step="1" value="127"></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Izobarik jarayon grafiklari va amaliy misollar</h2>
+<p><b>V–T grafigi:</b> koordinata boshidan oʻtuvchi toʻgʻri chiziq (izobara). Bosim kichik boʻlsa chiziq tikroq (p₁ &lt; p₂). <b>V–t grafigi:</b> toʻgʻri chiziq, t oʻqini −273 °C da kesadi. <b>p–V</b> va <b>p–T</b> grafiklari: <b>gorizontal chiziq</b>. p–V grafikda chiziq ostidagi yuz gaz <b>bajargan ish</b>ga teng: <b>A = p·ΔV = νRΔT</b>.</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="G3"><option value="0">V–T grafigi</option><option value="1">V–t grafigi</option><option value="2">p–V grafigi (ish)</option><option value="3">p–T grafigi</option></select>
+<label><input type="checkbox" id="K3"> 2-izobara (p₂ &gt; p₁)</label></div>
+<div class="row"><label>T: <b id="t3">400</b> K</label><input id="T3" type="range" min="200" max="600" step="10" value="400"></div>
+<div class="out" id="o3"></div>
+<h3>Amaliy misollar</h3>
+<p>Quyoshda isiyotgan ochiq idishdagi havo; issiq havo shari (ichidagi havo atmosfera bosimida kengayadi, zichligi kamayib, shar koʻtariladi); ochiq idishdagi gazni qizdirish; shpritsni qoʻl bilan ushlab turganda ichidagi havoning kengayishi; ichki yonuv dvigatelida yonish paytida porshenning surilishi (taxminan). Gaz hajmi oʻzgarmasa (berk idish) jarayon izoxorik, temperatura oʻzgarmasa izotermik.</p>
+<div id="q3"></div></section>
+
+<section><h2>Mustahkamlash uchun savol va topshiriqlar</h2>
+<p class="sc">Test natijasi: <span id="sc">0 / 6</span></p>
+<div id="mq"></div>
+<h3>Masalalar</h3><div id="ms"></div>
+<h3>Amaliy topshiriqlar</h3><div id="mt"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function Q(id,a){$(id).innerHTML='<h3>Savol va topshiriqlar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c',RD='#e24b4a',GR='#3aa86b';
+const mkP=n=>Array.from({length:n},()=>{const a=Math.random()*6.28;return{x:0,y:0,ux:Math.cos(a),uy:Math.sin(a),i:0}});
+function step(P,n,v,dt,x0,x1,y0,y1){for(let i=0;i<n;i++){const p=P[i];if(!p.i||p.y<y0||p.y>y1){p.x=x0+10+Math.random()*(x1-x0-20);p.y=y0+8+Math.random()*Math.max(1,y1-y0-16);p.i=1}
+p.x+=p.ux*v*dt;p.y+=p.uy*v*dt;if(p.x<x0+4){p.x=x0+4;p.ux=Math.abs(p.ux)}if(p.x>x1-4){p.x=x1-4;p.ux=-Math.abs(p.ux)}
+if(p.y<y0+4){p.y=y0+4;p.uy=Math.abs(p.uy)}if(p.y>y1-4){p.y=y1-4;p.uy=-Math.abs(p.uy)}}}
+function cyl(x,c,cx,w,h,P,n,col2){const yb=200,yt=yb-h;x.strokeStyle=c.fg;x.lineWidth=3;x.beginPath();x.moveTo(cx-w/2,20);x.lineTo(cx-w/2,yb);x.lineTo(cx+w/2,yb);x.lineTo(cx+w/2,20);x.stroke();
+x.fillStyle=c.mu;x.fillRect(cx-w/2+2,yt-10,w-4,10);x.fillRect(cx-14,yt-34,28,24);T(x,'yuk',cx,yt-17,'#fff','center');
+for(let i=0;i<n;i++){x.beginPath();x.arc(P[i].x,P[i].y,3.5,0,7);x.fillStyle=col2;x.fill()}}
+
+/* 1 */
+const P1=mkP(26);let lt1=0;
+mk('c1',(x,t,c)=>{const dt=Math.min(t-lt1,.05);lt1=t;const Tk=+$('T1').value;$('t1').textContent=Tk;const h=Tk*.28,cx=110,w=130;
+step(P1,26,90*Math.sqrt(Tk/300),dt,cx-w/2,cx+w/2,200-h,200);cyl(x,c,cx,w,h,P1,26,OR);
+x.fillStyle=Tk>400?RD:Tk>300?OR:'#f0b060';x.fillRect(cx-40,206,80,6);
+x.strokeStyle=c.mu;x.lineWidth=1;x.setLineDash([4,4]);x.beginPath();x.moveTo(cx+w/2+4,200-300*.28);x.lineTo(cx+w/2+60,200-300*.28);x.stroke();x.setLineDash([]);T(x,'T=300 K dagi sath',cx+w/2+8,200-300*.28-4,c.mu);
+x.fillStyle=c.fg;x.font='600 13px system-ui,sans-serif';x.textAlign='left';x.fillText('p = const',215,50);x.fillText('V ~ T',215,70);
+$('o1').textContent='T = '+Tk+' K → V = '+(Tk/100).toFixed(2)+' L; V/T = 0.0100 L/K (oʻzgarmas); bosim doimiy.'});
+Q('q1',[["Izobarik jarayonda qaysi kattaliklar oʻzgarmaydi?","Gaz massasi va bosimi (m = const, p = const). Hajm va temperatura oʻzgaradi."],["Porshen erkin harakatlansa, nega bosim doimiy qoladi?","Porshen va yuk ogʻirligi hamda atmosfera bosimi oʻzgarmaydi: p = p₀ + mg/S = const. Gaz bosimi bu bosimga tenglashadi."],["Topshiriq: simulatsiyada T ni oshiring va porshen sathini kuzating.","T ortsa molekulalar tezroq harakatlanadi, porshenni koʻtarib, hajm kengayadi. Bosim oʻzgarmaydi."]]);
+
+/* 2 */
+const P2a=mkP(20),P2b=mkP(20);let lt2=0;
+mk('c2',(x,t,c)=>{const dt=Math.min(t-lt2,.05);lt2=t;const V1=+$('V2').value,t1=+$('A2').value,t2=+$('B2').value;$('v2').textContent=V1;$('a2').textContent=t1;$('b2').textContent=t2;
+const T1=t1+273,T2=t2+273,V2=V1*T2/T1,h1=V1*14,h2=V2*14;
+step(P2a,20,90*Math.sqrt(T1/300),dt,40,130,200-h1,200);step(P2b,20,90*Math.sqrt(T2/300),dt,190,280,200-h2,200);
+cyl(x,c,85,90,h1,P2a,20,c.ac);cyl(x,c,235,90,h2,P2b,20,OR);
+T(x,'1-holat',85,14,c.fg,'center');T(x,'2-holat',235,14,c.fg,'center');T(x,'V₁='+V1+' L',85,216,c.fg,'center');T(x,'V₂='+V2.toFixed(2)+' L',235,216,c.fg,'center');
+$('o2').textContent='T₁ = '+T1+' K, T₂ = '+T2+' K → V₂ = V₁T₂/T₁ = '+V2.toFixed(2)+' L · tekshiruv: V₁/T₁ = '+(V1/T1).toFixed(4)+', V₂/T₂ = '+(V2/T2).toFixed(4)});
+Q('q2',[["2 L gaz 27 °C dan 127 °C gacha p = const da qizdirildi. V₂ = ?","T₁ = 300 K, T₂ = 400 K. V₂ = 2·400/300 ≈ 2.67 L."],["Nega masalada Sellsiy darajasini toʻgʻridan-toʻgʻri qoʻyib boʻlmaydi?","Gey-Lyussak qonuni V ~ T absolyut shkalada bajariladi. Sellsiyda nol (0 °C) gaz hajmi nol degani emas."],["Topshiriq: V₁ = 3 L, t₁ = 27 °C, t₂ = 127 °C. Simulatsiya natijasini daftarda hisoblab tekshiring.","V₂ = 3·400/300 = 4 L. Simulatsiyada V₁/T₁ = V₂/T₂ ekani koʻrinadi."]]);
+
+/* 3 */
+const gx=(v,a,b)=>45+(v-a)/(b-a)*255,gy=(v,b)=>185-v/b*170;
+mk('c3',(x,t,c)=>{const g=+$('G3').value,Tk=+$('T3').value,two=$('K3').checked&&g<2,V=Tk/100;$('t3').textContent=Tk;
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(45,10);x.lineTo(45,185);x.lineTo(305,185);x.stroke();
+const ln=(f,a,b,s,cl,dash)=>{x.strokeStyle=cl;x.lineWidth=2.5;x.setLineDash(dash?[4,4]:[]);x.beginPath();for(let i=0;i<=40;i++){const v=a+(b-a)*i/40;const p=f(v);i?x.lineTo(p[0],p[1]):x.moveTo(p[0],p[1])}x.stroke();x.setLineDash([])};
+let msg='';
+if(g===0){T(x,'V, L',50,18,c.fg);T(x,'T, K',300,200,c.fg,'right');
+const f=k=>T=>[gx(T,0,700),gy(T*k,7)];ln(f(.01),0,200,0,c.ac,1);ln(f(.01),200,600,0,c.ac);T(x,'p₁',gx(500,0,700)+4,gy(5,7)-4,c.ac);
+if(two){ln(f(.005),0,200,0,OR,1);ln(f(.005),200,600,0,OR);T(x,'p₂',gx(600,0,700)+4,gy(3,7)+14,OR)}
+x.beginPath();x.arc(gx(Tk,0,700),gy(V,7),5,0,7);x.fillStyle=RD;x.fill();T(x,'0',36,198,c.mu);
+msg='T = '+Tk+' K, V = '+V.toFixed(2)+' L. Toʻgʻri chiziq koordinata boshidan oʻtadi: V ~ T.'}
+else if(g===1){T(x,'V, L',50,18,c.fg);T(x,'t, °C',300,200,c.fg,'right');
+const f=k=>t=>[gx(t,-300,350),gy((t+273)*k,7)];ln(f(.01),-300,-73,0,c.ac,1);ln(f(.01),-73,327,0,c.ac);
+if(two){ln(f(.005),-300,-73,0,OR,1);ln(f(.005),-73,327,0,OR)}
+x.beginPath();x.arc(gx(-273,-300,350),185,4,0,7);x.fillStyle=c.fg;x.fill();T(x,'−273 °C',gx(-273,-300,350)+4,178,c.fg);
+x.beginPath();x.arc(gx(Tk-273,-300,350),gy(V,7),5,0,7);x.fillStyle=RD;x.fill();
+msg='t = '+(Tk-273)+' °C, V = '+V.toFixed(2)+' L. Chiziq t oʻqini −273 °C da kesadi (V → 0).'}
+else if(g===2){T(x,'p, kPa',50,18,c.fg);T(x,'V, L',300,200,c.fg,'right');const py=gy(101,200);
+x.fillStyle=c.ac+'55';x.fillRect(gx(2,0,7),py,gx(Math.max(2,V),0,7)-gx(2,0,7),185-py);
+x.strokeStyle=c.ac;x.lineWidth=2.5;x.beginPath();x.moveTo(gx(2,0,7),py);x.lineTo(gx(6,0,7),py);x.stroke();T(x,'101 kPa',50,py-4,c.mu);
+x.beginPath();x.arc(gx(V,0,7),py,5,0,7);x.fillStyle=RD;x.fill();
+msg='V = '+V.toFixed(2)+' L. Ish A = pΔV = 101·(V−2) = '+(101*Math.max(0,V-2)).toFixed(0)+' J (yuz).'}
+else{T(x,'p, kPa',50,18,c.fg);T(x,'T, K',300,200,c.fg,'right');const py=gy(101,200);
+x.strokeStyle=c.ac;x.lineWidth=2.5;x.beginPath();x.moveTo(gx(200,0,700),py);x.lineTo(gx(600,0,700),py);x.stroke();T(x,'101 kPa',50,py-4,c.mu);
+x.beginPath();x.arc(gx(Tk,0,700),py,5,0,7);x.fillStyle=RD;x.fill();msg='T = '+Tk+' K oʻzgardi, bosim p = 101 kPa oʻzgarmadi: gorizontal chiziq.'}
+$('o3').textContent=msg});
+Q('q3',[["V–T grafigida nega chiziq koordinata boshidan oʻtadi?","V/T = const, ya’ni V = kT. T = 0 da V = 0 (chiziq davomi, haqiqiy gaz buni oldin suyuqlikka aylanadi)."],["Ikkita izobaradan qaysi biri katta bosimga tegishli?","Tikligi kichikrog‘i: V/T = νR/p, p qancha katta boʻlsa, V/T shuncha kichik. Shuning uchun p₂ chizigʻi pastroq."],["p–V grafikda gorizontal chiziq ostidagi yuz nimani bildiradi?","Gaz bajargan ishni: A = p·ΔV."],["Topshiriq: p = 2·10⁵ Pa da gaz 0.003 m³ ga kengaydi. Ish A = ?","A = pΔV = 2·10⁵·0.003 = 600 J."]]);
+
+/* 4 */
+const MQ=[["Izobarik jarayonda qaysi kattalik doimiy?",["Hajm","Bosim","Temperatura"],1,"p = const (m ham doimiy)."],
+["p = const da gaz hajmi absolyut temperaturaga qanday bogʻliq?",["Toʻgʻri proporsional","Teskari proporsional","Kvadratiga proporsional"],0,"Gey-Lyussak qonuni: V/T = const."],
+["3 L gaz 300 K dan 450 K gacha p = const da qizdirildi. V₂ = ?",["2 L","4.5 L","6 L"],1,"V₂ = 3·450/300 = 4.5 L."],
+["Izobarani V–T koordinatalarida qanday chiziq bilan tasvirlanadi?",["Gorizontal chiziq","Giperbola","Koordinata boshidan oʻtuvchi toʻgʻri chiziq"],2,"V = kT, toʻgʻri chiziq, davomi koordinata boshidan oʻtadi."],
+["2 L gaz 0 °C da edi. 100 °C gacha p = const da qizdirilsa, V₂ ≈ ?",["2.73 L","4 L","2.19 L"],0,"V₂ = 2·373/273 ≈ 2.73 L (kelvinga oʻtkazish shart)."],
+["p = 2·10⁵ Pa, ΔV = 0.003 m³. Gaz bajargan ish?",["66.7 J","600 J","6000 J"],1,"A = pΔV = 2·10⁵·0.003 = 600 J."]];
+$('mq').innerHTML=MQ.map((q,i)=>'<div><p><b>'+(i+1)+'. '+q[0]+'</b></p>'+q[1].map((o,j)=>'<button class="op" onclick="ans('+i+','+j+',this)">'+o+'</button>').join('')+'<p class="ex" id="ex'+i+'"></p></div>').join('');
+let sc=0;const dn={};
+function ans(i,j,b){if(dn[i])return;dn[i]=1;const ok=j===MQ[i][2];if(ok)sc++;const bs=b.parentNode.querySelectorAll('.op');bs[MQ[i][2]].style.cssText='background:#3aa86b;color:#fff';if(!ok)b.style.cssText='background:#e24b4a;color:#fff';
+$('ex'+i).textContent=(ok?'Toʻgʻri. ':'Notoʻgʻri. ')+MQ[i][3];$('sc').textContent=sc+' / '+MQ.length}
+const MS=[["1-masala. Gaz T₁ = 300 K da 20 L hajm egallagan. Hajmi 30 L boʻlishi uchun T₂ = ? (p = const)","T₂ = T₁·V₂/V₁ = 300·30/20 = 450 K = 177 °C."],
+["2-masala. 1 mol gaz p = const da ΔT = 100 K ga qizdirildi. Bajarilgan ish A = ?","A = νRΔT = 1·8.31·100 ≈ 831 J."],
+["3-masala. 0 °C da 5 L gaz 91 °C gacha p = const da qizdirilsa, hajmi qancha boʻladi? (V = V₀(1 + t/273))","V = 5·(1 + 91/273) = 5·1.333 ≈ 6.67 L."],
+["4-masala. Gaz hajmi 2 marta ortishi uchun (p = const) T qanday oʻzgarishi kerak?","T ham 2 marta ortishi kerak, masalan 300 K → 600 K."]];
+$('ms').innerHTML=MS.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('');
+$('mt').innerHTML='<details><summary>Topshiriq 1: uyda tajriba (kattalar nazoratida)</summary><p>Plastik shisha ogʻziga puflanmagan sharni kiydiring. Shishani issiq (qaynamagan) suvli idishga botiring: shar shishiradi. Soʻng sovuq suvga solib, nima boʻlishini kuzating. Gaz hajmi T ga qanday bogʻliqligini yozing.</p></details><details><summary>Topshiriq 2: grafik chizish</summary><p>V₁ = 2 L, T₁ = 200 K gaz T₂ = 400 K gacha p = const da qizdirildi. V–T, V–t va p–V grafiklarini chizing, p–V da ish yuzini boʻying. (V₂ = 4 L)</p></details><details><summary>Topshiriq 3: izobarik, izoxorik va izotermik jarayonlarni solishtiring</summary><p>Jadval tuzing: qaysi kattalik doimiy, qonun nomi, formulasi (V/T = const, p/T = const, pV = const) va bittadan hayotiy misol keltiring.</p></details>';
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

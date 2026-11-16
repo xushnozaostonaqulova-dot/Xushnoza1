@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>14-§. Masalalar yechish — gaz qonunlari</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+button.go{background:var(--ac);color:#fff;border:0;font-weight:600}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+.fm{font:600 15px system-ui,sans-serif;background:var(--bg);border:1px dashed var(--ac);border-radius:8px;padding:8px 12px;margin:8px 0;line-height:1.9}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+table{border-collapse:collapse;font:13px system-ui,sans-serif;width:100%;margin:8px 0}td,th{border:1px solid var(--bd);padding:4px 6px;text-align:left}
+.op{display:block;width:100%;text-align:left;margin:5px 0;font-weight:400}
+.ex{font:14px system-ui,sans-serif;color:var(--mu);margin:2px 0 14px}
+.sc{font:700 16px system-ui,sans-serif}
+</style></head><body>
+<h1>14-§. Masalalar yechish</h1>
+<p class="sub">9-sinf fizika · Gaz qonunlari, Mendeleyev–Klapeyron tenglamasi, izojarayon grafiklari. Har bir reja: nazariya, simulatsiya, savollar; oxirida mustahkamlash.</p>
+
+<section><h2>1. Gaz qonunlari</h2>
+<p>Gaz massasi oʻzgarmasa (m = const), uch kattalik: bosim p, hajm V va absolyut temperatura T oʻzaro bogʻliq. Ikkitasi oʻzgarsa, uchinchisi doimiy boʻlgan jarayonlar <b>izojarayonlar</b> deyiladi.</p>
+<div class="fm">Izotermik (T = const), Boyl–Mariott: pV = const, p₁V₁ = p₂V₂<br>Izobarik (p = const), Gey-Lyussak: V/T = const<br>Izoxorik (V = const), Sharl: p/T = const<br>Birlashgan: p₁V₁/T₁ = p₂V₂/T₂</div>
+<p>Temperaturani doim <b>kelvinda</b> yozing: T = t + 273. Simulatsiyada jarayonni tanlang va slayderni suring, uchala kattalikning oʻzgarishi hamda doimiy kattalik koʻrinadi.</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><select id="Z1" onchange="setMode()"><option value="0">Izotermik (T = 300 K)</option><option value="1">Izobarik (p = 100 kPa)</option><option value="2">Izoxorik (V = 3 L)</option></select></div>
+<div class="row"><label id="l1">V: <b id="x1v">3</b> L</label><input id="X1" type="range" min="1.5" max="6" step="0.1" value="3"></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Mendeleyev–Klapeyron tenglamasiga oid kompleks masalalar</h2>
+<div class="fm">pV = (m/M)·R·T = νRT, R = 8.31 J/(mol·K)<br>ρ = pM/(RT), n = p/(kT)</div>
+<p><b>Yechish algoritmi:</b> (1) berilganlarni SI ga oʻtkazing: p — Pa, V — m³ (1 L = 10⁻³ m³), T — K, M — kg/mol (1 g/mol = 10⁻³ kg/mol); (2) holatlar bitta boʻlsa, pV = νRT, ikkita boʻlsa birlashgan qonunni oling; (3) noma’lumni ifodalang; (4) hisoblab, birlik va maʼnoni tekshiring. Simulatsiyada p = νRT/V (V litrda boʻlsa p kPa chiqadi).</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><select id="G2"></select><label>m: <b id="m2">32</b> g</label><input id="M2" type="range" min="2" max="100" step="2" value="32"></div>
+<div class="row"><label>T: <b id="t2">300</b> K</label><input id="T2" type="range" min="200" max="600" step="10" value="300"></div>
+<div class="row"><label>V: <b id="v2">10</b> L</label><input id="V2" type="range" min="1" max="20" step="1" value="10"></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Izojarayon grafiklarini bir sistemadan boshqasiga oʻtkazish</h2>
+<p>Quyidagi yopiq sikl: <b>1→2</b> izobarik qizdirish (p = 100 kPa, V: 2→4 L), <b>2→3</b> izoxorik sovitish (V = 4 L, p: 100→50 kPa), <b>3→1</b> izotermik siqish (T = 300 K). Koordinata sistemasini almashtirib, shu jarayon qanday chizilishini koʻring.</p>
+<table><tr><th>Jarayon</th><th>p–V</th><th>V–T</th><th>p–T</th></tr><tr><td>Izoterma</td><td>giperbola</td><td>vertikal</td><td>vertikal</td></tr><tr><td>Izobara</td><td>gorizontal</td><td>koordinata boshidan oʻtuvchi chiziq</td><td>gorizontal</td></tr><tr><td>Izoxora</td><td>vertikal</td><td>gorizontal</td><td>koordinata boshidan oʻtuvchi chiziq</td></tr></table>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="S3"><option value="0">p–V sistemasi</option><option value="1">V–T sistemasi</option><option value="2">p–T sistemasi</option></select><button class="go" onclick="pl3=!pl3">Boshlash / toʻxtatish</button></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<section><h2>Mustahkamlash va nazorat savollari</h2>
+<p class="sc">Test natijasi: <span id="sc">0 / 8</span></p>
+<div id="mq"></div>
+<h3>Nazorat savollari</h3><div id="ns"></div>
+<h3>Amaliy topshiriqlar</h3><div id="mt"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function Q(id,a,h){$(id).innerHTML='<h3>'+(h||'Savol va masalalar')+'</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c',RD='#e24b4a',GR='#3aa86b',R=8.31;
+const mkP=n=>Array.from({length:n},()=>{const a=Math.random()*6.28;return{x:0,y:0,ux:Math.cos(a),uy:Math.sin(a),i:0}});
+function step(P,n,v,dt,x0,x1,y0,y1){for(let i=0;i<n;i++){const p=P[i];if(!p.i||p.y<y0||p.y>y1){p.x=x0+10+Math.random()*(x1-x0-20);p.y=y0+8+Math.random()*Math.max(1,y1-y0-16);p.i=1}
+p.x+=p.ux*v*dt;p.y+=p.uy*v*dt;if(p.x<x0+4){p.x=x0+4;p.ux=Math.abs(p.ux)}if(p.x>x1-4){p.x=x1-4;p.ux=-Math.abs(p.ux)}
+if(p.y<y0+4){p.y=y0+4;p.uy=Math.abs(p.uy)}if(p.y>y1-4){p.y=y1-4;p.uy=-Math.abs(p.uy)}}}
+function cyl(x,c,cx,w,h,P,n,cl){const yb=200,yt=yb-h;x.strokeStyle=c.fg;x.lineWidth=3;x.beginPath();x.moveTo(cx-w/2,20);x.lineTo(cx-w/2,yb);x.lineTo(cx+w/2,yb);x.lineTo(cx+w/2,20);x.stroke();
+x.fillStyle=c.mu;x.fillRect(cx-w/2+2,yt-10,w-4,10);x.fillRect(cx-14,yt-32,28,22);T(x,'yuk',cx,yt-17,'#fff','center');
+for(let i=0;i<n;i++){x.beginPath();x.arc(P[i].x,P[i].y,3.5,0,7);x.fillStyle=cl;x.fill()}}
+function gauge(x,c,gx,p,mx,lab){const fr=Math.min(1,p/mx);x.strokeStyle=c.mu;x.lineWidth=1;x.strokeRect(gx,30,30,150);x.fillStyle=p>mx?RD:GR;x.fillRect(gx,180-fr*150,30,fr*150);T(x,lab,gx-4,22,c.mu)}
+
+/* 1 */
+const P1=mkP(22);let lt1=0;
+function setMode(){const m=+$('Z1').value,s=$('X1');if(m===0){s.min=1.5;s.max=6;s.step=.1;s.value=3}else{s.min=150;s.max=600;s.step=10;s.value=300}}
+mk('c1',(x,t,c)=>{const dt=Math.min(t-lt1,.05);lt1=t;const m=+$('Z1').value,xv=+$('X1').value;let V,p,Tk;
+if(m===0){V=xv;Tk=300;p=300/V;$('l1').innerHTML='V: <b>'+V.toFixed(1)+'</b> L'}else if(m===1){Tk=xv;p=100;V=Tk/100;$('l1').innerHTML='T: <b>'+Tk+'</b> K'}else{Tk=xv;V=3;p=Tk/3;$('l1').innerHTML='T: <b>'+Tk+'</b> K'}
+const h=V*25;step(P1,22,90*Math.sqrt(Tk/300),dt,40,150,200-h,200);cyl(x,c,95,110,h,P1,22,OR);gauge(x,c,200,p,250,'p, kPa');
+x.fillStyle=c.fg;x.fillRect(196,180-100/250*150,38,2);T(x,'100',238,180-100/250*150+4,c.fg);
+T(x,'p = '+p.toFixed(0)+' kPa',245,50,c.fg);T(x,'V = '+V.toFixed(2)+' L',245,70,c.fg);T(x,'T = '+Tk+' K',245,90,c.fg);
+$('o1').textContent=['Boyl–Mariott','Gey-Lyussak','Sharl'][m]+': '+['pV = '+(p*V).toFixed(0)+' (doimiy)','V/T = '+(V/Tk).toFixed(4)+' (doimiy)','p/T = '+(p/Tk).toFixed(4)+' (doimiy)'][m]});
+Q('q1',[["Boyl–Mariott: 6 L gaz 100 kPa da izotermik 2 L gacha siqildi. p₂ = ?","p₂ = p₁V₁/V₂ = 100·6/2 = 300 kPa."],["Sharl: V = const, 300 K da p = 150 kPa. 600 K da p = ?","p₂ = p₁T₂/T₁ = 150·600/300 = 300 kPa."],["Gey-Lyussak: p = const, 2 L gaz 27 °C dan 87 °C gacha qizdirildi. V₂ = ?","T₁ = 300 K, T₂ = 360 K. V₂ = 2·360/300 = 2.4 L."],["Topshiriq: har bir jarayonda uch kattalikdan qaysi biri doimiy ekanini aniqlab, jadval tuzing.","Izotermik: T; izobarik: p; izoxorik: V. Doimiy kattalik slayder boʻyicha oʻzgarmasligini koʻrasiz."]]);
+
+/* 2 */
+const GS=[["Vodorod H₂",2],["Geliy He",4],["Azot N₂",28],["Kislorod O₂",32],["Karbonat angidrid CO₂",44]];
+$('G2').innerHTML=GS.map((g,i)=>'<option value="'+i+'"'+(i===3?' selected':'')+'>'+g[0]+'</option>').join('');
+const P2=mkP(60);let lt2=0;
+mk('c2',(x,t,c)=>{const dt=Math.min(t-lt2,.05);lt2=t;const g=GS[+$('G2').value],m=+$('M2').value,Tk=+$('T2').value,V=+$('V2').value;$('m2').textContent=m;$('t2').textContent=Tk;$('v2').textContent=V;
+const nu=m/g[1],p=nu*R*Tk/V,cnt=Math.min(60,Math.round(nu*12)+3),h=V*8;
+step(P2,cnt,90*Math.sqrt(Tk/300),dt,40,150,200-h,200);cyl(x,c,95,110,h,P2,cnt,c.ac);gauge(x,c,200,p,600,'p, kPa');
+x.fillStyle=c.fg;x.fillRect(196,180-101/600*150,38,2);T(x,'1 atm',238,180-101/600*150+4,c.fg);
+T(x,'ν = '+nu.toFixed(2)+' mol',245,50,c.fg);T(x,'p = '+p.toFixed(0)+' kPa',245,70,c.fg);
+$('o2').textContent='ν = m/M = '+nu.toFixed(2)+' mol; p = νRT/V = '+nu.toFixed(2)+'·8.31·'+Tk+'/'+V+' = '+p.toFixed(1)+' kPa'});
+Q('q2',[["1-masala. 32 g kislorod V = 10 L idishda T = 300 K. p = ? (M = 32 g/mol)","ν = 1 mol, p = νRT/V = 1·8.31·300/0.01 ≈ 2.49·10⁵ Pa ≈ 249 kPa."],["2-masala. Havoning zichligi 0 °C va 101 325 Pa da? (M = 0.029 kg/mol)","ρ = pM/(RT) = 101325·0.029/(8.31·273) ≈ 1.30 kg/m³."],["3-masala. 2 L gaz: p₁ = 100 kPa, T₁ = 300 K. p₂ = 200 kPa, T₂ = 600 K boʻlsa V₂ = ?","V₂ = p₁V₁T₂/(T₁p₂) = 100·2·600/(300·200) = 2 L."],["4-masala. Shina ichida 7 °C da p = 200 kPa. 47 °C gacha qizsa (V = const), p = ?","T₁ = 280 K, T₂ = 320 K. p₂ = 200·320/280 ≈ 229 kPa."],["5-masala. p = 10⁵ Pa, V = 24.9 L, T = 300 K. Gaz miqdori ν = ?","ν = pV/(RT) = 10⁵·0.0249/(8.31·300) ≈ 1 mol."],["6-masala (kompleks). Berk idishdagi gaz 27 °C da 150 kPa. Gazning yarmi chiqarildi va T 127 °C ga yetdi. Yangi bosim?","p ~ νT: ν yarimga, T 300→400 K. p₂ = 150·(1/2)·(400/300) = 100 kPa."]]);
+
+/* 3 */
+const PT=f=>{const s=Math.floor(f)%3,u=f-Math.floor(f);if(s===0){const V=2+2*u;return[100,V,150*V]}if(s===1){const p=100-50*u;return[p,4,6*p]}const V=4-2*u;return[200/V,V,300]};
+const AX=[[0,5,0,120,'V, L','p, kPa',(a)=>[a[1],a[0]]],[0,700,0,5,'T, K','V, L',(a)=>[a[2],a[1]]],[0,700,0,120,'T, K','p, kPa',(a)=>[a[2],a[0]]]];
+const SCL=['#0b6fb8',OR,GR],SN=['1→2 izobarik qizdirish','2→3 izoxorik sovitish','3→1 izotermik siqish'];
+let pl3=true,f3=0,lt3=0;
+mk('c3',(x,t,c)=>{const dt=Math.min(t-lt3,.05);lt3=t;if(pl3)f3=(f3+dt*.35)%3;const A=AX[+$('S3').value];
+const X=v=>45+(v-A[0])/(A[1]-A[0])*255,Y=v=>185-(v-A[2])/(A[3]-A[2])*170;
+x.strokeStyle=c.mu;x.lineWidth=1;x.beginPath();x.moveTo(45,10);x.lineTo(45,185);x.lineTo(305,185);x.stroke();T(x,A[5],50,18,c.fg);T(x,A[4],300,200,c.fg,'right');
+for(let s=0;s<3;s++){x.strokeStyle=SCL[s];x.lineWidth=Math.floor(f3)===s?4.5:2.5;x.beginPath();for(let i=0;i<=40;i++){const q=A[6](PT(s+i/40*.9999));i?x.lineTo(X(q[0]),Y(q[1])):x.moveTo(X(q[0]),Y(q[1]))}x.stroke()}
+[0,1,2].forEach(s=>{const q=A[6](PT(s)),dx=s===2?-14:6;x.beginPath();x.arc(X(q[0]),Y(q[1]),3.5,0,7);x.fillStyle=c.fg;x.fill();T(x,String(s+1),X(q[0])+dx,Y(q[1])-6,c.fg)});
+const q=A[6](PT(f3));x.beginPath();x.arc(X(q[0]),Y(q[1]),6,0,7);x.fillStyle=RD;x.fill();
+const st=PT(f3);$('o3').textContent=SN[Math.floor(f3)]+' · p = '+st[0].toFixed(0)+' kPa, V = '+st[1].toFixed(2)+' L, T = '+st[2].toFixed(0)+' K'});
+Q('q3',[["Izobarik jarayon p–V, V–T va p–T sistemalarida qanday koʻrinadi?","p–V da gorizontal chiziq; V–T da koordinata boshidan oʻtuvchi toʻgʻri chiziq; p–T da gorizontal chiziq."],["Izoxorik jarayon-chi?","p–V da vertikal chiziq; V–T da gorizontal chiziq; p–T da koordinata boshidan oʻtuvchi toʻgʻri chiziq."],["Izoterma V–T va p–T grafiklarida qanday boʻladi?","Ikkalasida ham vertikal chiziq (T = const)."],["Topshiriq: p–V sistemasida bir nuqtadan boshqasiga oʻtish (1→2→3→1) ni V–T sistemasiga oʻtkazib chizing.","V–T da: 1→2 koordinata boshidan oʻtuvchi chiziq boʻylab T ortadi; 2→3 gorizontal chap tomonga (T kamayadi); 3→1 vertikal pastga (V 4→2 L). Simulatsiya bilan tekshiring."]],'Savol va topshiriqlar');
+
+/* 4 */
+const MQ=[["Boyl–Mariott qonuni qaysi shartda bajariladi?",["T = const, m = const","p = const, m = const","V = const, m = const"],0,"Izotermik jarayon: pV = const."],
+["Sharl qonunida qaysi nisbat doimiy?",["V/T","p/T","pV"],1,"V = const da p/T = const."],
+["2 L gaz 100 kPa da izotermik 4 L gacha kengaydi. p₂ = ?",["200 kPa","50 kPa","25 kPa"],1,"p₂ = 100·2/4 = 50 kPa."],
+["V = const, 300 K da p = 150 kPa. 600 K da p = ?",["75 kPa","150 kPa","300 kPa"],2,"p ~ T: p₂ = 150·2 = 300 kPa."],
+["1 mol gaz, T = 300 K, V = 24.9 L. p ≈ ?",["100 kPa","10 kPa","1000 kPa"],0,"p = νRT/V = 8.31·300/0.0249 ≈ 10⁵ Pa."],
+["p–T grafikda koordinata boshidan oʻtuvchi toʻgʻri chiziq qaysi jarayon?",["Izotermik","Izobarik","Izoxorik"],2,"p/T = const, V = const: izoxora."],
+["p–V grafikdagi giperbola qaysi jarayonga mos?",["Izoterma","Izobara","Izoxora"],0,"pV = const giperbola beradi."],
+["Mendeleyev–Klapeyron tenglamasi qaysi?",["pV = (m/M)RT","p/V = νRT","pT = νRV"],0,"pV = νRT, ν = m/M."]];
+$('mq').innerHTML=MQ.map((q,i)=>'<div><p><b>'+(i+1)+'. '+q[0]+'</b></p>'+q[1].map((o,j)=>'<button class="op" onclick="ans('+i+','+j+',this)">'+o+'</button>').join('')+'<p class="ex" id="ex'+i+'"></p></div>').join('');
+let sc=0;const dn={};
+function ans(i,j,b){if(dn[i])return;dn[i]=1;const ok=j===MQ[i][2];if(ok)sc++;const bs=b.parentNode.querySelectorAll('.op');bs[MQ[i][2]].style.cssText='background:#3aa86b;color:#fff';if(!ok)b.style.cssText='background:#e24b4a;color:#fff';
+$('ex'+i).textContent=(ok?'Toʻgʻri. ':'Notoʻgʻri. ')+MQ[i][3];$('sc').textContent=sc+' / '+MQ.length}
+Q('ns',[["Gaz holatining uchta parametri qaysilar?","Bosim p, hajm V va absolyut temperatura T."],["Izojarayon nima? Uch turini ayting.","Bir parametr doimiy boʻlgan jarayon: izotermik (T), izobarik (p), izoxorik (V)."],["Nega masalalarda temperaturani kelvinda olish shart?","Gaz qonunlari absolyut shkalada yoziladi. Sellsiyda T = 0 gaz hajmi yoki bosimi nol degani emas."],["Mendeleyev–Klapeyron tenglamasidan uch qonun qanday kelib chiqadi?","pV = νRT da T = const → pV = const; p = const → V/T = const; V = const → p/T = const."],["R va k orasidagi bogʻlanish qanday?","R = k·N_A, bu yerda N_A = 6.02·10²³ mol⁻¹."]],'Savollar');
+$('mt').innerHTML='<details><summary>Topshiriq 1: shpritsda tajriba</summary><p>Shpritsning uchini berkitib, porshenni asta bosing. Qarshilik qanday oʻzgaradi? Bu qaysi qonunni koʻrsatadi (T = const)? Porshenni qoʻyib yuborganda nima boʻladi?</p></details><details><summary>Topshiriq 2: grafikni aylantirish</summary><p>Gaz p₁ = 200 kPa, V₁ = 1 L, T₁ = 300 K holatda edi. U avval izotermik V₂ = 4 L gacha kengaydi (p₂ = 50 kPa), soʻng V = const da T₃ = 600 K gacha qizdirildi (p₃ = 100 kPa). Jarayonni p–V sistemasida chizing, soʻng V–T va p–T sistemalariga oʻtkazing.</p></details><details><summary>Topshiriq 3: oʻzingiz masala tuzing</summary><p>Mendeleyev–Klapeyron tenglamasi boʻyicha 3 ta masala tuzing: bittasida p, ikkinchisida m, uchinchisida T ni toping. Yechimini yozing va simulatsiya bilan tekshiring.</p></details>';
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>

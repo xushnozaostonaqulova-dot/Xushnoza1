@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Izoxorik jarayon – 9-sinf fizika</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f8fc;--card:#fff;--tx:#1b2a3a;--mu:#5a6b7c;--ac:#1d7fd6;--bd:#d6e2ee;--ok:#1f9d55;--no:#d64545}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1720;--card:#18232f;--tx:#e8eff6;--mu:#9fb0c1;--ac:#4aa3f0;--bd:#2a3a4a}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 12px 40px}
+h1{font-size:20px;margin:14px 0 2px}h2{font-size:18px;margin:0 0 6px}p{margin:6px 0}
+.sub{color:var(--mu);font-size:14px}
+nav{display:flex;gap:6px;overflow-x:auto;margin:10px 0}
+nav button{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 12px;border-radius:20px;font-size:14px}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
+canvas{width:100%;max-width:100%;border-radius:10px;background:#e3f1fc;display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) canvas{background:#1d3550}}
+label{display:block;font-size:14px;margin-top:8px}label b{color:var(--ac)}
+input[type=range]{width:100%}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.out div{background:var(--bg);border-radius:8px;padding:6px 8px;font-size:14px}
+.f{background:var(--bg);border-left:4px solid var(--ac);padding:6px 10px;border-radius:6px;margin:8px 0;font-size:15px}
+.btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btns button,.tk button{padding:7px 12px;border-radius:8px;border:1px solid var(--ac);background:none;color:var(--ac);font-size:14px}
+.btns button.on{background:var(--ac);color:#fff}
+.q{margin:10px 0}.q button{display:block;width:100%;text-align:left;margin:4px 0;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font-size:15px}
+.q button.ok{background:var(--ok);color:#fff}.q button.no{background:var(--no);color:#fff}
+.ex{font-size:14px;color:var(--mu);display:none}
+.ans{display:none;margin-top:6px;font-size:14px}
+.tw{overflow-x:auto}table{border-collapse:collapse;font-size:13px;margin-top:6px}td,th{border:1px solid var(--bd);padding:4px 7px;text-align:center}
+</style></head><body>
+<h1>Izoxorik jarayon</h1>
+<div class="sub">9-sinf fizika · 12-§ · interaktiv simulyatsiyalar</div>
+<nav id="nav"></nav>
+
+<section id="s0"><div class="card"><h2>1. Izoxorik jarayon tushunchasi</h2>
+<p><b>Izoxorik jarayon</b> – gazning <b>hajmi o‘zgarmas</b> (V = const) va massasi o‘zgarmas (m = const) bo‘lgan holatda ro‘y beradigan jarayon. Faqat p va T o‘zgaradi.</p>
+<div class="f">Gaz <b>qattiq, berk idishda</b> turadi (ballon, avtoklav, aerozol banka, elektr lampa): idish devorlari kengaymaydi.</div>
+<p><b>Nima bo‘ladi?</b> Harorat ortsa, molekulalar tezlashadi: devorga <b>kuchliroq va tez-tez</b> uradi, shuning uchun bosim ortadi. Harorat pasaysa, bosim kamayadi.</p>
+<p class="sub">Shuning uchun yopiq ballon va aerozol bankani qizdirish xavfli: bosim ko‘tarilib, idish portlashi mumkin.</p></div>
+<div class="card"><b>Simulyatsiya: berk idishdagi gaz (V = 10 L)</b>
+<canvas id="c0" width="320" height="230"></canvas>
+<label>Harorat T: <b id="v0t">300</b> K (<span id="v0c">27</span> °C)<input id="r0t" type="range" min="200" max="600" value="300"></label>
+<div class="out"><div>Hajm V: <b>10 L (o‘zgarmas)</b></div><div>Bosim p: <b id="o0a"></b></div><div>p / T = <b id="o0b"></b></div><div>Holat: <b id="o0c"></b></div></div>
+<p class="sub">Haroratni o‘zgartiring: manometr strelkasi harakatlanadi, p/T esa o‘zgarmaydi.</p></div>
+<div id="q0"></div></section>
+
+<section id="s1"><div class="card"><h2>2. Sharl qonuni</h2>
+<p>1787-yilda fransuz olimi <b>Jak Sharl</b> o‘zgarmas hajmda gaz bosimining haroratga bog‘liqligini aniqladi.</p>
+<div class="f"><b>Sharl qonuni:</b> hajmi va massasi o‘zgarmas gazning bosimi absolyut haroratga <b>to‘g‘ri proporsional</b>.<br><b>p / T = const</b>, ya’ni <b>p₁/T₁ = p₂/T₂</b></div>
+<div class="f">Selsiy shkalasida: <b>p = p₀(1 + t/273)</b>, bunda p₀ – 0 °C dagi bosim, 1/273 °C⁻¹ – bosimning harorat koeffitsiyenti.</div>
+<p>Mendeleyev–Klapeyron tenglamasidan: pV = νRT, V = const bo‘lsa p = (νR/V)·T – T oldidagi koeffitsiyent o‘zgarmas.</p>
+<p><b>Absolyut nol:</b> to‘g‘ri chiziqni davom ettirsak, p = 0 bo‘ladigan nuqta t = −273 °C (T = 0 K) ga to‘g‘ri keladi.</p></div>
+<div class="card"><b>Simulyatsiya: p ning t ga bog‘liqligi</b>
+<canvas id="c1" width="320" height="330"></canvas>
+<div class="btns" id="g1"><button class="on" data-g="0">p – t (°C)</button><button data-g="1">p – T (K)</button></div>
+<label>Harorat t: <b id="v1t">27</b> °C<input id="r1t" type="range" min="-100" max="300" value="27"></label>
+<div class="out"><div>T = <b id="o1a"></b></div><div>p = <b id="o1b"></b></div><div>p / T = <b id="o1c"></b></div><div>0 °C da: <b>p₀ = 91 kPa</b></div></div>
+<p class="sub">Uzluksiz chiziq – o‘lchash mumkin bo‘lgan oraliq; punktir – davomi, −273 °C da p = 0 bo‘ladi.</p></div>
+<div id="q1"></div></section>
+
+<section id="s2"><div class="card"><h2>3. Izoxora grafiklari va izojarayonlarni taqqoslash</h2>
+<p><b>Izoxora</b> – izoxorik jarayon grafigi:</p>
+<div class="f"><b>p–T:</b> koordinata boshidan o‘tuvchi to‘g‘ri chiziq (davomi).<br><b>p–V:</b> V o‘qiga perpendikulyar vertikal chiziq.<br><b>V–T:</b> T o‘qiga parallel gorizontal chiziq.</div>
+<p>Quyidagi simulyatsiyada uchala izojarayon (izotermik, izobarik, izoxorik) uchta koordinata tizimida ko‘rsatiladi. Jarayonni tanlang va holat nuqtasi qanday ko‘chishini kuzating.</p></div>
+<div class="card"><b>Simulyatsiya: 1-holatdan o‘tish (p = 100 kPa, V = 10 L, T = 300 K)</b>
+<canvas id="c2" width="320" height="330"></canvas>
+<div class="btns" id="g2"><button class="on" data-g="0">T = const</button><button data-g="1">p = const</button><button data-g="2">V = const</button><button id="ba">▶ Avto</button></div>
+<label>Jarayon borishi: <b id="v2x">0</b> %<input id="r2x" type="range" min="0" max="100" value="0"></label>
+<div class="out"><div>p = <b id="o2a"></b></div><div>V = <b id="o2b"></b></div><div>T = <b id="o2c"></b></div><div>Jarayon: <b id="o2d"></b></div></div>
+<div class="tw"><table><tr><th></th><th>Izotermik</th><th>Izobarik</th><th>Izoxorik</th></tr>
+<tr><td>Doimiy</td><td>T</td><td>p</td><td>V</td></tr>
+<tr><td>Qonun</td><td>pV = const</td><td>V/T = const</td><td>p/T = const</td></tr>
+<tr><td>Qonun muallifi</td><td>Boyl–Mariott</td><td>Gey-Lyussak</td><td>Sharl</td></tr>
+<tr><td>p–V</td><td>giperbola</td><td>gorizontal</td><td>vertikal</td></tr>
+<tr><td>p–T</td><td>vertikal</td><td>gorizontal</td><td>boshdan o‘tuvchi to‘g‘ri chiziq</td></tr>
+<tr><td>V–T</td><td>vertikal</td><td>boshdan o‘tuvchi to‘g‘ri chiziq</td><td>gorizontal</td></tr></table></div></div>
+<div id="q2"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+["1. Izoxorik jarayon","2. Sharl qonuni","3. Grafiklar va taqqoslash"].forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>show(i);$("nav").appendChild(b)});
+function show(i){document.querySelectorAll("section").forEach((s,j)=>s.classList.toggle("on",i==j));[...$("nav").children].forEach((b,j)=>b.classList.toggle("on",i==j));scrollTo(0,0)}
+show(0);
+const fx=(x,d=1)=>x.toFixed(d).replace(".",",");
+
+const Q={
+q0:{q:[["Izoxorik jarayonda o‘zgarmas kattalik:",["bosim","hajm","harorat"],1,"Izo-xorik – hajm o‘zgarmas."],
+["Hajm o‘zgarmas, harorat ortdi. Bosim …",["ortadi","kamayadi","o‘zgarmaydi"],0,"Molekulalar tezlashib, devorga kuchliroq uradi."],
+["Quyidagilardan qaysi biri izoxorik jarayonga misol?",["porshenli idishda gazni siqish","qattiq berk ballonni isitish","ochiq idishda suvni isitish"],1,"Ballon devorlari kengaymaydi, hajm doimiy."]],
+t:[["Ballondagi gaz 27 °C da 200 kPa bosimga ega. Ballon 127 °C gacha isitildi. Bosim qancha bo‘ladi?","T₁ = 300 K, T₂ = 400 K. p₂ = p₁T₂/T₁ = 200·400/300 ≈ 267 kPa."],["Simulyatsiyada T ni 300 K dan 600 K gacha oshiring. Bosim necha marta o‘zgaradi?","100 kPa dan 200 kPa gacha – 2 marta ortadi, chunki T 2 marta ortdi."]]},
+q1:{q:[["Sharl qonuni formulasi:",["p₁V₁ = p₂V₂","V₁/T₁ = V₂/T₂","p₁/T₁ = p₂/T₂"],2,"Birinchisi – Boyl–Mariott, ikkinchisi – Gey-Lyussak."],
+["Absolyut nol harorat:",["0 °C","−100 °C","−273 °C"],2,"T = 0 K = −273 °C."],
+["Sharl qonuni qaysi shartda o‘rinli?",["V = const, m = const","p = const","T = const"],0,"Faqat berk, hajmi o‘zgarmas idishda."]],
+t:[["Gaz bosimi −3 °C da 150 kPa. Hajm o‘zgarmagan holda 87 °C gacha isitilsa, bosim qancha bo‘ladi?","T₁ = 270 K, T₂ = 360 K. p₂ = 150·360/270 = 200 kPa."],["0 °C da bosim 91 kPa. 100 °C da bosim qancha bo‘ladi? (V = const)","p = p₀(1 + t/273) = 91·(1 + 100/273) = 91·373/273 ≈ 124 kPa."],["Ballondagi gaz 20 °C da 2,0·10⁵ Pa bosimga ega. Qanday haroratda bosim 2,5·10⁵ Pa bo‘ladi?","T₁ = 293 K. T₂ = T₁p₂/p₁ = 293·2,5/2,0 ≈ 366 K ≈ 93 °C."]]},
+q2:{q:[["p–T koordinatalarida izoxora:",["gorizontal chiziq","koordinata boshidan o‘tuvchi to‘g‘ri chiziq","giperbola"],1,"p = (νR/V)·T – to‘g‘ri proporsionallik."],
+["p–V koordinatalarida izoxora:",["vertikal chiziq","gorizontal chiziq","giperbola"],0,"V o‘zgarmas, p o‘zgaradi."],
+["V–T koordinatalarida boshdan o‘tuvchi to‘g‘ri chiziq qaysi jarayonga tegishli?",["izotermik","izobarik","izoxorik"],1,"V/T = const – Gey-Lyussak qonuni."]],
+t:[["p–V diagrammada gaz holati 1 (200 kPa, 5 L) dan 2 (100 kPa, 5 L) ga vertikal o‘tdi. Bu qanday jarayon? Harorat qanday o‘zgardi?","Hajm o‘zgarmagan – izoxorik jarayon. p 2 marta kamaydi, demak T ham 2 marta kamaydi (sovish)."],["Simulyatsiyada uchala jarayonni ketma-ket tanlab, p–V, p–T va V–T grafiklarda chiziq ko‘rinishini jadval bilan solishtiring.","Izoxora: p–V da vertikal, p–T da boshdan o‘tuvchi qiya chiziq, V–T da gorizontal. Izobara: p–V va p–T da gorizontal, V–T da qiya. Izoterma: p–V da giperbola, p–T va V–T da vertikal."],["Qaysi jarayonda uchala parametr (p, V, T) ham o‘zgaradi? Qaysi qonun uni tavsiflaydi?","Umumiy holda – Klapeyron tenglamasi: p₁V₁/T₁ = p₂V₂/T₂. Izojarayonlar uning xususiy hollari."]]}};
+Object.keys(Q).forEach(k=>{const c=document.createElement("div");c.className="card";c.innerHTML="<b>Savollar</b>";$(k).appendChild(c);
+Q[k].q.forEach(([q,o,a,e],i)=>{const w=document.createElement("div");w.className="q";w.innerHTML="<div>"+(i+1)+". "+q+"</div>";
+const x=document.createElement("div");x.className="ex";x.textContent="Izoh: "+e;
+o.forEach((t,j)=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{w.querySelectorAll("button").forEach(y=>y.className="");b.className=j==a?"ok":"no";x.style.display="block"};w.appendChild(b)});
+w.appendChild(x);c.appendChild(w)});
+Q[k].t.forEach(([q,a],i)=>{const w=document.createElement("div");w.className="tk";w.innerHTML="<p><b>Topshiriq "+(i+1)+":</b> "+q+'</p><button>Javobni ko‘rish</button><div class="ans">'+a+"</div>";w.querySelector("button").onclick=()=>w.querySelector(".ans").style.display="block";c.appendChild(w)})});
+
+const mk=n=>{const a=[];for(let i=0;i<n;i++)a.push({x:Math.random()*40,y:Math.random()*40,vx:Math.random()*2-1,vy:Math.random()*2-1});return a};
+function gas(c,a,n,x0,y0,w,h,spd,col,r){let hit=0;for(let i=0;i<n;i++){const p=a[i];p.x+=p.vx*spd;p.y+=p.vy*spd;
+if(p.x<r){p.x=r;p.vx=Math.abs(p.vx)}if(p.x>w-r){p.x=w-r;p.vx=-Math.abs(p.vx);hit++}if(p.y<r){p.y=r;p.vy=Math.abs(p.vy)}if(p.y>h-r){p.y=h-r;p.vy=-Math.abs(p.vy)}
+c.fillStyle=col;c.beginPath();c.arc(x0+p.x,y0+p.y,r,0,7);c.fill()}return hit}
+const tcol=T=>{const k=Math.max(0,Math.min(1,(T-100)/500));return "rgb("+Math.round(40+k*215)+","+Math.round(110-k*50)+","+Math.round(230-k*190)+")"};
+function cyl(c,x0,y0,w,h,flash,lock){c.strokeStyle="#556";c.lineWidth=3;c.beginPath();c.moveTo(x0+w+14,y0);c.lineTo(x0,y0);c.lineTo(x0,y0+h);c.lineTo(x0+w+14,y0+h);c.stroke();
+c.fillStyle=lock?"#555":flash>0?"#ff8a2b":"#8a98a8";c.fillRect(x0+w,y0-2,10,h+4);if(!lock){c.fillStyle="#8a98a8";c.fillRect(x0+w+10,y0+h/2-3,26,6)}}
+function axes(c,gx,gy,gw,gh,xl,yl){c.strokeStyle="#99a";c.lineWidth=1;c.beginPath();c.moveTo(gx,gy);c.lineTo(gx,gy+gh);c.lineTo(gx+gw,gy+gh);c.stroke();c.fillStyle="#223";c.font="11px sans-serif";c.textAlign="left";c.fillText(yl,gx-4,gy-5);c.fillText(xl,gx+gw-26,gy+gh+13)}
+const P_T=T=>T/3; /* p = T/3 kPa при V = 10 L */
+
+/* ---- Sim 0 ---- */
+const c0=$("c0").getContext("2d"),A0=mk(40);let fl0=0;
+function u0(){const T=+$("r0t").value,p=P_T(T);$("v0t").textContent=T;$("v0c").textContent=T-273;$("o0a").textContent=fx(p,0)+" kPa";$("o0b").textContent="0,333 kPa/K";$("o0c").textContent=p>180?"xavfli yuqori bosim!":T<300?"sovitilmoqda":"isitilmoqda"}
+$("r0t").oninput=u0;u0();
+function d0(){const c=c0,T=+$("r0t").value,p=P_T(T);c.clearRect(0,0,320,230);
+const hit=gas(c,A0,40,12,34,176,110,2.4*Math.sqrt(T/300),tcol(T),4);fl0=hit?5:Math.max(0,fl0-1);
+c.strokeStyle=fl0>0?"#ff8a2b":"#556";c.lineWidth=4;c.strokeRect(12,34,190,110);c.fillStyle="#223";c.font="12px sans-serif";c.textAlign="left";c.fillText("V = 10 L (qattiq idish)",12,26);
+const fl=(T-200)/400;c.fillStyle="#ff8a2b";for(let i=0;i<6;i++){const x=34+i*26,y=162+Math.sin(performance.now()/110+i)*3,s=4+fl*10;c.beginPath();c.moveTo(x,y+s);c.quadraticCurveTo(x-s*.7,y,x,y-s);c.quadraticCurveTo(x+s*.7,y,x,y+s);c.fill()}
+const cx=265,cy=95,R=42;c.strokeStyle="#778";c.lineWidth=3;c.beginPath();c.arc(cx,cy,R,Math.PI*.75,Math.PI*2.25);c.stroke();
+c.fillStyle="#d64545";c.beginPath();c.arc(cx,cy,R,Math.PI*1.95,Math.PI*2.25);c.lineTo(cx,cy);c.fill();c.fillStyle="rgba(120,130,140,.1)";
+const a=Math.PI*.75+Math.PI*1.5*Math.min(1,p/250);c.strokeStyle="#223";c.lineWidth=3;c.beginPath();c.moveTo(cx,cy);c.lineTo(cx+(R-6)*Math.cos(a),cy+(R-6)*Math.sin(a));c.stroke();
+c.fillStyle="#223";c.beginPath();c.arc(cx,cy,4,0,7);c.fill();c.font="11px sans-serif";c.fillText("manometr",cx-28,cy+R+16);c.font="13px sans-serif";c.fillText(fx(p,0)+" kPa",cx-24,cy+R+32);
+c.strokeStyle="#99a";c.lineWidth=1;c.strokeRect(12,196,290,12);c.fillStyle=tcol(T);c.fillRect(12,196,290*(T-100)/500,12);c.fillStyle="#223";c.font="12px sans-serif";c.fillText("T = "+T+" K",12,224)}
+
+/* ---- Sim 1 ---- */
+const c1=$("c1").getContext("2d"),A1=mk(30);let G1=0,fl1=0;
+document.querySelectorAll("#g1 button").forEach(b=>b.onclick=()=>{G1=+b.dataset.g;document.querySelectorAll("#g1 button").forEach(x=>x.classList.toggle("on",x==b))});
+function u1(){const t=+$("r1t").value,T=t+273;$("v1t").textContent=t;$("o1a").textContent=T+" K";$("o1b").textContent=fx(P_T(T),1)+" kPa";$("o1c").textContent="0,333 kPa/K"}
+$("r1t").oninput=u1;u1();
+function d1(){const c=c1,t=+$("r1t").value,T=t+273,p=P_T(T);c.clearRect(0,0,320,330);
+const hit=gas(c,A1,30,12,12,110,56,2.4*Math.sqrt(T/300),tcol(T),3.3);fl1=hit?5:Math.max(0,fl1-1);c.strokeStyle=fl1>0?"#ff8a2b":"#556";c.lineWidth=3;c.strokeRect(12,12,110,56);
+c.fillStyle="#223";c.font="12px sans-serif";c.textAlign="left";c.fillText("t = "+t+" °C,  p = "+fx(p,0)+" kPa",140,30);c.fillText("V = const",140,48);
+const gx=48,gy=100,gw=250,gh=200;
+if(G1==0){const X=v=>gx+gw*(v+300)/600,Y=q=>gy+gh-gh*q/200;axes(c,gx,gy,gw,gh,"t, °C","p, kPa");
+c.fillStyle="#223";[[-300,"−300"],[-273,""],[0,"0"],[300,"300"]].forEach(([v,l])=>c.fillText(l,X(v)-8,gy+gh+13));c.fillText("100",gx-28,Y(100)+4);c.fillText("200",gx-28,Y(200)+4);
+c.setLineDash([4,3]);c.strokeStyle="#7a9fc6";c.lineWidth=2;c.beginPath();c.moveTo(X(-273),Y(0));c.lineTo(X(-100),Y(P_T(173)));c.stroke();c.setLineDash([]);
+c.strokeStyle="#1d7fd6";c.lineWidth=3;c.beginPath();c.moveTo(X(-100),Y(P_T(173)));c.lineTo(X(300),Y(P_T(573)));c.stroke();
+c.fillStyle="#e0603a";c.beginPath();c.arc(X(t),Y(p),6,0,7);c.fill();c.fillStyle="#d64545";c.beginPath();c.arc(X(-273),Y(0),4,0,7);c.fill();c.fillStyle="#223";c.fillText("−273 °C: p = 0",X(-273)+6,Y(0)-8);
+c.strokeStyle="rgba(150,160,170,.5)";c.beginPath();c.moveTo(X(0),gy);c.lineTo(X(0),gy+gh);c.stroke()}
+else{const X=v=>gx+gw*v/600,Y=q=>gy+gh-gh*q/200;axes(c,gx,gy,gw,gh,"T, K","p, kPa");
+c.fillStyle="#223";[0,300,600].forEach(v=>c.fillText(v,X(v)-6,gy+gh+13));c.fillText("100",gx-28,Y(100)+4);c.fillText("200",gx-28,Y(200)+4);
+c.setLineDash([4,3]);c.strokeStyle="#7a9fc6";c.lineWidth=2;c.beginPath();c.moveTo(X(0),Y(0));c.lineTo(X(173),Y(P_T(173)));c.stroke();c.setLineDash([]);
+c.strokeStyle="#1d7fd6";c.lineWidth=3;c.beginPath();c.moveTo(X(173),Y(P_T(173)));c.lineTo(X(573),Y(P_T(573)));c.stroke();
+c.fillStyle="#e0603a";c.beginPath();c.arc(X(T),Y(p),6,0,7);c.fill();c.fillStyle="#223";c.fillText("p/T = const (0 dan o‘tadi)",X(20),Y(150))}}
+
+/* ---- Sim 2 ---- */
+const c2=$("c2").getContext("2d"),A2=mk(30);let G2=0,fl2=0,auto=false,dirA=1;
+document.querySelectorAll("#g2 button[data-g]").forEach(b=>b.onclick=()=>{G2=+b.dataset.g;document.querySelectorAll("#g2 button[data-g]").forEach(x=>x.classList.toggle("on",x==b))});
+$("ba").onclick=()=>{auto=!auto;$("ba").classList.toggle("on",auto)};$("r2x").oninput=()=>{auto=false;$("ba").classList.remove("on")};
+const NM=["izotermik","izobarik","izoxorik"];
+function stt(g,x){if(g==0){const V=10+20*x;return{p:1000/V,V,T:300}}if(g==1){const T=300+300*x;return{p:100,V:T/30,T}}const T=300+300*x;return{p:T/3,V:10,T}}
+function d2(){const c=c2;if(auto){let x=+$("r2x").value/100+dirA*.004;if(x>=1){x=1;dirA=-1}if(x<=0){x=0;dirA=1}$("r2x").value=x*100}
+const x=+$("r2x").value/100,s=stt(G2,x);$("v2x").textContent=Math.round(x*100);$("o2a").textContent=fx(s.p,0)+" kPa";$("o2b").textContent=fx(s.V,1)+" L";$("o2c").textContent=fx(s.T,0)+" K";$("o2d").textContent=NM[G2];
+c.clearRect(0,0,320,330);const w=s.V*6.5,h=50;const hit=gas(c,A2,30,12,12,w,h,2.4*Math.sqrt(s.T/300),tcol(s.T),3.2);fl2=hit?5:Math.max(0,fl2-1);cyl(c,12,12,w,h,fl2,G2==2);
+c.fillStyle="#223";c.font="11px sans-serif";c.textAlign="left";c.fillText(G2==2?"porshen qotirilgan (V = const)":"p="+fx(s.p,0)+" kPa, V="+fx(s.V,1)+" L, T="+fx(s.T,0)+" K",12,78);
+const GX=[28,126,224],gy=100,gw=78,gh=120,cs=["#1d7fd6","#1f9d55","#e0603a"],names=[["V","p"],["T","p"],["T","V"]];
+const co=(k,pt)=>k==0?[pt.V/30,pt.p/250]:k==1?[pt.T/700,pt.p/250]:[pt.T/700,pt.V/30];
+const curves=[[],[],[]];for(let V=4;V<=30;V+=.5)curves[0].push({p:1000/V,V,T:300});for(let T=100;T<=700;T+=20){curves[1].push({p:100,V:T/30,T});curves[2].push({p:T/3,V:10,T})}
+for(let k=0;k<3;k++){const gx=GX[k];axes(c,gx,gy,gw,gh,names[k][0],names[k][1]);
+for(let j=0;j<3;j++){c.strokeStyle=cs[j];c.lineWidth=j==G2?3:1;c.globalAlpha=j==G2?1:.35;c.beginPath();let f=1;curves[j].forEach(pt=>{const[a,b]=co(k,pt);if(b>1.02||a>1.02)return;const X=gx+gw*a,Y=gy+gh-gh*b;f?c.moveTo(X,Y):c.lineTo(X,Y);f=0});c.stroke()}c.globalAlpha=1;
+const[a,b]=co(k,s);c.fillStyle="#223";c.beginPath();c.arc(gx+gw*Math.min(1,a),gy+gh-gh*Math.min(1,b),5,0,7);c.fill();
+c.fillStyle="#223";c.font="12px sans-serif";c.fillText(names[k][1]+"–"+names[k][0],gx+22,gy+gh+30)}
+c.font="11px sans-serif";[["izoterma",0],["izobara",1],["izoxora",2]].forEach(([n,j],i)=>{c.fillStyle=cs[j];c.fillRect(30+i*95,262,12,6);c.fillStyle="#223";c.fillText(n,46+i*95,269)});
+c.fillStyle="#6a7a8a";c.fillText("Qalin chiziq – tanlangan jarayon, nuqta – joriy holat",20,296)}
+
+function loop(){const on=document.querySelector("section.on").id;if(on=="s0")d0();if(on=="s1")d1();if(on=="s2")d2();requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script></body></html>

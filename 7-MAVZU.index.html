@@ -1,0 +1,1529 @@
+```html
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>7-mavzu — Gaz molekulalarining harakat tezligi</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #07111f;
+    color: #eef6ff;
+}
+
+header {
+    padding: 25px;
+    text-align: center;
+    background: linear-gradient(135deg, #0b2545, #123d6b);
+    border-bottom: 2px solid #1e6fa8;
+}
+
+header h1 {
+    margin: 0 0 8px;
+    font-size: 30px;
+}
+
+header p {
+    margin: 0;
+    color: #b8d9f5;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 15px;
+    background: #0a1728;
+}
+
+.tab-btn {
+    border: none;
+    border-radius: 10px;
+    padding: 12px 18px;
+    background: #163452;
+    color: white;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.tab-btn:hover,
+.tab-btn.active {
+    background: #1685d4;
+}
+
+.section {
+    display: none;
+    max-width: 1250px;
+    margin: auto;
+    padding: 20px;
+}
+
+.section.active {
+    display: block;
+}
+
+.card {
+    background: #0d1d31;
+    border: 1px solid #1c4262;
+    border-radius: 15px;
+    padding: 18px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,.2);
+}
+
+.card h2 {
+    color: #65c8ff;
+    margin-top: 0;
+}
+
+.sim-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 18px;
+}
+
+canvas {
+    width: 100%;
+    background: #020912;
+    border-radius: 12px;
+    border: 1px solid #1e4868;
+    display: block;
+}
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+    align-items: center;
+}
+
+button {
+    background: #087dc1;
+    border: none;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0ba1ef;
+}
+
+button.secondary {
+    background: #334a60;
+}
+
+label {
+    color: #bcd7eb;
+}
+
+input[type="range"] {
+    accent-color: #22a8f2;
+    width: 180px;
+}
+
+.value-box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.value {
+    background: #102a43;
+    padding: 13px;
+    border-radius: 9px;
+    text-align: center;
+}
+
+.value strong {
+    display: block;
+    font-size: 20px;
+    color: #7bd5ff;
+    margin-top: 5px;
+}
+
+.formula {
+    background: #06111d;
+    border-left: 4px solid #25a9ed;
+    padding: 14px;
+    margin: 12px 0;
+    font-family: Georgia, serif;
+    font-size: 21px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.info {
+    color: #c7dbea;
+    line-height: 1.6;
+}
+
+.legend {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 12px;
+}
+
+.legend span {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+
+.dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.blue { background: #258cff; }
+.green { background: #31e879; }
+.red { background: #ff4d4d; }
+
+.question {
+    background: #10283d;
+    border-radius: 10px;
+    padding: 15px;
+    margin-top: 12px;
+}
+
+select {
+    background: #132a40;
+    color: white;
+    border: 1px solid #32617f;
+    padding: 9px;
+    border-radius: 7px;
+}
+
+.result {
+    color: #68e6a0;
+    font-weight: bold;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    color: #7695ad;
+}
+
+@media(max-width: 850px) {
+    .sim-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>7-MAVZU: GAZ MOLEKULALARINING HARAKAT TEZLIGI</h1>
+    <p>9-sinf fizika • Molekular-kinetik nazariya asoslari</p>
+</header>
+
+<div class="tabs">
+    <button class="tab-btn active" onclick="openTab('maxwell', this)">
+        1. Maksvell taqsimoti
+    </button>
+
+    <button class="tab-btn" onclick="openTab('rms', this)">
+        2. RMS tezlik
+    </button>
+
+    <button class="tab-btn" onclick="openTab('stern', this)">
+        3. Shtiern tajribasi
+    </button>
+</div>
+
+
+<!-- =====================================================
+     1-SIMULYATSIYA
+===================================================== -->
+
+<section id="maxwell" class="section active">
+
+<div class="card">
+<h2>1. Molekulalarning tartibsiz harakati va Maksvell taqsimoti</h2>
+
+<p class="info">
+Gaz molekulalari doimo tartibsiz harakat qiladi. Ularning barchasi
+bir xil tezlikda harakat qilmaydi. Ayrim molekulalar sekin,
+ayrimlari o‘rtacha, ayrimlari esa juda tez harakat qiladi.
+</p>
+
+<div class="sim-grid">
+
+<div>
+<canvas id="gasCanvas" width="700" height="430"></canvas>
+
+<div class="controls">
+
+<button onclick="startGas()">▶ Start</button>
+<button onclick="pauseGas()">⏸ Pause</button>
+<button class="secondary" onclick="resetGas()">↺ Reset</button>
+
+<label>
+Temperatura:
+<input id="temp1" type="range"
+       min="100" max="1000" value="300"
+       oninput="updateMaxwell()">
+</label>
+
+<span id="temp1Value">300 K</span>
+
+<label>
+Molekulalar:
+<input id="count1" type="range"
+       min="20" max="180" value="80"
+       oninput="resetGas()">
+</label>
+
+<span id="count1Value">80</span>
+
+</div>
+
+<div class="legend">
+<span><i class="dot blue"></i> sekin</span>
+<span><i class="dot green"></i> o‘rtacha</span>
+<span><i class="dot red"></i> tez</span>
+</div>
+</div>
+
+<div>
+<canvas id="maxwellCanvas" width="600" height="430"></canvas>
+
+<div class="value-box">
+<div class="value">
+Eng ehtimolli tezlik
+<strong id="vpDisplay">0 m/s</strong>
+</div>
+
+<div class="value">
+O‘rtacha kvadratik tezlik
+<strong id="vrmsDisplay">0 m/s</strong>
+</div>
+</div>
+</div>
+
+</div>
+</div>
+
+
+<div class="card">
+<h2>Maksvell taqsimotining fizik ma'nosi</h2>
+
+<div class="formula">
+v<sub>eht</sub> = √(2RT/M)
+</div>
+
+<div class="formula">
+v<sub>rms</sub> = √(3RT/M)
+</div>
+
+<p class="info">
+Temperatura oshganda molekulalarning xarakterli tezliklari ortadi.
+Shuning uchun Maksvell taqsimoti grafigi yuqoriroq tezliklar tomon
+siljiydi.
+</p>
+
+<div class="question">
+<b>Kuzating:</b>
+Temperaturani 300 K dan 900 K gacha oshiring.
+Grafik qanday o‘zgardi?
+</div>
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     2-SIMULYATSIYA
+===================================================== -->
+
+<section id="rms" class="section">
+
+<div class="card">
+
+<h2>2. O‘rtacha kvadratik tezlik va temperatura</h2>
+
+<p class="info">
+O‘rtacha kvadratik tezlik molekulalarning kinetik energiyasi bilan
+bog‘liq muhim statistik kattalikdir.
+</p>
+
+<div class="sim-grid">
+
+<div>
+
+<canvas id="rmsCanvas" width="700" height="430"></canvas>
+
+<div class="controls">
+
+<button onclick="startRMS()">▶ Start</button>
+<button onclick="pauseRMS()">⏸ Pause</button>
+<button class="secondary" onclick="resetRMS()">↺ Reset</button>
+
+<label>
+Temperatura:
+<input id="temp2" type="range"
+       min="100" max="1000"
+       value="300"
+       oninput="updateRMS()">
+</label>
+
+<span id="temp2Value">300 K</span>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="value-box">
+
+<div class="value">
+Temperatura
+<strong id="Tdisplay">300 K</strong>
+</div>
+
+<div class="value">
+v<sub>rms</sub>
+<strong id="rmsDisplay">0 m/s</strong>
+</div>
+
+<div class="value">
+O‘rtacha kinetik energiya
+<strong id="energyDisplay">0 J</strong>
+</div>
+
+<div class="value">
+Bog‘lanish
+<strong>v<sub>rms</sub> ∝ √T</strong>
+</div>
+
+</div>
+
+<canvas id="rmsGraph" width="600" height="300"
+        style="margin-top:15px;"></canvas>
+
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Asosiy formulalar</h2>
+
+<div class="formula">
+v<sub>rms</sub> = √(3kT/m)
+</div>
+
+<div class="formula">
+v<sub>rms</sub> = √(3RT/M)
+</div>
+
+<div class="formula">
+Ē<sub>k</sub> = 3kT/2
+</div>
+
+<p class="info">
+
+<b>k</b> — Boltsman doimiysi:
+1.38 × 10<sup>−23</sup> J/K
+
+<br>
+
+<b>R</b> — universal gaz doimiysi:
+8.314 J/(mol·K)
+
+<br>
+
+<b>T</b> — mutlaq temperatura, K
+
+<br>
+
+<b>M</b> — molyar massa, kg/mol
+
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Interaktiv topshiriq</h2>
+
+<p>
+Temperaturani 300 K dan 600 K ga oshiring.
+</p>
+
+<p>
+Kuzating: temperatura 2 marta oshganda
+v<sub>rms</sub> aynan 2 marta oshmaydi.
+</p>
+
+<div class="formula">
+v<sub>rms</sub> ∝ √T
+</div>
+
+<p class="info">
+Demak, T 4 marta oshsa, v<sub>rms</sub> 2 marta oshadi.
+</p>
+
+</div>
+
+</section>
+
+
+<!-- =====================================================
+     3-SIMULYATSIYA
+===================================================== -->
+
+<section id="stern" class="section">
+
+<div class="card">
+
+<h2>3. Shtiern tajribasi</h2>
+
+<p class="info">
+Shtiern tajribasida molekulyar nurdan foydalanib,
+molekulalarning tezligini tajribaviy aniqlash prinsipi
+ko‘rsatiladi.
+</p>
+
+<canvas id="sternCanvas"
+        width="1000"
+        height="520"></canvas>
+
+<div class="controls">
+
+<button onclick="startStern()">▶ Start</button>
+<button onclick="pauseStern()">⏸ Pause</button>
+<button class="secondary" onclick="resetStern()">↺ Reset</button>
+
+<label>
+Molekula tezligi:
+<input id="sternSpeed"
+       type="range"
+       min="100"
+       max="1000"
+       value="500"
+       oninput="updateStern()">
+</label>
+
+<span id="sternSpeedValue">500 m/s</span>
+
+<label>
+Aylanish tezligi:
+<input id="omega"
+       type="range"
+       min="100"
+       max="1200"
+       value="500"
+       oninput="updateStern()">
+</label>
+
+<span id="omegaValue">500 rad/s</span>
+
+</div>
+
+<div class="value-box">
+
+<div class="value">
+Uchish vaqti
+<strong id="timeDisplay">0 s</strong>
+</div>
+
+<div class="value">
+Burilish burchagi
+<strong id="angleDisplay">0 rad</strong>
+</div>
+
+<div class="value">
+Hisoblangan tezlik
+<strong id="sternVDisplay">0 m/s</strong>
+</div>
+
+<div class="value">
+Iz siljishi
+<strong id="shiftDisplay">0 m</strong>
+</div>
+
+</div>
+
+</div>
+
+
+<div class="card">
+
+<h2>Tajribaning ishlash prinsipi</h2>
+
+<div class="formula">
+t = L/v
+</div>
+
+<div class="formula">
+φ = ωt
+</div>
+
+<div class="formula">
+v = Lω/φ
+</div>
+
+<p class="info">
+Molekula ichki silindrdan chiqadi va tashqi sirt tomon harakatlanadi.
+Shu vaqt davomida silindr aylanadi. Molekula tushgan joyning
+siljishi uning uchish vaqti va tezligi haqida ma'lumot beradi.
+</p>
+
+</div>
+
+
+<div class="card">
+
+<h2>Tajriba bosqichlari</h2>
+
+<ol class="info">
+<li>Molekulalar manbadan chiqadi.</li>
+<li>Molekulalar turli tezliklarda harakat qiladi.</li>
+<li>Tashqi silindr aylanadi.</li>
+<li>Molekulalar sirtga tushadi.</li>
+<li>Izlar hosil bo‘ladi.</li>
+<li>Izning siljishidan molekula tezligi haqida xulosa qilinadi.</li>
+</ol>
+
+</div>
+
+</section>
+
+
+<footer>
+9-sinf fizika • 1-bob • 7-mavzu
+<br>
+Gaz molekulalarining harakat tezligi
+</footer>
+
+
+<script>
+
+/* =====================================================
+   UMUMIY FUNKSIYALAR
+===================================================== */
+
+function openTab(id, button) {
+
+    document.querySelectorAll('.section')
+        .forEach(x => x.classList.remove('active'));
+
+    document.querySelectorAll('.tab-btn')
+        .forEach(x => x.classList.remove('active'));
+
+    document.getElementById(id)
+        .classList.add('active');
+
+    button.classList.add('active');
+}
+
+
+/* =====================================================
+   1. MAKSVELL SIMULYATSIYASI
+===================================================== */
+
+const gasCanvas = document.getElementById("gasCanvas");
+const gctx = gasCanvas.getContext("2d");
+
+const maxCanvas = document.getElementById("maxwellCanvas");
+const mctx = maxCanvas.getContext("2d");
+
+let molecules = [];
+let gasRunning = false;
+let gasAnimation;
+
+const R = 8.314;
+const M = 0.032;
+
+function randomDirection() {
+
+    const a = Math.random() * Math.PI * 2;
+
+    return {
+        x: Math.cos(a),
+        y: Math.sin(a)
+    };
+}
+
+function createMolecules() {
+
+    molecules = [];
+
+    const count =
+        Number(document.getElementById("count1").value);
+
+    const T =
+        Number(document.getElementById("temp1").value);
+
+    const baseSpeed =
+        Math.sqrt(3 * R * T / M);
+
+    for(let i=0;i<count;i++) {
+
+        const d = randomDirection();
+
+        const variation =
+            0.3 + Math.random() * 1.4;
+
+        molecules.push({
+
+            x: 20 + Math.random() * 660,
+            y: 20 + Math.random() * 390,
+
+            vx: d.x * baseSpeed * variation / 70,
+            vy: d.y * baseSpeed * variation / 70,
+
+            speed: baseSpeed * variation
+
+        });
+    }
+
+    document.getElementById("count1Value").textContent = count;
+}
+
+function drawGas() {
+
+    gctx.clearRect(
+        0,0,
+        gasCanvas.width,
+        gasCanvas.height
+    );
+
+    gctx.fillStyle = "#020912";
+    gctx.fillRect(
+        0,0,
+        gasCanvas.width,
+        gasCanvas.height
+    );
+
+    for(const p of molecules) {
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if(p.x < 8 || p.x > gasCanvas.width-8)
+            p.vx *= -1;
+
+        if(p.y < 8 || p.y > gasCanvas.height-8)
+            p.vy *= -1;
+
+        let color;
+
+        if(p.speed < 400)
+            color = "#258cff";
+        else if(p.speed < 600)
+            color = "#31e879";
+        else
+            color = "#ff4d4d";
+
+        gctx.beginPath();
+        gctx.arc(
+            p.x,
+            p.y,
+            4,
+            0,
+            Math.PI*2
+        );
+
+        gctx.fillStyle = color;
+        gctx.fill();
+
+        /* tezlik yo'nalishi */
+
+        gctx.beginPath();
+        gctx.moveTo(p.x,p.y);
+        gctx.lineTo(
+            p.x + p.vx*4,
+            p.y + p.vy*4
+        );
+
+        gctx.strokeStyle = color;
+        gctx.globalAlpha = .25;
+        gctx.stroke();
+        gctx.globalAlpha = 1;
+    }
+
+    if(gasRunning)
+        gasAnimation =
+            requestAnimationFrame(drawGas);
+}
+
+function startGas() {
+
+    if(gasRunning) return;
+
+    gasRunning = true;
+    drawGas();
+}
+
+function pauseGas() {
+
+    gasRunning = false;
+
+    cancelAnimationFrame(gasAnimation);
+}
+
+function resetGas() {
+
+    pauseGas();
+
+    createMolecules();
+    drawGas();
+    updateMaxwell();
+}
+
+function updateMaxwell() {
+
+    const T =
+        Number(document.getElementById("temp1").value);
+
+    document.getElementById("temp1Value")
+        .textContent = T + " K";
+
+    const vp =
+        Math.sqrt(2 * R * T / M);
+
+    const vrms =
+        Math.sqrt(3 * R * T / M);
+
+    document.getElementById("vpDisplay")
+        .textContent =
+        Math.round(vp) + " m/s";
+
+    document.getElementById("vrmsDisplay")
+        .textContent =
+        Math.round(vrms) + " m/s";
+
+    drawMaxwell();
+}
+
+function drawMaxwell() {
+
+    const T =
+        Number(document.getElementById("temp1").value);
+
+    mctx.clearRect(
+        0,0,
+        maxCanvas.width,
+        maxCanvas.height
+    );
+
+    mctx.fillStyle = "#020912";
+    mctx.fillRect(
+        0,0,
+        maxCanvas.width,
+        maxCanvas.height
+    );
+
+    const left = 60;
+    const bottom = 370;
+    const width = 490;
+    const height = 300;
+
+    /* o'qlar */
+
+    mctx.strokeStyle = "#7894aa";
+    mctx.lineWidth = 1;
+
+    mctx.beginPath();
+    mctx.moveTo(left,50);
+    mctx.lineTo(left,bottom);
+    mctx.lineTo(left+width,bottom);
+    mctx.stroke();
+
+    mctx.fillStyle = "#bcd7eb";
+    mctx.font = "14px Arial";
+
+    mctx.fillText(
+        "Molekulalar ulushi",
+        65,
+        35
+    );
+
+    mctx.fillText(
+        "Tezlik v (m/s)",
+        390,
+        405
+    );
+
+    const maxV = 1000;
+
+    let points = [];
+
+    for(let i=0;i<=100;i++) {
+
+        const v =
+            i / 100 * maxV;
+
+        const a =
+            Math.pow(v,2) *
+            Math.exp(
+                -M*v*v/(2*R*T)
+            );
+
+        points.push(a);
+    }
+
+    const maximum =
+        Math.max(...points);
+
+    mctx.beginPath();
+
+    for(let i=0;i<=100;i++) {
+
+        const x =
+            left + i/100*width;
+
+        const y =
+            bottom -
+            points[i]/maximum*270;
+
+        if(i===0)
+            mctx.moveTo(x,y);
+        else
+            mctx.lineTo(x,y);
+    }
+
+    mctx.strokeStyle = "#38bdf8";
+    mctx.lineWidth = 4;
+    mctx.stroke();
+
+    /* Eng ehtimolli tezlik */
+
+    const vp =
+        Math.sqrt(2*R*T/M);
+
+    const xp =
+        left + vp/maxV*width;
+
+    mctx.beginPath();
+    mctx.moveTo(xp,bottom);
+    mctx.lineTo(xp,80);
+    mctx.strokeStyle = "#ffcc33";
+    mctx.setLineDash([6,6]);
+    mctx.stroke();
+    mctx.setLineDash([]);
+
+    mctx.fillStyle = "#ffcc33";
+
+    mctx.fillText(
+        "v_eht",
+        xp-20,
+        70
+    );
+
+    /* temperatura */
+
+    mctx.fillStyle = "#7bd5ff";
+
+    mctx.fillText(
+        "T = " + T + " K",
+        420,
+        70
+    );
+}
+
+
+/* =====================================================
+   2. RMS SIMULYATSIYASI
+===================================================== */
+
+const rmsCanvas =
+    document.getElementById("rmsCanvas");
+
+const rctx =
+    rmsCanvas.getContext("2d");
+
+const rmsGraph =
+    document.getElementById("rmsGraph");
+
+const rgctx =
+    rmsGraph.getContext("2d");
+
+let rmsRunning = false;
+let rmsAnimation;
+
+let rmsParticles = [];
+
+function createRMSParticles() {
+
+    rmsParticles = [];
+
+    for(let i=0;i<70;i++) {
+
+        const angle =
+            Math.random()*Math.PI*2;
+
+        rmsParticles.push({
+
+            x: 30 + Math.random()*640,
+            y: 30 + Math.random()*370,
+
+            vx: Math.cos(angle),
+            vy: Math.sin(angle)
+
+        });
+    }
+}
+
+function drawRMS() {
+
+    const T =
+        Number(document.getElementById("temp2").value);
+
+    const vrms =
+        Math.sqrt(3*R*T/M);
+
+    const scale =
+        vrms/150;
+
+    rctx.clearRect(
+        0,0,
+        rmsCanvas.width,
+        rmsCanvas.height
+    );
+
+    rctx.fillStyle = "#020912";
+
+    rctx.fillRect(
+        0,0,
+        rmsCanvas.width,
+        rmsCanvas.height
+    );
+
+    for(const p of rmsParticles) {
+
+        p.x += p.vx*scale;
+        p.y += p.vy*scale;
+
+        if(p.x<8 || p.x>690)
+            p.vx *= -1;
+
+        if(p.y<8 || p.y>420)
+            p.vy *= -1;
+
+        rctx.beginPath();
+
+        rctx.arc(
+            p.x,
+            p.y,
+            4,
+            0,
+            Math.PI*2
+        );
+
+        rctx.fillStyle =
+            scale > 3 ? "#ff4d4d" :
+            scale > 2 ? "#31e879" :
+            "#258cff";
+
+        rctx.fill();
+    }
+
+    if(rmsRunning)
+        rmsAnimation =
+            requestAnimationFrame(drawRMS);
+}
+
+function startRMS() {
+
+    if(rmsRunning) return;
+
+    rmsRunning = true;
+    drawRMS();
+}
+
+function pauseRMS() {
+
+    rmsRunning = false;
+
+    cancelAnimationFrame(rmsAnimation);
+}
+
+function resetRMS() {
+
+    pauseRMS();
+
+    createRMSParticles();
+    drawRMS();
+    updateRMS();
+}
+
+function updateRMS() {
+
+    const T =
+        Number(document.getElementById("temp2").value);
+
+    const vrms =
+        Math.sqrt(3*R*T/M);
+
+    const k =
+        1.380649e-23;
+
+    const energy =
+        1.5*k*T;
+
+    document.getElementById("temp2Value")
+        .textContent = T + " K";
+
+    document.getElementById("Tdisplay")
+        .textContent = T + " K";
+
+    document.getElementById("rmsDisplay")
+        .textContent =
+        Math.round(vrms) + " m/s";
+
+    document.getElementById("energyDisplay")
+        .textContent =
+        energy.toExponential(3) + " J";
+
+    drawRMS();
+    drawRMSGraph();
+}
+
+function drawRMSGraph() {
+
+    const T =
+        Number(document.getElementById("temp2").value);
+
+    rgctx.clearRect(
+        0,0,
+        rmsGraph.width,
+        rmsGraph.height
+    );
+
+    rgctx.fillStyle = "#020912";
+
+    rgctx.fillRect(
+        0,0,
+        rmsGraph.width,
+        rmsGraph.height
+    );
+
+    const left = 55;
+    const bottom = 250;
+    const width = 500;
+    const height = 200;
+
+    rgctx.strokeStyle = "#7894aa";
+
+    rgctx.beginPath();
+
+    rgctx.moveTo(left,30);
+    rgctx.lineTo(left,bottom);
+    rgctx.lineTo(left+width,bottom);
+
+    rgctx.stroke();
+
+    rgctx.fillStyle = "#c7dbea";
+    rgctx.font = "13px Arial";
+
+    rgctx.fillText(
+        "v_rms (m/s)",
+        60,
+        22
+    );
+
+    rgctx.fillText(
+        "T (K)",
+        500,
+        275
+    );
+
+    rgctx.beginPath();
+
+    for(let i=0;i<=100;i++) {
+
+        const temp =
+            100+i*9;
+
+        const v =
+            Math.sqrt(3*R*temp/M);
+
+        const x =
+            left+i/100*width;
+
+        const y =
+            bottom -
+            (v/850)*height;
+
+        if(i===0)
+            rgctx.moveTo(x,y);
+        else
+            rgctx.lineTo(x,y);
+    }
+
+    rgctx.strokeStyle = "#39d98a";
+    rgctx.lineWidth = 3;
+    rgctx.stroke();
+
+    /* current T */
+
+    const x =
+        left+(T-100)/900*width;
+
+    const v =
+        Math.sqrt(3*R*T/M);
+
+    const y =
+        bottom-(v/850)*height;
+
+    rgctx.beginPath();
+
+    rgctx.arc(
+        x,y,
+        6,
+        0,
+        Math.PI*2
+    );
+
+    rgctx.fillStyle = "#ffcc33";
+    rgctx.fill();
+}
+
+
+/* =====================================================
+   3. SHTIERN SIMULYATSIYASI
+===================================================== */
+
+const sternCanvas =
+    document.getElementById("sternCanvas");
+
+const sctx =
+    sternCanvas.getContext("2d");
+
+let sternRunning = false;
+let sternAnimation;
+
+let sternParticles = [];
+
+const L = 0.20;
+
+function createSternParticles() {
+
+    sternParticles = [];
+
+    for(let i=0;i<25;i++) {
+
+        sternParticles.push({
+
+            x: 160,
+            y: 250 + (Math.random()-0.5)*100,
+
+            progress: Math.random(),
+
+            speed:
+                250 +
+                Math.random()*500
+
+        });
+    }
+}
+
+function drawStern() {
+
+    const speed =
+        Number(
+            document.getElementById("sternSpeed")
+                .value
+        );
+
+    const omega =
+        Number(
+            document.getElementById("omega")
+                .value
+        );
+
+    sctx.clearRect(
+        0,0,
+        sternCanvas.width,
+        sternCanvas.height
+    );
+
+    sctx.fillStyle = "#020912";
+
+    sctx.fillRect(
+        0,0,
+        sternCanvas.width,
+        sternCanvas.height
+    );
+
+    /* Ichki silindr */
+
+    sctx.beginPath();
+
+    sctx.arc(
+        230,
+        260,
+        65,
+        0,
+        Math.PI*2
+    );
+
+    sctx.strokeStyle = "#38bdf8";
+    sctx.lineWidth = 8;
+    sctx.stroke();
+
+    /* Tashqi silindr */
+
+    sctx.beginPath();
+
+    sctx.arc(
+        230,
+        260,
+        190,
+        0,
+        Math.PI*2
+    );
+
+    sctx.strokeStyle = "#64748b";
+    sctx.lineWidth = 12;
+    sctx.stroke();
+
+    /* aylanish belgisi */
+
+    sctx.beginPath();
+
+    sctx.arc(
+        230,
+        260,
+        215,
+        -0.8,
+        0.7
+    );
+
+    sctx.strokeStyle = "#facc15";
+    sctx.lineWidth = 3;
+    sctx.stroke();
+
+    sctx.fillStyle = "#facc15";
+    sctx.font = "16px Arial";
+
+    sctx.fillText(
+        "ω = " + omega + " rad/s",
+        360,
+        75
+    );
+
+    /* Molekulalar */
+
+    for(const p of sternParticles) {
+
+        if(sternRunning) {
+
+            p.progress +=
+                speed/100000;
+
+            if(p.progress > 1)
+                p.progress = 0;
+        }
+
+        const angle =
+            -0.8 + p.progress*1.6;
+
+        const radius =
+            65 + p.progress*125;
+
+        const x =
+            230 + Math.cos(angle)*radius;
+
+        const y =
+            260 + Math.sin(angle)*radius;
+
+        sctx.beginPath();
+
+        sctx.arc(
+            x,y,
+            4,
+            0,
+            Math.PI*2
+        );
+
+        sctx.fillStyle =
+            p.speed < 400
+            ? "#258cff"
+            : p.speed < 650
+            ? "#31e879"
+            : "#ff4d4d";
+
+        sctx.fill();
+    }
+
+    /* iz */
+
+    const t = L/speed;
+    const phi = omega*t;
+
+    const shift =
+        190*phi;
+
+    sctx.beginPath();
+
+    sctx.arc(
+        230,
+        260,
+        185,
+        -0.8+phi,
+        -0.8+phi+0.08
+    );
+
+    sctx.strokeStyle = "#ffcc33";
+    sctx.lineWidth = 7;
+    sctx.stroke();
+
+    /* yozuvlar */
+
+    sctx.fillStyle = "#e8f5ff";
+    sctx.font = "17px Arial";
+
+    sctx.fillText(
+        "Molekulalar chiqmoqda",
+        40,
+        70
+    );
+
+    sctx.fillText(
+        "Molekulalar sirtga tushmoqda",
+        500,
+        410
+    );
+
+    sctx.fillText(
+        "Izning siljishi",
+        500,
+        440
+    );
+
+    sctx.fillStyle = "#ffcc33";
+
+    sctx.fillText(
+        "→ molekula tezligi haqida ma'lumot",
+        500,
+        465
+    );
+
+    if(sternRunning)
+        sternAnimation =
+            requestAnimationFrame(drawStern);
+}
+
+function startStern() {
+
+    if(sternRunning) return;
+
+    sternRunning = true;
+
+    drawStern();
+}
+
+function pauseStern() {
+
+    sternRunning = false;
+
+    cancelAnimationFrame(
+        sternAnimation
+    );
+}
+
+function resetStern() {
+
+    pauseStern();
+
+    createSternParticles();
+    drawStern();
+    updateStern();
+}
+
+function updateStern() {
+
+    const speed =
+        Number(
+            document.getElementById("sternSpeed")
+                .value
+        );
+
+    const omega =
+        Number(
+            document.getElementById("omega")
+                .value
+        );
+
+    const time =
+        L/speed;
+
+    const angle =
+        omega*time;
+
+    const shift =
+        0.20*angle;
+
+    document.getElementById("sternSpeedValue")
+        .textContent =
+        speed + " m/s";
+
+    document.getElementById("omegaValue")
+        .textContent =
+        omega + " rad/s";
+
+    document.getElementById("timeDisplay")
+        .textContent =
+        time.toExponential(3) + " s";
+
+    document.getElementById("angleDisplay")
+        .textContent =
+        angle.toFixed(4) + " rad";
+
+    document.getElementById("sternVDisplay")
+        .textContent =
+        speed + " m/s";
+
+    document.getElementById("shiftDisplay")
+        .textContent =
+        shift.toFixed(4) + " m";
+
+    drawStern();
+}
+
+
+/* =====================================================
+   BOSHLANG'ICH HOLAT
+===================================================== */
+
+createMolecules();
+updateMaxwell();
+drawGas();
+
+createRMSParticles();
+updateRMS();
+
+createSternParticles();
+updateStern();
+
+</script>
+
+</body>
+</html>
+```

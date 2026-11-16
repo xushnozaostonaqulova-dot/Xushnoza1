@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Masalalar yechish – 9-sinf fizika (4-mavzu)</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);--bg:#f4f8fc;--card:#fff;--tx:#1b2a3a;--mu:#5a6b7c;--ac:#1d7fd6;--bd:#d6e2ee;--ok:#1f9d55;--no:#d64545}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){color-scheme:dark;--bg:#0f1720;--card:#18232f;--tx:#e8eff6;--mu:#9fb0c1;--ac:#4aa3f0;--bd:#2a3a4a}}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif;padding:0 12px 40px}
+h1{font-size:20px;margin:14px 0 2px}h2{font-size:18px;margin:0 0 6px}p{margin:6px 0}
+.sub{color:var(--mu);font-size:14px}
+nav{display:flex;gap:6px;overflow-x:auto;margin:10px 0}
+nav button{flex:0 0 auto;border:1px solid var(--bd);background:var(--card);color:var(--tx);padding:8px 12px;border-radius:20px;font-size:14px}
+nav button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+section{display:none}section.on{display:block}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:12px;margin:10px 0}
+canvas{width:100%;max-width:100%;border-radius:10px;background:#e3f1fc;display:block}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) canvas{background:#1d3550}}
+label{display:block;font-size:14px;margin-top:8px}label b{color:var(--ac)}
+input[type=range],select{width:100%}select{padding:6px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px}
+.out{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.out div{background:var(--bg);border-radius:8px;padding:6px 8px;font-size:14px}
+.f{background:var(--bg);border-left:4px solid var(--ac);padding:6px 10px;border-radius:6px;margin:8px 0;font-size:15px}
+.btns{display:flex;gap:6px;flex-wrap:wrap;margin-top:8px}
+.btns button,.tk button,.pb button{padding:7px 12px;border-radius:8px;border:1px solid var(--ac);background:none;color:var(--ac);font-size:14px}
+.btns button.on,.btns button.p{background:var(--ac);color:#fff}
+.q{margin:10px 0}.q button{display:block;width:100%;text-align:left;margin:4px 0;padding:8px 10px;border:1px solid var(--bd);border-radius:8px;background:var(--card);color:var(--tx);font-size:15px}
+.q button.ok{background:var(--ok);color:#fff}.q button.no{background:var(--no);color:#fff}
+.ex{font-size:14px;color:var(--mu);display:none}
+.ans{display:none;margin-top:6px;font-size:14px}
+.st{display:none;background:var(--bg);border-radius:10px;padding:8px 10px;margin:6px 0;font-size:15px;animation:fi .5s}
+.st.on{display:block}@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.pb{border-top:1px solid var(--bd);padding-top:10px;margin-top:10px}
+.pb input{width:110px;padding:7px;border-radius:8px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font-size:15px}
+.res{font-size:14px;margin-top:6px}.res.ok{color:var(--ok)}.res.no{color:var(--no)}
+.bar{height:10px;background:var(--bd);border-radius:6px;overflow:hidden}.bar i{display:block;height:100%;background:var(--ac);transition:width .4s}
+.grade{font-size:42px;font-weight:700;text-align:center;color:var(--ac);margin:4px 0}
+table{border-collapse:collapse;font-size:13px;margin-top:6px}td,th{border:1px solid var(--bd);padding:4px 7px;text-align:left}
+.chk label{display:flex;gap:8px;align-items:flex-start;margin:6px 0;font-size:15px}
+</style></head><body>
+<h1>Masalalar yechish: modda miqdori, molekula massasi va o‘lchami</h1>
+<div class="sub">9-sinf fizika · 4-mavzu · takrorlash, namunalar, mustaqil ish, baholash</div>
+<nav id="nav"></nav>
+
+<section id="s0"><div class="card"><h2>1. Asosiy formulalarni takrorlash</h2>
+<div class="f"><b>Modda miqdori:</b> ν = N / N<sub>A</sub> = m / M &nbsp;(mol)</div>
+<div class="f"><b>Molekulalar soni:</b> N = ν · N<sub>A</sub> = (m / M) · N<sub>A</sub></div>
+<div class="f"><b>Bitta molekula massasi:</b> m₀ = M / N<sub>A</sub> = m / N</div>
+<div class="f"><b>Massa:</b> m = ν · M = N · m₀</div>
+<div class="f"><b>Bitta molekula egallagan hajm:</b> V₀ = M / (ρ · N<sub>A</sub>); <b>o‘lchami</b> d ≈ ∛V₀ (≈ 10⁻¹⁰ m)</div>
+<div class="f"><b>Konsentratsiya:</b> n₀ = N / V</div>
+<p><b>Doimiylar:</b> N<sub>A</sub> = 6,02·10²³ mol⁻¹. <b>Eslatma:</b> M ni <u>kg/mol</u> da olish kerak: 18 g/mol = 0,018 kg/mol. Atom/molekula massasi M = (nisbiy massa) · 10⁻³ kg/mol.</p>
+<p class="sub">Yechish tartibi: 1) berilganlarni SI ga o‘tkazing, 2) formulani tanlang, 3) hisoblang, 4) javobni tekshiring (o‘lchami, tartibi).</p></div>
+<div class="card"><b>Simulyatsiya: formulalar kalkulyatori</b>
+<canvas id="c0" width="320" height="190"></canvas>
+<label>Modda<select id="r0s"></select></label>
+<label>Massa m: <b id="v0m">36</b> g<input id="r0m" type="range" min="1" max="200" value="36"></label>
+<div class="out"><div>M = <b id="o0a"></b></div><div>ν = m/M = <b id="o0b"></b></div><div>N = νN<sub>A</sub> = <b id="o0c"></b></div><div>m₀ = M/N<sub>A</sub> = <b id="o0d"></b></div><div style="grid-column:span 2">Atomning o‘lchami d ≈ <b id="o0e"></b></div></div>
+<p class="sub">Nuqtalar soni shartli (molekulalar juda ko‘p!). Massani o‘zgartirsangiz, ν va N ham mos o‘zgaradi.</p></div>
+<div id="q0"></div></section>
+
+<section id="s1"><div class="card"><h2>2. Namunaviy masalalar</h2>
+<p>Masalani tanlab, <b>«Keyingi qadam»</b> tugmasi bilan yechimni bosqichma-bosqich ko‘ring. Avval o‘zingiz urinib ko‘ring.</p>
+<div class="btns" id="e1"></div></div>
+<div class="card"><canvas id="c1" width="320" height="170"></canvas>
+<p id="et" style="margin-top:8px"></p>
+<div id="steps"></div>
+<div class="btns"><button class="p" id="bn">Keyingi qadam ▶</button><button id="br">↺ Qayta</button></div></div>
+<div id="q1"></div></section>
+
+<section id="s2"><div class="card"><h2>3. Mustaqil bajarish</h2>
+<p>6 ta masalani o‘zingiz yeching, javobni kiriting va <b>«Tekshirish»</b> ni bosing. Yechim kerak bo‘lsa, «Yechimni ko‘rish» tugmasi bor. Har bir variantda sonlar tasodifiy.</p>
+<div class="bar"><i id="pbar" style="width:0%"></i></div><p class="sub" id="pscore">To‘g‘ri: 0 / 6</p>
+<div class="btns"><button class="p" id="nv">🎲 Yangi variant</button></div></div>
+<div id="probs"></div></section>
+
+<section id="s3"><div class="card"><h2>4. Xulosa va baholash</h2>
+<table><tr><th>Kattalik</th><th>Formula</th></tr>
+<tr><td>Modda miqdori</td><td>ν = m/M = N/N<sub>A</sub></td></tr>
+<tr><td>Molekulalar soni</td><td>N = νN<sub>A</sub></td></tr>
+<tr><td>Molekula massasi</td><td>m₀ = M/N<sub>A</sub></td></tr>
+<tr><td>Molekula o‘lchami</td><td>d ≈ ∛(M/(ρN<sub>A</sub>))</td></tr></table>
+<p><b>Xotirada saqlang:</b> N<sub>A</sub> = 6,02·10²³ mol⁻¹; M ni kg/mol da yozing; molekula o‘lchami ≈ 10⁻¹⁰ m; molekula massasi ≈ 10⁻²⁶ kg tartibida.</p>
+<b>O‘zini baholash:</b>
+<div class="chk" id="chk"></div>
+<div class="bar"><i id="cbar" style="width:0%"></i></div><p class="sub" id="ctxt"></p></div>
+<div class="card"><b>Yakuniy test (8 ta savol)</b><div id="fin"></div>
+<div class="bar" style="margin-top:8px"><i id="fbar" style="width:0%"></i></div>
+<div id="fres" style="margin-top:8px"></div>
+<div class="btns"><button id="fr">↺ Qaytadan</button></div></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+["1. Formulalar","2. Namunalar","3. Mustaqil ish","4. Xulosa va baho"].forEach((n,i)=>{const b=document.createElement("button");b.textContent=n;b.onclick=()=>show(i);$("nav").appendChild(b)});
+function show(i){document.querySelectorAll("section").forEach((s,j)=>s.classList.toggle("on",i==j));[...$("nav").children].forEach((b,j)=>b.classList.toggle("on",i==j));scrollTo(0,0)}
+show(0);
+const NA=6.02e23,fx=(x,d=1)=>x.toFixed(d).replace(".",",");
+function sci(x,d=2){if(!x)return"0";let e=Math.floor(Math.log10(Math.abs(x))),m=x/Math.pow(10,e);if(+m.toFixed(d)>=10){m/=10;e++}return m.toFixed(d).replace(".",",")+"·10<sup>"+e+"</sup>"}
+const SUB=[["Suv H₂O",18,1000],["Kislorod O₂",32,0],["Azot N₂",28,0],["Vodorod H₂",2,0],["CO₂ gazi",44,0],["Mis Cu",64,8960],["Temir Fe",56,7870],["Alyuminiy Al",27,2700]];
+const dOf=(M,r)=>Math.cbrt(M*1e-3/(r*NA));
+
+const Q={q0:{q:[["ν = m/M formulasida M ning SI birligi:",["g/mol","kg/mol","mol/kg"],1,"SI da kg/mol; masalan 18 g/mol = 0,018 kg/mol."],
+["Molekulalar soni qaysi formula bilan topiladi?",["N = ν·N_A","N = m·M","N = ν/N_A"],0,"N = ν·N_A = (m/M)·N_A."],
+["Bir xil massadagi vodorod va kislorodda qaysida molekula ko‘p?",["vodorodda","kislorodda","bir xil"],0,"M(H₂) kichik, shuning uchun ν = m/M va N katta."]],
+t:[["Simulyatsiyada «Suv H₂O», m = 36 g tanlang. ν va N ni qo‘lda hisoblab, ekrandagi natija bilan solishtiring.","ν = 36/18 = 2 mol; N = 2·6,02·10²³ ≈ 1,2·10²⁴."],["Nega mis atomining o‘lchamini hisoblash uchun zichlik kerak?","Chunki V₀ = M/(ρ·N_A): zichlik 1 m³ moddaning massasini beradi, N_A esa atomlar sonini; ikkalasi birgalikda bitta atom hajmini beradi."]]},
+q1:{q:[["Masala yechishda birinchi qadam:",["javobni yozish","berilganlarni SI ga o‘tkazish","tasodifiy formula tanlash"],1,"Birliklar noto‘g‘ri bo‘lsa, butun hisob xato bo‘ladi."],
+["1 mol suvning massasi:",["18 g","1 g","100 g"],0,"M(H₂O) = 18 g/mol."]],
+t:[["3 mol karbonat angidrid (M = 44 g/mol) massasi qancha?","m = νM = 3·44 = 132 g."]]}};
+Object.keys(Q).forEach(k=>{const c=document.createElement("div");c.className="card";c.innerHTML="<b>Savollar</b>";$(k).appendChild(c);
+Q[k].q.forEach(([q,o,a,e],i)=>{const w=document.createElement("div");w.className="q";w.innerHTML="<div>"+(i+1)+". "+q+"</div>";
+const x=document.createElement("div");x.className="ex";x.textContent="Izoh: "+e;
+o.forEach((t,j)=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{w.querySelectorAll("button").forEach(y=>y.className="");b.className=j==a?"ok":"no";x.style.display="block"};w.appendChild(b)});
+w.appendChild(x);c.appendChild(w)});
+Q[k].t.forEach(([q,a],i)=>{const w=document.createElement("div");w.className="tk";w.innerHTML="<p><b>Topshiriq "+(i+1)+":</b> "+q+'</p><button>Javobni ko‘rish</button><div class="ans">'+a+"</div>";w.querySelector("button").onclick=()=>w.querySelector(".ans").style.display="block";c.appendChild(w)})});
+
+/* ---- helpers for particle drawing ---- */
+const mk=n=>{const a=[];for(let i=0;i<n;i++)a.push({x:Math.random(),y:Math.random(),vx:Math.random()-.5,vy:Math.random()-.5});return a};
+function dots(c,a,n,x,y,w,h,col,r){for(let i=0;i<n;i++){const p=a[i];p.x+=p.vx*.012;p.y+=p.vy*.012;if(p.x<0||p.x>1)p.vx*=-1;if(p.y<0||p.y>1)p.vy*=-1;p.x=Math.max(0,Math.min(1,p.x));p.y=Math.max(0,Math.min(1,p.y));c.fillStyle=col;c.beginPath();c.arc(x+r+p.x*(w-2*r),y+r+p.y*(h-2*r),r,0,7);c.fill()}}
+
+/* ---- Sim 0 ---- */
+SUB.forEach((s,i)=>{const o=document.createElement("option");o.value=i;o.textContent=s[0]+" (M = "+s[1]+" g/mol)";$("r0s").appendChild(o)});
+const c0=$("c0").getContext("2d"),A0=mk(80);
+function u0(){const s=SUB[+$("r0s").value],m=+$("r0m").value,M=s[1],nu=m/M,N=nu*NA,m0=M*1e-3/NA;$("v0m").textContent=m;
+$("o0a").textContent=M+" g/mol = "+fx(M/1000,3)+" kg/mol";$("o0b").innerHTML=fx(nu,2)+" mol";$("o0c").innerHTML=sci(N);$("o0d").innerHTML=sci(m0)+" kg";
+$("o0e").innerHTML=s[2]?sci(dOf(M,s[2]))+" m":"— (gaz uchun ρ ga bog‘liq)"}
+["r0s","r0m"].forEach(i=>$(i).oninput=u0);u0();
+function d0(){const c=c0,s=SUB[+$("r0s").value],nu=+$("r0m").value/s[1],n=Math.max(4,Math.min(80,Math.round(nu*10))),col=s[2]?"#e0903a":"#1d7fd6";c.clearRect(0,0,320,190);
+c.strokeStyle="#556";c.lineWidth=3;c.strokeRect(10,10,190,120);dots(c,A0,n,10,10,190,120,col,5);
+c.fillStyle="#223";c.font="12px sans-serif";c.textAlign="left";c.fillText("m = "+$("r0m").value+" g,  ν = "+fx(nu,2)+" mol",10,150);
+c.fillText("1 mol = "+s[1]+" g",215,30);c.fillText("= 6,02·10²³ ta",215,48);c.fillText("molekula",215,64);
+c.strokeStyle="#99a";c.lineWidth=1;c.strokeRect(10,162,300,10);c.fillStyle="#1d7fd6";c.fillRect(10,162,Math.min(300,300*nu/12),10)}
+
+/* ---- Sim 1: namunaviy masalalar ---- */
+const EX=[
+{t:"1-masala. 36 g suvda necha mol va necha molekula bor? (M = 18 g/mol)",k:2,lab:"18 g",st:["<b>Berilgan:</b> m = 36 g, M(H₂O) = 18 g/mol, N<sub>A</sub> = 6,02·10²³ mol⁻¹","<b>Topish kerak:</b> ν = ?, N = ?","<b>Formulalar:</b> ν = m/M;&nbsp; N = ν·N<sub>A</sub>","<b>Hisob:</b> ν = 36/18 = 2 mol;&nbsp; N = 2·6,02·10²³ = 12,04·10²³","<b>Javob:</b> ν = 2 mol, N ≈ 1,2·10²⁴ ta molekula"]},
+{t:"2-masala. Suv molekulasining massasini toping. (M = 0,018 kg/mol)",k:1,zoom:1,st:["<b>Berilgan:</b> M = 0,018 kg/mol (g dan kg ga o‘tkazdik!), N<sub>A</sub> = 6,02·10²³ mol⁻¹","<b>Topish kerak:</b> m₀ = ?","<b>Formula:</b> m₀ = M / N<sub>A</sub> (1 mol massasi ÷ 1 moldagi molekulalar soni)","<b>Hisob:</b> m₀ = 0,018 / (6,02·10²³) ≈ 3,0·10⁻²⁶ kg","<b>Javob:</b> m₀ ≈ 3·10⁻²⁶ kg"]},
+{t:"3-masala. Mis atomining o‘lchamini baholang. (M = 0,064 kg/mol, ρ = 8960 kg/m³)",lat:1,st:["<b>Berilgan:</b> M = 0,064 kg/mol, ρ = 8960 kg/m³, N<sub>A</sub> = 6,02·10²³ mol⁻¹","<b>Topish kerak:</b> d = ? (atomlar zich joylashgan deb olamiz)","<b>Formulalar:</b> V₀ = M/(ρ·N<sub>A</sub>);&nbsp; d ≈ ∛V₀","<b>Hisob:</b> V₀ = 0,064/(8960·6,02·10²³) ≈ 1,2·10⁻²⁹ m³;&nbsp; d = ∛(1,2·10⁻²⁹) ≈ 2,3·10⁻¹⁰ m","<b>Javob:</b> d ≈ 2·10⁻¹⁰ m (taxminiy baho)"]},
+{t:"4-masala. 5 mol azotning massasi va molekulalar sonini toping. (M = 28 g/mol)",k:5,lab:"28 g",st:["<b>Berilgan:</b> ν = 5 mol, M(N₂) = 28 g/mol","<b>Topish kerak:</b> m = ?, N = ?","<b>Formulalar:</b> m = ν·M;&nbsp; N = ν·N<sub>A</sub>","<b>Hisob:</b> m = 5·28 = 140 g;&nbsp; N = 5·6,02·10²³ = 30,1·10²³","<b>Javob:</b> m = 140 g, N ≈ 3,0·10²⁴ ta"]}];
+let ei=0,es=0;
+EX.forEach((e,i)=>{const b=document.createElement("button");b.textContent=(i+1)+"-masala";b.onclick=()=>{ei=i;es=0;renderEx()};$("e1").appendChild(b)});
+function renderEx(){[...$("e1").children].forEach((b,j)=>b.classList.toggle("on",j==ei));const e=EX[ei];$("et").innerHTML="<b>"+e.t+"</b>";
+$("steps").innerHTML=e.st.map((s,i)=>'<div class="st'+(i<es?" on":"")+'">'+s+"</div>").join("");$("bn").disabled=es>=e.st.length}
+$("bn").onclick=()=>{es=Math.min(EX[ei].st.length,es+1);renderEx()};$("br").onclick=()=>{es=0;renderEx()};renderEx();
+const c1=$("c1").getContext("2d"),A1=mk(40);
+function box(c,x,y,w,h,lab,k){c.strokeStyle="#556";c.lineWidth=2;c.strokeRect(x,y,w,h);dots(c,A1.slice(k*6,k*6+6),6,x,y,w,h,"#1d7fd6",3.5);c.fillStyle="#223";c.font="11px sans-serif";c.textAlign="center";c.fillText(lab,x+w/2,y+h+13)}
+function d1(){const c=c1,e=EX[ei],t=performance.now();c.clearRect(0,0,320,170);c.textAlign="left";c.fillStyle="#223";c.font="12px sans-serif";
+if(e.lat){const d=26;for(let i=0;i<6;i++)for(let j=0;j<3;j++){const x=30+i*d+Math.sin(t/200+i+j)*.8,y=40+j*d+Math.cos(t/220+i*2+j)*.8;c.fillStyle="#e0903a";c.strokeStyle="#8a5a1a";c.lineWidth=1;c.beginPath();c.arc(x,y,11,0,7);c.fill();c.stroke()}
+c.strokeStyle="#223";c.lineWidth=2;c.beginPath();c.moveTo(30-11,125);c.lineTo(30+d+11-d,125);c.moveTo(19,120);c.lineTo(19,130);c.moveTo(41,120);c.lineTo(41,130);c.stroke();c.fillStyle="#223";c.fillText("d",26,148);c.fillText("Mis kristall panjarasi: atomlar zich joylashgan",150,40);c.fillText("d ≈ 2·10⁻¹⁰ m",150,60)}
+else{const n=Math.min(e.k,5);for(let i=0;i<n;i++)box(c,12+i*50,30,42,42,e.lab||"18 g",i);c.fillStyle="#223";c.fillText(e.k+" × (1 mol = "+(e.lab||"")+" = 6,02·10²³ ta)",12,18);
+if(e.zoom){c.strokeStyle="#99a";c.setLineDash([3,3]);c.beginPath();c.moveTo(54,50);c.lineTo(130,100);c.stroke();c.setLineDash([]);const r=14+Math.sin(t/300)*1.5;c.fillStyle="#1d7fd6";c.beginPath();c.arc(150,105,r,0,7);c.fill();c.fillStyle="#223";c.fillText("1 ta molekula: m₀ = M/N_A",178,108)}
+else{c.fillText("Jami: "+(e.k)+" mol",12,100);c.fillText(ei==0?"N = 2 · 6,02·10²³":"N = 5 · 6,02·10²³",12,118)}}}
+
+/* ---- Sim 2: mustaqil ish ---- */
+let P=[],score=0;
+const pick=a=>a[Math.floor(Math.random()*a.length)];
+function gen(){const gs=SUB.filter(s=>s[2]==0||s[0].startsWith("Suv")),mt=SUB.filter(s=>s[0].startsWith("Mis")||s[0].startsWith("Temir")||s[0].startsWith("Alyum"));
+const s1=pick(gs),k1=pick([2,3,4,5]),s2=pick(gs),nu2=pick([0.5,2,3,4]),s3=pick(gs),s4=pick(gs),nu4=pick([0.5,2,3,5]),s5=pick(gs),f5=pick([.5,1,2.5,4]),s6=pick(mt);
+const nm=s=>s[0].split(" ")[0].toLowerCase();
+P=[{q:"<b>1.</b> "+(s1[1]*k1)+" g "+nm(s1)+" ("+s1[0].split(" ")[1]+", M = "+s1[1]+" g/mol) necha mol?",u:"mol",a:k1,tol:.03,sol:"ν = m/M = "+(s1[1]*k1)+"/"+s1[1]+" = "+k1+" mol"},
+{q:"<b>2.</b> "+fx(nu2,nu2%1?1:0)+" mol moddada nechta molekula bor? (javob ×10²³ da)",u:"×10²³",a:nu2*6.02,tol:.03,sol:"N = νN<sub>A</sub> = "+fx(nu2,nu2%1?1:0)+"·6,02·10²³ = "+fx(nu2*6.02,2)+"·10²³"},
+{q:"<b>3.</b> "+nm(s3)+" molekulasining massasi? M = "+s3[1]+" g/mol. (javob ×10⁻²⁶ kg da)",u:"×10⁻²⁶ kg",a:s3[1]/6.02,tol:.03,sol:"m₀ = M/N<sub>A</sub> = "+fx(s3[1]/1000,3)+"/(6,02·10²³) = "+fx(s3[1]/6.02,2)+"·10⁻²⁶ kg"},
+{q:"<b>4.</b> "+fx(nu4,nu4%1?1:0)+" mol "+nm(s4)+" ning massasi? M = "+s4[1]+" g/mol. (g da)",u:"g",a:nu4*s4[1],tol:.03,sol:"m = νM = "+fx(nu4,nu4%1?1:0)+"·"+s4[1]+" = "+fx(nu4*s4[1],1)+" g"},
+{q:"<b>5.</b> "+fx(f5*s5[1],f5%1?1:0)+" g "+nm(s5)+" da (M = "+s5[1]+" g/mol) nechta molekula bor? (×10²³ da)",u:"×10²³",a:f5*6.02,tol:.03,sol:"ν = m/M = "+fx(f5,f5%1?1:0)+" mol; N = νN<sub>A</sub> = "+fx(f5*6.02,2)+"·10²³"},
+{q:"<b>6.</b> "+nm(s6)+" atomining o‘lchamini baholang: M = "+fx(s6[1]/1000,3)+" kg/mol, ρ = "+s6[2]+" kg/m³. (×10⁻¹⁰ m da)",u:"×10⁻¹⁰ m",a:dOf(s6[1],s6[2])/1e-10,tol:.06,sol:"V₀ = M/(ρN<sub>A</sub>); d = ∛V₀ ≈ "+fx(dOf(s6[1],s6[2])/1e-10,2)+"·10⁻¹⁰ m"}];
+score=0;render()}
+function render(){$("probs").innerHTML="";P.forEach((p,i)=>{const c=document.createElement("div");c.className="card pb";c.style.borderTop="";c.innerHTML="<div>"+p.q+'</div><div class="btns"><input inputmode="decimal" placeholder="javob"> <span class="sub">'+p.u+'</span><button>Tekshirish</button><button>Yechimni ko‘rish</button></div><div class="res"></div>';
+const[inp,b1,b2]=[c.querySelector("input"),...c.querySelectorAll("button")],r=c.querySelector(".res");
+b1.onclick=()=>{const v=parseFloat(inp.value.replace(",","."));if(isNaN(v)){r.className="res";r.textContent="Javobni raqam bilan kiriting.";return}
+const ok=Math.abs(v-p.a)<=p.tol*Math.abs(p.a);if(ok&&!p.done){p.done=1;score++;upd()}r.className="res "+(ok?"ok":"no");r.textContent=ok?"✔ To‘g‘ri!":"✘ Noto‘g‘ri. Birliklarni va formulani qayta tekshiring."};
+b2.onclick=()=>{r.className="res";r.innerHTML="<b>Yechim:</b> "+p.sol;p.seen=1};$("probs").appendChild(c)});upd()}
+function upd(){$("pscore").textContent="To‘g‘ri: "+score+" / "+P.length;$("pbar").style.width=score/P.length*100+"%"}
+$("nv").onclick=gen;gen();
+
+/* ---- Section 4 ---- */
+const CH=["ν, N, m₀ formulalarini yoza olaman","g/mol ni kg/mol ga o‘tkazaman","1 mol dagi molekulalar sonini (N_A) bilaman","Molekula o‘lchamini baholay olaman","Masalani qadamlarga bo‘lib yechaman"];
+CH.forEach(t=>{const l=document.createElement("label");l.innerHTML='<input type="checkbox"> '+t;l.querySelector("input").onchange=()=>{const n=document.querySelectorAll("#chk input:checked").length;$("cbar").style.width=n/CH.length*100+"%";$("ctxt").textContent=n+" / "+CH.length+(n==CH.length?" – ajoyib, tayyorsiz!":" – yetishmayotgan mavzuni takrorlang.")};$("chk").appendChild(l)});
+const FT=[["ν = m/M formulasida m va M qanday birlikda bo‘lishi kerak?",["m – kg, M – g/mol","birliklar mos: g bilan g/mol yoki kg bilan kg/mol","m – g, M – kg/mol"],1,"Birliklar mos kelishi shart, aks holda ν 1000 marta xato chiqadi."],
+["Avogadro doimiysi N_A ≈",["6,02·10²³ mol⁻¹","6,02·10⁻²³ mol","8,31 J/(mol·K)"],0,"1 moldagi zarrachalar soni."],
+["Bitta molekulaning massasi:",["m₀ = M·N_A","m₀ = M/N_A","m₀ = N_A/M"],1,"1 mol massasi ÷ 1 moldagi molekulalar soni."],
+["2 mol suvda nechta molekula bor?",["6,02·10²³","1,2·10²⁴","1,8·10²⁵"],1,"N = 2·6,02·10²³ ≈ 1,2·10²⁴."],
+["3 mol CO₂ (M = 44 g/mol) massasi:",["14,7 g","47 g","132 g"],2,"m = νM = 3·44 = 132 g."],
+["18 g/mol ni kg/mol da yozing:",["0,018","18 000","1,8"],0,"1 g = 10⁻³ kg."],
+["Atom/molekulalarning odatiy o‘lchami:",["≈ 10⁻¹⁰ m","≈ 10⁻³ m","≈ 10⁻⁶ m"],0,"Atomlar taxminan 0,1 nm."],
+["Bir xil massada qaysi gazda molekulalar ko‘p: H₂ (M = 2) yoki O₂ (M = 32)?",["O₂","H₂","bir xil"],1,"M kichik bo‘lsa, ν = m/M katta."]];
+let fa=[],fc=0;
+function renderFin(){fa=[];fc=0;$("fin").innerHTML="";$("fres").innerHTML="";$("fbar").style.width="0%";FT.forEach(([q,o,a,e],i)=>{const w=document.createElement("div");w.className="q";w.innerHTML="<div>"+(i+1)+". "+q+"</div>";const x=document.createElement("div");x.className="ex";x.textContent="Izoh: "+e;let done=0;
+o.forEach((t,j)=>{const b=document.createElement("button");b.textContent=t;b.onclick=()=>{if(done)return;done=1;w.querySelectorAll("button").forEach((y,k)=>{if(k==a)y.className="ok"});if(j!=a)b.className="no";x.style.display="block";fa.push(j==a);if(j==a)fc++;$("fbar").style.width=fa.length/FT.length*100+"%";if(fa.length==FT.length)fin()};w.appendChild(b)});w.appendChild(x);$("fin").appendChild(w)})}
+function fin(){const p=fc/FT.length*100,g=p>=86?5:p>=71?4:p>=55?3:2;$("fres").innerHTML='<div class="grade">'+g+'</div><p style="text-align:center">To‘g‘ri javoblar: '+fc+' / '+FT.length+' ('+Math.round(p)+' %)</p><p class="sub" style="text-align:center">Baho taxminiy me’yor bo‘yicha: 86–100 % – «5», 71–85 % – «4», 55–70 % – «3», 55 % dan past – «2».</p>'}
+$("fr").onclick=renderFin;renderFin();
+
+function loop(){const on=document.querySelector("section.on").id;if(on=="s0")d0();if(on=="s1")d1();requestAnimationFrame(loop)}
+requestAnimationFrame(loop);
+</script></body></html>

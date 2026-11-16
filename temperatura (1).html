@@ -1,0 +1,2151 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — Temperatura</title>
+
+<style>
+:root{
+  --blue:#1976d2;
+  --light-blue:#e3f2fd;
+  --red:#ef5350;
+  --light-red:#ffebee;
+  --green:#2e7d32;
+  --light-green:#e8f5e9;
+  --yellow:#ffb300;
+  --purple:#6a1b9a;
+  --dark:#17324d;
+  --bg:#f4f8fc;
+  --card:#fff;
+  --shadow:0 8px 25px rgba(20,60,100,.12);
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  font-family:Arial,Helvetica,sans-serif;
+  background:var(--bg);
+  color:#203040;
+  line-height:1.6;
+}
+
+header{
+  background:linear-gradient(135deg,#0d47a1,#1976d2,#42a5f5);
+  color:white;
+  padding:45px 20px;
+  text-align:center;
+}
+
+header h1{
+  font-size:clamp(30px,5vw,52px);
+  margin:0 0 10px;
+}
+
+header p{
+  font-size:18px;
+  max-width:900px;
+  margin:auto;
+}
+
+.container{
+  width:min(1180px,94%);
+  margin:auto;
+}
+
+nav{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:white;
+  box-shadow:0 3px 12px rgba(0,0,0,.1);
+}
+
+.nav-inner{
+  display:flex;
+  gap:7px;
+  overflow-x:auto;
+  padding:9px;
+}
+
+nav a{
+  white-space:nowrap;
+  text-decoration:none;
+  color:#145;
+  background:#eef5fb;
+  padding:9px 13px;
+  border-radius:20px;
+  font-size:14px;
+}
+
+nav a:hover{
+  background:#1976d2;
+  color:white;
+}
+
+section{
+  margin:35px 0;
+}
+
+.card{
+  background:var(--card);
+  border-radius:20px;
+  padding:25px;
+  margin:20px 0;
+  box-shadow:var(--shadow);
+}
+
+h2{
+  color:#0d47a1;
+  border-left:6px solid #1976d2;
+  padding-left:14px;
+}
+
+h3{
+  color:#1565c0;
+}
+
+.goal-grid,
+.info-grid,
+.teacher-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:16px;
+}
+
+.info{
+  padding:18px;
+  border-radius:15px;
+  background:#f8fbff;
+  border:1px solid #dcebf8;
+}
+
+.formula{
+  background:#102a43;
+  color:#fff;
+  padding:18px;
+  border-radius:15px;
+  text-align:center;
+  font-size:22px;
+  margin:15px 0;
+}
+
+.remember{
+  background:linear-gradient(135deg,#fff8d6,#fff1a8);
+  border-left:7px solid #ffb300;
+  padding:18px;
+  border-radius:12px;
+}
+
+.life{
+  background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
+  border-left:7px solid #43a047;
+  padding:18px;
+  border-radius:12px;
+}
+
+.sim{
+  background:#0b1725;
+  color:white;
+  padding:20px;
+  border-radius:20px;
+  margin-top:20px;
+}
+
+.sim h3{color:#90caf9}
+
+.controls{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+  margin:12px 0;
+}
+
+button{
+  border:0;
+  border-radius:10px;
+  padding:11px 16px;
+  cursor:pointer;
+  background:#1976d2;
+  color:white;
+  font-weight:bold;
+  transition:.15s;
+}
+
+button:hover{
+  transform:translateY(-1px);
+  filter:brightness(1.08);
+}
+
+button.secondary{background:#546e7a}
+button.green{background:#2e7d32}
+button.red{background:#d32f2f}
+button.orange{background:#ef6c00}
+button.purple{background:#6a1b9a}
+
+input[type=range]{
+  accent-color:#42a5f5;
+  width:min(350px,100%);
+}
+
+input[type=number],select{
+  padding:10px;
+  border:1px solid #aac3d8;
+  border-radius:8px;
+  font-size:16px;
+}
+
+.sim-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+@media(max-width:760px){
+  .sim-grid{grid-template-columns:1fr}
+}
+
+canvas{
+  width:100%;
+  height:auto;
+  display:block;
+  background:#06101b;
+  border-radius:15px;
+  border:1px solid #345;
+}
+
+.readout{
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+  margin:12px 0;
+}
+
+.badge{
+  padding:9px 13px;
+  background:#162b3d;
+  border:1px solid #35546d;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.hot{color:#ff7043}
+.cold{color:#64b5f6}
+.neutral{color:#81c784}
+
+.thermo-wrap{
+  display:flex;
+  justify-content:center;
+  gap:35px;
+  align-items:flex-end;
+  min-height:480px;
+  padding:25px;
+}
+
+.thermometer{
+  position:relative;
+  width:80px;
+  height:400px;
+  border:5px solid #cfd8dc;
+  border-radius:45px 45px 40px 40px;
+  background:#263238;
+}
+
+.thermo-bulb{
+  position:absolute;
+  width:110px;
+  height:110px;
+  border-radius:50%;
+  bottom:-55px;
+  left:50%;
+  transform:translateX(-50%);
+  background:#ef5350;
+  border:5px solid #cfd8dc;
+}
+
+.thermo-liquid{
+  position:absolute;
+  width:30px;
+  left:50%;
+  transform:translateX(-50%);
+  bottom:0;
+  background:linear-gradient(#ff5252,#d50000);
+  border-radius:20px 20px 0 0;
+}
+
+.scale{
+  position:relative;
+  height:400px;
+  width:170px;
+}
+
+.mark{
+  position:absolute;
+  left:0;
+  width:100%;
+  border-top:1px solid #78909c;
+  font-size:13px;
+  padding-top:2px;
+}
+
+.kelvin-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:25px;
+}
+
+.scale-panel{
+  background:#102a43;
+  padding:20px;
+  border-radius:15px;
+}
+
+.scale-line{
+  height:35px;
+  position:relative;
+  margin:25px 10px;
+  border-radius:20px;
+  background:linear-gradient(90deg,#263238,#2196f3,#4caf50,#ff9800,#f44336);
+}
+
+.scale-marker{
+  position:absolute;
+  top:-12px;
+  width:4px;
+  height:60px;
+  background:#fff;
+  box-shadow:0 0 10px #fff;
+}
+
+.feedback{
+  margin-top:10px;
+  padding:10px;
+  border-radius:9px;
+  display:none;
+}
+
+.correct{
+  background:#c8e6c9;
+  color:#1b5e20;
+  display:block;
+}
+
+.wrong{
+  background:#ffcdd2;
+  color:#b71c1c;
+  display:block;
+}
+
+.question{
+  padding:16px;
+  margin:12px 0;
+  border:1px solid #d6e3ed;
+  border-radius:13px;
+  background:#fff;
+}
+
+.options label{
+  display:block;
+  margin:6px 0;
+  padding:8px;
+  border-radius:7px;
+  cursor:pointer;
+}
+
+.options label:hover{
+  background:#eef6fc;
+}
+
+.result{
+  padding:20px;
+  border-radius:15px;
+  background:#e3f2fd;
+  margin-top:15px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.match-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+footer{
+  margin-top:50px;
+  background:#102a43;
+  color:white;
+  padding:35px 20px;
+  text-align:center;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container">
+    <h1>🌡️ TEMPERATURA</h1>
+    <p>9-sinf fizika • Modda tuzilishining molekular-kinetik nazariyasi asoslari</p>
+    <p>Interaktiv elektron dars: kuzating → o‘zgartiring → tajriba qiling → xulosa chiqaring.</p>
+  </div>
+</header>
+
+<nav>
+  <div class="container nav-inner">
+    <a href="#maqsad">Maqsad</a>
+    <a href="#muvozanat">1. Issiqlik muvozanati</a>
+    <a href="#selsiy">2. Selsiy</a>
+    <a href="#kelvin">3. Absolut temperatura</a>
+    <a href="#molekula">4. Molekulyar talqin</a>
+    <a href="#mustahkamlash">Mustahkamlash</a>
+    <a href="#oqituvchi">O‘qituvchi</a>
+  </div>
+</nav>
+
+<main class="container">
+
+<!-- ====================================================== -->
+<!-- 1. MAQSAD -->
+<!-- ====================================================== -->
+
+<section id="maqsad">
+  <div class="card">
+    <h2>1. Dars maqsadi</h2>
+
+    <p>
+      O‘quvchilarda temperatura haqidagi fizik tushunchani shakllantirish,
+      temperaturani Selsiy va Kelvin shkalalarida ifodalash hamda temperatura
+      bilan molekulalarning tartibsiz harakati orasidagi bog‘lanishni tajriba
+      orqali tushuntirish.
+    </p>
+
+    <div class="goal-grid">
+      <div class="info">
+        <h3>🎯 Bilim</h3>
+        <p>Issiqlik muvozanati, Selsiy shkalasi, Kelvin shkalasi va absolut nol tushunchalarini biladi.</p>
+      </div>
+
+      <div class="info">
+        <h3>🔬 Ko‘nikma</h3>
+        <p>Temperaturani shkalalardan o‘qiydi, °C va K o‘rtasida hisoblaydi.</p>
+      </div>
+
+      <div class="info">
+        <h3>🧠 Tushunish</h3>
+        <p>Temperaturaning molekulalarning o‘rtacha kinetik energiyasi bilan bog‘liqligini tushuntiradi.</p>
+      </div>
+
+      <div class="info">
+        <h3>💡 Tajriba</h3>
+        <p>Interaktiv simulyatsiyada boshlang‘ich shartlarni o‘zgartirib, natijani kuzatadi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- 1-REJA -->
+<!-- ====================================================== -->
+
+<section id="muvozanat">
+  <div class="card">
+
+    <h2>1-reja. Issiqlik muvozanati</h2>
+
+    <h3>📘 Nazariy tushuncha</h3>
+
+    <p>
+      Turli temperaturadagi jismlar bir-biriga tegsa yoki ular orasida issiqlik
+      almashinuvi mumkin bo‘lsa, energiya issiqroq jismdan sovuqroq jismga
+      uzatiladi.
+    </p>
+
+    <p>
+      Issiqlik almashinuvi natijasida issiq jism soviydi, sovuq jism esa isiydi.
+      Jarayon jismlarning temperaturasi tenglashguncha davom etadi.
+    </p>
+
+    <p>
+      Temperaturalar tenglashib, makroskopik darajada issiqlik almashinuvi
+      uchun yo‘nalish qolmagan holat <b>issiqlik muvozanati</b> deyiladi.
+    </p>
+
+    <div class="remember">
+      <b>🧠 Eslab qoling:</b>
+      Issiqlik o‘z-o‘zidan yuqori temperaturali jismdan past temperaturali
+      jismga uzatiladi. Issiqlik muvozanatida jismlarning temperaturasi teng bo‘ladi.
+    </div>
+
+    <div class="life">
+      <b>🏠 Kundalik hayot:</b>
+      Issiq choyga sovuq suv qo‘shilganda ular orasida energiya almashadi.
+      Bir oz vaqt o‘tgach, aralashmaning temperaturasi bitta qiymatga yaqinlashadi.
+    </div>
+
+    <div class="sim">
+      <h3>🔥❄️ Interaktiv simulyatsiya: Issiqlik muvozanati</h3>
+
+      <p>
+        Ikki idish orasidagi issiqlik o'tkazuvchi aloqa orqali energiya almashmoqda.
+        Boshlang‘ich temperaturalarni o‘zgartiring va muvozanat qanday hosil
+        bo‘lishini kuzating.
+      </p>
+
+      <div class="controls">
+        <label>
+          T₁:
+          <input id="t1Slider" type="range" min="5" max="95" value="80">
+          <span id="t1Value">80</span> °C
+        </label>
+
+        <label>
+          T₂:
+          <input id="t2Slider" type="range" min="5" max="95" value="20">
+          <span id="t2Value">20</span> °C
+        </label>
+      </div>
+
+      <div class="controls">
+        <button onclick="thermalStart()">▶ Boshlash</button>
+        <button class="secondary" onclick="thermalPause()">⏸ Pauza</button>
+        <button class="red" onclick="thermalReset()">↻ Qayta boshlash</button>
+
+        <label>
+          Tezlik:
+          <input id="thermalSpeed" type="range" min=".25" max="4" step=".25" value="1">
+          <span id="thermalSpeedValue">1×</span>
+        </label>
+      </div>
+
+      <div class="readout">
+        <div class="badge">T₁ = <span id="T1Read">80.0</span> °C</div>
+        <div class="badge">T₂ = <span id="T2Read">20.0</span> °C</div>
+        <div class="badge">ΔT = <span id="deltaTRead">60.0</span> °C</div>
+        <div class="badge" id="thermalStatus">Issiqlik oqimi: →</div>
+      </div>
+
+      <canvas id="thermalCanvas" width="900" height="400"></canvas>
+
+      <div id="thermalMessage" class="result">
+        Tajribani boshlang. Issiqlik issiq tomondan sovuq tomonga uzatiladi.
+      </div>
+    </div>
+
+    <h3>📝 Mini-test</h3>
+
+    <div class="question">
+      <b>1. Issiqlik qaysi yo‘nalishda o‘z-o‘zidan uzatiladi?</b>
+      <div class="options">
+        <label><input type="radio" name="m1" value="A"> A) Sovuqdan issiqqa</label>
+        <label><input type="radio" name="m1" value="B"> B) Issiqdan sovuqqa</label>
+        <label><input type="radio" name="m1" value="C"> C) Faqat yuqoriga</label>
+        <label><input type="radio" name="m1" value="D"> D) Yo‘nalishi bo‘lmaydi</label>
+      </div>
+      <button onclick="checkMini('m1','B','m1f')">Javobni tekshirish</button>
+      <div id="m1f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>2. Issiqlik muvozanatida ikki jismning temperaturasi qanday bo‘ladi?</b>
+      <div class="options">
+        <label><input type="radio" name="m2" value="A"> A) Teng</label>
+        <label><input type="radio" name="m2" value="B"> B) Birinchisi doim yuqori</label>
+        <label><input type="radio" name="m2" value="C"> C) Nolga teng</label>
+        <label><input type="radio" name="m2" value="D"> D) Cheksiz katta</label>
+      </div>
+      <button onclick="checkMini('m2','A','m2f')">Javobni tekshirish</button>
+      <div id="m2f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>3. 80 °C va 20 °C temperaturali ikki teng massali suv issiqlik almashsa, ideal holatda muvozanat temperaturasi qaysi qiymatga yaqin?</b>
+      <div class="options">
+        <label><input type="radio" name="m3" value="A"> A) 20 °C</label>
+        <label><input type="radio" name="m3" value="B"> B) 30 °C</label>
+        <label><input type="radio" name="m3" value="C"> C) 50 °C</label>
+        <label><input type="radio" name="m3" value="D"> D) 80 °C</label>
+      </div>
+      <button onclick="checkMini('m3','C','m3f')">Javobni tekshirish</button>
+      <div id="m3f" class="feedback"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- 2-REJA -->
+<!-- ====================================================== -->
+
+<section id="selsiy">
+  <div class="card">
+
+    <h2>2-reja. Temperatura — Selsiy shkalasi</h2>
+
+    <h3>📘 Nazariy tushuncha</h3>
+
+    <p>
+      <b>Temperatura</b> jismning qanchalik issiq yoki sovuq ekanligini
+      tavsiflovchi fizik kattalikdir.
+    </p>
+
+    <p>
+      Kundalik hayotda temperaturani ifodalash uchun keng tarqalgan shkalalardan
+      biri <b>Selsiy shkalasi</b>dir. U °C belgisi bilan yoziladi.
+    </p>
+
+    <p>
+      Selsiy shkalasida normal atmosfera bosimida suvning muzlash-erish nuqtasi
+      <b>0 °C</b>, qaynash nuqtasi esa <b>100 °C</b> qilib olingan.
+      Bu ikki tayanch nuqta orasidagi interval 100 teng qismga bo‘linadi.
+    </p>
+
+    <p>
+      Termometr temperaturaga bog‘liq fizik xossaning o‘zgarishini o‘lchashga
+      asoslanadi. Masalan, suyuqlikning kengayishi yoki elektron sensorning
+      elektr xossalari temperaturaga bog‘liq bo‘lishi mumkin.
+    </p>
+
+    <div class="remember">
+      <b>🧠 Eslab qoling:</b>
+      Selsiy shkalasida suvning normal atmosfera bosimidagi muzlash-erish
+      temperaturasi 0 °C, qaynash temperaturasi 100 °C.
+    </div>
+
+    <div class="sim">
+      <h3>🌡️ Interaktiv simulyatsiya: Selsiy temperaturasi shkalasi</h3>
+
+      <div class="controls">
+        <label>
+          Temperatura:
+          <input id="celsiusSlider" type="range" min="-30" max="120" value="25">
+          <b><span id="celsiusValue">25</span> °C</b>
+        </label>
+      </div>
+
+      <div class="controls">
+        <button onclick="setCelsius(0)">🧊 0 °C — muzlash</button>
+        <button onclick="setCelsius(37)">🌡️ 37 °C — inson tanasi</button>
+        <button onclick="setCelsius(100)">♨️ 100 °C — qaynash</button>
+      </div>
+
+      <div class="thermo-wrap">
+        <div>
+          <div class="thermometer">
+            <div id="thermoLiquid" class="thermo-liquid"></div>
+            <div class="thermo-bulb"></div>
+          </div>
+        </div>
+
+        <div class="scale" id="celsiusScale"></div>
+
+        <div>
+          <div class="badge">
+            T = <span id="thermoRead">25</span> °C
+          </div>
+          <p id="thermoDescription">
+            Oddiy xona temperaturasi atrofidagi qiymat.
+          </p>
+        </div>
+      </div>
+
+      <canvas id="celsiusParticles" width="900" height="180"></canvas>
+    </div>
+
+    <h3>🏠 Kundalik hayotdagi misollar</h3>
+    <ul>
+      <li>Uy termometri xona temperaturasini ko‘rsatadi.</li>
+      <li>Tibbiyotda tana temperaturasi o‘lchanadi.</li>
+      <li>Suv qizdirilganda termometr ko‘rsatkichi ortadi.</li>
+    </ul>
+
+    <h3>📝 Mini-test</h3>
+
+    <div class="question">
+      <b>1. Selsiy shkalasida normal atmosfera bosimida suvning qaynash temperaturasi nechaga teng?</b>
+      <div class="options">
+        <label><input type="radio" name="s1" value="A"> A) 0 °C</label>
+        <label><input type="radio" name="s1" value="B"> B) 37 °C</label>
+        <label><input type="radio" name="s1" value="C"> C) 100 °C</label>
+        <label><input type="radio" name="s1" value="D"> D) 273 °C</label>
+      </div>
+      <button onclick="checkMini('s1','C','s1f')">Javobni tekshirish</button>
+      <div id="s1f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>2. 0 °C Selsiy shkalasida nimani bildiradi?</b>
+      <div class="options">
+        <label><input type="radio" name="s2" value="A"> A) Suvning normal bosimdagi muzlash-erish tayanch nuqtasini</label>
+        <label><input type="radio" name="s2" value="B"> B) Absolut nolni</label>
+        <label><input type="radio" name="s2" value="C"> C) Suvning qaynash nuqtasini</label>
+        <label><input type="radio" name="s2" value="D"> D) Inson tanasining temperaturasini</label>
+      </div>
+      <button onclick="checkMini('s2','A','s2f')">Javobni tekshirish</button>
+      <div id="s2f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>3. 37 °C qaysi qiymatga yaqin?</b>
+      <div class="options">
+        <label><input type="radio" name="s3" value="A"> A) Inson tanasining odatiy temperaturasi</label>
+        <label><input type="radio" name="s3" value="B"> B) Suvning qaynash temperaturasi</label>
+        <label><input type="radio" name="s3" value="C"> C) Absolut nol</label>
+        <label><input type="radio" name="s3" value="D"> D) Muzning erish temperaturasi</label>
+      </div>
+      <button onclick="checkMini('s3','A','s3f')">Javobni tekshirish</button>
+      <div id="s3f" class="feedback"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- 3-REJA -->
+<!-- ====================================================== -->
+
+<section id="kelvin">
+  <div class="card">
+
+    <h2>3-reja. Absolut temperatura</h2>
+
+    <h3>📘 Nazariy tushuncha</h3>
+
+    <p>
+      Fizikada temperaturani molekulyar-kinetik jarayonlar bilan bog‘lashda
+      <b>Kelvin shkalasi</b> juda muhim. Kelvin shkalasidagi temperatura
+      <b>absolut temperatura</b> deb ham yuritiladi.
+    </p>
+
+    <p>
+      Kelvin shkalasining boshlang‘ich nuqtasi — <b>absolut nol</b>.
+      Absolut nol 0 K ga teng va Selsiy shkalasida −273,15 °C ga mos keladi.
+    </p>
+
+    <div class="formula">
+      T = t + 273,15
+    </div>
+
+    <p style="text-align:center">
+      <b>T</b> — Kelvin temperaturasi (K)<br>
+      <b>t</b> — Selsiy temperaturasi (°C)
+    </p>
+
+    <div class="info-grid">
+      <div class="info">
+        <b>0 °C</b><br>
+        273,15 K
+      </div>
+      <div class="info">
+        <b>20 °C</b><br>
+        293,15 K
+      </div>
+      <div class="info">
+        <b>100 °C</b><br>
+        373,15 K
+      </div>
+      <div class="info">
+        <b>−273,15 °C</b><br>
+        0 K
+      </div>
+    </div>
+
+    <div class="remember">
+      <b>🧠 Eslab qoling:</b>
+      Kelvin shkalasida temperatura 0 K dan boshlanadi. 0 K — absolut nol.
+      Oddiy makroskopik sharoitlarda 0 K ga amalda aynan erishish juda murakkab.
+    </div>
+
+    <div class="sim">
+      <h3>🔵🔴 Interaktiv simulyatsiya: Selsiy → Kelvin</h3>
+
+      <div class="controls">
+        <label>
+          Selsiy:
+          <input id="kelvinSlider" type="range" min="-273.15" max="500" step="0.01" value="25">
+          <b><span id="kelvinC">25.00</span> °C</b>
+        </label>
+      </div>
+
+      <div class="kelvin-grid">
+
+        <div class="scale-panel">
+          <h3>Selsiy (°C)</h3>
+          <div class="scale-line">
+            <div id="cMarker" class="scale-marker"></div>
+          </div>
+          <div>
+            <b><span id="cScaleText">25.00</span> °C</b>
+          </div>
+        </div>
+
+        <div class="scale-panel">
+          <h3>Kelvin (K)</h3>
+          <div class="scale-line">
+            <div id="kMarker" class="scale-marker"></div>
+          </div>
+          <div>
+            <b><span id="kScaleText">298.15</span> K</b>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="formula">
+        T = t + 273,15
+      </div>
+
+      <div class="controls">
+        <input id="convertC" type="number" placeholder="°C">
+        <button onclick="convertCtoK()">°C → K</button>
+
+        <input id="convertK" type="number" placeholder="K">
+        <button onclick="convertKtoC()">K → °C</button>
+      </div>
+
+      <div id="convertResult" class="result">
+        Qiymat kiriting va konvertatsiya tugmasini bosing.
+      </div>
+
+      <canvas id="kelvinParticles" width="900" height="180"></canvas>
+
+    </div>
+
+    <h3>📝 Mini-test</h3>
+
+    <div class="question">
+      <b>1. 20 °C necha Kelvin?</b>
+      <div class="options">
+        <label><input type="radio" name="k1" value="A"> A) 20 K</label>
+        <label><input type="radio" name="k1" value="B"> B) 253,15 K</label>
+        <label><input type="radio" name="k1" value="C"> C) 293,15 K</label>
+        <label><input type="radio" name="k1" value="D"> D) 373,15 K</label>
+      </div>
+      <button onclick="checkMini('k1','C','k1f')">Javobni tekshirish</button>
+      <div id="k1f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>2. Absolut nol qaysi qiymatga mos keladi?</b>
+      <div class="options">
+        <label><input type="radio" name="k2" value="A"> A) 0 °C</label>
+        <label><input type="radio" name="k2" value="B"> B) 0 K</label>
+        <label><input type="radio" name="k2" value="C"> C) 100 K</label>
+        <label><input type="radio" name="k2" value="D"> D) 273,15 K</label>
+      </div>
+      <button onclick="checkMini('k2','B','k2f')">Javobni tekshirish</button>
+      <div id="k2f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>3. Kelvin temperaturasi qanday belgilanadi?</b>
+      <div class="options">
+        <label><input type="radio" name="k3" value="A"> A) T</label>
+        <label><input type="radio" name="k3" value="B"> B) F</label>
+        <label><input type="radio" name="k3" value="C"> C) m</label>
+        <label><input type="radio" name="k3" value="D"> D) v</label>
+      </div>
+      <button onclick="checkMini('k3','A','k3f')">Javobni tekshirish</button>
+      <div id="k3f" class="feedback"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- 4-REJA -->
+<!-- ====================================================== -->
+
+<section id="molekula">
+  <div class="card">
+
+    <h2>4-reja. Temperaturaning molekulyar-kinetik talqini</h2>
+
+    <h3>📘 Nazariy tushuncha</h3>
+
+    <p>
+      Modda juda ko‘p sonli zarrachalardan — atom va molekulalardan tashkil
+      topgan. Bu zarrachalar doimo tartibsiz, ya’ni betartib harakatda bo‘ladi.
+    </p>
+
+    <p>
+      Temperatura molekulalarning tartibsiz harakati bilan bevosita bog‘liq.
+      Soddalashtirilgan molekulyar-kinetik tasavvurda temperatura oshganda
+      molekulalarning <b>o‘rtacha kinetik energiyasi ortadi</b>.
+    </p>
+
+    <p>
+      Demak, temperaturani faqat “jism qanchalik issiq” ekanligini bildiruvchi
+      son sifatida emas, balki modda zarrachalarining mikroskopik harakati bilan
+      bog‘liq fizik kattalik sifatida ham tushunish mumkin.
+    </p>
+
+    <div class="formula">
+      Temperatura ↑ → molekulalarning o‘rtacha kinetik energiyasi ↑
+    </div>
+
+    <div class="formula">
+      Temperatura ↓ → molekulalarning o‘rtacha kinetik energiyasi ↓
+    </div>
+
+    <div class="remember">
+      <b>🧠 Eslab qoling:</b>
+      Temperatura oshganda molekulalarning o‘rtacha kinetik energiyasi ortadi.
+      Bu barcha molekulalar aynan bir xil tezlikda harakat qiladi degani emas —
+      molekulalarning tezliklari turlicha bo‘ladi.
+    </div>
+
+    <div class="sim">
+      <h3>🔵🟢🔴 Interaktiv simulyatsiya: Temperatura va molekulalar harakati</h3>
+
+      <div class="controls">
+        <label>
+          Temperatura:
+          <input id="moleculeTemp" type="range"
+                 min="100" max="500" value="300" step="10">
+          <b>T = <span id="moleculeTempValue">300</span> K</b>
+        </label>
+
+        <button onclick="setMoleculeTemp(100)">🔵 100 K</button>
+        <button onclick="setMoleculeTemp(300)">🟢 300 K</button>
+        <button onclick="setMoleculeTemp(500)">🔴 500 K</button>
+        <button class="secondary" onclick="toggleVectors()">Vektorlarni ko‘rsatish/yashirish</button>
+      </div>
+
+      <div class="readout">
+        <div class="badge" id="moleculeState">🟢 O‘rtacha temperatura</div>
+        <div class="badge">
+          O‘rtacha tezlik indikatori:
+          <span id="speedIndicator">100%</span>
+        </div>
+      </div>
+
+      <canvas id="moleculeCanvas" width="900" height="480"></canvas>
+
+      <div class="result" id="moleculeMessage">
+        T = 300 K: molekulalar tartibsiz ravishda o‘rtacha tezlikda harakat qilmoqda.
+      </div>
+    </div>
+
+    <h3>🏠 Kundalik hayotdagi bog‘lanish</h3>
+
+    <p>
+      Masalan, gaz ballonidagi gaz qizdirilganda uning molekulalari o‘rtacha
+      tezroq harakat qiladi. Shu sababli gazning mikroskopik harakati bilan
+      temperatura o‘rtasidagi bog‘lanish mavjud.
+    </p>
+
+    <h3>📝 Mini-test</h3>
+
+    <div class="question">
+      <b>1. Temperatura oshganda molekulalarning o‘rtacha kinetik energiyasi qanday o‘zgaradi?</b>
+      <div class="options">
+        <label><input type="radio" name="q1" value="A"> A) Ortadi</label>
+        <label><input type="radio" name="q1" value="B"> B) Kamayadi</label>
+        <label><input type="radio" name="q1" value="C"> C) Har doim nol bo‘ladi</label>
+        <label><input type="radio" name="q1" value="D"> D) O‘zgarmaydi</label>
+      </div>
+      <button onclick="checkMini('q1','A','q1f')">Javobni tekshirish</button>
+      <div id="q1f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>2. Molekulalar qanday harakat qiladi?</b>
+      <div class="options">
+        <label><input type="radio" name="q2" value="A"> A) Faqat bir yo‘nalishda</label>
+        <label><input type="radio" name="q2" value="B"> B) Tartibsiz harakat qiladi</label>
+        <label><input type="radio" name="q2" value="C"> C) Umuman harakat qilmaydi</label>
+        <label><input type="radio" name="q2" value="D"> D) Faqat aylana bo‘ylab</label>
+      </div>
+      <button onclick="checkMini('q2','B','q2f')">Javobni tekshirish</button>
+      <div id="q2f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <b>3. 500 K dan 100 K ga tushirilganda simulyatsiyada molekulalar qanday harakat qiladi?</b>
+      <div class="options">
+        <label><input type="radio" name="q3" value="A"> A) O‘rtacha sekinroq</label>
+        <label><input type="radio" name="q3" value="B"> B) O‘rtacha tezroq</label>
+        <label><input type="radio" name="q3" value="C"> C) Ular yo‘qoladi</label>
+        <label><input type="radio" name="q3" value="D"> D) Ranglari o‘zgarmaydi, harakati ham o‘zgarmaydi</label>
+      </div>
+      <button onclick="checkMini('q3','A','q3f')">Javobni tekshirish</button>
+      <div id="q3f" class="feedback"></div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ====================================================== -->
+<!-- MUSTAHKAMLASH -->
+<!-- ====================================================== -->
+
+<section id="mustahkamlash">
+  <div class="card">
+
+    <h2>7. Mavzuni mustahkamlash</h2>
+
+    <p>
+      Quyidagi 10 ta test yakuniy nazorat uchun mo‘ljallangan.
+      Har bir to‘g‘ri javob — 1 ball.
+    </p>
+
+    <div id="finalQuiz"></div>
+
+    <button class="green" onclick="checkFinalQuiz()">🏆 Natijani hisoblash</button>
+
+    <div id="finalResult" class="result" style="display:none"></div>
+
+  </div>
+
+
+  <div class="card">
+    <h2>8. Hisoblash masalalari</h2>
+
+    <div class="question">
+      <h3>Masala 1</h3>
+      <p>20 °C temperaturani Kelvin shkalasida ifodalang.</p>
+
+      <input id="problem1" type="number" step="0.01" placeholder="Javob, K">
+      <button onclick="checkProblem(1,293.15)">Tekshirish</button>
+      <div id="problem1f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <h3>Masala 2</h3>
+      <p>300 K temperaturani Selsiy shkalasida ifodalang.</p>
+
+      <input id="problem2" type="number" step="0.01" placeholder="Javob, °C">
+      <button onclick="checkProblem(2,26.85)">Tekshirish</button>
+      <div id="problem2f" class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <h3>Masala 3</h3>
+      <p>
+        Teng massali, bir xil moddadan tayyorlangan ikki jismning
+        boshlang‘ich temperaturasi 80 °C va 20 °C.
+        Tashqi muhit bilan issiqlik almashinuvi bo‘lmasa, muvozanat
+        temperaturasi qancha bo‘ladi?
+      </p>
+
+      <input id="problem3" type="number" step="0.1" placeholder="Javob, °C">
+      <button onclick="checkProblem(3,50)">Tekshirish</button>
+      <div id="problem3f" class="feedback"></div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h2>9. To‘g‘ri / Noto‘g‘ri</h2>
+
+    <div class="question">
+      <p><b>1.</b> Issiqlik o‘z-o‘zidan sovuqroq jismdan issiqroq jismga o‘tadi.</p>
+      <button onclick="tf(this,false)">To‘g‘ri</button>
+      <button onclick="tf(this,true)">Noto‘g‘ri</button>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <p><b>2.</b> 0 K absolut nolga mos keladi.</p>
+      <button onclick="tf(this,true)">To‘g‘ri</button>
+      <button onclick="tf(this,false)">Noto‘g‘ri</button>
+      <div class="feedback"></div>
+    </div>
+
+    <div class="question">
+      <p><b>3.</b> Temperatura oshishi molekulalarning o‘rtacha kinetik energiyasi oshishi bilan bog‘liq.</p>
+      <button onclick="tf(this,true)">To‘g‘ri</button>
+      <button onclick="tf(this,false)">Noto‘g‘ri</button>
+      <div class="feedback"></div>
+    </div>
+  </div>
+
+
+  <div class="card">
+    <h2>10. Moslashtirish topshirig‘i</h2>
+
+    <p>Chapdagi tushunchalarni o‘ngdagi izohlar bilan moslashtiring.</p>
+
+    <div class="match-grid">
+
+      <div class="info">
+        <b>A. 0 °C</b><br>
+        <select id="matchA">
+          <option value="">Tanlang</option>
+          <option value="1">Absolut nol</option>
+          <option value="2">Suvning normal bosimdagi muzlash-erish tayanch nuqtasi</option>
+          <option value="3">Kelvin shkalasining birligi</option>
+          <option value="4">Temperatura bilan bog‘liq mikroskopik kattalik</option>
+        </select>
+      </div>
+
+      <div class="info">
+        <b>B. 0 K</b><br>
+        <select id="matchB">
+          <option value="">Tanlang</option>
+          <option value="1">Absolut nol</option>
+          <option value="2">Suvning normal bosimdagi muzlash-erish tayanch nuqtasi</option>
+          <option value="3">Kelvin shkalasining birligi</option>
+          <option value="4">Temperatura bilan bog‘liq mikroskopik kattalik</option>
+        </select>
+      </div>
+
+      <div class="info">
+        <b>C. K</b><br>
+        <select id="matchC">
+          <option value="">Tanlang</option>
+          <option value="1">Absolut nol</option>
+          <option value="2">Suvning normal bosimdagi muzlash-erish tayanch nuqtasi</option>
+          <option value="3">Kelvin shkalasining birligi</option>
+          <option value="4">Temperatura bilan bog‘liq mikroskopik kattalik</option>
+        </select>
+      </div>
+
+      <div class="info">
+        <b>D. Molekulalarning o‘rtacha kinetik energiyasi</b><br>
+        <select id="matchD">
+          <option value="">Tanlang</option>
+          <option value="1">Absolut nol</option>
+          <option value="2">Suvning normal bosimdagi muzlash-erish tayanch nuqtasi</option>
+          <option value="3">Kelvin shkalasining birligi</option>
+          <option value="4">Temperatura bilan bog‘liq mikroskopik kattalik</option>
+        </select>
+      </div>
+
+    </div>
+
+    <button onclick="checkMatching()" style="margin-top:15px">Moslikni tekshirish</button>
+    <div id="matchingResult" class="result"></div>
+  </div>
+
+</section>
+
+
+<!-- ====================================================== -->
+<!-- O'QITUVCHI -->
+<!-- ====================================================== -->
+
+<section id="oqituvchi">
+
+  <div class="card">
+    <h2>11. O‘qituvchi uchun metodik tavsiyalar</h2>
+
+    <div class="teacher-grid">
+
+      <div class="info">
+        <h3>🎯 Dars maqsadi</h3>
+        <p>
+          O‘quvchiga temperaturani makroskopik kattalik sifatida ham,
+          molekulalarning harakati bilan bog‘liq mikroskopik tushuncha sifatida
+          ham anglatish.
+        </p>
+      </div>
+
+      <div class="info">
+        <h3>📚 Kutiladigan natija</h3>
+        <p>
+          O‘quvchi issiqlik muvozanatini izohlaydi, °C va K ni almashtiradi,
+          absolut nolni tushuntiradi va temperatura-molekula bog‘lanishini
+          izohlab beradi.
+        </p>
+      </div>
+
+      <div class="info">
+        <h3>💻 Kerakli jihozlar</h3>
+        <p>
+          Kompyuter yoki planshet, proyektor/interaktiv doska, ushbu HTML sahifa.
+          Qo‘shimcha ravishda oddiy termometr bo‘lsa, real tajriba bilan
+          birlashtirish mumkin.
+        </p>
+      </div>
+
+      <div class="info">
+        <h3>⏱️ Tavsiya etiladigan vaqt</h3>
+        <p>
+          45 daqiqalik dars: kirish 5 daqiqa, tushuntirish va simulyatsiyalar
+          25 daqiqa, mustahkamlash 10 daqiqa, yakuniy xulosa 5 daqiqa.
+        </p>
+      </div>
+
+    </div>
+
+    <h3>Dars bosqichlari</h3>
+
+    <ol>
+      <li>
+        <b>Motivatsiya:</b>
+        “Nega metall qoshiq yog‘och qoshiqdan sovuqroq tuyuladi?”
+        kabi savol bilan mavzuga kirish.
+      </li>
+
+      <li>
+        <b>Issiqlik muvozanati:</b>
+        birinchi simulyatsiyada T₁ va T₂ qiymatlarini keskin farqli tanlash.
+        O‘quvchilardan issiqlik oqimi yo‘nalishini oldindan aytishni so‘rash.
+      </li>
+
+      <li>
+        <b>Selsiy shkalasi:</b>
+        termometr sliderini 0 °C, 37 °C va 100 °C nuqtalariga olib borish.
+      </li>
+
+      <li>
+        <b>Kelvin:</b>
+        o‘quvchilarga 20 °C ni Kelvin shkalasiga o‘zlari hisoblatish,
+        keyin simulyatorda tekshirtirish.
+      </li>
+
+      <li>
+        <b>Molekulyar-kinetik talqin:</b>
+        avval 100 K, keyin 500 K ni tanlash.
+        “Molekulalar nimasi bilan farq qildi?” savolini berish.
+      </li>
+
+      <li>
+        <b>Mustahkamlash:</b>
+        yakuniy 10 ta testni individual bajarish.
+      </li>
+    </ol>
+
+    <h3>💬 O‘quvchilarga beriladigan savollar</h3>
+
+    <ul>
+      <li>Nima sababdan issiq va sovuq jismlarning temperaturasi vaqt o‘tishi bilan yaqinlashadi?</li>
+      <li>Issiqlik muvozanatida issiqlik oqimi qanday bo‘ladi?</li>
+      <li>0 °C va 0 K orasidagi farq nimada?</li>
+      <li>20 °C necha Kelvin?</li>
+      <li>Temperatura oshganda molekulalarning harakati qanday o‘zgaradi?</li>
+      <li>“Barcha molekulalar bir xil tezlikda harakat qiladi” deyish to‘g‘rimi?</li>
+    </ul>
+
+    <h3>📊 Baholash mezonlari</h3>
+
+    <table style="width:100%;border-collapse:collapse">
+      <tr>
+        <th style="border:1px solid #bbb;padding:10px">Natija</th>
+        <th style="border:1px solid #bbb;padding:10px">Tavsiya</th>
+      </tr>
+      <tr>
+        <td style="border:1px solid #bbb;padding:10px">9–10 ball</td>
+        <td style="border:1px solid #bbb;padding:10px">A’lo — mavzu yaxshi o‘zlashtirilgan</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #bbb;padding:10px">7–8 ball</td>
+        <td style="border:1px solid #bbb;padding:10px">Yaxshi — ayrim tushunchalarni takrorlash foydali</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #bbb;padding:10px">5–6 ball</td>
+        <td style="border:1px solid #bbb;padding:10px">Qoniqarli — asosiy formulalar va tushunchalarni qayta ko‘rib chiqish kerak</td>
+      </tr>
+      <tr>
+        <td style="border:1px solid #bbb;padding:10px">0–4 ball</td>
+        <td style="border:1px solid #bbb;padding:10px">Mavzuni qayta takrorlash tavsiya etiladi</td>
+      </tr>
+    </table>
+
+    <h3>⚠️ Ilmiy aniqlik uchun eslatma</h3>
+
+    <p>
+      Molekulyar-kinetik modelda temperatura zarrachalarning tartibsiz harakati
+      bilan bog‘lanadi. “Temperatura pasaysa, barcha molekulalar butunlay
+      to‘xtaydi” degan iborani ilmiy fakt sifatida ishlatmaslik kerak.
+      0 K — absolut nol bo‘lib, u termodinamik shkalaning quyi chegarasidir.
+    </p>
+
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <h2 style="color:white;border:0">🌡️ Temperaturani ko‘r, o‘zgartir va tushun!</h2>
+  <p>9-sinf fizika • Modda tuzilishining molekular-kinetik nazariyasi asoslari</p>
+</footer>
+
+
+<script>
+/* =========================================================
+   UMUMIY YORDAMCHI FUNKSIYALAR
+========================================================= */
+
+function checkMini(name, correct, feedbackId){
+  const selected=document.querySelector('input[name="'+name+'"]:checked');
+  const box=document.getElementById(feedbackId);
+
+  box.className="feedback";
+
+  if(!selected){
+    box.textContent="Avval javobni tanlang.";
+    box.classList.add("wrong");
+    return;
+  }
+
+  if(selected.value===correct){
+    box.textContent="✅ To‘g‘ri!";
+    box.classList.add("correct");
+  }else{
+    box.textContent="❌ Noto‘g‘ri. To‘g‘ri javob: "+correct;
+    box.classList.add("wrong");
+  }
+}
+
+
+/* =========================================================
+   1. ISSIQLIK MUVOZANATI SIMULYATSIYASI
+========================================================= */
+
+const thermalCanvas=document.getElementById("thermalCanvas");
+const tc=thermalCanvas.getContext("2d");
+
+let thermalT1=80;
+let thermalT2=20;
+let thermalInitial1=80;
+let thermalInitial2=20;
+let thermalRunning=false;
+let thermalLastTime=0;
+
+const thermalParticles=[];
+
+function makeThermalParticles(){
+  thermalParticles.length=0;
+
+  for(let i=0;i<22;i++){
+    thermalParticles.push({
+      side:1,
+      x:110+Math.random()*250,
+      y:180+Math.random()*120,
+      a:Math.random()*Math.PI*2
+    });
+  }
+
+  for(let i=0;i<22;i++){
+    thermalParticles.push({
+      side:2,
+      x:540+Math.random()*250,
+      y:180+Math.random()*120,
+      a:Math.random()*Math.PI*2
+    });
+  }
+}
+
+function tempColor(t){
+  const p=Math.max(0,Math.min(1,(t-5)/90));
+
+  const r=Math.round(40+215*p);
+  const b=Math.round(220-180*p);
+  const g=Math.round(130-80*p);
+
+  return `rgb(${r},${g},${b})`;
+}
+
+function drawThermal(){
+
+  tc.clearRect(0,0,900,400);
+
+  // Fon
+  tc.fillStyle="#06101b";
+  tc.fillRect(0,0,900,400);
+
+  // Idishlar
+  tc.fillStyle="rgba(255,255,255,.08)";
+  tc.strokeStyle="#78909c";
+  tc.lineWidth=3;
+
+  tc.fillRect(70,120,330,230);
+  tc.strokeRect(70,120,330,230);
+
+  tc.fillRect(500,120,330,230);
+  tc.strokeRect(500,120,330,230);
+
+  // Suv
+  tc.fillStyle=tempColor(thermalT1);
+  tc.fillRect(75,165,320,180);
+
+  tc.fillStyle=tempColor(thermalT2);
+  tc.fillRect(505,165,320,180);
+
+  // Aloqa
+  tc.fillStyle="#607d8b";
+  tc.fillRect(395,220,110,30);
+
+  // Sarlavhalar
+  tc.font="bold 20px Arial";
+  tc.fillStyle="#fff";
+  tc.fillText("Issiq suv",150,105);
+  tc.fillText("Sovuq suv",625,105);
+
+  // Molekulalar
+  thermalParticles.forEach(p=>{
+
+    const T=p.side===1?thermalT1:thermalT2;
+
+    const speed=.4+(T/100)*1.5;
+
+    p.x+=Math.cos(p.a)*speed;
+    p.y+=Math.sin(p.a)*speed;
+
+    const xmin=p.side===1?85:515;
+    const xmax=p.side===1?385:815;
+
+    if(p.x<xmin||p.x>xmax) p.a=Math.PI-p.a;
+    if(p.y<180||p.y>330) p.a=-p.a;
+
+    tc.beginPath();
+    tc.fillStyle=p.side===1?"#ff7043":"#64b5f6";
+    tc.arc(p.x,p.y,5,0,Math.PI*2);
+    tc.fill();
+  });
+
+  // Issiqlik oqimi
+  const difference=thermalT1-thermalT2;
+
+  if(Math.abs(difference)>0.1){
+
+    tc.strokeStyle="#ffca28";
+    tc.fillStyle="#ffca28";
+    tc.lineWidth=7;
+
+    tc.beginPath();
+
+    if(difference>0){
+      tc.moveTo(405,235);
+      tc.lineTo(495,235);
+
+      tc.moveTo(495,235);
+      tc.lineTo(475,220);
+
+      tc.moveTo(495,235);
+      tc.lineTo(475,250);
+    }else{
+      tc.moveTo(495,265);
+      tc.lineTo(405,265);
+
+      tc.moveTo(405,265);
+      tc.lineTo(425,250);
+
+      tc.moveTo(405,265);
+      tc.lineTo(425,280);
+    }
+
+    tc.stroke();
+  }
+
+  updateThermalReadout();
+}
+
+function updateThermalReadout(){
+
+  document.getElementById("T1Read").textContent=thermalT1.toFixed(1);
+  document.getElementById("T2Read").textContent=thermalT2.toFixed(1);
+
+  document.getElementById("deltaTRead").textContent=
+    Math.abs(thermalT1-thermalT2).toFixed(1);
+
+  const status=document.getElementById("thermalStatus");
+  const message=document.getElementById("thermalMessage");
+
+  if(Math.abs(thermalT1-thermalT2)<0.15){
+
+    status.textContent="✓ Issiqlik muvozanati";
+    status.className="badge neutral";
+
+    message.textContent="✅ Issiqlik muvozanati o‘rnatildi: T₁ ≈ T₂.";
+
+  }else if(thermalT1>thermalT2){
+
+    status.textContent="Issiqlik oqimi: T₁ → T₂";
+    status.className="badge hot";
+
+    message.textContent=
+      "🔥 Issiqlik issiqroq suvdan sovuqroq suvga uzatilmoqda.";
+
+  }else{
+
+    status.textContent="Issiqlik oqimi: T₂ → T₁";
+    status.className="badge cold";
+
+    message.textContent=
+      "❄️ Issiqlik T₂ tomondan T₁ tomonga uzatilmoqda.";
+  }
+}
+
+function thermalLoop(time){
+
+  if(!thermalRunning){
+    thermalLastTime=time;
+    drawThermal();
+    requestAnimationFrame(thermalLoop);
+    return;
+  }
+
+  if(!thermalLastTime) thermalLastTime=time;
+
+  let dt=(time-thermalLastTime)/1000;
+  thermalLastTime=time;
+
+  const multiplier=parseFloat(
+    document.getElementById("thermalSpeed").value
+  );
+
+  /*
+    Oddiy teng massa va bir xil modda modeli:
+    T1 va T2 o‘rtacha qiymat tomon eksponensial yaqinlashadi.
+  */
+  const k=.18*multiplier;
+
+  const d=thermalT1-thermalT2;
+
+  thermalT1-=d*k*dt;
+  thermalT2+=d*k*dt;
+
+  if(Math.abs(thermalT1-thermalT2)<0.03){
+    const avg=(thermalT1+thermalT2)/2;
+    thermalT1=avg;
+    thermalT2=avg;
+    thermalRunning=false;
+  }
+
+  drawThermal();
+
+  requestAnimationFrame(thermalLoop);
+}
+
+function thermalStart(){
+  thermalRunning=true;
+}
+
+function thermalPause(){
+  thermalRunning=false;
+}
+
+function thermalReset(){
+
+  thermalInitial1=parseFloat(
+    document.getElementById("t1Slider").value
+  );
+
+  thermalInitial2=parseFloat(
+    document.getElementById("t2Slider").value
+  );
+
+  thermalT1=thermalInitial1;
+  thermalT2=thermalInitial2;
+  thermalRunning=false;
+
+  makeThermalParticles();
+  drawThermal();
+}
+
+document.getElementById("t1Slider").addEventListener("input",e=>{
+  document.getElementById("t1Value").textContent=e.target.value;
+
+  if(!thermalRunning){
+    thermalT1=parseFloat(e.target.value);
+    thermalInitial1=thermalT1;
+    drawThermal();
+  }
+});
+
+document.getElementById("t2Slider").addEventListener("input",e=>{
+  document.getElementById("t2Value").textContent=e.target.value;
+
+  if(!thermalRunning){
+    thermalT2=parseFloat(e.target.value);
+    thermalInitial2=thermalT2;
+    drawThermal();
+  }
+});
+
+document.getElementById("thermalSpeed").addEventListener("input",e=>{
+  document.getElementById("thermalSpeedValue").textContent=e.target.value+"×";
+});
+
+makeThermalParticles();
+requestAnimationFrame(thermalLoop);
+
+
+/* =========================================================
+   2. SELSIY TERMOMETRI
+========================================================= */
+
+const celsiusSlider=document.getElementById("celsiusSlider");
+
+function setCelsius(value){
+  celsiusSlider.value=value;
+  updateCelsius();
+}
+
+function updateCelsius(){
+
+  const t=parseFloat(celsiusSlider.value);
+
+  document.getElementById("celsiusValue").textContent=t;
+  document.getElementById("thermoRead").textContent=t;
+
+  // -30 ... +120 oralig‘ini 0...100% ga aylantirish
+  const p=(t+30)/150;
+
+  document.getElementById("thermoLiquid").style.height=
+    Math.max(2,p*100)+"%";
+
+  let description="";
+
+  if(t<0){
+    description="0 °C dan past: suvning muzlashidan past bo‘lgan temperatura.";
+  }else if(Math.abs(t)<0.5){
+    description="0 °C: normal atmosfera bosimida suvning muzlash-erish tayanch nuqtasi.";
+  }else if(Math.abs(t-37)<0.5){
+    description="37 °C: inson tanasining odatiy temperaturasi atrofidagi qiymat.";
+  }else if(Math.abs(t-100)<0.5){
+    description="100 °C: normal atmosfera bosimida suvning qaynash temperaturasi.";
+  }else if(t>100){
+    description="100 °C dan yuqori temperatura.";
+  }else{
+    description="Temperatura o‘zgartirildi. Suyuqlik ustuni ham mos ravishda o‘zgardi.";
+  }
+
+  document.getElementById("thermoDescription").textContent=description;
+
+  drawCelsiusParticles(t);
+}
+
+function createCelsiusScale(){
+
+  const scale=document.getElementById("celsiusScale");
+  scale.innerHTML="";
+
+  for(let t=-30;t<=120;t+=10){
+
+    const p=(120-t)/150*100;
+
+    const mark=document.createElement("div");
+    mark.className="mark";
+    mark.style.top=p+"%";
+    mark.textContent=t+" °C";
+
+    scale.appendChild(mark);
+  }
+}
+
+const cp=document.getElementById("celsiusParticles");
+const cpc=cp.getContext("2d");
+
+function drawCelsiusParticles(temp){
+
+  cpc.clearRect(0,0,900,180);
+
+  cpc.fillStyle="#06101b";
+  cpc.fillRect(0,0,900,180);
+
+  const speed=.3+Math.max(0,temp+30)/150*2;
+
+  for(let i=0;i<40;i++){
+
+    const x=20+((i*97+Date.now()/30*speed)%860);
+    const y=40+(i*37)%100;
+
+    cpc.beginPath();
+    cpc.fillStyle=temp>60?"#ff7043":
+                 temp<10?"#64b5f6":"#81c784";
+    cpc.arc(x,y,4,0,Math.PI*2);
+    cpc.fill();
+  }
+
+  requestAnimationFrame(()=>{
+    if(document.getElementById("celsiusSlider")){
+      drawCelsiusParticles(parseFloat(celsiusSlider.value));
+    }
+  });
+}
+
+createCelsiusScale();
+updateCelsius();
+
+celsiusSlider.addEventListener("input",updateCelsius);
+
+
+/* =========================================================
+   3. KELVIN SIMULYATSIYASI
+========================================================= */
+
+const kelvinSlider=document.getElementById("kelvinSlider");
+
+function updateKelvin(){
+
+  const c=parseFloat(kelvinSlider.value);
+  const k=c+273.15;
+
+  document.getElementById("kelvinC").textContent=c.toFixed(2);
+  document.getElementById("cScaleText").textContent=c.toFixed(2);
+  document.getElementById("kScaleText").textContent=k.toFixed(2);
+
+  // Markerlar faqat vizual taqqoslash uchun normalizatsiya qilingan.
+  const cPercent=(c+273.15)/(500+273.15)*100;
+  const kPercent=k/(773.15)*100;
+
+  document.getElementById("cMarker").style.left=
+    Math.max(0,Math.min(100,cPercent))+"%";
+
+  document.getElementById("kMarker").style.left=
+    Math.max(0,Math.min(100,kPercent))+"%";
+
+  drawKelvinParticles(k);
+}
+
+function convertCtoK(){
+
+  const c=parseFloat(document.getElementById("convertC").value);
+
+  if(isNaN(c)) return;
+
+  document.getElementById("convertResult").textContent=
+    `${c.toFixed(2)} °C = ${(c+273.15).toFixed(2)} K`;
+}
+
+function convertKtoC(){
+
+  const k=parseFloat(document.getElementById("convertK").value);
+
+  if(isNaN(k)) return;
+
+  document.getElementById("convertResult").textContent=
+    `${k.toFixed(2)} K = ${(k-273.15).toFixed(2)} °C`;
+}
+
+const kp=document.getElementById("kelvinParticles");
+const kpc=kp.getContext("2d");
+
+function drawKelvinParticles(K){
+
+  kpc.clearRect(0,0,900,180);
+
+  kpc.fillStyle="#06101b";
+  kpc.fillRect(0,0,900,180);
+
+  const normalized=Math.sqrt(Math.max(0,K)/500);
+
+  for(let i=0;i<40;i++){
+
+    const baseX=(i*101)%880;
+    const x=(baseX+Date.now()/20*normalized)%880+10;
+
+    const y=35+(i*41)%110;
+
+    kpc.beginPath();
+    kpc.fillStyle=K<100?"#64b5f6":
+                 K<300?"#81c784":"#ff7043";
+
+    kpc.arc(x,y,4,0,Math.PI*2);
+    kpc.fill();
+  }
+
+  requestAnimationFrame(()=>{
+    drawKelvinParticles(
+      parseFloat(kelvinSlider.value)+273.15
+    );
+  });
+}
+
+kelvinSlider.addEventListener("input",updateKelvin);
+updateKelvin();
+
+
+/* =========================================================
+   4. MOLEKULYAR-KINETIK SIMULYATSIYA
+========================================================= */
+
+const moleculeCanvas=document.getElementById("moleculeCanvas");
+const mc=moleculeCanvas.getContext("2d");
+
+let moleculeTemp=300;
+let showVectors=true;
+
+const molecules=[];
+
+function createMolecules(){
+
+  molecules.length=0;
+
+  for(let i=0;i<55;i++){
+
+    const angle=Math.random()*Math.PI*2;
+
+    molecules.push({
+      x:30+Math.random()*840,
+      y:30+Math.random()*420,
+      vx:Math.cos(angle),
+      vy:Math.sin(angle),
+      r:5
+    });
+  }
+}
+
+function setMoleculeTemp(T){
+
+  moleculeTemp=T;
+
+  document.getElementById("moleculeTemp").value=T;
+  document.getElementById("moleculeTempValue").textContent=T;
+
+  updateMoleculeState();
+}
+
+function updateMoleculeState(){
+
+  let state="";
+  let color="";
+
+  if(moleculeTemp<=180){
+    state="🔵 Past temperatura";
+    color="#64b5f6";
+  }else if(moleculeTemp<=360){
+    state="🟢 O‘rtacha temperatura";
+    color="#81c784";
+  }else{
+    state="🔴 Yuqori temperatura";
+    color="#ff7043";
+  }
+
+  const percent=Math.round(
+    Math.sqrt(moleculeTemp/300)*100
+  );
+
+  document.getElementById("moleculeState").textContent=state;
+  document.getElementById("moleculeState").style.color=color;
+  document.getElementById("speedIndicator").textContent=percent+"%";
+
+  document.getElementById("moleculeMessage").textContent=
+    `T = ${moleculeTemp} K → molekulalarning o‘rtacha harakat energiyasi `+
+    `${moleculeTemp>300?"yuqoriroq":"pastroq"} holatda.`;
+
+}
+
+function toggleVectors(){
+  showVectors=!showVectors;
+}
+
+function moleculeLoop(){
+
+  mc.clearRect(0,0,900,480);
+
+  mc.fillStyle="#06101b";
+  mc.fillRect(0,0,900,480);
+
+  // Idish chegaralari
+  mc.strokeStyle="#78909c";
+  mc.lineWidth=4;
+  mc.strokeRect(10,10,880,460);
+
+  /*
+    Tezlik temperatura bilan sqrt(T) ga proporsional.
+    Bu animatsion model bo‘lib, mikroskopik bog‘lanishni
+    vizual ko‘rsatish uchun ishlatiladi.
+  */
+  const factor=.55*Math.sqrt(moleculeTemp/300);
+
+  molecules.forEach(m=>{
+
+    m.x+=m.vx*factor;
+    m.y+=m.vy*factor;
+
+    if(m.x<m.r||m.x>900-m.r){
+      m.vx*=-1;
+      m.x=Math.max(m.r,Math.min(900-m.r,m.x));
+    }
+
+    if(m.y<m.r||m.y>480-m.r){
+      m.vy*=-1;
+      m.y=Math.max(m.r,Math.min(480-m.r,m.y));
+    }
+
+    const color=
+      moleculeTemp<180 ? "#42a5f5" :
+      moleculeTemp<360 ? "#66bb6a" :
+      "#ef5350";
+
+    if(showVectors){
+
+      mc.strokeStyle=color;
+      mc.lineWidth=1.5;
+
+      mc.beginPath();
+      mc.moveTo(m.x,m.y);
+      mc.lineTo(
+        m.x+m.vx*20*factor,
+        m.y+m.vy*20*factor
+      );
+      mc.stroke();
+    }
+
+    mc.beginPath();
+    mc.fillStyle=color;
+    mc.arc(m.x,m.y,m.r,0,Math.PI*2);
+    mc.fill();
+  });
+
+  // Harorat ko‘rsatkichi
+  mc.font="bold 20px Arial";
+  mc.fillStyle="#fff";
+  mc.fillText(`T = ${moleculeTemp} K`,30,42);
+
+  requestAnimationFrame(moleculeLoop);
+}
+
+document.getElementById("moleculeTemp")
+  .addEventListener("input",e=>{
+    moleculeTemp=parseInt(e.target.value);
+    updateMoleculeState();
+  });
+
+createMolecules();
+updateMoleculeState();
+requestAnimationFrame(moleculeLoop);
+
+
+/* =========================================================
+   YAKUNIY 10 TEST
+========================================================= */
+
+const finalQuestions=[
+
+  {
+    q:"Issiqlik muvozanatida jismlarning temperaturasi qanday bo‘ladi?",
+    a:["Har xil","Teng","Faqat biri 0 °C","Cheksiz katta"],
+    correct:1
+  },
+
+  {
+    q:"Issiqlik o‘z-o‘zidan qaysi yo‘nalishda uzatiladi?",
+    a:["Sovuqdan issiqqa","Issiqdan sovuqqa","Faqat pastga","Yo‘nalishi yo‘q"],
+    correct:1
+  },
+
+  {
+    q:"Normal atmosfera bosimida suvning qaynash temperaturasi nechaga teng?",
+    a:["0 °C","37 °C","100 °C","273,15 °C"],
+    correct:2
+  },
+
+  {
+    q:"20 °C necha Kelvin?",
+    a:["20 K","253,15 K","293,15 K","373,15 K"],
+    correct:2
+  },
+
+  {
+    q:"Absolut nol Kelvin shkalasida nechaga teng?",
+    a:["−273,15 K","0 K","100 K","273,15 K"],
+    correct:1
+  },
+
+  {
+    q:"Temperaturaning Kelvin shkalasidagi belgisi qaysi?",
+    a:["°K","K","C","T°C"],
+    correct:1
+  },
+
+  {
+    q:"Temperatura oshganda molekulalarning o‘rtacha kinetik energiyasi qanday o‘zgaradi?",
+    a:["Ortadi","Kamayadi","Doim nol bo‘ladi","O‘zgarmaydi"],
+    correct:0
+  },
+
+  {
+    q:"Moddaning molekulalari qanday harakat qiladi?",
+    a:["Umuman harakat qilmaydi","Faqat bir tomonga","Tartibsiz harakat qiladi","Faqat aylana bo‘ylab"],
+    correct:2
+  },
+
+  {
+    q:"300 K temperaturaning Selsiydagi qiymati taxminan qancha?",
+    a:["−26,85 °C","26,85 °C","300 °C","573,15 °C"],
+    correct:1
+  },
+
+  {
+    q:"Temperatura pasayganda molekulalarning o‘rtacha kinetik energiyasi qanday o‘zgaradi?",
+    a:["Ortadi","Kamayadi","Doim bir xil qoladi","Cheksiz ortadi"],
+    correct:1
+  }
+
+];
+
+function buildFinalQuiz(){
+
+  const container=document.getElementById("finalQuiz");
+
+  finalQuestions.forEach((item,i)=>{
+
+    const div=document.createElement("div");
+    div.className="question";
+
+    let html=`<b>${i+1}. ${item.q}</b><div class="options">`;
+
+    item.a.forEach((option,j)=>{
+
+      html+=`
+        <label>
+          <input type="radio" name="final${i}" value="${j}">
+          ${String.fromCharCode(65+j)}) ${option}
+        </label>
+      `;
+
+    });
+
+    html+=`</div>`;
+
+    div.innerHTML=html;
+    container.appendChild(div);
+  });
+}
+
+function checkFinalQuiz(){
+
+  let score=0;
+
+  finalQuestions.forEach((item,i)=>{
+
+    const selected=document.querySelector(
+      `input[name="final${i}"]:checked`
+    );
+
+    if(selected && parseInt(selected.value)===item.correct){
+      score++;
+    }
+  });
+
+  let level="";
+
+  if(score>=9){
+    level="A’lo";
+  }else if(score>=7){
+    level="Yaxshi";
+  }else if(score>=5){
+    level="Qoniqarli";
+  }else{
+    level="Mavzuni qayta takrorlash tavsiya etiladi";
+  }
+
+  const result=document.getElementById("finalResult");
+
+  result.style.display="block";
+
+  result.innerHTML=
+    `🏆 Natija: <b>${score}/10</b><br>`+
+    `Baholash: <b>${level}</b>`;
+}
+
+buildFinalQuiz();
+
+
+/* =========================================================
+   HISOBLASH MASALALARI
+========================================================= */
+
+function checkProblem(number,correct){
+
+  const input=document.getElementById("problem"+number);
+  const feedback=document.getElementById("problem"+number+"f");
+
+  const value=parseFloat(input.value);
+
+  feedback.className="feedback";
+
+  if(isNaN(value)){
+    feedback.textContent="Avval javob kiriting.";
+    feedback.classList.add("wrong");
+    return;
+  }
+
+  if(Math.abs(value-correct)<0.15){
+
+    feedback.textContent="✅ To‘g‘ri!";
+    feedback.classList.add("correct");
+
+  }else{
+
+    feedback.textContent=
+      `❌ Noto‘g‘ri. To‘g‘ri javob: ${correct}`;
+
+    feedback.classList.add("wrong");
+  }
+}
+
+
+/* =========================================================
+   TO‘G‘RI / NOTO‘G‘RI
+========================================================= */
+
+function tf(button,isCorrect){
+
+  const box=button.parentElement.querySelector(".feedback");
+
+  box.className="feedback";
+
+  if(isCorrect){
+    box.textContent="✅ To‘g‘ri!";
+    box.classList.add("correct");
+  }else{
+    box.textContent="❌ Noto‘g‘ri.";
+    box.classList.add("wrong");
+  }
+}
+
+
+/* =========================================================
+   MOSLASHTIRISH
+========================================================= */
+
+function checkMatching(){
+
+  const a=document.getElementById("matchA").value;
+  const b=document.getElementById("matchB").value;
+  const c=document.getElementById("matchC").value;
+  const d=document.getElementById("matchD").value;
+
+  const result=document.getElementById("matchingResult");
+
+  if(a==="2" && b==="1" && c==="3" && d==="4"){
+
+    result.innerHTML="✅ Barcha mosliklar to‘g‘ri!";
+
+  }else{
+
+    result.innerHTML=
+      "❌ Ayrim mosliklar noto‘g‘ri. To‘g‘ri moslik: "+
+      "A–2, B–1, C–3, D–4.";
+  }
+}
+
+
+/* =========================================================
+   SAHIFA YUKLANGANDA
+========================================================= */
+
+window.addEventListener("load",()=>{
+
+  thermalReset();
+
+  setCelsius(25);
+
+  kelvinSlider.value=25;
+  updateKelvin();
+
+  setMoleculeTemp(300);
+
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="uz"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ideal gaz: masalalar yechish — 9-sinf fizika</title>
+<style>
+:root{--bg:#f7fafc;--fg:#12263a;--mu:#52667a;--card:#fff;--ac:#0b6fb8;--bd:#cfdce8;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}}
+:root[data-theme="dark"]{--bg:#0e1b27;--fg:#e6eef5;--mu:#9bb0c3;--card:#15283a;--ac:#5db3f0;--bd:#2c4560}
+html{color-scheme:light dark;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0 auto;max-width:700px;padding:16px 14px 40px;background:var(--bg);color:var(--fg);font:16px/1.55 Georgia,"Times New Roman",serif}
+h1{font:700 26px/1.2 "Trebuchet MS",system-ui,sans-serif;margin:8px 0 4px}
+h2{font:700 20px/1.25 "Trebuchet MS",system-ui,sans-serif;margin:0 0 8px;color:var(--ac)}
+.sub{color:var(--mu);margin:0 0 18px}
+section{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:16px;margin:0 0 18px}
+canvas{width:100%;height:auto;display:block;border:1px solid var(--bd);border-radius:8px;margin:10px 0}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:6px 0;font:14px system-ui,sans-serif}
+.row input[type=range]{flex:1;min-width:120px}
+select,button{font:14px system-ui,sans-serif;padding:7px 12px;border-radius:8px;border:1px solid var(--bd);background:var(--bg);color:var(--fg)}
+.out{font:600 15px system-ui,sans-serif;background:var(--bg);border-left:4px solid var(--ac);padding:8px 10px;border-radius:4px;margin:6px 0}
+.fm{font:600 16px system-ui,sans-serif;background:var(--bg);border:1px dashed var(--ac);border-radius:8px;padding:8px 12px;margin:8px 0;line-height:1.9}
+details{border-top:1px solid var(--bd);padding:8px 0;font-size:15px}
+summary{cursor:pointer;font-weight:600}
+h3{font:700 15px system-ui,sans-serif;margin:14px 0 2px}
+</style></head><body>
+<h1>Ideal gaz: masalalar yechish</h1>
+<p class="sub">9-sinf fizika · gaz molekulalarining tezligi, bosimi va harorati. Har bir reja: nazariya, jonli simulatsiya, savol va masalalar.</p>
+
+<section><h2>1. Nazariy tushunchalarni takrorlash</h2>
+<p><b>Ideal gaz</b> — molekulalari moddiy nuqta deb olinadigan, oʻzaro faqat toʻqnashganda ta’sirlashadigan gaz. Gaz bosimi molekulalarning idish devoriga uzluksiz urilishidan hosil boʻladi: urilish qancha tez-tez va kuchli boʻlsa, bosim shuncha katta.</p>
+<div class="fm">p = ⅓·n·m₀·⟨v²⟩ (asosiy tenglama)<br>p = ⅔·n·Eₖ, Eₖ = (3/2)·k·T<br>p = n·k·T, n = N/V<br>v<sub>kv</sub> = √(3kT/m₀) = √(3RT/M)</div>
+<p>Bu yerda n — molekulalar konsentratsiyasi (m⁻³), m₀ — molekula massasi, k = 1.38·10⁻²³ J/K (Boltsman doimiysi), R = 8.31 J/(mol·K), T — absolyut temperatura (T = t + 273 K).</p>
+<canvas id="c1" width="320" height="220"></canvas>
+<div class="row"><label>Molekulalar: <b id="n1">30</b></label><input id="N1" type="range" min="5" max="60" step="5" value="30"></div>
+<div class="row"><label>T: <b id="t1">300</b> K</label><input id="T1" type="range" min="100" max="600" step="25" value="300"></div>
+<div class="row"><label>Hajm (porshen): <b id="w1">200</b></label><input id="W1" type="range" min="100" max="280" step="10" value="200"></div>
+<div class="out" id="o1"></div>
+<div id="q1"></div></section>
+
+<section><h2>2. Ideal gazning asosiy tenglamasiga oid masalalar</h2>
+<p><b>Masala yechish tartibi:</b> (1) berilganlarni SI da yozing; (2) kerakli formulani tanlang; (3) formulani noma’lum uchun yeching; (4) son qiymatni qoʻying; (5) javobning birligi va maʼnosini tekshiring. Quyida n va T oʻzgartirilganda p = nkT va p = ⅔nEₖ bir xil natija berishini koʻring.</p>
+<canvas id="c2" width="320" height="220"></canvas>
+<div class="row"><label>n: <b id="n2">2.5</b>·10²⁵ m⁻³</label><input id="N2" type="range" min="0.5" max="20" step="0.5" value="2.5"></div>
+<div class="row"><label>T: <b id="t2">300</b> K</label><input id="T2" type="range" min="100" max="600" step="25" value="300"></div>
+<div class="out" id="o2"></div>
+<div id="q2"></div></section>
+
+<section><h2>3. Molekulalar tezligi va harorat orasidagi bogʻliqlik</h2>
+<p>Eₖ = (3/2)kT dan <b>v<sub>kv</sub> = √(3kT/m₀)</b> kelib chiqadi. Tezlik <b>√T ga proporsional</b> va molekula massasiga teskari. Bir xil temperaturada <b>barcha gazlarning molekulalari bir xil oʻrtacha kinetik energiyaga</b> ega, shu sabab yengil molekulalar tezroq harakatlanadi (vodorod kislorodga qaraganda 4 marta tez: √(32/2) = 4).</p>
+<canvas id="c3" width="320" height="220"></canvas>
+<div class="row"><select id="G3"></select><label>T: <b id="t3">300</b> K</label><input id="T3" type="range" min="100" max="600" step="25" value="300"></div>
+<div class="out" id="o3"></div>
+<div id="q3"></div></section>
+
+<script>
+const $=id=>document.getElementById(id);
+const col=()=>{const s=getComputedStyle(document.documentElement);return{fg:s.getPropertyValue('--fg').trim()||'#222',mu:s.getPropertyValue('--mu').trim()||'#777',ac:s.getPropertyValue('--ac').trim()||'#0b6fb8'}};
+const sims=[];
+function mk(id,f){const x=$(id).getContext('2d');sims.push(t=>{x.clearRect(0,0,320,220);f(x,t,col())})}
+function Q(id,a){$(id).innerHTML='<h3>Savol va masalalar</h3>'+a.map(q=>'<details><summary>'+q[0]+'</summary><p>'+q[1]+'</p></details>').join('')}
+const T=(x,s,px,py,c,al)=>{x.fillStyle=c;x.font='12px system-ui,sans-serif';x.textAlign=al||'left';x.fillText(s,px,py)};
+const OR='#e08a3c',RD='#e24b4a',GR='#3aa86b',K=1.38e-23,R=8.31;
+const mkP=n=>Array.from({length:n},()=>{const a=Math.random()*6.28;return{x:0,y:0,ux:Math.cos(a),uy:Math.sin(a),i:0}});
+function step(P,n,v,dt,x0,x1,y0,y1,onR){for(let i=0;i<n;i++){const p=P[i];if(!p.i){p.x=x0+10+Math.random()*(x1-x0-20);p.y=y0+10+Math.random()*(y1-y0-20);p.i=1}
+p.x+=p.ux*v*dt;p.y+=p.uy*v*dt;if(p.x<x0+4){p.x=x0+4;p.ux=Math.abs(p.ux)}if(p.x>x1-4){p.x=x1-4;if(p.ux>0&&onR)onR();p.ux=-Math.abs(p.ux)}
+if(p.y<y0+4){p.y=y0+4;p.uy=Math.abs(p.uy)}if(p.y>y1-4){p.y=y1-4;p.uy=-Math.abs(p.uy)}}}
+
+/* 1 */
+const P1=mkP(60);let hits=[],lt1=0;
+mk('c1',(x,t,c)=>{const dt=Math.min(t-lt1,.05);lt1=t;const N=+$('N1').value,Tk=+$('T1').value,W=+$('W1').value;$('n1').textContent=N;$('t1').textContent=Tk;$('w1').textContent=W;
+const x0=20,x1=20+W,y0=20,y1=180,v=90*Math.sqrt(Tk/300);step(P1,N,v,dt,x0,x1,y0,y1,()=>hits.push(t));while(hits.length&&hits[0]<t-1)hits.shift();
+x.strokeStyle=c.fg;x.lineWidth=2;x.strokeRect(x0,y0,W,y1-y0);x.fillStyle=c.mu;x.fillRect(x1,y0,8,y1-y0);x.fillRect(x1+8,95,12,6);
+P1.slice(0,N).forEach(p=>{x.beginPath();x.arc(p.x,p.y,4,0,7);x.fillStyle=c.ac;x.fill()});
+const pr=(N/30)*(Tk/300)*(200/W);x.strokeStyle=c.mu;x.lineWidth=1;x.strokeRect(20,195,280,14);x.fillStyle=pr>2?RD:GR;x.fillRect(20,195,Math.min(1,pr/3)*280,14);T(x,'bosim (nisbiy)',22,192,c.mu);
+$('o1').textContent='O‘ng devorga urilishlar: '+hits.length+' ta/s · nisbiy bosim p ∝ nT = '+pr.toFixed(2)+' (n = N/V)'});
+Q('q1',[["Molekulalar soni 2 marta oshsa (V, T oʻzgarmas), bosim qanday oʻzgaradi?","p = nkT, n 2 marta oshadi, p ham 2 marta ortadi."],["T ni 300 K dan 600 K ga oshirsak, bosim nega oshadi?","Molekulalar tezroq harakatlanadi, devorga tez-tez va kuchliroq uriladi. V = const da p ~ T."],["Porshenni siqib V ni 2 marta kamaytirsak (T = const), p qanday oʻzgaradi?","n = N/V 2 marta oshadi, p 2 marta ortadi (Boyl–Mariott qonuni)."],["Topshiriq: simulatsiyada N, T, V ni birma-bir oʻzgartiring va hits sonini yozib, jadval tuzing.","Bosim n va T ga toʻgʻri proporsional ekanini xulosa qiling."]]);
+
+/* 2 */
+const P2=mkP(80);let lt2=0;
+mk('c2',(x,t,c)=>{const dt=Math.min(t-lt2,.05);lt2=t;const n=+$('N2').value,Tk=+$('T2').value;$('n2').textContent=n;$('t2').textContent=Tk;
+const cnt=Math.round(n/20*75)+5;step(P2,cnt,90*Math.sqrt(Tk/300),dt,20,210,20,190,null);
+x.strokeStyle=c.fg;x.lineWidth=2;x.strokeRect(20,20,190,170);P2.slice(0,cnt).forEach(p=>{x.beginPath();x.arc(p.x,p.y,3.5,0,7);x.fillStyle=c.ac;x.fill()});
+const p=K*n*1e25*Tk,Ek=1.5*K*Tk,p2=2/3*n*1e25*Ek,kp=p/1000,fr=Math.min(1,kp/600);
+x.strokeStyle=c.mu;x.lineWidth=1;x.strokeRect(250,20,34,170);x.fillStyle=kp>600?RD:GR;x.fillRect(250,190-fr*170,34,fr*170);
+x.fillStyle=c.fg;x.fillRect(246,190-101/600*170,42,2);T(x,'1 atm',292,190-101/600*170+4,c.fg);T(x,'p, kPa',250,14,c.mu);T(x,'0–600',250,205,c.mu);
+$('o2').textContent='p = nkT = '+kp.toFixed(1)+' kPa · Eₖ = 1.5kT = '+(Ek*1e21).toFixed(2)+'·10⁻²¹ J · ⅔nEₖ = '+(p2/1000).toFixed(1)+' kPa'});
+Q('q2',[["1-masala. n = 3·10²⁵ m⁻³, m₀ = 5·10⁻²⁶ kg, ⟨v²⟩ = 2.5·10⁵ m²/s². Bosim p = ?","p = ⅓·n·m₀·⟨v²⟩ = ⅓·3·10²⁵·5·10⁻²⁶·2.5·10⁵ = ⅓·3.75·10⁵ = 1.25·10⁵ Pa = 125 kPa."],["2-masala. T = 300 K da p = 2·10⁵ Pa. Konsentratsiya n = ?","n = p/(kT) = 2·10⁵/(1.38·10⁻²³·300) = 2·10⁵/4.14·10⁻²¹ ≈ 4.8·10²⁵ m⁻³."],["3-masala. T = 300 K da molekulaning oʻrtacha kinetik energiyasi Eₖ = ?","Eₖ = (3/2)kT = 1.5·1.38·10⁻²³·300 ≈ 6.2·10⁻²¹ J."],["4-masala. n = 2·10²⁵ m⁻³, Eₖ = 6·10⁻²¹ J. Bosim p = ?","p = ⅔·n·Eₖ = ⅔·2·10²⁵·6·10⁻²¹ = 8·10⁴ Pa = 80 kPa."],["5-masala. V = const da T ni 2 marta oshirsak, p qanday oʻzgaradi? T = const da V ni 2 marta kamaytirsak-chi?","p = nkT: birinchi holda p 2 marta ortadi; ikkinchi holda n 2 marta ortadi, p ham 2 marta ortadi."],["6-masala. 2 mol gaz, T = 300 K, V = 0.05 m³. p = ? (pV = νRT)","p = νRT/V = 2·8.31·300/0.05 ≈ 9.97·10⁴ Pa ≈ 100 kPa."],["Topshiriq: simulatsiyada p=101 kPa (1 atm) boʻlishi uchun T=300 K da n qancha boʻlishi kerak?","n = p/(kT) = 1.01·10⁵/(4.14·10⁻²¹) ≈ 2.4·10²⁵ m⁻³ (taxminan n = 2.5 qiymatga mos)."]]);
+
+/* 3 */
+const GS=[["Vodorod H₂",.002],["Geliy He",.004],["Azot N₂",.028],["Kislorod O₂",.032],["Karbonat angidrid CO₂",.044]];
+$('G3').innerHTML=GS.map((g,i)=>'<option value="'+i+'"'+(i===3?' selected':'')+'>'+g[0]+'</option>').join('');
+const P3=mkP(18);let lt3=0;
+mk('c3',(x,t,c)=>{const dt=Math.min(t-lt3,.05);lt3=t;const gi=+$('G3').value,Tk=+$('T3').value;$('t3').textContent=Tk;
+GS.forEach((g,i)=>{const v=Math.sqrt(3*R*Tk/g[1]),y=8+i*21;x.fillStyle=i===gi?OR:c.ac+'88';x.fillRect(100,y,v/2800*190,16);T(x,g[0].split(' ')[1],6,y+12,i===gi?c.fg:c.mu);T(x,v.toFixed(0)+' m/s',104+v/2800*190,y+12,c.fg)});
+const v=Math.sqrt(3*R*Tk/GS[gi][1]);step(P3,18,v*.08,dt,20,300,125,212,null);
+x.strokeStyle=c.fg;x.lineWidth=2;x.strokeRect(20,125,280,87);P3.forEach(p=>{x.beginPath();x.arc(p.x,p.y,4,0,7);x.fillStyle=OR;x.fill()});
+const Ek=1.5*K*Tk;$('o3').textContent='v kv = √(3RT/M) = '+v.toFixed(0)+' m/s · Eₖ = '+(Ek*1e21).toFixed(2)+'·10⁻²¹ J (barcha gazlar uchun bir xil)'});
+Q('q3',[["Kislorod uchun T = 300 K da v kv = ? (M = 0.032 kg/mol)","v = √(3·8.31·300/0.032) = √233 719 ≈ 483 m/s."],["T 4 marta oshsa, tezlik necha marta oʻzgaradi?","v ~ √T, tezlik 2 marta ortadi."],["Bir xil temperaturada vodorod va kislorod tezligi nisbati qancha?","v(H₂)/v(O₂) = √(M(O₂)/M(H₂)) = √(32/2) = 4: vodorod 4 marta tez."],["Azot molekulalarining v kv = 500 m/s boʻlishi uchun T = ? (M = 0.028 kg/mol)","T = v²M/(3R) = 2.5·10⁵·0.028/(3·8.31) ≈ 281 K (≈ 8 °C)."],["Topshiriq: simulatsiyada temperaturani oʻzgartirib, har bir gaz uchun v–T grafigini chizing.","Grafik parabolaning bir shoxi koʻrinishida (v ~ √T) boʻladi. Yengil gaz egri chizigʻi yuqorida joylashadi."]]);
+
+(function loop(t){sims.forEach(s=>s(t/1000));requestAnimationFrame(loop)})(0);
+</script></body></html>
