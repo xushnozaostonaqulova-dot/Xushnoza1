@@ -1,0 +1,1369 @@
+<!DOCTYPE html>
+<html lang="uz" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>24-§. Issiqlik jarayonlarining qaytmasligi. Termodinamikaning ikkinchi qonuni</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+        .formula-box {
+            background: linear-gradient(135deg, #eef2ff 0%, #e0e7ff 100%);
+            border-left: 4px solid #4f46e5;
+        }
+        .canvas-container {
+            position: relative;
+            width: 100%;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background-color: #0f172a;
+            box-shadow: inset 0 2px 10px rgba(0,0,0,0.4);
+        }
+        canvas {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f5f9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #94a3b8;
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-indigo-100 selection:text-indigo-900">
+
+    <!-- Top Navigation Bar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between py-3 gap-3">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-600 text-white font-bold px-3 py-1.5 rounded-lg text-sm shadow-sm shrink-0">
+                        24-§
+                    </div>
+                    <div>
+                        <h1 class="text-base sm:text-lg font-bold text-slate-900 leading-tight">
+                            Issiqlik jarayonlarining qaytmasligi. Termodinamikaning ikkinchi qonuni
+                        </h1>
+                        <p class="text-xs text-slate-500 hidden sm:block">Fizika • II bob. Termodinamika asoslari (72-bet)</p>
+                    </div>
+                </div>
+                
+                <!-- Navigation Links -->
+                <nav class="flex items-center gap-1.5 overflow-x-auto pb-1 md:pb-0 text-xs sm:text-sm font-medium">
+                    <a href="#reja-overview" class="px-3 py-1.5 rounded-lg bg-slate-100 hover:bg-indigo-50 text-slate-700 hover:text-indigo-700 transition whitespace-nowrap">Dars rejasi</a>
+                    <a href="#reja-1" class="px-3 py-1.5 rounded-lg hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 transition whitespace-nowrap">1-Reja</a>
+                    <a href="#reja-2" class="px-3 py-1.5 rounded-lg hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 transition whitespace-nowrap">2-Reja</a>
+                    <a href="#reja-3" class="px-3 py-1.5 rounded-lg hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 transition whitespace-nowrap">3-Reja</a>
+                    <a href="#reja-4" class="px-3 py-1.5 rounded-lg hover:bg-indigo-50 text-slate-600 hover:text-indigo-700 transition whitespace-nowrap">4-Reja</a>
+                    <a href="#topshiriqlar" class="px-3 py-1.5 rounded-lg bg-amber-100 hover:bg-amber-200 text-amber-900 font-semibold transition whitespace-nowrap">Savol va topshiriqlar</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
+
+        <!-- Hero & Lesson Plan Overview Card -->
+        <section id="reja-overview" class="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 sm:p-10 shadow-xl border border-indigo-800/40">
+            <div class="max-w-4xl">
+                <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/20 border border-indigo-400/30 text-indigo-200 text-xs font-semibold uppercase tracking-wider mb-4">
+                    <span class="w-2 h-2 rounded-full bg-amber-400 animate-pulse"></span>
+                    Interaktiv dars moduli
+                </span>
+                <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight mb-4 leading-tight">
+                    24-§. Issiqlik jarayonlarining qaytmasligi. Termodinamikaning ikkinchi qonuni
+                </h2>
+                <p class="text-slate-300 text-sm sm:text-base leading-relaxed mb-8">
+                    Ushbu darsda siz tabiatdagi hodisalarning nima uchun faqat bir yo'nalishda o'z-o'zidan sodir bo'lishini, issiqlikning issiq jismdan sovuq jismga o'tish sirlarini, shuningdek, 100% FIK ga ega bo'lgan abadiy dvigatel yaratish mumkin emasligini nazariy bilimlar va interaktiv animatsion simulyatsiyalar orqali o'rganasiz.
+                </p>
+
+                <!-- 4-Point Lesson Plan Grid -->
+                <div class="bg-white/5 backdrop-blur-sm border border-white/10 rounded-xl p-5">
+                    <h3 class="text-sm font-bold uppercase tracking-wider text-amber-400 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path></svg>
+                        Mavzu rejasi (4 asosiy bo'lim):
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <a href="#reja-1" class="group flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition">
+                            <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500 text-white font-bold text-sm shrink-0 group-hover:scale-110 transition">1</span>
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-amber-300 transition">Tabiatdagi qaytar va qaytmas jarayonlar</h4>
+                                <p class="text-xs text-slate-300 mt-1">Mexanik va issiqlik jarayonlari farqi, ishqalanishning roli va teskari kino tasvir tahlili.</p>
+                            </div>
+                        </a>
+                        <a href="#reja-2" class="group flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition">
+                            <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500 text-white font-bold text-sm shrink-0 group-hover:scale-110 transition">2</span>
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-amber-300 transition">Issiqlik uzatishning yo'nalishi va qaytarilmasligi</h4>
+                                <p class="text-xs text-slate-300 mt-1">Issiqlik muvozanati, molekulyar-kinetik tushuntirish va diffuziya hodisasi.</p>
+                            </div>
+                        </a>
+                        <a href="#reja-3" class="group flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition">
+                            <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500 text-white font-bold text-sm shrink-0 group-hover:scale-110 transition">3</span>
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-amber-300 transition">Termodinamikaning ikkinchi qonuni</h4>
+                                <p class="text-xs text-slate-300 mt-1">Klauzius va Tomson-Plank ta'riflari. Ikkinchi tur abadiy dvigatelning mumkin emasligi.</p>
+                            </div>
+                        </a>
+                        <a href="#reja-4" class="group flex items-start gap-3 p-3.5 rounded-xl bg-white/5 hover:bg-white/10 border border-white/10 transition">
+                            <span class="flex items-center justify-center w-7 h-7 rounded-lg bg-indigo-500 text-white font-bold text-sm shrink-0 group-hover:scale-110 transition">4</span>
+                            <div>
+                                <h4 class="font-semibold text-white group-hover:text-amber-300 transition">Tabiatda va texnikada ikkinchi qonunning ahamiyati</h4>
+                                <p class="text-xs text-slate-300 mt-1">Entropiya tushunchasi, issiqlik mashinalari FIKi va ekologik muvozanat.</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- REJA 1: Tabiatdagi qaytar va qaytmas jarayonlar -->
+        <!-- ===================================================================== -->
+        <section id="reja-1" class="scroll-mt-24 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-indigo-50/80 border-b border-indigo-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="bg-indigo-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold shadow-sm">1</span>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900">1-Reja: Tabiatdagi qaytar va qaytmas jarayonlar</h2>
+                </div>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 hidden sm:inline-block">Nazariya + Video Simulyatsiya #1</span>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <!-- Theory Explanation -->
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <div class="lg:col-span-7 space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+                        <p>
+                            Termodinamikaning birinchi qonuni (energiyaning saqlanish va aylanish qonuni) tabiatda barcha jarayonlarda energiya miqdori o'zgarmas qolishini aytadi. Biroq, bu qonun <strong>jarayonning qaysi yo'nalishda borishini</strong> ko'rsatib bermaydi. Masalan, stoldan tushib singan piyola parchalarining o'z-o'zidan yig'ilib stolga chiqib qolishi energiya saqlanish qonuniga zid emas (atrof-muhit issiqligi hisobiga ko'tarilishi mumkin edi), lekin tabiatda bunday hodisa hech qachon ro'y bermaydi!
+                        </p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+                            <div class="p-4 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                                <h3 class="font-bold text-emerald-900 mb-1.5 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                                    Qaytar jarayonlar
+                                </h3>
+                                <p class="text-xs sm:text-sm text-emerald-800 leading-relaxed">
+                                    Tizim dastlabki holatiga qaytganda, uning o'zida ham, atrofdagi jismlarda ham <strong>hech qanday o'zgarish qolmaydigan</strong> jarayonlardir. Masalan: havosiz bo'shliqda ishqalanishsiz tebranayotgan ideal mayatnik harakati.
+                                </p>
+                            </div>
+                            <div class="p-4 rounded-xl bg-rose-50/70 border border-rose-200">
+                                <h3 class="font-bold text-rose-900 mb-1.5 flex items-center gap-2">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+                                    Qaytmas jarayonlar
+                                </h3>
+                                <p class="text-xs sm:text-sm text-rose-800 leading-relaxed">
+                                    Teskari yo'nalishda o'z-o'zidan (tashqi ta'sirsiz) sodir bo'lmaydigan jarayonlardir. Tabiatdagi <strong>barcha real jarayonlar qaytmasdir</strong>, chunki ularda doimo ishqalanish, qarshilik va issiqlik tarqalishi mavjud.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="formula-box p-4 rounded-xl text-sm text-slate-800">
+                            <p class="font-semibold text-indigo-950 mb-1">💡 "Teskari kino tasvir" tajribasi:</p>
+                            <p>
+                                Agar havosiz joyda sakrayotgan ideal elastik koptokni videoga olib, tasvirni orqaga aylantirsak (Rewind), biz haqiqatdan ajrata olmaymiz — bu <strong>qaytar jarayon</strong>. Lekin real sharoitda sakrab, oxiri to'xtab qolgan koptok videosini orqaga aylantirsak, polning issiqlik energiyasi koptokni yuqoriga otayotgandek g'ayritabiiy manzara ko'rinadi — bu <strong>qaytmas jarayon</strong>.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Simulation 1 Card -->
+                    <div class="lg:col-span-5 bg-slate-900 rounded-2xl p-4 text-white shadow-lg border border-slate-800">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Animatsion Simulyatsiya #1</span>
+                                <h3 class="text-sm font-bold text-white">Koptok sakrashi: Qaytar vs Qaytmas</h3>
+                            </div>
+                            <span id="sim1-mode-badge" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30">
+                                Qaytmas (Ishqalanish bor)
+                            </span>
+                        </div>
+
+                        <div class="canvas-container h-64 mb-3 border border-slate-700">
+                            <canvas id="sim1Canvas"></canvas>
+                        </div>
+
+                        <!-- Controls for Sim 1 -->
+                        <div class="space-y-3 bg-slate-800/80 p-3 rounded-xl border border-slate-700/70">
+                            <div class="flex items-center justify-between text-xs">
+                                <label for="sim1-friction" class="text-slate-300 font-medium">Ishqalanish va energiya yo'qotish:</label>
+                                <span id="sim1-friction-val" class="font-mono font-bold text-amber-400">Real (25%)</span>
+                            </div>
+                            <input type="range" id="sim1-friction" min="0" max="40" value="25" class="w-full accent-indigo-500 cursor-pointer h-1.5 bg-slate-700 rounded-lg">
+
+                            <div class="flex flex-wrap gap-2 pt-1">
+                                <button id="sim1-play" class="flex-1 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-semibold py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <span>▶ Davom etish</span>
+                                </button>
+                                <button id="sim1-rewind" class="flex-1 bg-amber-600 hover:bg-amber-500 text-white text-xs font-semibold py-2 px-3 rounded-lg transition flex items-center justify-center gap-1.5 cursor-pointer">
+                                    <span>⏪ Teskari video (Orqaga)</span>
+                                </button>
+                                <button id="sim1-reset" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold py-2 px-3 rounded-lg transition cursor-pointer">
+                                    ↺ Qayta
+                                </button>
+                            </div>
+                            <p id="sim1-desc" class="text-[11px] text-slate-300 leading-snug pt-1 border-t border-slate-700">
+                                Koptok urilganda mexanik energiyaning bir qismi pol va koptok molekulalarining ichki energiyasiga (issiqlikka) aylanadi.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- REJA 2: Issiqlik uzatishning yo'nalishi va qaytarilmasligi -->
+        <!-- ===================================================================== -->
+        <section id="reja-2" class="scroll-mt-24 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-indigo-50/80 border-b border-indigo-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="bg-indigo-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold shadow-sm">2</span>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900">2-Reja: Issiqlik uzatishning yo'nalishi va qaytarilmasligi</h2>
+                </div>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 hidden sm:inline-block">Nazariya + Video Simulyatsiya #2</span>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Simulation 2 Card (Left on Desktop for visual variety) -->
+                    <div class="lg:col-span-6 bg-slate-900 rounded-2xl p-4 text-white shadow-lg border border-slate-800 order-2 lg:order-1">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Animatsion Simulyatsiya #2</span>
+                                <h3 class="text-sm font-bold text-white">Issiqlik almashinuvi (Issiq → Sovuq)</h3>
+                            </div>
+                            <span id="sim2-status" class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30">
+                                To'siq yopiq
+                            </span>
+                        </div>
+
+                        <div class="canvas-container h-64 mb-3 border border-slate-700">
+                            <canvas id="sim2Canvas"></canvas>
+                        </div>
+
+                        <!-- Temperature Gauges -->
+                        <div class="grid grid-cols-2 gap-3 mb-3">
+                            <div class="bg-rose-950/60 border border-rose-500/30 rounded-xl p-2.5 flex items-center justify-between">
+                                <span class="text-xs text-rose-200 font-medium">Chap kamera (T₁):</span>
+                                <span id="sim2-t1" class="font-mono font-bold text-rose-400 text-sm">90 °C</span>
+                            </div>
+                            <div class="bg-sky-950/60 border border-sky-500/30 rounded-xl p-2.5 flex items-center justify-between">
+                                <span class="text-xs text-sky-200 font-medium">O'ng kamera (T₂):</span>
+                                <span id="sim2-t2" class="font-mono font-bold text-sky-400 text-sm">10 °C</span>
+                            </div>
+                        </div>
+
+                        <!-- Controls for Sim 2 -->
+                        <div class="space-y-2.5 bg-slate-800/80 p-3 rounded-xl border border-slate-700/70">
+                            <div class="flex flex-wrap gap-2">
+                                <button id="sim2-open" class="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white text-xs font-semibold py-2 px-3 rounded-lg transition cursor-pointer">
+                                    🔓 Issiqlik o'tkazishni boshlash
+                                </button>
+                                <button id="sim2-reverse-try" class="flex-1 bg-rose-600 hover:bg-rose-500 text-white text-xs font-semibold py-2 px-3 rounded-lg transition cursor-pointer">
+                                    🚫 Sovuqdan issiqqa o'tkazish
+                                </button>
+                                <button id="sim2-reset" class="bg-slate-700 hover:bg-slate-600 text-slate-200 text-xs font-semibold py-2 px-3 rounded-lg transition cursor-pointer">
+                                    ↺ Qayta
+                                </button>
+                            </div>
+                            <p id="sim2-feedback" class="text-[11px] text-slate-300 leading-snug pt-1 border-t border-slate-700">
+                                "Issiqlik o'tkazishni boshlash" tugmasini bosing va tez harakatlanuvchi (issiq) molekulalar energiyasining sekin (sovuq) molekulalarga uzatilishini kuzating.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Theory Explanation -->
+                    <div class="lg:col-span-6 space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base order-1 lg:order-2">
+                        <p>
+                            Issiqlik hodisalarining qaytmasligini eng yaqqol ko'rsatadigan misol — <strong>issiqlik almashinuvi</strong>dir. Agar bir-biriga tegib turgan ikkita jismdan biri issiqroq (masalan, 90 °C li choynak), ikkinchisi sovuqroq (10 °C li xona havosi) bo'lsa, issiqlik har doim o'z-o'zidan <strong>issiq jismdan sovuq jismga</strong> o'tadi.
+                        </p>
+                        <p>
+                            Vaqt o'tishi bilan issiq jism soviydi, sovuq jism esa isiydi va nihoyat ikkalasining harorati tenglashadi — <strong>issiqlik muvozanati</strong> qaror topadi (masalan, ikkalasi ham 50 °C bo'ladi).
+                        </p>
+                        
+                        <div class="bg-amber-50 border border-amber-200 rounded-xl p-4 space-y-2">
+                            <h3 class="font-bold text-amber-950 text-sm sm:text-base">🔬 Molekulyar-kinetik nazariya nuqtai nazaridan tushuntirish:</h3>
+                            <ul class="list-disc list-inside text-xs sm:text-sm text-amber-900 space-y-1.5">
+                                <li>Issiq jism molekulalari katta tezlik va katta kinetik energiyaga ega.</li>
+                                <li>Sovuq jism molekulalari esa sekinroq harakatlanadi.</li>
+                                <li>Ular o'zaro to'qnashganda, tez harakatlanuvchi molekulalar o'z kinetik energiyasining bir qismini sekin molekulalarga beradi.</li>
+                                <li>Barcha molekulalar energiyasi tenglashgandan so'ng, ularning o'z-o'zidan yana "tezlar" va "sekinlar"ga ajralib qolish ehtimoli deyarli <strong>nolga teng</strong>!</li>
+                            </ul>
+                        </div>
+
+                        <p class="text-sm text-slate-600 italic">
+                            Xuddi shunday, bir tomchi siyohning bir stakan suvda tarqalishi (diffuziya) ham qaytmas jarayondir: siyoh molekulalari butun suv hajmi bo'ylab bir tekis tarqalgach, o'z-o'zidan yana bir tomchi bo'lib yig'ilmaydi.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- REJA 3: Termodinamikaning ikkinchi qonuni -->
+        <!-- ===================================================================== -->
+        <section id="reja-3" class="scroll-mt-24 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-indigo-50/80 border-b border-indigo-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="bg-indigo-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold shadow-sm">3</span>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900">3-Reja: Termodinamikaning ikkinchi qonuni</h2>
+                </div>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 hidden sm:inline-block">Nazariya + Video Simulyatsiya #3</span>
+            </div>
+
+            <div class="p-6 sm:p-8 space-y-6">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+                    <!-- Theory -->
+                    <div class="lg:col-span-6 space-y-4 text-slate-700 leading-relaxed text-sm sm:text-base">
+                        <p>
+                            Tabiatdagi barcha issiqlik jarayonlarining bir yo'nalishda borishi va qaytmasligini umumlashtirib, XIX asr o'rtalarida olimlar <strong>Termodinamikaning ikkinchi qonuni</strong>ni kashf etdilar. Bu qonunning bir-biriga ekvivalent (teng kuchli) ikkita mashhur ta'rifi mavjud:
+                        </p>
+
+                        <div class="space-y-3">
+                            <div class="p-4 rounded-xl bg-indigo-50 border border-indigo-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">1. Rudolf Klauzius ta'rifi (1850-yil):</span>
+                                <p class="font-semibold text-indigo-950 mt-1 text-sm sm:text-base">
+                                    «Issiqlik o'z-o'zidan sovuqroq jismdan issiqroq jismga o'tishi mumkin emas».
+                                </p>
+                                <p class="text-xs text-indigo-800 mt-1">
+                                    (Izoh: Sovutkich/muzlatkichlarda issiqlik sovuq kameradan issiq xonaga chiqariladi, lekin bu o'z-o'zidan emas, balki elektr tarmog'idan olinadigan tashqi ish hisobiga amalga oshadi).
+                                </p>
+                            </div>
+
+                            <div class="p-4 rounded-xl bg-purple-50 border border-purple-200">
+                                <span class="text-xs font-bold uppercase tracking-wider text-purple-600">2. Uilyam Tomson (Kelvin) va Maks Plank ta'rifi:</span>
+                                <p class="font-semibold text-purple-950 mt-1 text-sm sm:text-base">
+                                    «Bitta issiqlik manbaidan olingan issiqlik miqdorini to'lig'icha mexanik ishga aylantiruvchi davriy ishlovchi mashina (ikkinchi tur abadiy dvigatel) yaratish mumkin emas».
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="formula-box p-4 rounded-xl space-y-2">
+                            <h4 class="font-bold text-indigo-950 text-sm">Issiqlik dvigateli va Foydali Ish Koeffitsiyenti (FIK):</h4>
+                            <p class="text-xs sm:text-sm text-slate-700">
+                                Har qanday issiqlik dvigateli ishlashi uchun kamida uchta qism zarur: <strong>Isitkich (T₁)</strong>, <strong>Ishchi jism</strong> (gaz yoki bug') va <strong>Sovutkich (T₂)</strong>. Isitkichdan olingan <span class="font-mono font-bold">Q₁</span> issiqlikning bir qismi foydali ishga (<span class="font-mono font-bold">A</span>) aylanadi, qolgan <span class="font-mono font-bold">Q₂</span> qismi esa albatta sovutkichga beriladi:
+                            </p>
+                            <div class="flex flex-wrap items-center justify-around gap-3 bg-white/80 p-3 rounded-lg border border-indigo-200 font-mono text-sm font-bold text-indigo-950">
+                                <span>A = Q₁ - Q₂</span>
+                                <span>|</span>
+                                <span>η = (Q₁ - Q₂) / Q₁ · 100%</span>
+                                <span>|</span>
+                                <span>η<sub>max</sub> = (T₁ - T₂) / T₁ · 100%</span>
+                            </div>
+                            <p class="text-xs text-slate-600">
+                                Chunki mutlaq nol haroratga (<span class="font-mono">T₂ = 0 K</span>) erishish mumkin emas, shuning uchun <strong>η &lt; 100%</strong> bo'ladi!
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Simulation 3 Card -->
+                    <div class="lg:col-span-6 bg-slate-900 rounded-2xl p-4 text-white shadow-lg border border-slate-800">
+                        <div class="flex items-center justify-between mb-3">
+                            <div>
+                                <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Animatsion Simulyatsiya #3</span>
+                                <h3 class="text-sm font-bold text-white">Issiqlik dvigateli va FIK (Tomson-Plank qonuni)</h3>
+                            </div>
+                            <span id="sim3-eff-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
+                                FIK (η) = 62.5%
+                            </span>
+                        </div>
+
+                        <div class="canvas-container h-72 mb-3 border border-slate-700">
+                            <canvas id="sim3Canvas"></canvas>
+                        </div>
+
+                        <!-- Sliders for T1 and T2 -->
+                        <div class="space-y-3 bg-slate-800/80 p-3.5 rounded-xl border border-slate-700/70">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-rose-300 font-medium">Isitkich harorati (T₁):</span>
+                                        <span id="sim3-t1-val" class="font-mono font-bold text-rose-400">800 K</span>
+                                    </div>
+                                    <input type="range" id="sim3-t1" min="400" max="1200" step="50" value="800" class="w-full accent-rose-500 cursor-pointer h-1.5 bg-slate-700 rounded-lg">
+                                </div>
+                                <div>
+                                    <div class="flex justify-between text-xs mb-1">
+                                        <span class="text-sky-300 font-medium">Sovutkich harorati (T₂):</span>
+                                        <span id="sim3-t2-val" class="font-mono font-bold text-sky-400">300 K</span>
+                                    </div>
+                                    <input type="range" id="sim3-t2" min="100" max="600" step="25" value="300" class="w-full accent-sky-500 cursor-pointer h-1.5 bg-slate-700 rounded-lg">
+                                </div>
+                            </div>
+
+                            <div class="flex items-center justify-between pt-1 border-t border-slate-700 text-xs">
+                                <span id="sim3-energy-text" class="text-slate-300">
+                                    Q₁ = 1000 J → <strong class="text-emerald-400">Ish A = 625 J</strong> | <strong class="text-sky-400">Yo'qotish Q₂ = 375 J</strong>
+                                </span>
+                                <button id="sim3-toggle" class="bg-indigo-600 hover:bg-indigo-500 text-white px-3 py-1 rounded-lg font-semibold transition cursor-pointer shrink-0 ml-2">
+                                    ⏸ Pauza
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- REJA 4: Tabiatda va texnikada termodinamika ikkinchi qonunining ahamiyati -->
+        <!-- ===================================================================== -->
+        <section id="reja-4" class="scroll-mt-24 bg-white rounded-2xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="bg-indigo-50/80 border-b border-indigo-100 px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <span class="bg-indigo-600 text-white w-8 h-8 rounded-lg flex items-center justify-center font-bold shadow-sm">4</span>
+                    <h2 class="text-lg sm:text-xl font-bold text-slate-900">4-Reja: Tabiatda va texnikada ikkinchi qonunning ahamiyati</h2>
+                </div>
+                <span class="text-xs font-medium px-2.5 py-1 rounded-full bg-indigo-100 text-indigo-800 hidden sm:inline-block">Amaliyot va Xulosa</span>
+            </div>
+
+            <div class="p-6 sm:p-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Card 1: Entropy -->
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                        <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold text-lg">
+                            S
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Tartibsizlik o'lchovi — Entropiya</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Termodinamikaning ikkinchi qonuniga ko'ra, yopiq tizimlarda barcha o'z-o'zidan kechadigan jarayonlar tizimning tartibli holatidan tartibsizroq holatiga o'tishi bilan boradi. Fizikada tizimning tartibsizlik darajasi <strong>entropiya (S)</strong> deb ataladi va yopiq tizimda u doimo ortib boradi.
+                        </p>
+                    </div>
+
+                    <!-- Card 2: Engineering -->
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                        <div class="w-10 h-10 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-lg">
+                            ⚙️
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Texnika va Energetika</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Bu qonun muhandislarga issiqlik elektr stansiyalari (IES), avtomobil dvigatellari va reaktiv dvigatellarning maksimal FIK chegarasini hisoblash imkonini beradi. FIKni oshirish uchun isitkich harorati <span class="font-mono font-semibold">T₁</span> ni oshirish va sovutkich harorati <span class="font-mono font-semibold">T₂</span> ni pasaytirish kerakligi shu qonundan kelib chiqadi.
+                        </p>
+                    </div>
+
+                    <!-- Card 3: Ecology & Life -->
+                    <div class="p-5 rounded-xl bg-slate-50 border border-slate-200 space-y-2.5">
+                        <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-lg">
+                            🌍
+                        </div>
+                        <h3 class="font-bold text-slate-900 text-base">Ekologiya va Tirik Tabiat</h3>
+                        <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            Har qanday dvigatel ishlaganda sovutkichga (atmosferaga yoki suv havzalariga) <span class="font-mono font-semibold">Q₂</span> issiqlik chiqarishi shart. Bu esa sayyoramizning "issiqlik ifloslanishi"ga olib keladi. Tirik organizmlar esa Quyoshdan kelayotgan energiya hisobiga o'z ichki tartibini saqlab turadigan ochiq termodinamik tizimlardir.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ===================================================================== -->
+        <!-- SAVOL VA TOPSHIRIQLAR (Interactive Quiz, Problems & Analytical Tasks) -->
+        <!-- ===================================================================== -->
+        <section id="topshiriqlar" class="scroll-mt-24 space-y-8">
+            <div class="border-b border-slate-200 pb-4 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-indigo-600">Bilimlarni mustahkamlash</span>
+                    <h2 class="text-2xl font-extrabold text-slate-900">Mavzu yuzasidan savol va topshiriqlar</h2>
+                </div>
+                <div id="quiz-score-badge" class="inline-flex items-center gap-2 px-4 py-2 rounded-xl bg-indigo-600 text-white text-sm font-bold shadow-sm">
+                    <span>Test natijasi:</span>
+                    <span id="score-text">0 / 5</span>
+                </div>
+            </div>
+
+            <!-- 1. Interactive Multiple Choice Test -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center text-sm font-bold">I</span>
+                    Interaktiv test savollari (O'z-o'zini tekshirish)
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mb-6">Har bir savol uchun to'g'ri javobni tanlang va darhol tushuntirishini oling.</p>
+
+                <div id="quiz-container" class="space-y-6">
+                    <!-- Questions injected by JS -->
+                </div>
+            </div>
+
+            <!-- 2. Practical Calculation Problems (Masalalar) -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center text-sm font-bold">II</span>
+                    Hisoblashga oid masalalar
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mb-6">Avval masalani mustaqil yechishga harakat qiling, so'ngra "Yechimni ko'rish" tugmasini bosing.</p>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Problem 1 -->
+                    <div class="rounded-xl border border-slate-200 p-5 bg-slate-50/50 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="inline-block px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 text-xs font-bold mb-2">1-masala</span>
+                            <p class="text-sm text-slate-800 font-medium leading-relaxed">
+                                Ideal issiqlik dvigateli isitkichdan <span class="font-mono font-bold">Q₁ = 4000 J</span> issiqlik miqdori olib, sovutkichga <span class="font-mono font-bold">Q₂ = 2800 J</span> issiqlik beradi. Dvigatel bajargan foydali ishni (A) va uning foydali ish koeffitsiyentini (η) aniqlang.
+                            </p>
+                        </div>
+                        <div>
+                            <button onclick="toggleSolution('sol-1')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-3.5 py-2 rounded-lg transition cursor-pointer">
+                                👁 Yechimni ko'rish / yashirish
+                            </button>
+                            <div id="sol-1" class="hidden mt-3 p-3.5 rounded-lg bg-white border border-indigo-100 text-xs text-slate-700 space-y-1.5 font-mono">
+                                <p><strong>Berilgan:</strong> Q₁ = 4000 J; Q₂ = 2800 J</p>
+                                <p><strong>Topish kerak:</strong> A = ?; η = ?</p>
+                                <p class="border-t border-slate-100 pt-1.5"><strong>Yechish:</strong></p>
+                                <p>1) A = Q₁ - Q₂ = 4000 J - 2800 J = <strong>1200 J</strong></p>
+                                <p>2) η = (A / Q₁) · 100% = (1200 / 4000) · 100% = <strong>30%</strong></p>
+                                <p class="text-emerald-700 font-sans font-semibold pt-1">Javob: A = 1200 J, η = 30%.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Problem 2 -->
+                    <div class="rounded-xl border border-slate-200 p-5 bg-slate-50/50 flex flex-col justify-between space-y-4">
+                        <div>
+                            <span class="inline-block px-2.5 py-0.5 rounded bg-amber-100 text-amber-900 text-xs font-bold mb-2">2-masala</span>
+                            <p class="text-sm text-slate-800 font-medium leading-relaxed">
+                                Karno sikli bo'yicha ishlayotgan issiqlik mashinasi isitkichining harorati <span class="font-mono font-bold">t₁ = 327 °C</span>, sovutkichining harorati esa <span class="font-mono font-bold">t₂ = 27 °C</span> ga teng. Ushbu dvigatel erishishi mumkin bo'lgan maksimal FIK ni hisoblang.
+                            </p>
+                        </div>
+                        <div>
+                            <button onclick="toggleSolution('sol-2')" class="text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 px-3.5 py-2 rounded-lg transition cursor-pointer">
+                                👁 Yechimni ko'rish / yashirish
+                            </button>
+                            <div id="sol-2" class="hidden mt-3 p-3.5 rounded-lg bg-white border border-indigo-100 text-xs text-slate-700 space-y-1.5 font-mono">
+                                <p><strong>Berilgan:</strong> t₁ = 327 °C; t₂ = 27 °C</p>
+                                <p><strong>Kelvin shkalasiga o'tamiz:</strong></p>
+                                <p>T₁ = 327 + 273 = 600 K</p>
+                                <p>T₂ = 27 + 273 = 300 K</p>
+                                <p class="border-t border-slate-100 pt-1.5"><strong>Yechish:</strong></p>
+                                <p>η<sub>max</sub> = ((T₁ - T₂) / T₁) · 100% = ((600 - 300) / 600) · 100% = <strong>50%</strong></p>
+                                <p class="text-emerald-700 font-sans font-semibold pt-1">Javob: η<sub>max</sub> = 50%.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 3. Analytical & Situational Tasks (Tahliliy topshiriqlar) -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-200 p-6 sm:p-8">
+                <h3 class="text-lg font-bold text-slate-900 mb-1 flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-emerald-100 text-emerald-800 flex items-center justify-center text-sm font-bold">III</span>
+                    Tahliliy va mantiqiy topshiriqlar (Og'zaki muhokama uchun)
+                </h3>
+                <p class="text-xs sm:text-sm text-slate-500 mb-6">Hayotiy vaziyatlarni termodinamikaning ikkinchi qonuni asosida izohlang.</p>
+
+                <div class="space-y-4">
+                    <details class="group rounded-xl border border-slate-200 bg-slate-50/70 p-4 open:bg-white open:shadow-sm transition">
+                        <summary class="font-semibold text-sm sm:text-base text-slate-900 cursor-pointer list-none flex items-center justify-between">
+                            <span>1-topshiriq: Nima uchun dengiz va okean suvlarining ulkan ichki energiyasidan foydalanib, yoqilg'isiz suzadigan kema (ikkinchi tur abadiy dvigatel) qurib bo'lmaydi?</span>
+                            <span class="text-indigo-600 font-bold group-open:rotate-180 transition">▼</span>
+                        </summary>
+                        <p class="mt-3 pt-3 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <strong>Izoh:</strong> Tomson-Plank ta'rifiga ko'ra, issiqlik dvigateli ishlashi uchun bitta issiqlik manbai (okean suvi) yetarli emas, albatta undan sovuqroq bo'lgan <strong>sovutkich</strong> ham kerak. Okean suvi barcha joyda bir xil haroratda bo'lgani uchun issiqlik oqimi hosil bo'lmaydi va suvni sovutish hisobiga uzluksiz mexanik ish olish imkonsiz.
+                        </p>
+                    </details>
+
+                    <details class="group rounded-xl border border-slate-200 bg-slate-50/70 p-4 open:bg-white open:shadow-sm transition">
+                        <summary class="font-semibold text-sm sm:text-base text-slate-900 cursor-pointer list-none flex items-center justify-between">
+                            <span>2-topshiriq: Uy sovutkichi (xolodilnik) eshigini ochiq qoldirsak, xona havosi soviydimi yoki isiydimi?</span>
+                            <span class="text-indigo-600 font-bold group-open:rotate-180 transition">▼</span>
+                        </summary>
+                        <p class="mt-3 pt-3 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <strong>Izoh:</strong> Xona havosi <strong>isiydi</strong>! Chunki sovutkich kameradan olgan issiqlikni (<span class="font-mono">Q₂</span>) o'zining orqa devoridagi radiator orqali yana shu xonaga chiqaradi va bunga qo'shimcha ravishda elektr tarmog'idan iste'mol qilingan kompressor ishi (<span class="font-mono">A</span>) ham issiqlikka aylanib xonaga tarqaladi (<span class="font-mono">Q₁ = Q₂ + A</span>).
+                        </p>
+                    </details>
+
+                    <details class="group rounded-xl border border-slate-200 bg-slate-50/70 p-4 open:bg-white open:shadow-sm transition">
+                        <summary class="font-semibold text-sm sm:text-base text-slate-900 cursor-pointer list-none flex items-center justify-between">
+                            <span>3-topshiriq: To'kilgan bir stakan sut yoki singan shisha bo'laklari nima uchun o'z-o'zidan avvalgi holatiga qaytmaydi?</span>
+                            <span class="text-indigo-600 font-bold group-open:rotate-180 transition">▼</span>
+                        </summary>
+                        <p class="mt-3 pt-3 border-t border-slate-100 text-xs sm:text-sm text-slate-600 leading-relaxed">
+                            <strong>Izoh:</strong> Bu hodisalar qaytmas jarayonlardir. Stakan yerga urilganda uning potensial va kinetik energiyasi shisha bog'larini uzishga, tovush to'lqinlariga va pol hamda shisha molekulalarining issiqlik harakatiga (entropiya ortishiga) sarflanadi. Atrof-muhitdagi tartibsiz issiqlik harakatining o'z-o'zidan bir yo'nalishda to'planib, parchalarni yuqoriga ko'tarish ehtimoli tabiatda nolga teng.
+                        </p>
+                    </details>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-8 mt-16 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+            <p>© Fizika ta'lim moduli • 24-§. Issiqlik jarayonlarining qaytmasligi. Termodinamikaning ikkinchi qonuni.</p>
+            <p class="text-slate-500">Interaktiv simulyatsiyalar va o'quv topshiriqlari</p>
+        </div>
+    </footer>
+
+    <!-- ===================================================================== -->
+    <!-- JAVASCRIPT: Simulations & Interactive Quiz Logic -->
+    <!-- ===================================================================== -->
+    <script>
+        // Utility: Toggle calculation solutions
+        function toggleSolution(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.classList.toggle('hidden');
+            }
+        }
+
+        // =========================================================================
+        // SIMULATION 1: Bouncing Ball (Reversible vs Irreversible & Rewind Video)
+        // =========================================================================
+        (function initSim1() {
+            const canvas = document.getElementById('sim1Canvas');
+            const ctx = canvas.getContext('2d');
+            const frictionSlider = document.getElementById('sim1-friction');
+            const frictionVal = document.getElementById('sim1-friction-val');
+            const modeBadge = document.getElementById('sim1-mode-badge');
+            const descText = document.getElementById('sim1-desc');
+            const playBtn = document.getElementById('sim1-play');
+            const rewindBtn = document.getElementById('sim1-rewind');
+            const resetBtn = document.getElementById('sim1-reset');
+
+            let width, height;
+            let history = [];
+            let isRewinding = false;
+            let isPaused = false;
+            let floorHeat = 0; // 0 to 1 representing thermal energy absorbed by floor
+            let floorMolecules = [];
+
+            let ball = {
+                x: 0,
+                y: 45,
+                vy: 0,
+                radius: 16,
+                gravity: 0.45
+            };
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                width = canvas.width = rect.width;
+                height = canvas.height = rect.height;
+                ball.x = width * 0.5;
+                initFloorMolecules();
+            }
+
+            function initFloorMolecules() {
+                floorMolecules = [];
+                const cols = Math.floor(width / 18);
+                for (let i = 0; i < cols; i++) {
+                    floorMolecules.push({
+                        baseX: 12 + i * 18,
+                        baseY: height - 16,
+                        phase: Math.random() * Math.PI * 2
+                    });
+                }
+            }
+
+            function resetSim() {
+                isRewinding = false;
+                isPaused = false;
+                ball.y = 45;
+                ball.vy = 0;
+                floorHeat = 0;
+                history = [];
+                updateBadges();
+            }
+
+            function updateBadges() {
+                const f = parseInt(frictionSlider.value);
+                if (f === 0) {
+                    frictionVal.textContent = "0% (Ideal)";
+                    modeBadge.textContent = "Qaytar jarayon (Ideal)";
+                    modeBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                    descText.textContent = "Ishqalanish yo'q: koptok har doim bir xil balandlikka sakraydi. Teskari video ham tabiiy ko'rinadi!";
+                } else {
+                    frictionVal.textContent = `Real (${f}%)`;
+                    modeBadge.textContent = isRewinding ? "⏪ TESKARI VIDEO (G'ayritabiiy!)" : "Qaytmas (Ishqalanish bor)";
+                    modeBadge.className = isRewinding
+                        ? "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30 animate-pulse"
+                        : "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-rose-500/20 text-rose-300 border border-rose-500/30";
+                    descText.textContent = isRewinding
+                        ? "Teskari tasvir: pol sovib, o'z issiqlik energiyasi hisobiga koptokni yuqoriga otmoqda — tabiatda bunday bo'lmaydi!"
+                        : "Koptok urilganda mexanik energiyaning bir qismi pol va koptok molekulalarining ichki energiyasiga (issiqlikka) aylanadi.";
+                }
+            }
+
+            frictionSlider.addEventListener('input', () => {
+                resetSim();
+            });
+
+            playBtn.addEventListener('click', () => {
+                isRewinding = false;
+                isPaused = false;
+                updateBadges();
+            });
+
+            rewindBtn.addEventListener('click', () => {
+                if (history.length > 5) {
+                    isRewinding = true;
+                    isPaused = false;
+                    updateBadges();
+                }
+            });
+
+            resetBtn.addEventListener('click', resetSim);
+
+            function update() {
+                if (isPaused) return;
+                const floorY = height - 32;
+                const frictionRatio = parseInt(frictionSlider.value) / 100;
+
+                if (isRewinding) {
+                    if (history.length > 0) {
+                        const prev = history.pop();
+                        ball.y = prev.y;
+                        ball.vy = prev.vy;
+                        floorHeat = prev.heat;
+                    } else {
+                        isRewinding = false;
+                        updateBadges();
+                    }
+                    return;
+                }
+
+                // Record state for rewind (cap at 600 frames)
+                if (history.length > 600) history.shift();
+                history.push({ y: ball.y, vy: ball.vy, heat: floorHeat });
+
+                ball.vy += ball.gravity;
+                ball.y += ball.vy;
+
+                // Floor collision
+                if (ball.y + ball.radius >= floorY) {
+                    ball.y = floorY - ball.radius;
+                    const restitution = Math.sqrt(Math.max(0, 1 - frictionRatio));
+                    const energyLost = (1 - restitution * restitution) * (ball.vy * ball.vy) * 0.004;
+                    floorHeat = Math.min(1, floorHeat + energyLost);
+                    ball.vy = -ball.vy * restitution;
+
+                    if (Math.abs(ball.vy) < 0.6 && frictionRatio > 0) {
+                        ball.vy = 0;
+                    }
+                }
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                const floorY = height - 32;
+
+                // Background height ruler lines
+                ctx.strokeStyle = 'rgba(148, 163, 184, 0.12)';
+                ctx.lineWidth = 1;
+                for (let y = 45; y < floorY; y += 35) {
+                    ctx.beginPath();
+                    ctx.moveTo(20, y);
+                    ctx.lineTo(width - 20, y);
+                    ctx.stroke();
+                }
+
+                // Floor block
+                const r = Math.round(51 + floorHeat * 190);
+                const g = Math.round(65 - floorHeat * 25);
+                const b = Math.round(85 - floorHeat * 50);
+                ctx.fillStyle = `rgb(${r}, ${g}, ${b})`;
+                ctx.fillRect(0, floorY, width, 32);
+
+                // Floor vibrating molecules (showing thermal energy)
+                const time = performance.now() * 0.025;
+                const amp = 1 + floorHeat * 4.5;
+                ctx.fillStyle = floorHeat > 0.2 ? '#fbbf24' : '#94a3b8';
+                floorMolecules.forEach(m => {
+                    const dx = Math.sin(time + m.phase) * amp;
+                    const dy = Math.cos(time * 1.3 + m.phase) * amp * 0.7;
+                    ctx.beginPath();
+                    ctx.arc(m.baseX + dx, m.baseY + dy, 3, 0, Math.PI * 2);
+                    ctx.fill();
+                });
+
+                // Ball shadow
+                const distRatio = Math.max(0, Math.min(1, (ball.y) / floorY));
+                ctx.fillStyle = `rgba(0,0,0,${0.15 + distRatio * 0.35})`;
+                ctx.beginPath();
+                ctx.ellipse(ball.x, floorY + 2, ball.radius * (0.5 + distRatio * 0.6), 4, 0, 0, Math.PI * 2);
+                ctx.fill();
+
+                // Ball gradient
+                const grad = ctx.createRadialGradient(ball.x - 5, ball.y - 5, 3, ball.x, ball.y, ball.radius);
+                grad.addColorStop(0, '#818cf8');
+                grad.addColorStop(1, '#3730a3');
+                ctx.fillStyle = grad;
+                ctx.beginPath();
+                ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2);
+                ctx.fill();
+
+                // HUD Labels inside canvas
+                ctx.fillStyle = '#cbd5e1';
+                ctx.font = '11px Inter, sans-serif';
+                ctx.fillText(`Pol ichki energiyasi (issiqlik): ${Math.round(floorHeat * 100)}%`, 14, 22);
+
+                if (isRewinding) {
+                    ctx.fillStyle = '#fbbf24';
+                    ctx.font = 'bold 12px Inter, sans-serif';
+                    ctx.fillText('⏪ REWIND (TESKARI VAQT)', width - 175, 22);
+                }
+            }
+
+            function loop() {
+                update();
+                draw();
+                requestAnimationFrame(loop);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            updateBadges();
+            loop();
+        })();
+
+        // =========================================================================
+        // SIMULATION 2: Heat Transfer & Clausius Statement (Hot -> Cold)
+        // =========================================================================
+        (function initSim2() {
+            const canvas = document.getElementById('sim2Canvas');
+            const ctx = canvas.getContext('2d');
+            const openBtn = document.getElementById('sim2-open');
+            const revBtn = document.getElementById('sim2-reverse-try');
+            const resetBtn = document.getElementById('sim2-reset');
+            const statusBadge = document.getElementById('sim2-status');
+            const t1El = document.getElementById('sim2-t1');
+            const t2El = document.getElementById('sim2-t2');
+            const feedbackEl = document.getElementById('sim2-feedback');
+
+            let width, height;
+            let particles = [];
+            let barrierOpen = false;
+            let rejectFlash = 0;
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                width = canvas.width = rect.width;
+                height = canvas.height = rect.height;
+                if (particles.length === 0) initParticles();
+            }
+
+            function initParticles() {
+                particles = [];
+                barrierOpen = false;
+                rejectFlash = 0;
+                const midX = width / 2;
+
+                // 32 Hot particles on left
+                for (let i = 0; i < 32; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 3.6 + Math.random() * 1.2;
+                    particles.push({
+                        x: 15 + Math.random() * (midX - 35),
+                        y: 15 + Math.random() * (height - 30),
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        r: 5
+                    });
+                }
+
+                // 32 Cold particles on right
+                for (let i = 0; i < 32; i++) {
+                    const angle = Math.random() * Math.PI * 2;
+                    const speed = 0.8 + Math.random() * 0.6;
+                    particles.push({
+                        x: midX + 20 + Math.random() * (midX - 35),
+                        y: 15 + Math.random() * (height - 30),
+                        vx: Math.cos(angle) * speed,
+                        vy: Math.sin(angle) * speed,
+                        r: 5
+                    });
+                }
+                updateUI();
+            }
+
+            function updateUI() {
+                if (barrierOpen) {
+                    statusBadge.textContent = "Issiqlik almashinuvi faol";
+                    statusBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-emerald-500/20 text-emerald-300 border border-emerald-500/30";
+                } else {
+                    statusBadge.textContent = "To'siq yopiq";
+                    statusBadge.className = "px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-500/20 text-amber-300 border border-amber-500/30";
+                }
+            }
+
+            openBtn.addEventListener('click', () => {
+                barrierOpen = true;
+                updateUI();
+                feedbackEl.innerHTML = "<span class='text-emerald-400 font-semibold'>Jarayon boshlandi:</span> Tez (qizil) va sekin (ko'k) molekulalar to'qnashib energiya almashmoqda. Haroratlar 50 °C atrofida tenglashadi!";
+            });
+
+            revBtn.addEventListener('click', () => {
+                rejectFlash = 35;
+                feedbackEl.innerHTML = "<span class='text-rose-400 font-semibold'>Klauzius ta'rifi:</span> Issiqlik o'z-o'zidan sovuq jismdan (10 °C) issiq jismga (90 °C) o'tishi mumkin emas!";
+            });
+
+            resetBtn.addEventListener('click', () => {
+                initParticles();
+                feedbackEl.textContent = "\"Issiqlik o'tkazishni boshlash\" tugmasini bosing va tez harakatlanuvchi (issiq) molekulalar energiyasining sekin (sovuq) molekulalarga uzatilishini kuzating.";
+            });
+
+            function update() {
+                const midX = width / 2;
+                if (rejectFlash > 0) rejectFlash--;
+
+                // Move and wall bounce
+                for (let p of particles) {
+                    p.x += p.vx;
+                    p.y += p.vy;
+
+                    if (p.y - p.r < 6) { p.y = 6 + p.r; p.vy *= -1; }
+                    if (p.y + p.r > height - 6) { p.y = height - 6 - p.r; p.vy *= -1; }
+                    if (p.x - p.r < 6) { p.x = 6 + p.r; p.vx *= -1; }
+                    if (p.x + p.r > width - 6) { p.x = width - 6 - p.r; p.vx *= -1; }
+
+                    // Center partition wall
+                    if (!barrierOpen) {
+                        if (p.x < midX && p.x + p.r > midX - 4) {
+                            p.x = midX - 4 - p.r;
+                            p.vx *= -1;
+                        } else if (p.x > midX && p.x - p.r < midX + 4) {
+                            p.x = midX + 4 + p.r;
+                            p.vx *= -1;
+                        }
+                    }
+                }
+
+                // Elastic collisions between particles (exchanging kinetic energy)
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const a = particles[i];
+                        const b = particles[j];
+                        const dx = b.x - a.x;
+                        const dy = b.y - a.y;
+                        const dist = Math.hypot(dx, dy);
+                        const minDist = a.r + b.r;
+
+                        if (dist < minDist && dist > 0) {
+                            const nx = dx / dist;
+                            const ny = dy / dist;
+                            // Separate overlap
+                            const overlap = (minDist - dist) * 0.5;
+                            a.x -= nx * overlap;
+                            a.y -= ny * overlap;
+                            b.x += nx * overlap;
+                            b.y += ny * overlap;
+
+                            // Exchange normal velocity
+                            const dvx = b.vx - a.vx;
+                            const dvy = b.vy - a.vy;
+                            const dot = dvx * nx + dvy * ny;
+                            if (dot < 0) {
+                                a.vx += dot * nx;
+                                a.vy += dot * ny;
+                                b.vx -= dot * nx;
+                                b.vy -= dot * ny;
+                            }
+                        }
+                    }
+                }
+
+                // Calculate average kinetic energy on left and right sides
+                let leftE = 0, leftN = 0, rightE = 0, rightN = 0;
+                for (let p of particles) {
+                    const e = p.vx * p.vx + p.vy * p.vy;
+                    if (p.x < midX) { leftE += e; leftN++; }
+                    else { rightE += e; rightN++; }
+                }
+                const avgL = leftN ? leftE / leftN : 0;
+                const avgR = rightN ? rightE / rightN : 0;
+
+                // Map speed^2 (~1 to ~17) to Celsius (10°C to 90°C)
+                const mapTemp = (ke) => Math.round(Math.max(10, Math.min(95, 5 + ke * 5.1)));
+                t1El.textContent = `${mapTemp(avgL)} °C`;
+                t2El.textContent = `${mapTemp(avgR)} °C`;
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                const midX = width / 2;
+
+                // Subtle chamber background tints
+                ctx.fillStyle = 'rgba(244, 63, 94, 0.08)';
+                ctx.fillRect(0, 0, midX, height);
+                ctx.fillStyle = 'rgba(56, 189, 248, 0.08)';
+                ctx.fillRect(midX, 0, midX, height);
+
+                // Center barrier
+                if (!barrierOpen) {
+                    ctx.fillStyle = '#94a3b8';
+                    ctx.fillRect(midX - 3, 0, 6, height);
+                } else {
+                    ctx.strokeStyle = 'rgba(148, 163, 184, 0.25)';
+                    ctx.setLineDash([5, 5]);
+                    ctx.beginPath();
+                    ctx.moveTo(midX, 0);
+                    ctx.lineTo(midX, height);
+                    ctx.stroke();
+                    ctx.setLineDash([]);
+                }
+
+                // Draw particles colored by kinetic energy (speed)
+                for (let p of particles) {
+                    const speed = Math.hypot(p.vx, p.vy);
+                    // Interpolate from blue (slow ~1) to amber (medium ~2.5) to red (fast ~4)
+                    let color = '#38bdf8';
+                    if (speed > 3.1) color = '#fb7185';
+                    else if (speed > 2.0) color = '#fbbf24';
+
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                    ctx.fill();
+                }
+
+                // Flash warning if user tries Cold -> Hot
+                if (rejectFlash > 0) {
+                    ctx.fillStyle = 'rgba(225, 29, 72, 0.88)';
+                    ctx.fillRect(width * 0.15, height * 0.35, width * 0.7, height * 0.3);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.font = 'bold 13px Inter, sans-serif';
+                    ctx.textAlign = 'center';
+                    ctx.fillText('⛔ IMKONSIZ! (Klauzius qonuni)', width / 2, height * 0.48);
+                    ctx.font = '11px Inter, sans-serif';
+                    ctx.fillText('Issiqlik o‘z-o‘zidan sovuqdan issiqqa o‘tmaydi', width / 2, height * 0.57);
+                    ctx.textAlign = 'left';
+                }
+            }
+
+            function loop() {
+                update();
+                draw();
+                requestAnimationFrame(loop);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            loop();
+        })();
+
+        // =========================================================================
+        // SIMULATION 3: Heat Engine & Carnot Efficiency (Kelvin-Planck Statement)
+        // =========================================================================
+        (function initSim3() {
+            const canvas = document.getElementById('sim3Canvas');
+            const ctx = canvas.getContext('2d');
+            const t1Slider = document.getElementById('sim3-t1');
+            const t2Slider = document.getElementById('sim3-t2');
+            const t1Val = document.getElementById('sim3-t1-val');
+            const t2Val = document.getElementById('sim3-t2-val');
+            const effBadge = document.getElementById('sim3-eff-badge');
+            const energyText = document.getElementById('sim3-energy-text');
+            const toggleBtn = document.getElementById('sim3-toggle');
+
+            let width, height;
+            let running = true;
+            let phase = 0;
+
+            function resize() {
+                const rect = canvas.parentElement.getBoundingClientRect();
+                width = canvas.width = rect.width;
+                height = canvas.height = rect.height;
+            }
+
+            function getParams() {
+                let T1 = parseInt(t1Slider.value);
+                let T2 = parseInt(t2Slider.value);
+                if (T2 >= T1) {
+                    T2 = T1 - 50;
+                    t2Slider.value = T2;
+                }
+                const eta = (T1 - T2) / T1; // 0 to 1
+                const Q1 = 1000;
+                const A = Math.round(Q1 * eta);
+                const Q2 = Q1 - A;
+                return { T1, T2, eta, Q1, A, Q2 };
+            }
+
+            function updateLabels() {
+                const { T1, T2, eta, A, Q2 } = getParams();
+                t1Val.textContent = `${T1} K`;
+                t2Val.textContent = `${T2} K`;
+                effBadge.textContent = `FIK (η) = ${(eta * 100).toFixed(1)}%`;
+                energyText.innerHTML = `Q₁ = 1000 J → <strong class="text-emerald-400">Ish A = ${A} J</strong> | <strong class="text-sky-400">Sovutkich Q₂ = ${Q2} J</strong>`;
+            }
+
+            t1Slider.addEventListener('input', updateLabels);
+            t2Slider.addEventListener('input', updateLabels);
+
+            toggleBtn.addEventListener('click', () => {
+                running = !running;
+                toggleBtn.textContent = running ? '⏸ Pauza' : '▶ Davom etish';
+            });
+
+            function drawArrowFlow(x1, y1, x2, y2, color, lineWidth, offset) {
+                ctx.save();
+                ctx.strokeStyle = color;
+                ctx.lineWidth = lineWidth;
+                ctx.beginPath();
+                ctx.moveTo(x1, y1);
+                ctx.lineTo(x2, y2);
+                ctx.stroke();
+
+                // Moving energy pulses along line
+                ctx.fillStyle = '#ffffff';
+                const steps = 3;
+                for (let i = 0; i < steps; i++) {
+                    const t = ((offset + i / steps) % 1);
+                    const px = x1 + (x2 - x1) * t;
+                    const py = y1 + (y2 - y1) * t;
+                    ctx.beginPath();
+                    ctx.arc(px, py, Math.max(2.5, lineWidth * 0.35), 0, Math.PI * 2);
+                    ctx.fill();
+                }
+                ctx.restore();
+            }
+
+            function draw() {
+                ctx.clearRect(0, 0, width, height);
+                if (running) phase += 0.015;
+
+                const { T1, T2, eta, A, Q2 } = getParams();
+                const cx = width * 0.42;
+                const topY = 22;
+                const botY = height - 22;
+                const midY = height * 0.5;
+
+                // 1. Heater Box (Isitkich T1)
+                const boxW = Math.min(180, width * 0.44);
+                ctx.fillStyle = '#be123c';
+                ctx.beginPath();
+                ctx.roundRect(cx - boxW / 2, topY, boxW, 42, 8);
+                ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                ctx.font = 'bold 12px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`ISITKICH (T₁ = ${T1} K)`, cx, topY + 25);
+
+                // 2. Cooler Box (Sovutkich T2)
+                ctx.fillStyle = '#0369a1';
+                ctx.beginPath();
+                ctx.roundRect(cx - boxW / 2, botY - 42, boxW, 42, 8);
+                ctx.fill();
+                ctx.fillStyle = '#ffffff';
+                ctx.fillText(`SOVUTKICH (T₂ = ${T2} K)`, cx, botY - 17);
+
+                // 3. Flow Q1 (Heater -> Engine)
+                drawArrowFlow(cx, topY + 42, cx, midY - 28, '#fb7185', 10, phase);
+                ctx.fillStyle = '#fda4af';
+                ctx.font = 'bold 11px Inter, sans-serif';
+                ctx.textAlign = 'right';
+                ctx.fillText('Q₁ = 1000 J', cx - 12, (topY + 42 + midY - 28) / 2 + 4);
+
+                // 4. Flow Q2 (Engine -> Cooler) - proportional thickness
+                const q2Width = Math.max(2, (1 - eta) * 10);
+                drawArrowFlow(cx, midY + 28, cx, botY - 42, '#38bdf8', q2Width, phase);
+                ctx.fillStyle = '#7dd3fc';
+                ctx.fillText(`Q₂ = ${Q2} J`, cx - 12, (midY + 28 + botY - 42) / 2 + 4);
+
+                // 5. Flow Work A (Engine -> Right Wheel/Piston)
+                const workX = Math.min(width - 55, cx + boxW * 0.5 + 85);
+                const workWidth = Math.max(2, eta * 10);
+                drawArrowFlow(cx + 28, midY, workX - 24, midY, '#34d399', workWidth, phase);
+
+                // Working Body Circle (Ishchi jism)
+                ctx.fillStyle = '#1e293b';
+                ctx.strokeStyle = '#fbbf24';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(cx, midY, 28, 0, Math.PI * 2);
+                ctx.fill();
+                ctx.stroke();
+                ctx.fillStyle = '#fef3c7';
+                ctx.font = 'bold 10px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText('ISHCHI', cx, midY - 2);
+                ctx.fillText('JISM', cx, midY + 10);
+
+                // Rotating Flywheel (Foydali ish A)
+                ctx.save();
+                ctx.translate(workX, midY);
+                ctx.rotate(phase * (0.5 + eta * 2.5));
+                ctx.strokeStyle = '#34d399';
+                ctx.lineWidth = 3;
+                ctx.beginPath();
+                ctx.arc(0, 0, 22, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.moveTo(-22, 0); ctx.lineTo(22, 0);
+                ctx.moveTo(0, -22); ctx.lineTo(0, 22);
+                ctx.stroke();
+                ctx.restore();
+
+                ctx.fillStyle = '#6ee7b7';
+                ctx.font = 'bold 11px Inter, sans-serif';
+                ctx.textAlign = 'center';
+                ctx.fillText(`Ish A = ${A} J`, workX, midY - 32);
+                ctx.fillText(`FIK: ${(eta * 100).toFixed(0)}%`, workX, midY + 40);
+
+                requestAnimationFrame(draw);
+            }
+
+            window.addEventListener('resize', resize);
+            resize();
+            updateLabels();
+            draw();
+        })();
+
+        // =========================================================================
+        // INTERACTIVE QUIZ LOGIC (5 Questions in Uzbek)
+        // =========================================================================
+        (function initQuiz() {
+            const questions = [
+                {
+                    q: "1. Quyidagi jarayonlardan qaysi biri tabiatda QAYTMAS jarayonga misol bo'ladi?",
+                    options: [
+                        "Havosiz bo'shliqda ishqalanishsiz tebranayotgan ideal mayatnik harakati",
+                        "Issiq choyning xona haroratigacha o'z-o'zidan sovishi",
+                        "Ideal elastik sharlarning mutlaq elastik to'qnashuvi",
+                        "Vakuumda sayyoraning Quyosh atrofida aylanishi"
+                    ],
+                    correct: 1,
+                    explanation: "Issiq choyning sovishi issiqlik almashinuvi bo'lib, u o'z-o'zidan teskari yo'nalishda (xona havosi hisobiga choy qizib qolishi) sodir bo'lmaydi."
+                },
+                {
+                    q: "2. Termodinamikaning ikkinchi qonuniga Rudolf Klauzius bergan ta'rif qaysi javobda to'g'ri ko'rsatilgan?",
+                    options: [
+                        "Energiya bordan yo'q bo'lmaydi va yo'qdan bor bo'lmaydi",
+                        "Issiqlik o'z-o'zidan sovuqroq jismdan issiqroq jismga o'tishi mumkin emas",
+                        "Gaz bosimi uning absolyut haroratiga to'g'ri proporsional",
+                        "Barcha jarayonlar teskari yo'nalishda ham bir xil kechadi"
+                    ],
+                    correct: 1,
+                    explanation: "Klauzius ta'rifiga ko'ra, tashqi ish bajarilmasdan issiqlik hech qachon o'z-o'zidan sovuq jismdan issiq jismga o'tmaydi."
+                },
+                {
+                    q: "3. Ikkinchi tur abadiy dvigatel deb nimaga aytiladi va uni yaratish mumkinmi?",
+                    options: [
+                        "Hech qanday energiya sarflamay ishlaydigan dvigatel; yaratish mumkin",
+                        "Bitta issiqlik manbaidan olingan issiqlikni 100% ishga aylantiruvchi davriy dvigatel; yaratish mumkin emas",
+                        "Faqat elektr energiyasida ishlaydigan dvigatel; yaratish mumkin",
+                        "Isitkich va sovutkichga ega bo'lgan issiqlik mashinasi; yaratish mumkin"
+                    ],
+                    correct: 1,
+                    explanation: "Tomson-Plank ta'rifiga ko'ra, sovutkichga issiqlik bermasdan, olingan issiqlikni to'liq mexanik ishga aylantiruvchi ikkinchi tur abadiy dvigatel qurish mumkin emas."
+                },
+                {
+                    q: "4. Issiqlik mashinasi isitkichdan 500 J issiqlik olib, sovutkichga 350 J issiqlik uzatdi. Mashinaning FIK ni toping.",
+                    options: [
+                        "70%",
+                        "30%",
+                        "15%",
+                        "50%"
+                    ],
+                    correct: 1,
+                    explanation: "Foydali ish A = Q₁ - Q₂ = 500 - 350 = 150 J. FIK η = (150 / 500) · 100% = 30%."
+                },
+                {
+                    q: "5. Yopiq tizimlarda o'z-o'zidan sodir bo'ladigan barcha qaytmas jarayonlarda tizimning tartibsizlik darajasi (entropiyasi) qanday o'zgaradi?",
+                    options: [
+                        "Doimo kamayadi",
+                        "O'zgarmay qoladi",
+                        "Doimo ortib boradi",
+                        "Nolga tenglashadi"
+                    ],
+                    correct: 2,
+                    explanation: "Termodinamikaning ikkinchi qonunining statistik mohiyatiga ko'ra, yopiq tizimlar tartibli holatdan tartibsizroq holatga intiladi, ya'ni entropiya ortadi."
+                }
+            ];
+
+            const container = document.getElementById('quiz-container');
+            const scoreText = document.getElementById('score-text');
+            let userAnswers = new Array(questions.length).fill(null);
+
+            function renderQuiz() {
+                container.innerHTML = '';
+                questions.forEach((item, qIdx) => {
+                    const card = document.createElement('div');
+                    card.className = "p-4 sm:p-5 rounded-xl border border-slate-200 bg-slate-50/40 space-y-3";
+
+                    const title = document.createElement('p');
+                    title.className = "font-bold text-slate-900 text-sm sm:text-base";
+                    title.textContent = item.q;
+                    card.appendChild(title);
+
+                    const optsDiv = document.createElement('div');
+                    optsDiv.className = "grid grid-cols-1 gap-2";
+
+                    item.options.forEach((opt, oIdx) => {
+                        const btn = document.createElement('button');
+                        btn.type = "button";
+                        const chosen = userAnswers[qIdx];
+                        let btnStyle = "bg-white hover:bg-indigo-50 border-slate-200 text-slate-700";
+
+                        if (chosen !== null) {
+                            if (oIdx === item.correct) {
+                                btnStyle = "bg-emerald-50 border-emerald-500 text-emerald-900 font-semibold";
+                            } else if (oIdx === chosen && chosen !== item.correct) {
+                                btnStyle = "bg-rose-50 border-rose-500 text-rose-900";
+                            } else {
+                                btnStyle = "bg-white border-slate-200 text-slate-400 opacity-75";
+                            }
+                        }
+
+                        btn.className = `text-left p-3 rounded-lg border text-xs sm:text-sm transition cursor-pointer flex items-center justify-between gap-2 ${btnStyle}`;
+                        btn.innerHTML = `<span>${String.fromCharCode(65 + oIdx)}) ${opt}</span>`;
+
+                        if (chosen !== null) {
+                            if (oIdx === item.correct) {
+                                btn.innerHTML += `<span class="text-emerald-600 font-bold shrink-0">✓ To'g'ri</span>`;
+                            } else if (oIdx === chosen) {
+                                btn.innerHTML += `<span class="text-rose-600 font-bold shrink-0">✕ Xato</span>`;
+                            }
+                        }
+
+                        btn.addEventListener('click', () => {
+                            userAnswers[qIdx] = oIdx;
+                            updateScore();
+                            renderQuiz();
+                        });
+
+                        optsDiv.appendChild(btn);
+                    });
+
+                    card.appendChild(optsDiv);
+
+                    if (userAnswers[qIdx] !== null) {
+                        const exp = document.createElement('div');
+                        const isRight = userAnswers[qIdx] === item.correct;
+                        exp.className = `p-3 rounded-lg text-xs leading-relaxed ${isRight ? 'bg-emerald-100/70 text-emerald-900' : 'bg-amber-50 border border-amber-200 text-amber-950'}`;
+                        exp.innerHTML = `<strong>Izoh:</strong> ${item.explanation}`;
+                        card.appendChild(exp);
+                    }
+
+                    container.appendChild(card);
+                });
+            }
+
+            function updateScore() {
+                let score = 0;
+                userAnswers.forEach((ans, idx) => {
+                    if (ans === questions[idx].correct) score++;
+                });
+                scoreText.textContent = `${score} / ${questions.length}`;
+            }
+
+            renderQuiz();
+        })();
+    </script>
+</body>
+</html>

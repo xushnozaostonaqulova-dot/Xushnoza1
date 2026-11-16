@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Yoqilg’ining solishtirma yonish issiqligi</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1b2a41;--mut:#5b6b80;--fl:#ff6b1a;--fl2:#ffc233;--wt:#2a9d8f;--ok:#2e8b57;--bad:#c0392b;--line:#d5dde6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--wt:#47c1b2}}
+:root[data-theme="dark"]{--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--wt:#47c1b2}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Onest,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:26px;line-height:1.15;margin:8px 0 6px;font-weight:800}
+h2{font-size:20px;margin:0 0 8px;font-weight:800}
+p{margin:0 0 10px}
+.sub{color:var(--mut);margin-bottom:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.formula{font-size:28px;font-weight:800;text-align:center;padding:10px;border-radius:10px;background:var(--bg);margin:10px 0}
+.formula small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+button,input{font:inherit;color:inherit}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:20px;padding:6px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--fl);border-color:var(--fl);color:#fff}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--fl2);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--fl)}
+.stage{display:flex;align-items:flex-end;justify-content:space-around;background:linear-gradient(var(--bg),var(--card));border-radius:12px;padding:10px 4px 0;min-height:200px}
+.flame{transform-origin:50% 100%;transform:scaleY(var(--s,.5));transition:transform .3s}
+.flame.on .f1{animation:fl .5s ease-in-out infinite alternate}
+.flame.on .f2{animation:fl .35s ease-in-out infinite alternate-reverse}
+@keyframes fl{from{transform:scale(.92,1.05)}to{transform:scale(1.06,.92)}}
+.f1,.f2{transform-box:fill-box;transform-origin:50% 100%}
+.read{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.read div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.read b{display:block;font-size:20px}
+.read span{font-size:13px;color:var(--mut)}
+.bar{display:grid;grid-template-columns:96px 1fr 44px;gap:8px;align-items:center;margin:6px 0;font-size:14px}
+.bar i{display:block;height:16px;border-radius:8px;background:linear-gradient(90deg,var(--fl2),var(--fl));width:0;transition:width 1.2s cubic-bezier(.2,.8,.2,1)}
+.scene{text-align:center;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--bg);border-radius:12px;padding:14px}
+.big{font-size:64px;line-height:1.1;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) scale(1.06)}}
+.prog{height:5px;background:var(--line);border-radius:3px;margin:10px 0;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--fl)}
+.q{border-top:1px solid var(--line);padding:12px 0}
+.q:first-of-type{border-top:0}
+.ans{display:none;margin-top:6px;padding:8px 10px;border-radius:8px;background:var(--bg);color:var(--ok)}
+.ans.show{display:block}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+input[type=number]{width:120px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.fb{font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>Yoqilg’ining solishtirma yonish issiqligi</h1>
+<p class="sub">9-sinf fizikasi · 21-mavzu · animatsion simulyatsiyalar, savol va topshiriqlar</p>
+
+<section>
+<h2>Asosiy tushuncha</h2>
+<p>Yoqilg’i (o’tin, ko’mir, benzin, gaz) yonganda issiqlik ajraladi. Bir xil massadagi turli yoqilg’ilar turlicha issiqlik beradi. Buni o’lchash uchun <b>solishtirma yonish issiqligi</b> kiritilgan.</p>
+<p><b>Ta’rif:</b> massasi 1 kg bo’lgan yoqilg’i to’liq yonganda ajralib chiqadigan issiqlik miqdoriga teng fizik kattalik.</p>
+<div class="formula">Q = q · m<small>Q — ajralgan issiqlik (J), q — solishtirma yonish issiqligi (J/kg), m — yoqilg’i massasi (kg)</small></div>
+<p>Birligi: <b>J/kg</b>. Masalan, benzinning q = 4,6·10⁷ J/kg: 1 kg benzin yonsa, 46 000 000 J = 46 MJ issiqlik ajraladi.</p>
+</section>
+
+<section>
+<h2>1-simulyatsiya: yoqilg’ini yoqamiz</h2>
+<p>Yoqilg’ini tanlang, massasini belgilang va «Yoqish» tugmasini bosing. Ajralgan issiqlik 100 kg suvni isitadi (issiqlik yo’qotilmaydi deb olamiz, c = 4200 J/(kg·°C)).</p>
+<div class="chips" id="chips" role="group" aria-label="Yoqilg’i turi"></div>
+<label for="mass">Massa: <b id="mv">1,0</b> kg</label>
+<input id="mass" type="range" min="0.1" max="5" step="0.1" value="1">
+<div class="stage">
+<svg viewBox="0 0 120 190" width="120" height="190" aria-label="Yonayotgan yoqilg’i">
+<g id="fuelBox"></g>
+<g class="flame" id="flame" style="--s:.5"><path class="f1" d="M60 150C28 130 40 98 60 60 82 98 92 130 60 150Z" fill="#ff6b1a"/><path class="f2" d="M60 150C45 138 50 118 60 100 72 118 76 138 60 150Z" fill="#ffc233"/></g>
+<rect x="18" y="150" width="84" height="10" rx="4" fill="#7a5c3a"/>
+</svg>
+<svg viewBox="0 0 130 190" width="130" height="190" aria-label="Suvli idish va termometr">
+<rect x="14" y="60" width="86" height="120" rx="8" fill="none" stroke="#8aa0b6" stroke-width="3"/>
+<rect id="water" x="17" y="70" width="80" height="107" rx="5" fill="#2a9d8f" opacity=".8"/>
+<rect x="108" y="30" width="10" height="130" rx="5" fill="none" stroke="#8aa0b6" stroke-width="2"/>
+<rect id="mer" x="111" y="150" width="4" height="8" rx="2" fill="#c0392b"/>
+</svg>
+</div>
+<div class="row"><button class="btn" id="go">Yoqish</button><button class="chip" id="rs">Qayta</button></div>
+<div class="read">
+<div><b id="rQ">10 MJ</b><span>ajralgan issiqlik Q</span></div>
+<div><b id="rT">20 °C</b><span>suv harorati (boshida 20 °C)</span></div>
+<div><b id="rM">1,0 kg</b><span>qolgan yoqilg’i</span></div>
+<div><b id="rD">+24 °C</b><span>isish Δt = Q / (c·m)</span></div>
+</div>
+</section>
+
+<section>
+<h2>2-simulyatsiya: 1 kg yoqilg’ini solishtiramiz</h2>
+<p>Ustunlar uzun bo’lsa, 1 kg yoqilg’i ko’p issiqlik beradi. Eng kuchlisi qaysi?</p>
+<div id="bars"></div>
+<button class="btn" id="replay">Qayta ko’rsatish</button>
+</section>
+
+<section>
+<h2>Video-animatsiya: 5 sahnada dars</h2>
+<div class="scene" aria-live="polite"><div class="big" id="sIc">🪵</div><p id="sTx" style="margin-top:10px;font-weight:600"></p></div>
+<div class="prog"><i id="sPr"></i></div>
+<div class="row"><button class="btn" id="sPlay">▶ Boshlash</button><button class="chip" id="sNext">Keyingi sahna</button><span id="sNo" style="color:var(--mut)">1/5</span></div>
+</section>
+
+<section>
+<h2>Masalalar</h2>
+<div class="q"><p><b>1.</b> 2 kg benzin (q = 4,6·10⁷ J/kg) to’liq yondi. Necha MJ issiqlik ajraladi?</p><div class="row"><input type="number" id="a1" inputmode="decimal" aria-label="Javob MJ"> MJ <button class="btn" data-k="1" data-v="92">Tekshirish</button><span class="fb" id="f1"></span></div></div>
+<div class="q"><p><b>2.</b> 0,5 kg spirt (q = 2,7·10⁷ J/kg) yondi. Ajralgan issiqlikni MJ da toping.</p><div class="row"><input type="number" id="a2" inputmode="decimal" aria-label="Javob MJ"> MJ <button class="btn" data-k="2" data-v="13.5">Tekshirish</button><span class="fb" id="f2"></span></div></div>
+<div class="q"><p><b>3.</b> 88 MJ issiqlik olish uchun necha kg tabiiy gaz (q = 4,4·10⁷ J/kg) yoqish kerak?</p><div class="row"><input type="number" id="a3" inputmode="decimal" aria-label="Javob kg"> kg <button class="btn" data-k="3" data-v="2">Tekshirish</button><span class="fb" id="f3"></span></div></div>
+<div class="q"><p><b>4.</b> 4 kg quruq o’tin (q = 1·10⁷ J/kg) yondi. Bu issiqlik 100 kg suvni necha °C ga isitadi? (c = 4200 J/(kg·°C))</p><div class="row"><input type="number" id="a4" inputmode="decimal" aria-label="Javob °C"> °C <button class="btn" data-k="4" data-v="95.2">Tekshirish</button><span class="fb" id="f4"></span></div></div>
+</section>
+
+<section>
+<h2>Savollar</h2>
+<div class="q"><p><b>1.</b> Solishtirma yonish issiqligi nimani bildiradi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">1 kg yoqilg’i to’liq yonganda ajraladigan issiqlik miqdorini.</div></div>
+<div class="q"><p><b>2.</b> Uning o’lchov birligi nima?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">J/kg (joul / kilogramm).</div></div>
+<div class="q"><p><b>3.</b> Nima uchun benzin o’tindan samaraliroq yoqilg’i?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Benzinning q si katta (4,6·10⁷ va 1·10⁷ J/kg): bir xil massada u taxminan 4,6 marta ko’p issiqlik beradi.</div></div>
+<div class="q"><p><b>4.</b> Yoqilg’i massasi 2 marta oshsa, Q qanday o’zgaradi? q-chi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Q ham 2 marta ortadi (Q = q·m). q esa o’zgarmaydi, chunki u moddaning xarakteristikasi.</div></div>
+<div class="q"><p><b>5.</b> Real pechkada ajralgan issiqlikning hammasi suvga o’tadimi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Yo’q. Issiqlikning bir qismi havoga, idish va pechkaga ketadi. Shuning uchun amalda suv kamroq isiydi.</div></div>
+</section>
+</main>
+<script>
+var F=[["Quruq o’tin",10,"🪵"],["Toshko’mir",27,"⚫"],["Spirt",27,"🧪"],["Benzin",46,"⛽"],["Tabiiy gaz",44,"🔥"],["Vodorod",120,"💨"]];
+var cur=3,run=0,$=function(i){return document.getElementById(i)};
+function f1(x){return x.toFixed(1).replace(".",",")}
+var ch=$("chips");
+F.forEach(function(f,i){var b=document.createElement("button");b.className="chip";b.textContent=f[2]+" "+f[0];b.onclick=function(){cur=i;reset()};ch.appendChild(b)});
+function box(m){var h=Math.max(6,m*14);$("fuelBox").innerHTML='<rect x="30" y="'+(150-h)+'" width="60" height="'+h+'" rx="4" fill="#8a6a45"/>'}
+function calc(){var m=parseFloat($("mass").value),Q=F[cur][1]*m,d=Q*1e6/(4200*100);return{m:m,Q:Q,d:d}}
+function paint(p){var c=calc(),rem=c.m*(1-p),T=20+c.d*p;
+$("mv").textContent=f1(c.m);$("rQ").textContent=f1(c.Q)+" MJ";$("rM").textContent=f1(rem)+" kg";
+$("rT").textContent=Math.round(T)+" °C";$("rD").textContent="+"+Math.round(c.d)+" °C";
+box(rem);var s=p>0&&p<1?Math.min(1.2,.35+c.Q/60):.05;$("flame").style.setProperty("--s",s);$("flame").className="flame"+(p>0&&p<1?" on":"");
+var hu=200-Math.min(180,T*1.4);$("water").setAttribute("fill","hsl("+Math.max(0,hu)+",65%,45%)");
+var hh=8+Math.min(120,(T-20)*1.2+0);$("mer").setAttribute("y",158-hh);$("mer").setAttribute("height",hh)}
+function reset(){run++;var cs=ch.children;for(var i=0;i<cs.length;i++)cs[i].setAttribute("aria-pressed",i==cur);paint(0)}
+$("mass").oninput=reset;$("rs").onclick=reset;
+$("go").onclick=function(){var id=++run,t0=performance.now();(function st(t){if(id!=run)return;var p=Math.min(1,(t-t0)/4000);paint(p);if(p<1)requestAnimationFrame(st)})(t0)};
+reset();
+function bars(){var b=$("bars");b.innerHTML="";F.forEach(function(f){var d=document.createElement("div");d.className="bar";d.innerHTML="<span>"+f[2]+" "+f[0]+"</span><div><i></i></div><b>"+f[1]+"</b>";b.appendChild(d)});
+setTimeout(function(){var is=b.querySelectorAll("i");F.forEach(function(f,i){is[i].style.width=(f[1]/120*100)+"%"})},60)}
+bars();$("replay").onclick=bars;
+var S=[["🪵⛽","Yoqilg’i — yonganda issiqlik beradigan modda: o’tin, ko’mir, benzin, gaz."],["🔥","Yonish — kimyoviy jarayon. Unda yoqilg’ining ichki energiyasi issiqlikka aylanadi."],["⚖️","1 kg yoqilg’i to’liq yonganda ajraladigan issiqlik — solishtirma yonish issiqligi q (J/kg)."],["✖️","m kg yoqilg’i uchun: Q = q · m. Massa 2 marta ko’p bo’lsa, issiqlik ham 2 marta ko’p."],["🫕","Misol: 2 kg benzin → Q = 4,6·10⁷ · 2 = 9,2·10⁷ J = 92 MJ. Bu juda ko’p suvni isita oladi!"]];
+var si=0,tm=null,pw=0;
+function scene(){$("sIc").textContent=S[si][0];$("sTx").textContent=S[si][1];$("sNo").textContent=(si+1)+"/5";$("sPr").style.width=((si+1)/5*100)+"%"}
+function nx(){si=(si+1)%5;scene()}
+$("sNext").onclick=nx;
+$("sPlay").onclick=function(){if(tm){clearInterval(tm);tm=null;this.textContent="▶ Boshlash"}else{tm=setInterval(nx,5000);this.textContent="⏸ To’xtatish"}};
+scene();
+document.querySelectorAll("[data-k]").forEach(function(b){b.onclick=function(){var k=b.dataset.k,v=parseFloat(b.dataset.v),x=parseFloat($("a"+k).value.replace(",",".")),f=$("f"+k);
+if(isNaN(x)){f.textContent="Son kiriting";f.style.color="var(--mut)";return}
+if(Math.abs(x-v)<=Math.max(.5,v*.03)*(k==4?1:.04)+(k==4?0.3:0)||Math.abs(x-v)<.06){f.textContent="✓ To’g’ri! "+String(v).replace(".",",");f.style.color="var(--ok)"}else{f.textContent="✗ Qayta urining. Q = q·m ni eslang";f.style.color="var(--bad)"}}});
+document.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){b.nextElementSibling.classList.toggle("show")}});
+</script>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — 25-mavzu | Laboratoriya ishi</title>
+<style>
+:root{--navy:#10243b;--blue:#1769aa;--cyan:#39bde0;--orange:#f28b35;--red:#e85d4a;--ink:#203044;--muted:#64748b;--paper:#f3f7fb;--white:#fff;--green:#16865b}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 Arial,sans-serif}
+header{background:linear-gradient(120deg,#10243b,#1769aa 65%,#39bde0);color:white;padding:36px 20px}
+.hero{max-width:1100px;margin:auto}.tag{display:inline-block;border:1px solid #ffffff70;border-radius:30px;padding:4px 12px;font-size:13px}
+h1{font-size:clamp(27px,4vw,42px);line-height:1.2;margin:16px 0 10px}header p{max-width:800px;color:#e7f5ff}
+nav{position:sticky;top:0;background:#fff;z-index:5;box-shadow:0 2px 10px #10243b18;display:flex;gap:8px;overflow:auto;padding:10px max(16px,calc((100% - 1100px)/2))}
+nav a{white-space:nowrap;text-decoration:none;color:var(--blue);font-weight:bold;padding:7px 11px;border-radius:20px;font-size:14px}nav a:hover{background:#e8f4fc}
+main{max-width:1100px;margin:26px auto;padding:0 18px}.card{background:white;border-radius:17px;padding:24px;margin:18px 0;box-shadow:0 5px 22px #10243b0b;border:1px solid #e5edf5}
+h2{color:#123e66;margin-top:0;font-size:25px}h3{color:#1769aa;margin-bottom:6px}.lead{font-size:18px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.mini{background:#f3f8fc;border-radius:12px;padding:15px}.formula{background:#10243b;color:white;border-radius:12px;padding:18px;text-align:center;font-size:22px;font-weight:bold;margin:14px 0}
+.note{border-left:4px solid var(--cyan);background:#eef9fd;padding:13px 16px;border-radius:8px;margin:14px 0}.warn{border-left-color:var(--orange);background:#fff7ed}
+button{border:0;border-radius:10px;background:var(--blue);color:white;padding:10px 16px;font-weight:bold;cursor:pointer;margin:5px 4px 5px 0}button:hover{filter:brightness(1.1)}button.secondary{background:#e8f1f8;color:#164d78}
+label{display:block;font-weight:bold;margin:8px 0 3px}input[type=number]{width:100%;padding:10px;border:1px solid #cbd8e5;border-radius:9px;font-size:16px}
+.labgrid{display:grid;grid-template-columns: minmax(260px, .9fr) minmax(300px,1.1fr);gap:20px;align-items:center}
+.visual{background:linear-gradient(#eaf7ff,#f8fcff);border:1px solid #d7eaf6;border-radius:16px;padding:18px;text-align:center;min-height:270px}
+.beakers{display:flex;justify-content:center;align-items:end;gap:34px;height:175px;padding-top:10px}
+.beaker{width:90px;height:140px;border:4px solid #8ba9bc;border-top:0;border-radius:0 0 18px 18px;position:relative;overflow:hidden;background:#ffffff80}
+.water{position:absolute;bottom:0;left:0;width:100%;height:70%;background:linear-gradient(#ffb45d,#ed6d32);transition:background .5s,height .5s}
+.beaker.cold .water{background:linear-gradient(#7ee0f5,#258cc9)}
+.beaker.mix .water{background:linear-gradient(#ffcf82,#4eb9d4);height:68%}
+.thermo{font-size:13px;color:#40576c;margin-top:7px;font-weight:bold}
+.particles{position:absolute;inset:0;pointer-events:none}
+.dot{position:absolute;width:7px;height:7px;border-radius:50%;background:#fff9;animation:float 2s infinite alternate ease-in-out}
+@keyframes float{from{transform:translate(0,0)}to{transform:translate(8px,-13px)}}
+@keyframes pour{0%{transform:rotate(0)}45%{transform:rotate(55deg)}100%{transform:rotate(0)}}
+.pouring{animation:pour 1.2s ease-in-out 2}
+canvas{width:100%;max-width:100%;background:#f7fbff;border-radius:12px;border:1px solid #e0edf5}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid #d9e3ec;padding:9px;text-align:center}th{background:#eaf3fa}
+.quizq{padding:14px;border:1px solid #e2eaf1;border-radius:12px;margin:12px 0}.answer{display:block;margin:5px 0;font-weight:normal}.feedback{font-weight:bold;margin-top:8px}
+footer{text-align:center;color:#64748b;padding:28px}
+@media(max-width:700px){.labgrid{grid-template-columns:1fr}.card{padding:18px}.beakers{gap:18px}}
+</style>
+</head>
+<body>
+<header><div class="hero">
+<span class="tag">9-SINF FIZIKA · II BOB · 25-MAVZU</span>
+<h1>Laboratoriya ishi: Turli temperaturali suv aralashtirilganda issiqlik miqdorlarini taqqoslash</h1>
+<p>Virtual tajriba, animatsion tushuntirish, hisoblash, nazorat savollari va mustaqil topshiriqlar bilan interaktiv dars.</p>
+</div></header>
+<nav>
+<a href="#maqsad">Dars maqsadi</a><a href="#nazariya">Nazariya</a><a href="#animatsiya">Animatsiya</a><a href="#laboratoriya">Virtual laboratoriya</a><a href="#hisob">Hisoblash</a><a href="#savollar">Savollar</a><a href="#xulosa">Xulosa</a>
+</nav>
+<main>
+<section class="card" id="maqsad">
+<h2>Dars rejasi va maqsadi</h2>
+<div class="grid">
+<div class="mini"><b>1.</b> Issiqlik almashinuvi va issiqlik miqdori.</div>
+<div class="mini"><b>2.</b> Turli temperaturali suvlarni aralashtirish.</div>
+<div class="mini"><b>3.</b> Issiqlik balansi tenglamasi.</div>
+<div class="mini"><b>4.</b> Tajriba o‘tkazish va natijalarni taqqoslash.</div>
+</div>
+<p class="lead">Dars yakunida o‘quvchi issiq suv bergan issiqlik miqdori bilan sovuq suv olgan issiqlik miqdorini taqqoslaydi, aralashmaning yakuniy temperaturasini o‘lchaydi va tajriba natijasini izohlaydi.</p>
+<h3>Kerakli jihozlar</h3>
+<p>Ikki idish, issiq suv, sovuq suv, termometr, menzurka yoki o‘lchov silindri, aralashtirish uchun tayoqcha, issiqlikni kam o‘tkazuvchi idish (kalorimetr), sochiq yoki qo‘lqop.</p>
+<div class="note warn"><b>Xavfsizlik:</b> qaynoq suv ishlatmang. Issiq suvni o‘qituvchi nazoratida quying, idishni ehtiyotkorlik bilan ushlang va termometrni urib yubormang.</div>
+</section>
+
+<section class="card" id="nazariya">
+<h2>1. Issiqlik almashinuvi va issiqlik miqdori</h2>
+<p>Temperaturasi yuqori jismdan temperaturasi past jismga energiya uzatilishi <b>issiqlik almashinuvi</b> deyiladi. Suvlar aralashtirilganda issiq suv soviydi, sovuq suv esa isiydi. Jarayon suvlarning temperaturasi tenglashguncha davom etadi.</p>
+<p>Jism olgan yoki bergan issiqlik miqdori quyidagi formula bilan aniqlanadi:</p>
+<div class="formula">Q = c · m · Δt</div>
+<ul><li><b>Q</b> — issiqlik miqdori, jou (J);</li><li><b>c</b> — solishtirma issiqlik sig‘imi, J/(kg·°C);</li><li><b>m</b> — massa, kg;</li><li><b>Δt</b> — temperatura o‘zgarishi, °C.</li></ul>
+<p>Suv uchun solishtirma issiqlik sig‘imi taxminan <b>c = 4200 J/(kg·°C)</b>. Temperaturasi pasaygan suv issiqlik beradi, temperaturasi oshgan suv esa issiqlik oladi.</p>
+<div class="note"><b>Esda tuting:</b> bir xil massali suvning temperaturasini 1 °C ga oshirish uchun taxminan 4200 J issiqlik kerak bo‘ladi.</div>
+<h3>2. Suvlarni aralashtirish jarayoni</h3>
+<p>Issiq suvning temperaturasi t₁, massasi m₁; sovuq suvning temperaturasi t₂, massasi m₂ bo‘lsin. Issiq suvdan sovuq suvga energiya o‘tadi. Issiqlik yo‘qotilishi bo‘lmagan ideal holatda issiq suv bergan issiqlik sovuq suv olgan issiqlikka teng:</p>
+<div class="formula">Q<sub>berilgan</sub> = Q<sub>olingan</sub></div>
+<div class="formula">c m₁ (t₁ − t) = c m₂ (t − t₂)</div>
+<p>Bu yerda <b>t</b> — aralashmaning umumiy muvozanat temperaturasi. Suvlar bir xil modda bo‘lgani uchun c qisqaradi. Shundan:</p>
+<div class="formula">t = (m₁t₁ + m₂t₂) / (m₁ + m₂)</div>
+<p>Agar suv zichligi deyarli 1 kg/L deb olinsa, 1 litr suvning massasi taxminan 1 kg bo‘ladi.</p>
+<h3>3. Issiqlik balansi qonuni</h3>
+<p>Yopiq, tashqi muhit bilan issiqlik almashmaydigan tizimda jismlar bergan issiqlik miqdorlarining yig‘indisi olgan issiqlik miqdorlarining yig‘indisiga teng. Haqiqiy tajribada idish va atrof-muhit ham issiqlik almashinuvida qatnashishi mumkin. Shu sababli o‘lchangan natija nazariy qiymatdan biroz farq qiladi.</p>
+</section>
+
+<section class="card" id="animatsiya">
+<h2>Animatsion tushuntirish: issiqlik qayerga uzatiladi?</h2>
+<p>Quyidagi animatsiyada issiq suv molekulalari tezroq, sovuq suv molekulalari sekinroq harakatlanishi shartli ravishda ko‘rsatilgan. Aralashtirishdan so‘ng energiya almashinuvi tufayli temperaturalar yaqinlashadi.</p>
+<div class="visual">
+<div class="beakers">
+<div><div class="beaker"><div class="water"><div class="particles"><i class="dot" style="left:15%;top:25%"></i><i class="dot" style="left:55%;top:45%"></i><i class="dot" style="left:35%;top:65%"></i><i class="dot" style="left:75%;top:20%"></i></div></div></div><div class="thermo">ISSIQ SUV · 80°C</div></div>
+<div style="font-size:28px;color:#1769aa">➜</div>
+<div><div class="beaker cold"><div class="water"><div class="particles"><i class="dot" style="left:15%;top:25%"></i><i class="dot" style="left:55%;top:45%"></i><i class="dot" style="left:35%;top:65%"></i></div></div></div><div class="thermo">SOVUQ SUV · 20°C</div></div>
+<div style="font-size:28px;color:#1769aa">➜</div>
+<div><div class="beaker mix"><div class="water"><div class="particles"><i class="dot" style="left:15%;top:25%"></i><i class="dot" style="left:55%;top:45%"></i><i class="dot" style="left:35%;top:65%"></i><i class="dot" style="left:75%;top:20%"></i></div></div></div><div class="thermo">ARALASHMA · 50°C*</div></div>
+</div>
+<p><small>* Teng massali suvlar uchun nazariy misol.</small></p>
+<button onclick="animateMix()">Aralashtirish animatsiyasini boshlash</button>
+<p id="animText" aria-live="polite">Avval ikki suvning temperaturasi turlicha.</p>
+</div>
+<h3>Animatsiyani kuzatish savollari</h3>
+<ol><li>Qaysi suv issiqlik beradi?</li><li>Qaysi suv issiqlik oladi?</li><li>Nima uchun jarayon temperaturalar tenglashganda to‘xtaydi?</li></ol>
+</section>
+
+<section class="card" id="laboratoriya">
+<h2>Virtual laboratoriya</h2>
+<p>Qiymatlarni o‘zgartiring va “Tajribani bajarish” tugmasini bosing. Dastur nazariy muvozanat temperaturasini hisoblaydi.</p>
+<div class="labgrid">
+<div>
+<label for="hotMass">Issiq suv massasi (kg)</label><input id="hotMass" type="number" min="0.05" step="0.05" value="0.20">
+<label for="hotTemp">Issiq suv temperaturasi (°C)</label><input id="hotTemp" type="number" min="1" max="99" value="80">
+<label for="coldMass">Sovuq suv massasi (kg)</label><input id="coldMass" type="number" min="0.05" step="0.05" value="0.20">
+<label for="coldTemp">Sovuq suv temperaturasi (°C)</label><input id="coldTemp" type="number" min="0" max="98" value="20">
+<button onclick="runLab()">Tajribani bajarish</button><button class="secondary" onclick="resetLab()">Boshlang‘ich qiymatlar</button>
+<div id="labResult" class="note" aria-live="polite">Tajriba natijasi shu yerda ko‘rsatiladi.</div>
+</div>
+<div class="visual">
+<div class="beakers">
+<div><div class="beaker" id="hotBeaker"><div class="water"></div></div><div class="thermo" id="hotLabel">ISSIQ SUV</div></div>
+<div style="font-size:25px">＋</div>
+<div><div class="beaker cold" id="coldBeaker"><div class="water"></div></div><div class="thermo" id="coldLabel">SOVUQ SUV</div></div>
+<div style="font-size:25px">➜</div>
+<div><div class="beaker mix" id="mixBeaker"><div class="water"></div></div><div class="thermo" id="mixLabel">ARALASHMA</div></div>
+</div>
+<p id="labCaption">Suvlar aralashtirilgach, umumiy temperatura hosil bo‘ladi.</p>
+</div>
+</div>
+</section>
+
+<section class="card" id="hisob">
+<h2>Hisoblash namunasi</h2>
+<p><b>Berilgan:</b> m₁ = 0,2 kg; t₁ = 80°C; m₂ = 0,2 kg; t₂ = 20°C; c = 4200 J/(kg·°C).</p>
+<p>Aralashma temperaturasi:</p>
+<div class="formula">t = (0,2 · 80 + 0,2 · 20) / (0,2 + 0,2) = 50°C</div>
+<p>Issiq suv bergan issiqlik:</p>
+<div class="formula">Q₁ = 4200 · 0,2 · (80 − 50) = 25 200 J</div>
+<p>Sovuq suv olgan issiqlik:</p>
+<div class="formula">Q₂ = 4200 · 0,2 · (50 − 20) = 25 200 J</div>
+<div class="note"><b>Natija:</b> ideal sharoitda Q₁ = Q₂. Demak, issiq suv bergan issiqlik miqdori sovuq suv olgan issiqlik miqdoriga teng.</div>
+<h3>Mustaqil hisoblash</h3>
+<p>0,3 kg suv 70°C dan 40°C gacha sovidi. U qancha issiqlik berdi? (c = 4200 J/(kg·°C))</p>
+<button class="secondary" onclick="document.getElementById('calcAnswer').hidden=false">Javobni ko‘rish</button>
+<p id="calcAnswer" hidden><b>Yechish:</b> Q = 4200 · 0,3 · (70 − 40) = <b>37 800 J</b>.</p>
+</section>
+
+<section class="card">
+<h2>Laboratoriya ishini bajarish tartibi</h2>
+<ol>
+<li>Kalorimetr yoki issiqlikni kam o‘tkazuvchi idishga ma’lum miqdorda sovuq suv quying.</li>
+<li>Suv massasini (yoki hajmini) aniqlang va temperaturasini termometr bilan o‘lchang.</li>
+<li>Boshqa idishdagi issiq suv massasini va temperaturasini aniqlang.</li>
+<li>Issiq suvni sovuq suv solingan idishga ehtiyotkorlik bilan quying.</li>
+<li>Aralashmani sekin aralashtiring va temperatura barqarorlashgach, yakuniy temperaturani yozib oling.</li>
+<li>Issiq suv bergan va sovuq suv olgan issiqlik miqdorlarini hisoblang.</li>
+<li>Natijalarni taqqoslab, farq sabablarini izohlang.</li>
+</ol>
+<h3>O‘lchash natijalari jadvali</h3>
+<table><tr><th>Kattalik</th><th>Belgilanishi</th><th>Qiymat</th></tr>
+<tr><td>Issiq suv massasi</td><td>m₁</td><td>________ kg</td></tr>
+<tr><td>Issiq suv temperaturasi</td><td>t₁</td><td>________ °C</td></tr>
+<tr><td>Sovuq suv massasi</td><td>m₂</td><td>________ kg</td></tr>
+<tr><td>Sovuq suv temperaturasi</td><td>t₂</td><td>________ °C</td></tr>
+<tr><td>Aralashma temperaturasi</td><td>t</td><td>________ °C</td></tr>
+<tr><td>Issiq suv bergan issiqlik</td><td>Q₁</td><td>________ J</td></tr>
+<tr><td>Sovuq suv olgan issiqlik</td><td>Q₂</td><td>________ J</td></tr>
+</table>
+</section>
+
+<section class="card" id="savollar">
+<h2>Mustahkamlash: savol va topshiriqlar</h2>
+<div class="quizq"><b>1. Issiq va sovuq suv aralashtirilganda issiqlik qaysi yo‘nalishda uzatiladi?</b>
+<label class="answer"><input type="radio" name="q1" value="a"> Sovuq suvdan issiq suvga</label>
+<label class="answer"><input type="radio" name="q1" value="b"> Issiq suvdan sovuq suvga</label>
+<label class="answer"><input type="radio" name="q1" value="c"> Hech qanday issiqlik uzatilmaydi</label><div id="f1" class="feedback"></div></div>
+<div class="quizq"><b>2. Suvning solishtirma issiqlik sig‘imi taxminan qancha?</b>
+<label class="answer"><input type="radio" name="q2" value="a"> 420 J/(kg·°C)</label>
+<label class="answer"><input type="radio" name="q2" value="b"> 4200 J/(kg·°C)</label>
+<label class="answer"><input type="radio" name="q2" value="c"> 42 000 J/(kg·°C)</label><div id="f2" class="feedback"></div></div>
+<div class="quizq"><b>3. Ideal issiqlik almashinuvida qanday tenglik bajariladi?</b>
+<label class="answer"><input type="radio" name="q3" value="a"> Q<sub>berilgan</sub> = Q<sub>olingan</sub></label>
+<label class="answer"><input type="radio" name="q3" value="b"> Q<sub>berilgan</sub> = 0</label>
+<label class="answer"><input type="radio" name="q3" value="c"> Q<sub>olingan</sub> har doim 2 baravar katta</label><div id="f3" class="feedback"></div></div>
+<div class="quizq"><b>4. Teng massali 60°C va 20°C suv aralashtirilsa, ideal holatda yakuniy temperatura qancha bo‘ladi?</b>
+<label class="answer"><input type="radio" name="q4" value="a"> 20°C</label>
+<label class="answer"><input type="radio" name="q4" value="b"> 30°C</label>
+<label class="answer"><input type="radio" name="q4" value="c"> 40°C</label><div id="f4" class="feedback"></div></div>
+<button onclick="checkQuiz()">Javoblarni tekshirish</button><button class="secondary" onclick="resetQuiz()">Qayta ishlash</button>
+<p id="score" aria-live="polite"></p>
+<h3>Ijodiy topshiriq</h3>
+<ol><li>Bir xil massadagi issiq va sovuq suv o‘rniga massalari turlicha suvlarni aralashtiring. Yakuniy temperatura qanday o‘zgaradi?</li><li>Nima sababdan haqiqiy tajribada Q₁ va Q₂ qiymatlari aynan teng chiqmasligi mumkin?</li><li>Issiqlik yo‘qotilishini kamaytirish uchun tajribada qanday choralar ko‘rish kerak?</li></ol>
+</section>
+
+<section class="card" id="xulosa">
+<h2>Dars yakuni va xulosa</h2>
+<p>Turli temperaturali suvlar aralashtirilganda issiqlik issiq suvdan sovuq suvga uzatiladi. Natijada issiq suv soviydi, sovuq suv isiydi va ular umumiy muvozanat temperaturasiga keladi. Ideal sharoitda issiq suv bergan issiqlik miqdori sovuq suv olgan issiqlik miqdoriga teng:</p>
+<div class="formula">Q₁ = Q₂</div>
+<p>Haqiqiy tajribada idishning qizishi va atrof-muhitga issiqlik tarqalishi sababli natijalar biroz farq qilishi mumkin. O‘lchashdagi xatoliklar ham hisobga olinadi.</p>
+<div class="note"><b>O‘zingizni baholang:</b> Men issiqlik almashinuvi yo‘nalishini tushuntira olaman; Q = cmΔt formulasidan foydalana olaman; tajriba natijalarini taqqoslay olaman; issiqlik balansi bo‘yicha xulosa chiqara olaman.</div>
+</section>
+</main>
+<footer>9-sinf fizika · II bob · 25-mavzu · Interaktiv elektron dars materiali</footer>
+<script>
+function animateMix(){
+ const text=document.getElementById('animText');
+ text.textContent='1-bosqich: issiq suv energiya bera boshlaydi...';
+ document.querySelectorAll('.beaker').forEach(x=>x.classList.add('pouring'));
+ setTimeout(()=>text.textContent='2-bosqich: sovuq suv issiqlik oladi va uning temperaturasi ko‘tariladi.',1300);
+ setTimeout(()=>{text.textContent='3-bosqich: suvlar muvozanat temperaturasiga yaqinlashadi. Issiqlik almashinuvi davomida energiya issiq suvdan sovuq suvga o‘tadi.';document.querySelectorAll('.beaker').forEach(x=>x.classList.remove('pouring'));},2800);
+}
+function runLab(){
+ const m1=+document.getElementById('hotMass').value,t1=+document.getElementById('hotTemp').value,m2=+document.getElementById('coldMass').value,t2=+document.getElementById('coldTemp').value;
+ const out=document.getElementById('labResult');
+ if(!(m1>0&&m2>0&&t1>t2&&t1<=100&&t2>=0)){out.innerHTML='<b>Xatolik:</b> massalar musbat bo‘lsin, issiq suv temperaturasi sovuq suvnikidan yuqori bo‘lsin va temperaturalar 0–100°C oralig‘ida bo‘lsin.';return;}
+ const t=(m1*t1+m2*t2)/(m1+m2),c=4200,Q1=c*m1*(t1-t),Q2=c*m2*(t-t2);
+ out.innerHTML='<b>Hisoblangan muvozanat temperaturasi:</b> '+t.toFixed(2)+' °C<br><b>Issiq suv bergan issiqlik:</b> '+Q1.toFixed(0)+' J<br><b>Sovuq suv olgan issiqlik:</b> '+Q2.toFixed(0)+' J<br><b>Taqqoslash:</b> ideal modelda Q₁ = Q₂.';
+ document.getElementById('hotLabel').textContent='ISSIQ · '+t1+'°C';
+ document.getElementById('coldLabel').textContent='SOVUQ · '+t2+'°C';
+ document.getElementById('mixLabel').textContent='ARALASHMA · '+t.toFixed(1)+'°C';
+ document.getElementById('labCaption').textContent='Nazariy yakuniy temperatura: '+t.toFixed(2)+'°C. Bu natija idish va tashqi muhit issiqlik almashinuvini hisobga olmaydi.';
+ document.getElementById('mixBeaker').classList.add('pouring');setTimeout(()=>document.getElementById('mixBeaker').classList.remove('pouring'),1800);
+}
+function resetLab(){document.getElementById('hotMass').value=.2;document.getElementById('hotTemp').value=80;document.getElementById('coldMass').value=.2;document.getElementById('coldTemp').value=20;document.getElementById('labResult').textContent='Tajriba natijasi shu yerda ko‘rsatiladi.';document.getElementById('hotLabel').textContent='ISSIQ SUV';document.getElementById('coldLabel').textContent='SOVUQ SUV';document.getElementById('mixLabel').textContent='ARALASHMA';document.getElementById('labCaption').textContent='Suvlar aralashtirilgach, umumiy temperatura hosil bo‘ladi.'}
+const correct={q1:'b',q2:'b',q3:'a',q4:'c'};
+function checkQuiz(){let s=0;Object.keys(correct).forEach((q,i)=>{let v=document.querySelector('input[name="'+q+'"]:checked');let f=document.getElementById('f'+(i+1));if(v&&v.value===correct[q]){s++;f.textContent='To‘g‘ri!';f.style.color='#16865b'}else{f.textContent='Noto‘g‘ri. To‘g‘ri javob: '+correct[q].toUpperCase();f.style.color='#c24136'}});document.getElementById('score').textContent='Natija: '+s+'/4 ta to‘g‘ri javob.'}
+function resetQuiz(){document.querySelectorAll('.quizq input').forEach(x=>x.checked=false);document.querySelectorAll('.feedback').forEach(x=>x.textContent='');document.getElementById('score').textContent=''}
+</script>
+</body></html>

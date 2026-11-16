@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — 15-mavzu: Ichki energiya</title>
+<style>
+:root{--bg:#f4f7fb;--card:#fff;--ink:#172033;--muted:#607086;--blue:#2563eb;--cyan:#0891b2;--green:#15803d;--line:#dce5ef;--orange:#ea580c}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+header{background:linear-gradient(125deg,#102a56,#176b87);color:white;padding:42px 20px}
+header .wrap,main{max-width:1050px;margin:auto}header h1{font-size:clamp(2rem,5vw,3.2rem);line-height:1.15;margin:.3em 0}header p{max-width:760px;color:#e1f2ff}
+.tag{display:inline-block;padding:5px 11px;border:1px solid #ffffff66;border-radius:99px;margin:4px;font-size:.85rem}
+main{padding:22px 16px 60px}.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:22px;margin:18px 0;box-shadow:0 5px 18px #14213b0a}
+h2{font-size:1.55rem;color:#123e69;margin-top:0}h3{color:#145477;margin-bottom:7px}p{margin:.55em 0}ul,ol{padding-left:24px}.muted{color:var(--muted)}.formula{background:#eef6ff;border-left:4px solid var(--blue);padding:13px 17px;border-radius:9px;font-size:1.2rem;font-weight:650;margin:12px 0}.note{background:#fff7ed;border-left:4px solid var(--orange);padding:12px 15px;border-radius:8px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.mini{background:#f7fafc;border:1px solid var(--line);padding:15px;border-radius:13px}
+button{border:0;border-radius:10px;padding:10px 15px;background:var(--blue);color:white;font-weight:650;cursor:pointer}button.secondary{background:#e8eef7;color:#183454}button:hover{filter:brightness(.96)}
+input[type=range]{width:100%;accent-color:var(--blue)}.readout{font-size:1.5rem;font-weight:750;color:var(--blue)}.particlebox{height:170px;background:#0c2340;border-radius:14px;position:relative;overflow:hidden;margin:12px 0}
+.particle{position:absolute;width:10px;height:10px;border-radius:50%;background:#67d5ff;box-shadow:0 0 9px #67d5ff;animation:move var(--dur) linear infinite alternate}
+@keyframes move{0%{transform:translate(0,0)}25%{transform:translate(18px,-12px)}50%{transform:translate(-12px,16px)}75%{transform:translate(20px,12px)}100%{transform:translate(-18px,-15px)}}
+.thermo{height:15px;background:#e6edf5;border-radius:99px;overflow:hidden}.thermo span{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#f97316);width:30%;transition:width .2s}
+table{width:100%;border-collapse:collapse;margin:12px 0}th,td{border:1px solid var(--line);padding:10px;text-align:left}th{background:#edf4fb}
+.question{padding:14px 0;border-bottom:1px solid var(--line)}.question label{display:block;margin:6px 0;cursor:pointer}.feedback{font-weight:650;margin-top:7px}.good{color:var(--green)}.bad{color:#b91c1c}
+a{color:#075db5}footer{text-align:center;padding:25px;color:var(--muted)}
+@media(max-width:600px){.card{padding:17px}header{padding:30px 17px}table{font-size:.9rem}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+<span class="tag">9-sinf fizika</span><span class="tag">2-bob · 15-mavzu</span><span class="tag">45 daqiqalik interaktiv dars</span>
+<h1>ICHKI ENERGIYA</h1>
+<p>Molekulalar harakati, ichki energiyaning o‘zgarishi va issiqlik uzatish hodisalarini animatsion modellar, tajribalar, masalalar hamda testlar orqali o‘rganamiz.</p>
+</div></header>
+<main>
+<section class="card">
+<h2>Dars rejasi</h2>
+<ol>
+<li><b>Ichki energiya tushunchasi va uning fizik mohiyati.</b></li>
+<li><b>Ichki energiyaning temperaturaga, modda massasiga va agregat holatiga bog‘liqligi.</b></li>
+<li><b>Ichki energiyani o‘zgartirish usullari: ish bajarish va issiqlik uzatish.</b></li>
+</ol>
+<h3>Dars maqsadi</h3>
+<p>O‘quvchilar ichki energiyani ta’riflaydi; molekulalarning kinetik va potensial energiyasini farqlaydi; temperatura va massa ta’sirini tushuntiradi; ish bajarish va issiqlik uzatish orqali ichki energiya o‘zgarishini izohlaydi.</p>
+</section>
+
+<section class="card">
+<h2>I reja. Ichki energiya tushunchasi va uning fizik mohiyati</h2>
+<h3>1.1. Ichki energiya nima?</h3>
+<p>Har qanday modda juda ko‘p sonli atom va molekulalardan tashkil topgan. Bu zarrachalar doimo tartibsiz harakatda bo‘ladi va o‘zaro ta’sirlashadi. Moddani tashkil etuvchi barcha zarrachalarning tartibsiz harakati kinetik energiyasi hamda o‘zaro ta’sirlashish potensial energiyalarining yig‘indisi <b>ichki energiya</b> deyiladi.</p>
+<div class="formula">U = E<sub>k</sub> + E<sub>p</sub></div>
+<ul><li><b>E<sub>k</sub></b> — molekulalarning tartibsiz harakat kinetik energiyasi.</li><li><b>E<sub>p</sub></b> — molekulalarning o‘zaro ta’sirlashish potensial energiyasi.</li></ul>
+<p>Ichki energiya SI sistemasida joul (J) birligida o‘lchanadi. Jismning ichki energiyasi uning butun holdagi harakat tezligiga yoki Yerga nisbatan balandligiga bog‘liq emas. Masalan, stol ustida turgan issiq choyning ham ichki energiyasi mavjud.</p>
+<h3>1.2. Molekulalarning kinetik energiyasi</h3>
+<p>Molekulalar suyuqlik va gazlarda tartibsiz, uzluksiz harakatlanadi. Qattiq jismlarda esa zarrachalar asosan muvozanat vaziyati atrofida tebranadi. Molekulalar qanchalik tez harakatlansa, ularning o‘rtacha kinetik energiyasi shunchalik katta bo‘ladi.</p>
+<div class="formula">Ideal gaz uchun: Ē<sub>k</sub> = ³⁄₂ kT</div>
+<p>Bu yerda k — Boltsman doimiysi, T — mutlaq temperatura (Kelvin). Temperatura oshsa, molekulalarning o‘rtacha kinetik energiyasi ham ortadi.</p>
+<h3>1.3. Molekulalarning potensial energiyasi</h3>
+<p>Molekulalar bir-biri bilan o‘zaro tortishadi va itarishadi. Ularning o‘zaro joylashuvi bilan bog‘liq energiya potensial energiya deyiladi. Masalan, muz eriyotganda temperatura bir muddat o‘zgarmasligi mumkin, ammo molekulalarning o‘zaro joylashuvi o‘zgaradi va ichki energiya ortadi.</p>
+<h3>Animatsion simulyatsiya 1: Molekulalar harakati</h3>
+<p>Temperaturani o‘zgartiring. Modeldagi zarrachalar harakat tezligi qanday o‘zgarishini kuzating.</p>
+<div class="mini">
+<label for="temp">Model temperaturasi: <b id="tempVal">30 °C</b></label>
+<input id="temp" type="range" min="0" max="100" value="30">
+<div class="thermo"><span id="thermoFill"></span></div>
+<div class="particlebox" id="particles" aria-label="Molekulalar harakatining soddalashtirilgan animatsiyasi"></div>
+<p id="motionText" class="readout">Sekin harakat</p>
+<p class="muted">Bu o‘quv modeli: nuqtalar molekulalarni ifodalaydi, haqiqiy molekulyar trayektoriyalar emas.</p>
+</div>
+<h3>O‘quvchilarga savollar</h3>
+<ol><li>Nima uchun issiq suvdagi molekulalarning o‘rtacha kinetik energiyasi kattaroq?</li><li>Sovuq jismning ichki energiyasi bo‘lishi mumkinmi?</li><li>Molekulalar harakati to‘xtasa, qanday holat yuz beradi?</li></ol>
+</section>
+
+<section class="card">
+<h2>II reja. Ichki energiyaning temperaturaga, massaga va agregat holatiga bog‘liqligi</h2>
+<h3>2.1. Temperatura va ichki energiya</h3>
+<p>Temperatura modda zarrachalarining issiqlik harakati jadalligini tavsiflaydi. Jism qizdirilganda molekulalarning o‘rtacha kinetik energiyasi ortadi va ichki energiya o‘zgaradi.</p>
+<ul><li>Sovuq suvga issiqlik berilsa, temperaturasi ko‘tariladi.</li><li>Muz qizdirilganda dastlab temperaturasi ko‘tariladi.</li><li>Muz erish jarayonida temperatura bir muddat o‘zgarmaydi, ammo ichki energiya ortadi.</li><li>Suv bug‘ga aylanganda ham ichki energiya ortadi.</li></ul>
+<div class="note"><b>Muhim qoida:</b> bir xil modda va bir xil massada temperatura oshishi odatda ichki energiyani oshiradi. Faza o‘zgarishida esa temperatura o‘zgarmasdan ham ichki energiya o‘zgarishi mumkin.</div>
+<h3>2.2. Jism massasining ichki energiyaga ta’siri</h3>
+<p>Bir xil modda, bir xil temperatura va bir xil holatda bo‘lgan ikki jismdan massasi kattasining umumiy ichki energiyasi kattaroq bo‘ladi, chunki unda zarrachalar soni ko‘proq.</p>
+<h3>2.3. Agregat holat va ichki energiya</h3>
+<div class="grid">
+<div class="mini"><h3>Qattiq holat</h3><p>Zarrachalar bir-biriga yaqin joylashadi va muvozanat vaziyati atrofida tebranadi.</p></div>
+<div class="mini"><h3>Suyuq holat</h3><p>Zarrachalar yaqin joylashgan, lekin bir-biriga nisbatan siljib harakatlana oladi.</p></div>
+<div class="mini"><h3>Gaz holati</h3><p>Zarrachalar orasidagi masofa katta, ular tartibsiz va erkin harakatlanadi.</p></div>
+</div>
+<div class="formula">Qattiq → Suyuq → Gaz</div>
+<p>Modda qizdirilganda uning agregat holati o‘zgarishi mumkin. Bu jarayonlarda, issiqlik tashqariga yo‘qotilmasa, ichki energiya ortadi.</p>
+<h3>Animatsion simulyatsiya 2: Agregat holatlarning o‘zgarishi</h3>
+<p>Quyidagi virtual laboratoriyada isitish va sovitish orqali molekulalarning harakatini kuzating:</p>
+<p><a href="https://phet.colorado.edu/en/simulations/states-of-matter-basics" target="_blank" rel="noopener">PhET — States of Matter: Basics simulyatsiyasini ochish ↗</a></p>
+<ol><li>Qattiq holatni tanlang.</li><li>Isitish tugmasini bosing va zarrachalar tebranishini kuzating.</li><li>Moddaning suyuq holatga o‘tishini kuzating.</li><li>Yana issiqlik berib, gaz holatiga o‘tishini tekshiring.</li><li>Sovitish orqali jarayonni teskari yo‘nalishda kuzating.</li></ol>
+<h3>Tajriba savollari</h3>
+<ol><li>Qattiq jism qizdirilganda molekulalar harakati qanday o‘zgaradi?</li><li>Suyuqlik gazga aylanganda molekulalar orasidagi masofa qanday o‘zgaradi?</li><li>Muz eriyotganda nima uchun temperatura o‘zgarmasligi mumkin?</li><li>Agregat holat o‘zgarishi ichki energiyaga qanday ta’sir qiladi?</li></ol>
+</section>
+
+<section class="card">
+<h2>III reja. Ichki energiyani o‘zgartirish usullari</h2>
+<p>Ichki energiyani ikki xil usul bilan o‘zgartirish mumkin:</p>
+<ol><li>Mexanik ish bajarish orqali.</li><li>Issiqlik uzatish orqali.</li></ol>
+<h3>3.1. Mexanik ish bajarish orqali</h3>
+<p>Jism ustida ish bajarilganda uning ichki energiyasi o‘zgarishi mumkin.</p>
+<div class="grid">
+<div class="mini"><b>Qo‘llarni ishqalash</b><p>Kaftlar bir-biriga ishqalanganda mexanik ish tufayli qo‘llar isiydi.</p></div>
+<div class="mini"><b>Velosiped nasosi</b><p>Nasosda havo siqilganda gaz ustida ish bajariladi va uning temperaturasi ortishi mumkin.</p></div>
+<div class="mini"><b>Metallni bolg‘alash</b><p>Zarba vaqtida mexanik energiyaning bir qismi ichki energiyaga aylanadi.</p></div>
+</div>
+<h3>3.2. Issiqlik uzatish orqali</h3>
+<p>Temperaturalari turlicha bo‘lgan jismlar o‘zaro ta’sirlashganda energiya issiqroq jismdan sovuqroq jismga uzatiladi. Bu hodisa issiqlik uzatish deyiladi. Issiqlik miqdori Q harfi bilan belgilanadi va joul (J) da o‘lchanadi.</p>
+<div class="grid">
+<div class="mini"><h3>A. Issiqlik o‘tkazuvchanlik</h3><p>Issiqlik moddaning bir qismidan ikkinchi qismiga zarrachalarning umumiy ko‘chishisiz uzatiladi. Misol: issiq choydagi metall qoshiq dastasining qizishi.</p></div>
+<div class="mini"><h3>B. Konveksiya</h3><p>Suyuqlik va gazlarda modda qatlamlarining harakati orqali issiqlik uzatiladi. Misol: qozondagi suvning aylanishi.</p></div>
+<div class="mini"><h3>C. Nurlanish</h3><p>Issiqlik elektromagnit to‘lqinlar orqali uzatiladi. Moddiy muhit shart emas. Misol: Quyosh energiyasining Yerga yetib kelishi.</p></div>
+</div>
+<h3>3.3. Issiqlik miqdori formulasi</h3>
+<p>Jismni qizdirish yoki sovitishda, agregat holati o‘zgarmasa:</p>
+<div class="formula">Q = cm(t<sub>2</sub> − t<sub>1</sub>)</div>
+<ul><li>Q — issiqlik miqdori (J).</li><li>c — solishtirma issiqlik sig‘imi (J/(kg·°C)).</li><li>m — jism massasi (kg).</li><li>t<sub>1</sub> — boshlang‘ich temperatura.</li><li>t<sub>2</sub> — oxirgi temperatura.</li></ul>
+<p>Qizdirishda jism olgan issiqlik miqdori musbat; sovitishda jism bergan issiqlik miqdorining moduli shu formula bilan topiladi.</p>
+<div class="note"><b>Eslab qoling:</b> ichki energiya va issiqlik miqdori bir xil tushuncha emas. Ichki energiya — jismning holatini tavsiflovchi kattalik, issiqlik miqdori esa energiyaning uzatilish jarayonini tavsiflaydi.</div>
+<h3>3.4. Termodinamikaning birinchi qonuni bilan bog‘lanish</h3>
+<p>Agar gazga Q issiqlik berilsa va gaz tashqi jismlar ustida A′ ish bajarsa:</p>
+<div class="formula">ΔU = Q − A′</div>
+<p>Agar A ish gaz ustida bajarilsa:</p>
+<div class="formula">ΔU = Q + A</div>
+<p>Bu yerda A′ — gaz bajargan ish, A — gaz ustida bajarilgan ish.</p>
+</section>
+
+<section class="card">
+<h2>IV. Interaktiv virtual laboratoriya</h2>
+<h3>Tajriba 1. Jismni qizdirish va sovitish</h3>
+<p>Quyidagi modelda suv temperaturasini o‘zgartiring. Bu model ichki energiyaning temperaturaga bog‘liqligini sifat jihatdan ko‘rsatadi.</p>
+<div class="mini">
+<label for="labTemp">Suv temperaturasi: <b id="labTempVal">20 °C</b></label>
+<input id="labTemp" type="range" min="0" max="100" step="5" value="20">
+<div class="thermo"><span id="labThermo"></span></div>
+<p id="labState" class="readout">Sovuq suv</p>
+<div class="grid"><button id="cool">− Sovitish</button><button id="heat">+ Qizdirish</button><button class="secondary" id="resetLab">Qayta boshlash</button></div>
+<p class="muted">Bu boshqariladigan o‘quv modeli; u molekulyar animatsiya yoki haqiqiy kalorimetr o‘lchovi emas.</p>
+</div>
+<h3>Tajriba 2. Issiqlik miqdorini hisoblash</h3>
+<p>Suv uchun c = 4200 J/(kg·°C) deb oling. Parametrlarni o‘zgartirib, natijani kuzating.</p>
+<div class="mini">
+<label for="mass">Suv massasi: <b id="massVal">2 kg</b></label><input id="mass" type="range" min="1" max="5" value="2">
+<label for="startT">Boshlang‘ich temperatura: <b id="startVal">20 °C</b></label><input id="startT" type="range" min="0" max="50" value="20">
+<label for="endT">Oxirgi temperatura: <b id="endVal">50 °C</b></label><input id="endT" type="range" min="0" max="100" value="50">
+<div class="formula">Q = cm(t<sub>2</sub> − t<sub>1</sub>)</div>
+<p>Hisoblash natijasi:</p><div class="readout" id="qResult">252 000 J</div><p class="muted" id="qExplain">Suvga issiqlik berilmoqda.</p>
+</div>
+</section>
+
+<section class="card">
+<h2>V. Video va animatsion resurslar</h2>
+<div class="grid">
+<div class="mini"><h3>1. Molekulalar harakati va agregat holatlari</h3><p>Qattiq, suyuq va gaz holatlarida molekulalar harakatini kuzatish.</p><a href="https://phet.colorado.edu/en/simulations/states-of-matter-basics" target="_blank" rel="noopener">PhET simulyatsiyasini ochish ↗</a></div>
+<div class="mini"><h3>2. Energiya shakllari va o‘zgarishi</h3><p>Issiqlik energiyasi uzatilishi va temperatura o‘zgarishini kuzatish.</p><a href="https://phet.colorado.edu/en/simulations/energy-forms-and-changes" target="_blank" rel="noopener">Energy Forms and Changes ↗</a></div>
+<div class="mini"><h3>3. Issiqlik uzatish animatsiyalari</h3><p>O‘tkazuvchanlik, konveksiya va nurlanish bo‘yicha videolar.</p><a href="https://www.youtube.com/results?search_query=heat+transfer+conduction+convection+radiation+animation" target="_blank" rel="noopener">Animatsion videolarni ko‘rish ↗</a></div>
+</div>
+</section>
+
+<section class="card">
+<h2>VI. Mustahkamlash: interaktiv test</h2>
+<p>Har bir savol uchun bitta javobni belgilang, so‘ng javoblarni tekshiring.</p>
+<form id="quiz">
+<div class="question"><b>1. Ichki energiya qanday energiyalar yig‘indisidan iborat?</b>
+<label><input type="radio" name="q1" value="0"> Faqat kinetik energiya</label><label><input type="radio" name="q1" value="1"> Kinetik va potensial energiya</label><label><input type="radio" name="q1" value="2"> Faqat mexanik energiya</label><label><input type="radio" name="q1" value="3"> Faqat elektr energiyasi</label><div class="feedback" id="f1"></div></div>
+<div class="question"><b>2. Jism qizdirilganda odatda nima ortadi?</b>
+<label><input type="radio" name="q2" value="0"> Molekulalar soni</label><label><input type="radio" name="q2" value="1"> Molekulalarning o‘rtacha kinetik energiyasi</label><label><input type="radio" name="q2" value="2"> Jismning massasi</label><label><input type="radio" name="q2" value="3"> Molekulalar yo‘qoladi</label><div class="feedback" id="f2"></div></div>
+<div class="question"><b>3. Issiq metall qoshiqning ikkinchi uchiga issiqlik qanday uzatiladi?</b>
+<label><input type="radio" name="q3" value="0"> Konveksiya</label><label><input type="radio" name="q3" value="1"> Nurlanish</label><label><input type="radio" name="q3" value="2"> Issiqlik o‘tkazuvchanlik</label><label><input type="radio" name="q3" value="3"> Bug‘lanish</label><div class="feedback" id="f3"></div></div>
+<div class="question"><b>4. Quyoshdan Yerga issiqlik qanday uzatiladi?</b>
+<label><input type="radio" name="q4" value="0"> Konveksiya</label><label><input type="radio" name="q4" value="1"> Nurlanish</label><label><input type="radio" name="q4" value="2"> Issiqlik o‘tkazuvchanlik</label><label><input type="radio" name="q4" value="3"> Ishqalanish</label><div class="feedback" id="f4"></div></div>
+<div class="question"><b>5. Gaz siqilganda uning temperaturasi nima sababdan ortishi mumkin?</b>
+<label><input type="radio" name="q5" value="0"> Gaz ustida ish bajarilgani uchun</label><label><input type="radio" name="q5" value="1"> Gaz massasi yo‘qolgani uchun</label><label><input type="radio" name="q5" value="2"> Molekulalar to‘xtagani uchun</label><label><input type="radio" name="q5" value="3"> Bosim nol bo‘lgani uchun</label><div class="feedback" id="f5"></div></div>
+<button type="submit">Javoblarni tekshirish</button> <button type="reset" class="secondary">Qayta ishlash</button>
+<p class="readout" id="score" aria-live="polite"></p>
+</form>
+<h3>Fizik masalalar</h3>
+<p><b>1-masala.</b> Massasi 2 kg bo‘lgan suv 20°C dan 50°C gacha isitildi. Suvga qancha issiqlik berilgan?</p>
+<p>Yechish: Q = cmΔt = 4200 · 2 · (50 − 20) = <b>252 000 J</b>.</p>
+<p><b>2-masala.</b> Massasi 500 g bo‘lgan suv 20°C dan 60°C gacha qizdirildi. Qancha issiqlik kerak?</p>
+<p>Yechish: m = 0,5 kg; Q = 4200 · 0,5 · 40 = <b>84 000 J</b>.</p>
+<h3>Hodisalarni tahlil qiling</h3>
+<table><tr><th>Hodisa</th><th>Ichki energiya o‘zgarishi</th></tr><tr><td>Qo‘llarni ishqalash</td><td>Ortadi</td></tr><tr><td>Muzning erishi</td><td>Ortadi</td></tr><tr><td>Issiq choyning sovishi</td><td>Kamayadi</td></tr><tr><td>Gazni siqish</td><td>Ortishi mumkin</td></tr><tr><td>Suvning bug‘lanishi</td><td>Ortadi</td></tr></table>
+<h3>Guruhli ish</h3>
+<ul><li><b>1-guruh — «Issiqlik»:</b> issiqlik o‘tkazuvchanlikka hayotiy misollar topadi.</li><li><b>2-guruh — «Harakat»:</b> molekulalar harakati va temperatura bog‘liqligini tushuntiradi.</li><li><b>3-guruh — «Energiya»:</b> ichki energiyani o‘zgartirish usullariga misollar keltiradi.</li></ul>
+</section>
+
+<section class="card">
+<h2>VII. Dars yakuni va baholash</h2>
+<table><tr><th>Dars bosqichi</th><th>Vaqt</th></tr><tr><td>Tashkiliy qism</td><td>3 daqiqa</td></tr><tr><td>O‘tgan mavzuni takrorlash</td><td>5 daqiqa</td></tr><tr><td>Yangi mavzuni tushuntirish</td><td>15 daqiqa</td></tr><tr><td>Animatsion simulyatsiyalar</td><td>8 daqiqa</td></tr><tr><td>Masala va testlar</td><td>10 daqiqa</td></tr><tr><td>Xulosa va uyga vazifa</td><td>4 daqiqa</td></tr></table>
+<h3>Asosiy xulosalar</h3>
+<ol><li>Ichki energiya molekulalarning kinetik va potensial energiyalari yig‘indisidir.</li><li>Temperatura ortishi molekulalarning o‘rtacha kinetik energiyasini oshiradi.</li><li>Ichki energiya ish bajarish orqali o‘zgarishi mumkin.</li><li>Ichki energiya issiqlik uzatish orqali ham o‘zgaradi.</li><li>Issiqlik uzatish o‘tkazuvchanlik, konveksiya va nurlanish orqali amalga oshadi.</li></ol>
+<div class="formula">ΔU = Q − A′</div>
+<p>Bu yerda A′ — jism (gaz) tomonidan tashqi jismlar ustida bajarilgan ish.</p>
+<h3>Uyga vazifa</h3>
+<ol><li>Ichki energiya mavzusiga oid 10 ta savol tuzing.</li><li>Issiqlik uzatishning uch turiga kundalik hayotdan 3 tadan misol yozing.</li><li>Ichki energiya o‘zgarishiga oid 2 ta masala yeching.</li><li>PhET simulyatsiyasida suvning qizishi va sovishini kuzatib, molekulalar harakati haqida xulosa yozing.</li><li>«Nima uchun issiq choy vaqt o‘tishi bilan soviydi?» mavzusida fizik izoh tayyorlang.</li></ol>
+</section>
+<footer>9-sinf fizika · 2-bob · 15-mavzu: Ichki energiya</footer>
+</main>
+<script>
+const temp=document.getElementById('temp'), tempVal=document.getElementById('tempVal'), thermoFill=document.getElementById('thermoFill'), motionText=document.getElementById('motionText'), particles=document.getElementById('particles');
+for(let i=0;i<28;i++){let p=document.createElement('i');p.className='particle';p.style.left=(3+Math.random()*93)+'%';p.style.top=(5+Math.random()*85)+'%';p.style.setProperty('--dur',(5-Math.random()*3)+'s');p.style.animationDuration=(5-Math.random()*3)+'s';particles.appendChild(p)}
+function updateParticles(){let v=+temp.value;tempVal.textContent=v+' °C';thermoFill.style.width=v+'%';motionText.textContent=v<30?'Sekin harakat':v<65?'O‘rtacha harakat':'Tez harakat';document.querySelectorAll('.particle').forEach(p=>p.style.animationDuration=(5-v*.04)+'s')}
+temp.addEventListener('input',updateParticles);updateParticles();
+const labTemp=document.getElementById('labTemp'),labTempVal=document.getElementById('labTempVal'),labThermo=document.getElementById('labThermo'),labState=document.getElementById('labState');
+function updateLab(){let v=+labTemp.value;labTempVal.textContent=v+' °C';labThermo.style.width=v+'%';labState.textContent=v<30?'Sovuq suv':v<70?'Iliq suv':'Issiq suv'}
+labTemp.addEventListener('input',updateLab);document.getElementById('cool').onclick=()=>{labTemp.value=Math.max(0,+labTemp.value-10);updateLab()};document.getElementById('heat').onclick=()=>{labTemp.value=Math.min(100,+labTemp.value+10);updateLab()};document.getElementById('resetLab').onclick=()=>{labTemp.value=20;updateLab()};updateLab();
+const mass=document.getElementById('mass'),startT=document.getElementById('startT'),endT=document.getElementById('endT');
+function calc(){let m=+mass.value,t1=+startT.value,t2=+endT.value;document.getElementById('massVal').textContent=m+' kg';document.getElementById('startVal').textContent=t1+' °C';document.getElementById('endVal').textContent=t2+' °C';let q=4200*m*(t2-t1);document.getElementById('qResult').textContent=Math.abs(q).toLocaleString('uz-UZ')+' J';document.getElementById('qExplain').textContent=q>0?'Suvga issiqlik berilmoqda.':q<0?'Suv sovimoqda; u issiqlik bermoqda.':'Temperatura o‘zgarmadi; issiqlik miqdori nol.'}
+[mass,startT,endT].forEach(x=>x.addEventListener('input',calc));calc();
+const correct={q1:1,q2:1,q3:2,q4:1,q5:0};const explanations={q1:'Ichki energiya zarrachalarning kinetik va o‘zaro ta’sirlashish potensial energiyalaridan tashkil topadi.',q2:'Temperatura ortishi molekulalarning o‘rtacha kinetik energiyasi ortishini bildiradi.',q3:'Metall ichida energiya issiqlik o‘tkazuvchanlik orqali uzatiladi.',q4:'Elektromagnit nurlanish vakuum orqali ham tarqaladi.',q5:'Gaz ustida ish bajarilishi uning ichki energiyasini oshirishi mumkin.'};
+document.getElementById('quiz').addEventListener('submit',e=>{e.preventDefault();let score=0;for(let i=1;i<=5;i++){let selected=document.querySelector('input[name=q'+i+']:checked'),f=document.getElementById('f'+i);if(selected&&+selected.value===correct['q'+i]){score++;f.className='feedback good';f.textContent='To‘g‘ri! '+explanations['q'+i]}else{f.className='feedback bad';f.textContent='Noto‘g‘ri. To‘g‘ri javob: '+document.querySelector('input[name=q'+i+'][value="'+correct['q'+i]+'"]').parentElement.textContent.trim()+'. '+explanations['q'+i]}}document.getElementById('score').textContent='Natija: '+score+'/5 ta to‘g‘ri javob.'});
+document.getElementById('quiz').addEventListener('reset',()=>{setTimeout(()=>{for(let i=1;i<=5;i++){let f=document.getElementById('f'+i);f.textContent='';f.className='feedback'}document.getElementById('score').textContent=''},0)});
+</script>
+</body></html>

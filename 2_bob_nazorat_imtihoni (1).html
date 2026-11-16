@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — II bob nazorat imtihoni</title>
+<style>
+:root{--blue:#126782;--cyan:#1aa6b7;--ink:#18313b;--paper:#f4f8fa;--line:#d9e6eb}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 Arial,sans-serif}
+header{background:linear-gradient(120deg,#0d526d,#18a4b2);color:white;padding:30px 18px;text-align:center}
+header h1{margin:0 0 8px;font-size:clamp(22px,4vw,34px)}header p{margin:5px auto;max-width:850px}
+main{max-width:1050px;margin:22px auto;padding:0 14px}
+.panel{background:white;border:1px solid var(--line);border-radius:16px;padding:20px;margin:16px 0;box-shadow:0 5px 18px #163b4b0c}
+h2{color:var(--blue);margin:0 0 12px;font-size:22px}h3{margin:8px 0;color:#175d70}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px}
+input[type=text]{width:100%;padding:11px;border:1px solid #b9cbd2;border-radius:9px;font-size:16px}
+.note{background:#eaf7f8;border-left:4px solid var(--cyan);padding:12px;border-radius:8px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.sim{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fbfdfe;overflow:hidden}
+.stage{height:150px;background:#102d40;border-radius:10px;position:relative;overflow:hidden;margin:10px 0}
+.particle{position:absolute;width:8px;height:8px;border-radius:50%;background:#72e0ee;box-shadow:0 0 9px #72e0ee;animation:move 2.4s infinite alternate ease-in-out}
+@keyframes move{0%{transform:translate(0,0)}25%{transform:translate(30px,-16px)}50%{transform:translate(-15px,28px)}75%{transform:translate(40px,18px)}100%{transform:translate(-22px,-12px)}}
+.pistonbox{height:150px;background:#eaf2f5;border-radius:10px;position:relative;margin:10px 0;overflow:hidden}
+.cylinder{position:absolute;left:28%;top:18px;width:44%;height:115px;border:5px solid #527687;border-top:0;border-radius:0 0 10px 10px;background:#d8f2f5}
+.gas{position:absolute;inset:30px 0 0;background:radial-gradient(circle,#f1a65d 2px,transparent 4px);background-size:19px 17px;animation:gas 1.2s infinite alternate}
+@keyframes gas{to{background-position:10px 8px}}
+.piston{position:absolute;left:28%;top:18px;width:44%;height:13px;background:#607d8b;border:2px solid #294b5c;animation:piston 3s infinite alternate ease-in-out}
+@keyframes piston{to{transform:translateY(42px)}}
+.thermo{height:24px;background:#dce7ec;border-radius:20px;overflow:hidden;margin:12px 0}
+.thermo span{display:block;height:100%;width:50%;background:linear-gradient(90deg,#36b9d2,#f3a04b);transition:width .3s}
+input[type=range]{width:100%;accent-color:#1595a8}
+button{border:0;border-radius:10px;padding:11px 17px;background:var(--blue);color:white;font-weight:bold;cursor:pointer;margin:5px 4px 5px 0}
+button.secondary{background:#e6f1f4;color:#174f61}button:hover{filter:brightness(1.08)}
+.question{padding:14px 0;border-bottom:1px solid var(--line)}.question:last-child{border:0}
+.question p{font-weight:bold;margin:0 0 8px}.answers label{display:block;padding:6px 9px;margin:4px 0;border-radius:7px;cursor:pointer}.answers label:hover{background:#eef7f8}
+.answers input{margin-right:8px}.result{font-size:19px;font-weight:bold;color:var(--blue)}
+footer{text-align:center;padding:22px;color:#607780}
+@media print{body{background:white}.sim,button{display:none}.panel{box-shadow:none;break-inside:avoid}}
+</style>
+</head>
+<body>
+<header>
+<h1>9-SINF FIZIKA — II BOB BO‘YICHA NAZORAT IMTIHONI</h1>
+<p><b>II bob: Ichki energiya va termodinamika elementlari</b></p>
+<p>15–25-§ mavzulari asosida • Nazariy bilim • Hisoblash • Tajriba • Simulyatsiya</p>
+</header>
+<main>
+<section class="panel">
+<h2>O‘quvchi ma’lumotlari</h2>
+<div class="meta">
+<label>O‘quvchining F.I.Sh.<input id="student" type="text" placeholder="Ism-familiya"></label>
+<label>Sinf<input id="className" type="text" placeholder="9-__"></label>
+<label>Sana<input id="examDate" type="text" placeholder="__.__.2026"></label>
+</div>
+<p class="note"><b>Vaqt:</b> 45 daqiqa. <b>Jami:</b> 95 ball. Test savollarida bitta to‘g‘ri javobni belgilang. Hisoblash masalalarida formulani va yechimni daftarda ko‘rsating.</p>
+</section>
+
+<section class="panel">
+<h2>1-bo‘lim. Animatsion simulyatsiyalar</h2>
+<p>Simulyatsiyalarni kuzating, parametrlarni o‘zgartiring va fizik hodisani izohlang.</p>
+<div class="grid">
+<div class="sim">
+<h3>1. Molekulalar va ichki energiya</h3>
+<p>Harorat oshganda molekulalarning tartibsiz harakati tezlashadi.</p>
+<div class="stage" id="particles"></div>
+<label>Harorat modeli: <b id="tempLabel">O‘rtacha</b></label>
+<input id="tempRange" type="range" min="1" max="5" value="3">
+<p id="tempExplain">Molekulalar o‘rtacha tezlikda harakatlanmoqda.</p>
+</div>
+<div class="sim">
+<h3>2. Gazning termodinamik ishi</h3>
+<p>Qizdirilgan gaz kengayib porshenni yuqoriga siljitadi va tashqi kuchlarga qarshi ish bajaradi.</p>
+<div class="pistonbox"><div class="cylinder"><div class="gas"></div></div><div class="piston" id="piston"></div></div>
+<label>Gazga berilgan issiqlik: <b id="heatLabel">50%</b></label>
+<input id="heatRange" type="range" min="0" max="100" value="50">
+<p id="workExplain">Gaz kengaymoqda. Porshen siljishi — gaz bajargan ishning modeli.</p>
+</div>
+<div class="sim">
+<h3>3. Issiqlik almashinuvi</h3>
+<p>Issiq va sovuq suv aralashtirilganda energiya issiq suvdan sovuq suvga o‘tadi.</p>
+<label>Issiq suv temperaturasi: <b id="hotLabel">80</b> °C</label>
+<input id="hotRange" type="range" min="40" max="100" value="80">
+<label>Sovuq suv temperaturasi: <b id="coldLabel">20</b> °C</label>
+<input id="coldRange" type="range" min="0" max="35" value="20">
+<div class="thermo"><span id="mixBar"></span></div>
+<p>Bir xil massa va suv uchun taxminiy muvozanat temperaturasi: <b id="mixResult">50</b> °C</p>
+</div>
+<div class="sim">
+<h3>4. Termodinamikaning birinchi qonuni</h3>
+<p>Berilgan issiqlik ichki energiyani o‘zgartirishga va gaz ish bajarishiga sarflanadi.</p>
+<div class="note">Q = ΔU + A</div>
+<label>Gazga berilgan issiqlik Q: <b id="qLabel">500</b> J</label>
+<input id="qRange" type="range" min="100" max="1000" step="50" value="500">
+<label>Gaz bajargan ish A: <b id="aLabel">200</b> J</label>
+<input id="aRange" type="range" min="0" max="500" step="50" value="200">
+<p>Ichki energiya o‘zgarishi: <b id="uResult">300</b> J</p>
+</div>
+</div>
+<p class="note"><b>Simulyatsiya bo‘yicha topshiriq:</b> Har bir modelda parametrni o‘zgartiring. Qaysi kattalik ortishi yoki kamayishini va buning sababini 1–2 jumlada yozing.</p>
+</section>
+
+<section class="panel">
+<h2>2-bo‘lim. Nazariy test</h2>
+<p>Har bir savol — 3 ball. To‘g‘ri javobni tanlang.</p>
+<div id="questions"></div>
+</section>
+
+<section class="panel">
+<h2>3-bo‘lim. Hisoblash va tahlil topshiriqlari</h2>
+<p><b>Har bir topshiriq — 5 ball.</b> Yechimni daftarda bajaring.</p>
+<ol>
+<li>Massasi 2 kg bo‘lgan suv 20 °C dan 50 °C gacha isitildi. Suvning solishtirma issiqlik sig‘imi 4200 J/(kg·°C). Qancha issiqlik miqdori olgan? <br><i>Formula: Q = cmΔt.</i></li>
+<li>Gazga 800 J issiqlik berildi va gaz 300 J ish bajardi. Ichki energiya qanday o‘zgardi? <br><i>Formula: Q = ΔU + A.</i></li>
+<li>Massasi 0,5 kg bo‘lgan yoqilg‘i to‘liq yonganda 15 MJ energiya ajraldi. Yoqilg‘ining solishtirma yonish issiqligini toping. <br><i>Formula: q = Q/m.</i></li>
+<li>200 g suv 80 °C, 300 g suv esa 20 °C haroratda. Issiqlik yo‘qotilmasa, aralashma haroratini toping. Suvlar uchun c bir xil deb oling. <br><i>Issiqlik balansi: Qberilgan = Qolingan.</i></li>
+</ol>
+</section>
+
+<section class="panel">
+<h2>4-bo‘lim. Laboratoriya va amaliy vaziyatlar</h2>
+<p><b>Har bir savol — 5 ball.</b></p>
+<ol>
+<li><b>Qattiq jismning solishtirma issiqlik sig‘imini aniqlash:</b> tajribada qanday kattaliklar o‘lchanadi? Issiqlik almashinuvida yo‘qotishlar natijaga qanday ta’sir qiladi?</li>
+<li><b>Issiqlik muvozanati:</b> issiq metall bo‘lagi sovuq suvga tushirildi. Qaysi jism energiya beradi, qaysi biri oladi? Muvozanat qachon yuz beradi?</li>
+<li><b>Ikkinchi qonun:</b> nima uchun issiq choy xona ichida o‘z-o‘zidan soviydi, lekin xona havosi hisobiga choy o‘z-o‘zidan yanada qizib ketmaydi?</li>
+</ol>
+</section>
+
+<section class="panel">
+<h2>5-bo‘lim. Bilimni tekshirish</h2>
+<p>Test javoblarini tekshirish uchun tugmani bosing. Hisoblash va laboratoriya topshiriqlari o‘qituvchi tomonidan alohida baholanadi.</p>
+<button onclick="checkTest()">Testni tekshirish</button>
+<button class="secondary" onclick="window.print()">Imtihonni chop etish</button>
+<button class="secondary" onclick="location.reload()">Qayta boshlash</button>
+<div id="score" class="result" aria-live="polite"></div>
+<div id="feedback"></div>
+</section>
+<footer>9-sinf fizika • II bob nazorat imtihoni</footer>
+</main>
+<script>
+const qs=[
+["Jismning ichki energiyasi nimaga bog‘liq?",["Faqat jismning rangiga","Zarralarning harakati va o‘zaro ta’siriga","Faqat jism shakliga","Faqat hajmiga"],1],
+["Ichki energiyani o‘zgartirishning asosiy usullari qaysilar?",["Faqat sovitish","Faqat eritish","Issiqlik uzatish va ish bajarish","Faqat bug‘latish"],2],
+["Gaz kengayib porshenni siljitganda nima sodir bo‘ladi?",["Gaz ish bajaradi","Gaz massasi ortadi","Harorat doim nolga tushadi","Bosim doim ortadi"],0],
+["Issiqlik miqdorining SI dagi birligi qaysi?",["Vatt","Joul","Paskal","Kelvin"],1],
+["Q = cmΔt formuladagi c nimani bildiradi?",["Massa","Temperatura","Solishtirma issiqlik sig‘imi","Bosim"],2],
+["Bir xil massali ikki jismdan qaysi biri ko‘proq issiqlik oladi?",["Harorati o‘zgarmagani","c va temperatura o‘zgarishi ko‘paytmasi kattasi","Hajmi kichigi","Rangi to‘qrog‘i"],1],
+["Issiqlik muvozanati holatida jismlarning...",["massalari teng bo‘ladi","temperaturalari tenglashadi","hajmlari teng bo‘ladi","zichliklari teng bo‘ladi"],1],
+["Solishtirma yonish issiqligi qaysi kattalik?",["1 kg yoqilg‘i to‘liq yonganda ajraladigan issiqlik","1 kg suvni 1°C isitish uchun zarur issiqlik","Jismning massasi","Gazning bosimi"],0],
+["Yoqilg‘i yonganda energiya asosan qaysi energiyaga aylanadi?",["Faqat potensial energiyaga","Ichki energiya va boshqa ko‘rinishlarga","Faqat elektr zaryadiga","Modda massasiga"],1],
+["Termodinamikaning birinchi qonuni qaysi ifoda bilan beriladi?",["Q=ΔU−A","Q=cm","Q=ΔU+A","A=Fs²"],2],
+["Gazga 600 J issiqlik berilib, u 250 J ish bajarsa, ΔU qancha?",["850 J","350 J","250 J","600 J"],1],
+["Issiqlik o‘z-o‘zidan qaysi yo‘nalishda uzatiladi?",["Sovuqdan issiqqa","Issiqdan sovuqqa","Har doim yuqoriga","Yo‘nalishsiz"],1],
+["Qaytmas jarayon deganda nima tushuniladi?",["Teskari yo‘nalishda o‘z-o‘zidan aynan avvalgi holatga qaytmaydigan jarayon","Faqat tez jarayon","Faqat erish","Har qanday mexanik harakat"],0],
+["Termodinamikaning ikkinchi qonuni nimani ifodalaydi?",["Energiya yo‘qolishini","Issiqlik jarayonlarining yo‘nalishi va qaytmasligini","Massaning ortishini","Jismning tezligini"],1],
+["Suvlarni aralashtirishda issiqlik yo‘qotilmasa qaysi tenglik bajariladi?",["Qberilgan=Qolingan","m1=m2 shart","T1=T2 boshida","q=cm"],0],
+["Solishtirma issiqlik sig‘imining birligi qaysi?",["J/kg","J/(kg·°C)","N/m","Pa"],1],
+["Jismni ishqalanish orqali qizdirish qaysi usulga misol?",["Issiqlik uzatishsiz ish bajarish","Faqat nurlanish","Modda almashinuvi","Kimyoviy parchalanish"],0],
+["Ideal issiqlik mashinasida qizdirgichdan olingan issiqlikning hammasi foydali ishga aylanadimi?",["Ha, doimo","Yo‘q, bir qismi sovitkichga beriladi","Faqat qishda","Faqat kichik massada"],1],
+["Kalorimetr nima uchun ishlatiladi?",["Bosimni o‘lchash","Issiqlik miqdori va issiqlik almashinuvini o‘rganish","Tok kuchini o‘lchash","Tezlikni aniqlash"],1],
+["Issiqlik sig‘imi C va solishtirma issiqlik sig‘imi c orasidagi bog‘lanish qaysi?",["C=cm","C=c/m","C=m/c","C=Q·m"],0]
+];
+const root=document.getElementById('questions');
+qs.forEach((q,i)=>{let d=document.createElement('div');d.className='question';d.innerHTML=`<p>${i+1}. ${q[0]}</p><div class="answers">${q[1].map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}">${String.fromCharCode(65+j)}) ${a}</label>`).join('')}</div>`;root.appendChild(d)});
+function checkTest(){let correct=0,answered=0;qs.forEach((q,i)=>{let v=document.querySelector(`input[name=q${i}]:checked`);if(v){answered++;if(+v.value===q[2])correct++}});let pts=correct*3;document.getElementById('score').textContent=`Natija: ${correct}/${qs.length} ta to‘g‘ri • ${pts}/60 ball`;document.getElementById('feedback').textContent=answered<qs.length?` ${qs.length-answered} ta savol javobsiz qoldi.`: (pts>=51?'A’lo natija!':pts>=42?'Yaxshi natija.':pts>=30?'Qoniqarli.':'Mavzularni yana bir bor takrorlang.')}
+const p=document.getElementById('particles');for(let i=0;i<32;i++){let e=document.createElement('i');e.className='particle';e.style.left=(Math.random()*94)+'%';e.style.top=(Math.random()*85)+'%';e.style.animationDuration=(.7+Math.random()*2.5)+'s';e.style.animationDelay=(-Math.random()*3)+'s';p.appendChild(e)}
+const tr=document.getElementById('tempRange');tr.oninput=()=>{let v=+tr.value;document.querySelectorAll('.particle').forEach(e=>e.style.animationDuration=(3.5-v*.55)+'s');document.getElementById('tempLabel').textContent=['Juda past','Past','O‘rtacha','Yuqori','Juda yuqori'][v-1];document.getElementById('tempExplain').textContent=v<3?'Molekulalar sekinroq harakatlanadi; o‘rtacha kinetik energiya kichikroq.':v===3?'Molekulalar o‘rtacha tezlikda harakatlanmoqda.':'Molekulalar tezroq harakatlanadi; o‘rtacha kinetik energiya ortadi.'};
+const hr=document.getElementById('heatRange');hr.oninput=()=>{let v=+hr.value;document.getElementById('heatLabel').textContent=v+'%';document.getElementById('piston').style.transform=`translateY(${v*.42}px)`;document.getElementById('workExplain').textContent=v>60?'Gaz ko‘proq kengaydi, porshen ko‘proq siljidi.':v<20?'Gazning kengayishi juda kichik.':'Gaz kengaymoqda. Porshen siljishi — gaz bajargan ishning modeli.'};
+function mix(){let h=+document.getElementById('hotRange').value,c=+document.getElementById('coldRange').value;document.getElementById('hotLabel').textContent=h;document.getElementById('coldLabel').textContent=c;let t=(h+c)/2;document.getElementById('mixResult').textContent=t.toFixed(1);document.getElementById('mixBar').style.width=(t)+'%'}
+document.getElementById('hotRange').oninput=mix;document.getElementById('coldRange').oninput=mix;
+function firstLaw(){let q=+document.getElementById('qRange').value,a=+document.getElementById('aRange').value;document.getElementById('qLabel').textContent=q;document.getElementById('aLabel').textContent=a;document.getElementById('uResult').textContent=q-a}
+document.getElementById('qRange').oninput=firstLaw;document.getElementById('aRange').oninput=firstLaw;
+</script>
+</body></html>

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Termodinamikaning birinchi qonuni</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1b2a41;--mut:#5b6b80;--hot:#ff6b1a;--hot2:#ffc233;--cold:#2a7fd4;--ok:#2e8b57;--bad:#c0392b;--line:#d5dde6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--cold:#5aa7f0}}
+:root[data-theme="dark"]{--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--cold:#5aa7f0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Onest,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:26px;line-height:1.15;margin:8px 0 6px;font-weight:800}
+h2{font-size:20px;margin:0 0 8px;font-weight:800}
+p{margin:0 0 10px}
+.sub{color:var(--mut);margin-bottom:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.formula{font-size:28px;font-weight:800;text-align:center;padding:10px;border-radius:10px;background:var(--bg);margin:10px 0}
+.formula small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}
+button,input{font:inherit;color:inherit}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:20px;padding:6px 11px;cursor:pointer}
+.chip[aria-pressed="true"]{background:var(--hot);border-color:var(--hot);color:#fff}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--hot2);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--hot)}
+canvas{width:100%;height:auto;background:var(--bg);border-radius:12px;display:block}
+.heat{text-align:center;font-size:34px;line-height:1.1;min-height:42px;transition:font-size .3s}
+.read{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.read div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.read b{display:block;font-size:20px}
+.read span{font-size:13px;color:var(--mut)}
+.eq{text-align:center;font-weight:800;font-size:20px;margin:10px 0 4px}
+.um{height:14px;border-radius:7px;background:var(--line);overflow:hidden}
+.um i{display:block;height:100%;width:30%;background:linear-gradient(90deg,var(--cold),var(--hot));transition:width .3s}
+.scene{text-align:center;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--bg);border-radius:12px;padding:14px}
+.big{font-size:60px;line-height:1.1;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) scale(1.06)}}
+.prog{height:5px;background:var(--line);border-radius:3px;margin:10px 0;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--hot)}
+.q{border-top:1px solid var(--line);padding:12px 0}
+.q:first-of-type{border-top:0}
+.ans{display:none;margin-top:6px;padding:8px 10px;border-radius:8px;background:var(--bg);color:var(--ok)}
+.ans.show{display:block}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+input[type=number]{width:120px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.fb{font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>Termodinamikaning birinchi qonuni</h1>
+<p class="sub">9-sinf fizikasi · 22-mavzu · animatsion simulyatsiya, video-dars, savol va topshiriqlar</p>
+
+<section>
+<h2>Asosiy tushuncha</h2>
+<p>Gaz isitilsa, uning molekulalari tezroq harakatlanadi, ya’ni <b>ichki energiyasi</b> ortadi. Gaz kengayib, porshenni itarsa, <b>ish bajaradi</b>. Berilgan issiqlik ana shu ikki yo’lga sarflanadi.</p>
+<div class="formula">Q = ΔU + A<small>Q — sistemaga berilgan issiqlik (J), ΔU — ichki energiya o’zgarishi (J), A — sistema bajargan ish (J)</small></div>
+<p><b>Qonun:</b> sistemaga berilgan issiqlik miqdori uning ichki energiyasini o’zgartirishga va sistemaning tashqi jismlar ustida ish bajarishiga sarflanadi. Bu energiyaning saqlanish qonunining issiqlik hodisalaridagi ko’rinishidir.</p>
+<p><b>Ishoralar:</b> Q &gt; 0 — gaz issiqlik oladi, Q &lt; 0 — beradi. A &gt; 0 — gaz kengayadi (ish bajaradi), A &lt; 0 — siqiladi. ΔU &gt; 0 — gaz qiziydi, ΔU &lt; 0 — soviydi.</p>
+</section>
+
+<section>
+<h2>Simulyatsiya: gaz, porshen va issiqlik</h2>
+<p>Pastdagi sirg’aluvchilar bilan issiqlik Q va ish A ni o’zgartiring. Molekulalar tezligi ichki energiyaga, porshen holati ishga bog’liq. Yoki tayyor jarayonni tanlang.</p>
+<div class="chips" id="chips" role="group" aria-label="Jarayon">
+<button class="chip" data-p="80,0">Idish mahkam (A = 0)</button>
+<button class="chip" data-p="100,40">Isitish va kengayish</button>
+<button class="chip" data-p="0,50">Issiqlik o’tmaydi (Q = 0)</button>
+<button class="chip" data-p="60,60">Harorat o’zgarmaydi</button>
+</div>
+<canvas id="cv" width="320" height="170" aria-label="Porshenli idishdagi gaz molekulalari"></canvas>
+<div class="heat" id="heat" aria-hidden="true"></div>
+<label for="qs">Berilgan issiqlik Q: <b id="qv">0</b> J</label>
+<input id="qs" type="range" min="-50" max="100" step="5" value="0">
+<label for="as">Gaz bajargan ish A: <b id="av">0</b> J</label>
+<input id="as" type="range" min="-50" max="100" step="5" value="0">
+<div class="eq" id="eq"></div>
+<div class="um" title="Ichki energiya"><i id="um"></i></div>
+<div class="read">
+<div><b id="rQ">0</b><span>Q (J)</span></div>
+<div><b id="rU">0</b><span>ΔU = Q − A (J)</span></div>
+<div><b id="rA">0</b><span>A (J)</span></div>
+</div>
+<p id="note" style="margin-top:10px;color:var(--mut)"></p>
+</section>
+
+<section>
+<h2>Video-animatsiya: 5 sahnada dars</h2>
+<div class="scene" aria-live="polite"><div class="big" id="sIc">⚡</div><p id="sTx" style="margin-top:10px;font-weight:600"></p></div>
+<div class="prog"><i id="sPr"></i></div>
+<div class="row"><button class="btn" id="sPlay">▶ Boshlash</button><button class="chip" id="sNext">Keyingi sahna</button><span id="sNo" style="color:var(--mut)">1/5</span></div>
+</section>
+
+<section>
+<h2>Masalalar</h2>
+<div class="q"><p><b>1.</b> Gazga 300 J issiqlik berildi, gaz 120 J ish bajardi. Ichki energiya necha J ga o’zgardi?</p><div class="row"><input type="number" id="a1" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="1" data-v="180">Tekshirish</button><span class="fb" id="f1"></span></div></div>
+<div class="q"><p><b>2.</b> Mahkam yopiq idishdagi gazga 250 J issiqlik berildi (hajm o’zgarmaydi, A = 0). ΔU nechaga teng?</p><div class="row"><input type="number" id="a2" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="2" data-v="250">Tekshirish</button><span class="fb" id="f2"></span></div></div>
+<div class="q"><p><b>3.</b> Issiqlik o’tkazmaydigan idishda gaz kengayib, 80 J ish bajardi (Q = 0). ΔU ni toping (ishorasi bilan).</p><div class="row"><input type="number" id="a3" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="3" data-v="-80">Tekshirish</button><span class="fb" id="f3"></span></div></div>
+<div class="q"><p><b>4.</b> Gazning ichki energiyasi 150 J ortdi va u 50 J ish bajardi. Gazga necha J issiqlik berilgan?</p><div class="row"><input type="number" id="a4" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="4" data-v="200">Tekshirish</button><span class="fb" id="f4"></span></div></div>
+</section>
+
+<section>
+<h2>Savollar</h2>
+<div class="q"><p><b>1.</b> Termodinamikaning birinchi qonuni qanday ifodalanadi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Q = ΔU + A: berilgan issiqlik ichki energiyani o’zgartirishga va ish bajarishga sarflanadi.</div></div>
+<div class="q"><p><b>2.</b> Gaz hajmi o’zgarmasa (A = 0), berilgan issiqlik nimaga sarflanadi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Hammasi ichki energiyani oshirishga: Q = ΔU. Gaz qiziydi.</div></div>
+<div class="q"><p><b>3.</b> Issiqlik almashinuvisiz (Q = 0) gaz kengaysa, harorati qanday o’zgaradi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Pasayadi. Ish ichki energiya hisobiga bajariladi: ΔU = −A.</div></div>
+<div class="q"><p><b>4.</b> Velosiped shinasini nasos bilan shishirganda nasos qizishining sababi nima?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Havoni siqishda ish bajariladi (gaz uchun A &lt; 0), ichki energiya ortadi va havo qiziydi.</div></div>
+<div class="q"><p><b>5.</b> Ichki energiyasi o’zgarmasa (ΔU = 0), Q va A orasida qanday bog’lanish bor?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Q = A: olingan issiqlikning hammasi ishga aylanadi.</div></div>
+</section>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+var cv=$("cv"),cx=cv.getContext("2d"),W=cv.width,H=cv.height;
+var ps=[],wall=160,Q=0,A=0,U=100;
+for(var i=0;i<26;i++)ps.push({x:20+Math.random()*100,y:20+Math.random()*130,a:Math.random()*6.28});
+function upd(){Q=+$("qs").value;A=+$("as").value;U=Math.max(10,Math.min(300,100+Q-A));
+var d=Q-A;$("qv").textContent=Q;$("av").textContent=A;
+$("rQ").textContent=Q;$("rA").textContent=A;$("rU").textContent=d;
+$("eq").textContent=Q+" = "+d+" + "+A;
+$("um").style.width=(U/300*100)+"%";
+var h=$("heat");h.textContent=Q>0?"🔥":Q<0?"🧊":"";h.style.fontSize=(18+Math.abs(Q)*.22)+"px";
+$("note").textContent=(d>0?"ΔU > 0: gaz qiziydi. ":d<0?"ΔU < 0: gaz soviydi. ":"ΔU = 0: harorat o’zgarmaydi. ")+(A>0?"Gaz kengayib ish bajaryapti.":A<0?"Gaz siqilmoqda, unga ish bajarilmoqda.":"Hajm o’zgarmaydi, ish bajarilmaydi.")}
+function pick(el){var cs=document.querySelectorAll("#chips .chip");for(var i=0;i<cs.length;i++)cs[i].setAttribute("aria-pressed",cs[i]===el)}
+document.querySelectorAll("#chips .chip").forEach(function(b){b.onclick=function(){var v=b.dataset.p.split(",");$("qs").value=v[0];$("as").value=v[1];pick(b);upd()}});
+$("qs").oninput=$("as").oninput=function(){pick(null);upd()};
+function frame(){var tw=160+A*.9;wall+=(tw-wall)*.08;var sp=1.7*Math.sqrt(U/100);
+cx.clearRect(0,0,W,H);
+cx.strokeStyle="#8aa0b6";cx.lineWidth=4;cx.beginPath();cx.moveTo(8,8);cx.lineTo(wall,8);cx.moveTo(8,H-8);cx.lineTo(wall,H-8);cx.moveTo(8,8);cx.lineTo(8,H-8);cx.stroke();
+cx.fillStyle="#7a8ea3";cx.fillRect(wall,10,10,H-20);cx.fillRect(wall+10,H/2-3,W-wall-10,6);
+var t=(U-10)/290,r=Math.round(60+t*195),g=Math.round(140-t*60),b=Math.round(220-t*190);
+cx.fillStyle="rgb("+r+","+g+","+b+")";
+ps.forEach(function(p){p.x+=Math.cos(p.a)*sp;p.y+=Math.sin(p.a)*sp;
+if(p.x<14){p.x=14;p.a=Math.PI-p.a}if(p.x>wall-6){p.x=wall-6;p.a=Math.PI-p.a}
+if(p.y<14){p.y=14;p.a=-p.a}if(p.y>H-14){p.y=H-14;p.a=-p.a}
+cx.beginPath();cx.arc(p.x,p.y,4,0,6.283);cx.fill()});
+requestAnimationFrame(frame)}
+upd();frame();
+var S=[["⚡","Energiya yo’qolmaydi va yo’qdan paydo bo’lmaydi, faqat bir turdan boshqasiga o’tadi."],["🌡️","Gazning ichki energiyasi molekulalar harakati energiyasidan iborat. Isitsak, molekulalar tezlashadi."],["🔥➡️⚙️","Berilgan issiqlik Q ikki ishga sarflanadi: ichki energiyani oshirishga (ΔU) va ish bajarishga (A)."],["📐","Q = ΔU + A. A = 0 bo’lsa Q = ΔU. Q = 0 bo’lsa ΔU = −A. ΔU = 0 bo’lsa Q = A."],["🧮","Misol: gazga 500 J issiqlik berildi, u 200 J ish bajardi. ΔU = 500 − 200 = 300 J."]];
+var si=0,tm=null;
+function scene(){$("sIc").textContent=S[si][0];$("sTx").textContent=S[si][1];$("sNo").textContent=(si+1)+"/5";$("sPr").style.width=((si+1)/5*100)+"%"}
+function nx(){si=(si+1)%5;scene()}
+$("sNext").onclick=nx;
+$("sPlay").onclick=function(){if(tm){clearInterval(tm);tm=null;this.textContent="▶ Boshlash"}else{tm=setInterval(nx,5000);this.textContent="⏸ To’xtatish"}};
+scene();
+document.querySelectorAll("[data-k]").forEach(function(b){b.onclick=function(){var k=b.dataset.k,v=parseFloat(b.dataset.v),x=parseFloat($("a"+k).value.replace(",",".")),f=$("f"+k);
+if(isNaN(x)){f.textContent="Son kiriting";f.style.color="var(--mut)";return}
+if(Math.abs(x-v)<.5){f.textContent="✓ To’g’ri! "+v+" J";f.style.color="var(--ok)"}else{f.textContent="✗ Qayta urining: Q = ΔU + A";f.style.color="var(--bad)"}}});
+document.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){b.nextElementSibling.classList.toggle("show")}});
+</script>
+</body>
+</html>

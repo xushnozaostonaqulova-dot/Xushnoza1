@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Issiqlik jarayonlarining qaytmasligi. Termodinamikaning 2-qonuni</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;600;800&display=swap">
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1b2a41;--mut:#5b6b80;--hot:#ff6b1a;--hot2:#ffc233;--cold:#2a7fd4;--ok:#2e8b57;--bad:#c0392b;--line:#d5dde6;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--cold:#5aa7f0}}
+:root[data-theme="dark"]{--bg:#10171f;--card:#192330;--ink:#e8eef5;--mut:#9fb0c3;--line:#2b3a4c;--cold:#5aa7f0}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Onest,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:16px 14px 48px}
+h1{font-size:25px;line-height:1.15;margin:8px 0 6px;font-weight:800}
+h2{font-size:20px;margin:0 0 8px;font-weight:800}
+p{margin:0 0 10px}
+.sub{color:var(--mut);margin-bottom:16px}
+section{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:16px;margin:14px 0}
+.formula{font-size:26px;font-weight:800;text-align:center;padding:10px;border-radius:10px;background:var(--bg);margin:10px 0}
+.formula small{display:block;font-size:13px;font-weight:400;color:var(--mut)}
+button,input{font:inherit;color:inherit}
+.chip{border:1px solid var(--line);background:var(--bg);border-radius:20px;padding:6px 11px;cursor:pointer}
+.btn{background:var(--ink);color:var(--bg);border:0;border-radius:10px;padding:10px 16px;font-weight:600;cursor:pointer}
+button:focus-visible,input:focus-visible{outline:3px solid var(--hot2);outline-offset:2px}
+input[type=range]{width:100%;accent-color:var(--hot)}
+canvas{width:100%;height:auto;background:var(--bg);border-radius:12px;display:block}
+.bodies{display:flex;align-items:center;justify-content:center;gap:6px;background:var(--bg);border-radius:12px;padding:16px 6px}
+.blk{width:38%;height:110px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;font-weight:800;font-size:26px;color:#fff;text-shadow:0 1px 3px rgba(0,0,0,.35);transition:background .2s}
+.blk small{font-size:12px;font-weight:400}
+.arr{font-size:30px;width:14%;text-align:center;transition:opacity .3s}
+.row{display:flex;gap:8px;align-items:center;margin-top:8px;flex-wrap:wrap}
+.read{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px}
+.read div{background:var(--bg);border-radius:10px;padding:8px 10px}
+.read b{display:block;font-size:20px}
+.read span{font-size:13px;color:var(--mut)}
+.note{margin-top:10px;color:var(--mut)}
+.flow{display:flex;flex-direction:column;gap:6px;margin:10px 0}
+.flow div{height:26px;border-radius:7px;color:#fff;font-weight:600;font-size:14px;padding:3px 8px;white-space:nowrap;transition:width .3s;min-width:44px;overflow:hidden}
+.scene{text-align:center;min-height:230px;display:flex;flex-direction:column;justify-content:center;align-items:center;background:var(--bg);border-radius:12px;padding:14px}
+.big{font-size:58px;line-height:1.1;animation:bob 1.6s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) scale(1.06)}}
+.prog{height:5px;background:var(--line);border-radius:3px;margin:10px 0;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--hot)}
+.q{border-top:1px solid var(--line);padding:12px 0}
+.q:first-of-type{border-top:0}
+.ans{display:none;margin-top:6px;padding:8px 10px;border-radius:8px;background:var(--bg);color:var(--ok)}
+.ans.show{display:block}
+input[type=number]{width:120px;padding:8px;border:1px solid var(--line);border-radius:8px;background:var(--bg)}
+.fb{font-weight:600}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main>
+<h1>Issiqlik jarayonlarining qaytmasligi. Termodinamikaning 2-qonuni</h1>
+<p class="sub">9-sinf fizikasi · 23-mavzu · animatsion simulyatsiyalar, video-dars, savol va topshiriqlar</p>
+
+<section>
+<h2>Asosiy tushuncha</h2>
+<p>Issiq choy sovib, xona havosi bilan bir xil haroratga keladi. Lekin xona havosi choyni o’z-o’zidan qaytadan qizdirmaydi. Tabiatdagi issiqlik jarayonlari <b>faqat bir yo’nalishda</b> o’z-o’zidan boradi. Bunday jarayonlar <b>qaytmas jarayonlar</b> deyiladi.</p>
+<p><b>Termodinamikaning 2-qonuni (Klauzius):</b> issiqlik o’z-o’zidan faqat issiq jismdan sovuq jismga o’tadi. Sovuq jismdan issiq jismga o’tishi uchun tashqaridan ish bajarish kerak (masalan, muzlatkichda).</p>
+<p><b>Dvigatel uchun (Kelvin):</b> isitgichdan olingan issiqlikni hammasini ishga aylantirib bo’lmaydi. Bir qismi albatta sovitgichga beriladi.</p>
+<div class="formula">η = A / Q₁ = (Q₁ − Q₂) / Q₁<small>η — foydali ish koeffitsiyenti (FIK), Q₁ — isitgichdan olingan, Q₂ — sovitgichga berilgan issiqlik, A = Q₁ − Q₂</small></div>
+<p>Shuning uchun har qanday issiqlik dvigatelining FIK i 100 % dan kichik: η &lt; 1.</p>
+</section>
+
+<section>
+<h2>1-simulyatsiya: issiqlik qaysi tomonga o’tadi?</h2>
+<p>Issiq (90 °C) va sovuq (10 °C) jismni tutashtiring.</p>
+<div class="bodies"><div class="blk" id="bh">90 °C<small>issiq jism</small></div><div class="arr" id="ar">➡️</div><div class="blk" id="bc">10 °C<small>sovuq jism</small></div></div>
+<div class="row"><button class="btn" id="b1">Tutashtirish</button><button class="chip" id="b1r">Qayta</button></div>
+<p class="note" id="n1">Tugmani bosing va kuzating.</p>
+</section>
+
+<section>
+<h2>2-simulyatsiya: gaz molekulalari</h2>
+<p>Hamma molekula chap tomonda. To’siqni oching: molekulalar butun idishga tarqaladi. Ularning hammasi o’z-o’zidan yana chapga qaytishi mumkinmi?</p>
+<canvas id="cv" width="320" height="150" aria-label="Idishda molekulalar"></canvas>
+<div class="row"><button class="btn" id="b2">To’siqni ochish</button><button class="chip" id="b2r">Qayta</button></div>
+<div class="read">
+<div><b id="cL">40</b><span>chapda</span></div>
+<div><b id="cR">0</b><span>o’ngda</span></div>
+<div><b id="cM">0</b><span>hammasi chapda bo’lgan lahzalar</span></div>
+</div>
+<p class="note">40 ta molekulaning hammasi bir vaqtda chapga qaytish ehtimoli taxminan 1/10¹². Amalda bu hech qachon bo’lmaydi.</p>
+</section>
+
+<section>
+<h2>3-simulyatsiya: issiqlik dvigateli</h2>
+<p>Isitgichdan olingan Q₁ va sovitgichga berilgan Q₂ ni belgilang. Foydali ish A va FIK hisoblanadi.</p>
+<label for="s1">Isitgichdan olingan Q₁: <b id="v1">800</b> J</label>
+<input id="s1" type="range" min="100" max="1000" step="50" value="800">
+<label for="s2">Sovitgichga berilgan Q₂: <b id="v2">500</b> J</label>
+<input id="s2" type="range" min="0" max="1000" step="50" value="500">
+<div class="flow"><div id="f1b" style="background:#d9531e">Q₁</div><div id="f2b" style="background:#2a7fd4">Q₂</div><div id="f3b" style="background:#2e8b57">A</div></div>
+<div class="read">
+<div><b id="rA">300 J</b><span>ish A = Q₁ − Q₂</span></div>
+<div><b id="rE">37,5 %</b><span>FIK η</span></div>
+<div><b id="rS">✓</b><span>holat</span></div>
+</div>
+<p class="note" id="n3"></p>
+</section>
+
+<section>
+<h2>Video-animatsiya: 5 sahnada dars</h2>
+<div class="scene" aria-live="polite"><div class="big" id="sIc">☕</div><p id="sTx" style="margin-top:10px;font-weight:600"></p></div>
+<div class="prog"><i id="sPr"></i></div>
+<div class="row"><button class="btn" id="sPlay">▶ Boshlash</button><button class="chip" id="sNext">Keyingi sahna</button><span id="sNo" style="color:var(--mut)">1/5</span></div>
+</section>
+
+<section>
+<h2>Masalalar</h2>
+<div class="q"><p><b>1.</b> Dvigatel isitgichdan 500 J issiqlik oldi va sovitgichga 300 J berdi. Bajargan ishi necha J?</p><div class="row"><input type="number" id="a1" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="1" data-v="200">Tekshirish</button><span class="fb" id="f1"></span></div></div>
+<div class="q"><p><b>2.</b> 1-masaladagi dvigatelning FIK i necha foiz?</p><div class="row"><input type="number" id="a2" inputmode="decimal" aria-label="Javob %"> % <button class="btn" data-k="2" data-v="40">Tekshirish</button><span class="fb" id="f2"></span></div></div>
+<div class="q"><p><b>3.</b> Dvigatel isitgichdan 800 J oldi, FIK i 25 %. U qancha ish bajaradi?</p><div class="row"><input type="number" id="a3" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="3" data-v="200">Tekshirish</button><span class="fb" id="f3"></span></div></div>
+<div class="q"><p><b>4.</b> Dvigatel 600 J ish bajardi, FIK i 30 %. Isitgichdan necha J issiqlik olgan?</p><div class="row"><input type="number" id="a4" inputmode="decimal" aria-label="Javob J"> J <button class="btn" data-k="4" data-v="2000">Tekshirish</button><span class="fb" id="f4"></span></div></div>
+</section>
+
+<section>
+<h2>Savollar</h2>
+<div class="q"><p><b>1.</b> Qaytmas jarayon nima? Misol keltiring.</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">O’z-o’zidan faqat bir yo’nalishda boradigan jarayon. Masalan: issiq choyning sovishi, ikki xil harorati suvning aralashishi, hidning xonaga tarqalishi.</div></div>
+<div class="q"><p><b>2.</b> Termodinamikaning 2-qonunini ayting.</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Issiqlik o’z-o’zidan faqat issiq jismdan sovuq jismga o’tadi. Teskari o’tish uchun tashqi ish kerak.</div></div>
+<div class="q"><p><b>3.</b> Nima uchun dvigatelning FIK i 100 % bo’la olmaydi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Isitgichdan olingan issiqlikning bir qismi albatta sovitgichga beriladi (Q₂ &gt; 0), shuning uchun A &lt; Q₁ va η &lt; 1.</div></div>
+<div class="q"><p><b>4.</b> Muzlatkich issiqlikni sovuq ichki qismdan issiq xonaga o’tkazadi. Bu qonunga zid emasmi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Zid emas. Bu o’z-o’zidan bo’lmaydi: muzlatkich kompressori elektr energiyasi hisobiga ish bajaradi.</div></div>
+<div class="q"><p><b>5.</b> Energiyaning saqlanish qonuni bajariladi. Demak, issiqlik sovuq jismdan issiq jismga o’z-o’zidan o’tsa ham nima bo’lardi?</p><button class="chip" data-a>Javobni ko’rish</button><div class="ans">Energiya saqlanardi, lekin bunday jarayon tabiatda kuzatilmaydi. 2-qonun jarayon yo’nalishini belgilaydi, saqlanish qonuni esa faqat miqdorni.</div></div>
+</section>
+</main>
+<script>
+var $=function(i){return document.getElementById(i)};
+var th=90,tc=10,run1=0;
+function hue(t){return "hsl("+Math.round(220-t*2.2)+",75%,48%)"}
+function p1(){$("bh").firstChild.nodeValue=Math.round(th)+" °C";$("bc").firstChild.nodeValue=Math.round(tc)+" °C";$("bh").style.background=hue(th);$("bc").style.background=hue(tc);$("ar").style.opacity=Math.min(1,(th-tc)/20)}
+function r1(){run1++;th=90;tc=10;p1();$("n1").textContent="Tugmani bosing va kuzating."}
+$("b1r").onclick=r1;
+$("b1").onclick=function(){var id=++run1;(function st(){if(id!=run1)return;var d=(th-tc)*.015;th-=d;tc+=d;p1();
+if(th-tc>.6)requestAnimationFrame(st);else{th=tc=(th+tc)/2;p1();$("n1").textContent="Harorat tenglashdi. Issiqlik endi o’z-o’zidan qaytib, bir jismni qizdirib, ikkinchisini sovitmaydi: jarayon qaytmas."}})()};
+r1();
+var cv=$("cv"),cx=cv.getContext("2d"),W=cv.width,H=cv.height,N=40,ps=[],open=0,mom=0;
+function init(){open=0;mom=0;ps=[];for(var i=0;i<N;i++)ps.push({x:12+Math.random()*134,y:12+Math.random()*(H-24),a:Math.random()*6.28})}
+init();
+$("b2").onclick=function(){open=1};$("b2r").onclick=init;
+function fr(){cx.clearRect(0,0,W,H);cx.strokeStyle="#8aa0b6";cx.lineWidth=3;cx.strokeRect(4,4,W-8,H-8);
+if(!open){cx.beginPath();cx.moveTo(W/2,4);cx.lineTo(W/2,H-4);cx.stroke()}
+var L=0;
+cx.fillStyle="#ff6b1a";
+ps.forEach(function(p){p.x+=Math.cos(p.a)*1.8;p.y+=Math.sin(p.a)*1.8;
+var lo=10,hi=W-10;
+if(!open&&p.x<W/2)hi=W/2-6;
+if(!open&&p.x>=W/2){lo=W/2+6}
+if(p.x<lo){p.x=lo;p.a=Math.PI-p.a}if(p.x>hi){p.x=hi;p.a=Math.PI-p.a}
+if(p.y<10){p.y=10;p.a=-p.a}if(p.y>H-10){p.y=H-10;p.a=-p.a}
+if(p.x<W/2)L++;
+cx.beginPath();cx.arc(p.x,p.y,4,0,6.283);cx.fill()});
+if(open&&L==N)mom++;
+$("cL").textContent=L;$("cR").textContent=N-L;$("cM").textContent=mom;
+requestAnimationFrame(fr)}
+fr();
+function p3(){var a=+$("s1").value,b=+$("s2").value;if(b>a){b=a;$("s2").value=b}
+var A=a-b,e=A/a*100;$("v1").textContent=a;$("v2").textContent=b;
+$("f1b").style.width="100%";$("f2b").style.width=(b/a*100)+"%";$("f3b").style.width=(A/a*100)+"%";
+$("f1b").textContent="Q₁ = "+a+" J";$("f2b").textContent="Q₂ = "+b+" J";$("f3b").textContent="A = "+A+" J";
+$("rA").textContent=A+" J";$("rE").textContent=e.toFixed(1).replace(".",",")+" %";
+if(b==0){$("rS").textContent="✗";$("n3").textContent="Q₂ = 0 bo’lishi mumkin emas: 2-qonunga ko’ra, issiqlikning bir qismi sovitgichga berilishi shart. Shuning uchun η hech qachon 100 % bo’lmaydi."}
+else{$("rS").textContent="✓";$("n3").textContent="Q₂ qancha kichik bo’lsa, FIK shuncha katta. Lekin Q₂ = 0 bo’la olmaydi."}}
+$("s1").oninput=$("s2").oninput=p3;p3();
+var S=[["☕","Issiq choy sovib, xona haroratigacha tushadi. Teskarisi esa o’z-o’zidan bo’lmaydi."],["🔥➡️🧊","Issiqlik o’z-o’zidan issiq jismdan sovuq jismga o’tadi. Bu jarayon qaytmas."],["⚙️","Termodinamikaning 2-qonuni: sovuq jismdan issiq jismga issiqlikni o’tkazish uchun tashqi ish kerak."],["🏭","Dvigatel: isitgichdan Q₁ oladi, ish A bajaradi, qolgan Q₂ ni sovitgichga beradi."],["🧮","η = (Q₁ − Q₂)/Q₁. Masalan: Q₁ = 500 J, Q₂ = 300 J bo’lsa, A = 200 J, η = 40 %."]];
+var si=0,tm=null;
+function scene(){$("sIc").textContent=S[si][0];$("sTx").textContent=S[si][1];$("sNo").textContent=(si+1)+"/5";$("sPr").style.width=((si+1)/5*100)+"%"}
+function nx(){si=(si+1)%5;scene()}
+$("sNext").onclick=nx;
+$("sPlay").onclick=function(){if(tm){clearInterval(tm);tm=null;this.textContent="▶ Boshlash"}else{tm=setInterval(nx,5000);this.textContent="⏸ To’xtatish"}};
+scene();
+document.querySelectorAll("[data-k]").forEach(function(b){b.onclick=function(){var k=b.dataset.k,v=parseFloat(b.dataset.v),x=parseFloat($("a"+k).value.replace(",",".")),f=$("f"+k);
+if(isNaN(x)){f.textContent="Son kiriting";f.style.color="var(--mut)";return}
+if(Math.abs(x-v)<.5){f.textContent="✓ To’g’ri! "+v;f.style.color="var(--ok)"}else{f.textContent="✗ Qayta urining: A = Q₁ − Q₂, η = A/Q₁";f.style.color="var(--bad)"}}});
+document.querySelectorAll("[data-a]").forEach(function(b){b.onclick=function(){b.nextElementSibling.classList.toggle("show")}});
+</script>
+</body>
+</html>

@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>9-sinf fizika — 17-mavzu: Issiqlik miqdori</title>
+<style>
+:root{--blue:#2563eb;--ink:#172033;--muted:#64748b;--paper:#f5f8fc;--line:#dce5f0;--red:#ef4444;--cyan:#0ea5e9;--green:#16a34a}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,Segoe UI,Arial,sans-serif}
+header{background:linear-gradient(130deg,#102a56,#2563eb);color:white;padding:38px 20px;text-align:center}
+header .tag{display:inline-block;border:1px solid #ffffff70;border-radius:30px;padding:4px 13px;font-size:.85rem}
+header h1{font-size:clamp(2rem,5vw,3.3rem);line-height:1.15;margin:14px 0}
+header p{margin:5px auto;max-width:760px;color:#e5edff}
+main{max-width:1050px;margin:25px auto;padding:0 16px}
+section{background:white;border:1px solid var(--line);border-radius:17px;padding:24px;margin:18px 0;box-shadow:0 5px 18px #1e3a5f0a}
+h2{color:#17428b;margin-top:0;border-bottom:2px solid #e8effa;padding-bottom:9px}
+h3{color:#1e4c91;margin-bottom:6px}
+p{margin:8px 0}ul,ol{padding-left:24px}
+.formula{background:#eff6ff;border-left:4px solid var(--blue);padding:13px 17px;border-radius:8px;margin:12px 0;font-size:1.15rem;text-align:center;font-weight:650}
+.note{background:#f0fdf4;border:1px solid #bbf7d0;padding:12px 15px;border-radius:10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.card{background:#f8fafc;border:1px solid var(--line);border-radius:13px;padding:15px}
+figure{margin:14px 0}figure img{width:100%;max-height:260px;object-fit:cover;border-radius:12px}figcaption{font-size:.88rem;color:var(--muted);margin-top:4px}
+label{display:block;font-weight:600;margin:8px 0 3px}
+input[type=range]{width:100%;accent-color:var(--blue)}
+input[type=number]{width:100%;padding:9px;border:1px solid #cbd5e1;border-radius:8px}
+button{border:0;border-radius:9px;background:var(--blue);color:white;padding:10px 16px;font-weight:650;cursor:pointer;margin:5px 4px 5px 0}
+button.secondary{background:#e2e8f0;color:#172033}button:hover{filter:brightness(.95)}
+.result{background:#eff6ff;border-radius:11px;padding:14px;margin-top:12px}
+.big{font-size:1.65rem;font-weight:800;color:#166534}
+canvas{width:100%;height:190px;background:#f8fafc;border:1px solid var(--line);border-radius:12px}
+.quiz-q{padding:13px 0;border-bottom:1px solid var(--line)}.quiz-q label{font-weight:400;display:flex;gap:8px;align-items:flex-start}
+.feedback{font-size:.92rem;color:#166534;margin-top:5px}
+table{border-collapse:collapse;width:100%;margin:12px 0}th,td{border:1px solid var(--line);padding:9px;text-align:left}th{background:#eff6ff}
+footer{text-align:center;color:var(--muted);padding:25px}
+@media(max-width:600px){section{padding:17px}header{padding:28px 15px}}
+</style>
+</head>
+<body>
+<header>
+  <span class="tag">II BOB · 17-MAVZU · 9-SINF FIZIKA</span>
+  <h1>ISSIQLIK MIQDORI</h1>
+  <p>Jismlarda issiqlik almashinuvi va issiqlik balansi tenglamasi</p>
+  <p><b>Dars davomiyligi:</b> 45 daqiqa · Interaktiv elektron dars</p>
+</header>
+<main>
+<section>
+<h2>Dars maqsadi va rejasi</h2>
+<p><b>Darsning maqsadi:</b> o‘quvchilarga issiqlik almashinuvi, issiqlik miqdori, solishtirma issiqlik sig‘imi va issiqlik balansi tenglamasini tushuntirish; formulalar yordamida masalalar yechish ko‘nikmasini shakllantirish.</p>
+<ol><li>Jismlarda issiqlik almashinuvi.</li><li>Issiqlik balansi tenglamasi.</li></ol>
+</section>
+
+<section>
+<h2>1. Jismlarda issiqlik almashinuvi</h2>
+<p>Harorati turlicha bo‘lgan jismlar o‘zaro ta’sirlashganda energiya issiqroq jismdan sovuqroq jismga uzatiladi. Bu jarayon <b>issiqlik almashinuvi</b> deyiladi. Jarayon jismlar harorati tenglashguncha davom etadi.</p>
+<div class="grid">
+ <div class="card"><h3>Issiqlik o‘tkazuvchanlik</h3><p>Issiqlikning modda zarrachalarining umumiy ko‘chishisiz, bir qismdan ikkinchi qismga uzatilishi. Masalan, issiq suvga solingan metall qoshiq dastasining qizishi.</p></div>
+ <div class="card"><h3>Konveksiya</h3><p>Issiqlikning suyuqlik yoki gaz oqimi orqali uzatilishi. Qizigan suyuqlik zichligi kamayib yuqoriga ko‘tariladi, sovuqroq qismi pastga tushadi.</p></div>
+ <div class="card"><h3>Nurlanish</h3><p>Issiqlikning elektromagnit to‘lqinlar orqali uzatilishi. Buning uchun moddiy muhit shart emas. Quyosh issiqligi Yerga shu yo‘l bilan yetib keladi.</p></div>
+</div>
+<figure><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/6d/Heat_transfer.svg/800px-Heat_transfer.svg.png" alt="Issiqlik uzatilish turlari" onerror="this.style.display='none'"><figcaption>Issiqlik uzatilishining uch asosiy turi. Rasm yuklanmasa, yuqoridagi tavsiflardan foydalaning.</figcaption></figure>
+<h3>Issiqlik miqdori</h3>
+<p>Jism issiqlik almashinuvida oladigan yoki beradigan energiya miqdori <b>issiqlik miqdori</b> deyiladi. U <b>Q</b> harfi bilan belgilanadi va SI sistemasida joul (J) da o‘lchanadi.</p>
+<div class="formula">Q = c · m · Δt = c · m · (t₂ − t₁)</div>
+<table><tr><th>Belgi</th><th>Fizik kattalik</th><th>Birligi</th></tr>
+<tr><td>Q</td><td>Issiqlik miqdori</td><td>J</td></tr><tr><td>c</td><td>Solishtirma issiqlik sig‘imi</td><td>J/(kg·°C)</td></tr><tr><td>m</td><td>Massa</td><td>kg</td></tr><tr><td>Δt</td><td>Harorat o‘zgarishi</td><td>°C</td></tr></table>
+<p>Qizdirilganda jism issiqlik oladi; sovitilganda esa issiqlik beradi. Bu formula agregat holat o‘zgarmagan holat uchun qo‘llanadi.</p>
+<h3>Solishtirma issiqlik sig‘imi</h3>
+<p>1 kg moddani 1°C ga isitish uchun zarur bo‘lgan issiqlik miqdorini ko‘rsatuvchi kattalik <b>solishtirma issiqlik sig‘imi</b> deyiladi. Suv uchun c = 4200 J/(kg·°C).</p>
+<div class="note">Demak, 1 kg suv haroratini 1°C ga oshirish uchun 4200 J issiqlik kerak bo‘ladi.</div>
+</section>
+
+<section>
+<h2>Animatsion simulyatsiya 1. Suvni isitish</h2>
+<p>Suv massasini va harorat o‘zgarishini boshqaring. Simulyatsiya zarur issiqlik miqdorini avtomatik hisoblaydi.</p>
+<div class="grid">
+<div class="card"><label for="mass">Suv massasi: <output id="massOut">1.0</output> kg</label><input id="mass" type="range" min=".5" max="3" step=".5" value="1">
+<label for="delta">Harorat o‘zgarishi: <output id="deltaOut">20</output> °C</label><input id="delta" type="range" min="5" max="80" step="5" value="20"></div>
+<div class="result"><div>Hisoblangan issiqlik miqdori</div><div class="big" id="heatResult">84 000 J</div><div id="heatFormula">Q = 4200 × 1 × 20</div></div>
+</div>
+<canvas id="heatingCanvas" width="900" height="190" aria-label="Suv qizishining animatsion tasviri"></canvas>
+<p><b>Kuzatish:</b> massa yoki harorat o‘zgarishi oshsa, kerakli issiqlik miqdori ham oshadi.</p>
+</section>
+
+<section>
+<h2>Masala 1. Issiqlik miqdorini hisoblash</h2>
+<p><b>Shart:</b> massasi 2 kg bo‘lgan suv 20°C dan 50°C gacha isitildi. Suvga qancha issiqlik berilgan?</p>
+<p><b>Berilgan:</b> m = 2 kg; c = 4200 J/(kg·°C); t₁ = 20°C; t₂ = 50°C.</p>
+<p><b>Yechish:</b> Δt = 50 − 20 = 30°C.</p>
+<div class="formula">Q = 4200 · 2 · 30 = 252 000 J = 252 kJ</div>
+<p><b>Javob:</b> 252 kJ.</p>
+</section>
+
+<section>
+<h2>2. Issiqlik balansi tenglamasi</h2>
+<p>Issiqroq jism sovuqroq jismga issiqlik beradi, sovuqroq jism esa uni qabul qiladi. Tashqi muhit bilan issiqlik almashinuvi bo‘lmasa, berilgan issiqlik miqdori olingan issiqlik miqdoriga teng bo‘ladi. Bu <b>issiqlik balansi qonuni</b> deyiladi.</p>
+<div class="formula">Q<sub>berilgan</sub> = Q<sub>olingan</sub></div>
+<p>Algebraik ko‘rinishi: Q₁ + Q₂ = 0. Bu energiyaning saqlanish qonuniga asoslanadi.</p>
+<h3>Ikki xil haroratdagi suv aralashtirilganda</h3>
+<p>Issiq suv bergan issiqlik: Q₁ = c₁m₁(t₁ − t).</p>
+<p>Sovuq suv olgan issiqlik: Q₂ = c₂m₂(t − t₂).</p>
+<div class="formula">c₁m₁(t₁ − t) = c₂m₂(t − t₂)</div>
+<p>Bu yerda t — aralashma muvozanatga kelgandagi yakuniy harorat. Tenglama tashqi muhitga issiqlik yo‘qotilmaydi va faza o‘zgarishi sodir bo‘lmaydi degan shartda qo‘llanadi.</p>
+</section>
+
+<section>
+<h2>Animatsion simulyatsiya 2. Issiq va sovuq suv aralashishi</h2>
+<p>Idishlardagi suvlarning massasi va haroratini o‘zgartiring. Model yakuniy haroratni hamda issiqlik balansini hisoblaydi.</p>
+<div class="grid">
+<div class="card">
+<h3 style="color:#dc2626">Issiq suv</h3>
+<label for="hotT">Harorat: <output id="hotTOut">80</output>°C</label><input id="hotT" type="range" min="40" max="100" step="5" value="80">
+<label for="hotM">Massa: <output id="hotMOut">0.2</output> kg</label><input id="hotM" type="range" min=".1" max="1" step=".1" value=".2">
+</div>
+<div class="card">
+<h3 style="color:#0284c7">Sovuq suv</h3>
+<label for="coldT">Harorat: <output id="coldTOut">20</output>°C</label><input id="coldT" type="range" min="5" max="35" step="5" value="20">
+<label for="coldM">Massa: <output id="coldMOut">0.3</output> kg</label><input id="coldM" type="range" min=".1" max="1" step=".1" value=".3">
+</div>
+</div>
+<canvas id="mixCanvas" width="900" height="230" aria-label="Issiq va sovuq suv aralashish animatsiyasi"></canvas>
+<div class="result">
+<div>Aralashmaning yakuniy harorati</div><div class="big" id="finalT">44.0°C</div>
+<p>Issiq suv bergan issiqlik: <b id="givenQ">30 240 J</b></p>
+<p>Sovuq suv olgan issiqlik: <b id="receivedQ">30 240 J</b></p>
+<p class="note" id="balanceNote">Issiqlik balansi saqlanadi.</p>
+</div>
+<button class="secondary" id="resetMix">Boshlang‘ich holatga qaytarish</button>
+<div class="card"><b>Kuzatish uchun savollar:</b><ol><li>Issiq suv harorati oshsa, yakuniy harorat qanday o‘zgaradi?</li><li>Sovuq suv massasi oshsa, yakuniy harorat qanday o‘zgaradi?</li><li>Massalar teng bo‘lsa, yakuniy harorat qanday aniqlanadi?</li></ol></div>
+</section>
+
+<section>
+<h2>Masala 2. Issiqlik balansi tenglamasi</h2>
+<p><b>Shart:</b> 80°C haroratli 0,2 kg suvga 20°C haroratli 0,3 kg suv qo‘shildi. Aralashmaning oxirgi haroratini toping.</p>
+<p>Berilgan: m₁ = 0,2 kg; t₁ = 80°C; m₂ = 0,3 kg; t₂ = 20°C. Ikkala suyuqlik ham suv.</p>
+<div class="formula">0,2(80 − t) = 0,3(t − 20)</div>
+<p>16 − 0,2t = 0,3t − 6</p><p>22 = 0,5t</p>
+<div class="formula">t = 44°C</div>
+<p><b>Javob:</b> aralashmaning oxirgi harorati 44°C.</p>
+</section>
+
+<section>
+<h2>3. Video va animatsion lavhalar</h2>
+<p>Quyidagi mavzular bo‘yicha qisqa animatsion videolarni darsda namoyish etish yoki video generator yordamida tayyorlash mumkin.</p>
+<div class="grid">
+<div class="card"><h3>1-video. Issiqlik o‘tkazuvchanlik</h3><p>Metall tayoqchaning bir uchi qizdiriladi; energiyaning zarrachalar orqali tarqalishi ko‘rsatiladi.</p><p><b>Davomiyligi:</b> 30–40 soniya.</p></div>
+<div class="card"><h3>2-video. Konveksiya</h3><p>Qizigan suv yuqoriga, sovuq suv pastga harakatlanib, aylanish oqimini hosil qiladi.</p><p><b>Davomiyligi:</b> 30–40 soniya.</p></div>
+<div class="card"><h3>3-video. Issiqlik balansi</h3><p>Ikki xil haroratdagi suv aralashadi, termometr ko‘rsatkichi yakuniy haroratgacha o‘zgaradi.</p><p><b>Davomiyligi:</b> 40–60 soniya.</p></div>
+</div>
+<p><b>AI video generator uchun ssenariy:</b> Ekranda qizil rangli issiq suv va ko‘k rangli sovuq suv ko‘rsatiladi. Ikkalasi shaffof kalorimetrga quyiladi. Rangli zarrachalar aralashadi, termometr ko‘rsatkichi asta-sekin o‘zgaradi va yakunda 44°C da to‘xtaydi. Ekranda “Q berilgan = Q olingan” formulasi paydo bo‘ladi.</p>
+<ul>
+<li><a href="https://openstax.org/books/physics/pages/11-2-heat-specific-heat-and-heat-transfer" target="_blank" rel="noopener">OpenStax — issiqlik miqdori va issiqlik uzatilishi</a></li>
+<li><a href="https://openstax.org/books/university-physics-volume-2/pages/1-4-heat-transfer-specific-heat-and-calorimetry" target="_blank" rel="noopener">OpenStax — kalorimetriya va issiqlik balansi</a></li>
+</ul>
+</section>
+
+<section>
+<h2>4. Mustahkamlash uchun tezkor savollar</h2>
+<ol>
+<li>Issiqlik miqdori deb nimaga aytiladi?</li><li>Issiqlik miqdori qaysi harf bilan belgilanadi?</li><li>Issiqlik miqdorining SI birligi nima?</li><li>Issiqlik almashinuvi qaysi yo‘nalishda sodir bo‘ladi?</li><li>Issiqlik o‘tkazuvchanlik nima?</li><li>Konveksiya qanday jarayon?</li><li>Nurlanish orqali issiqlik qanday uzatiladi?</li><li>Issiqlik balansi qonuni nimani ifodalaydi?</li>
+</ol>
+</section>
+
+<section>
+<h2>5. Interaktiv test</h2>
+<div id="quiz"></div>
+<button id="checkQuiz">Javoblarni tekshirish</button><button class="secondary" id="retryQuiz">Qayta ishlash</button>
+<div class="result" id="quizResult" aria-live="polite">Barcha savollarga javob bering va tekshirish tugmasini bosing.</div>
+</section>
+
+<section>
+<h2>6. Hisoblashga doir mustaqil topshiriqlar</h2>
+<ol>
+<li>Massasi 3 kg bo‘lgan suvning harorati 15°C dan 35°C gacha oshirildi. Suvga qancha issiqlik berilgan?</li>
+<li>Massasi 2 kg bo‘lgan temir jism 20°C dan 70°C gacha isitildi. Temirning solishtirma issiqlik sig‘imi 460 J/(kg·°C). Issiqlik miqdorini toping.</li>
+<li>Harorati 90°C bo‘lgan 0,4 kg suvga 20°C haroratli 0,6 kg suv qo‘shildi. Aralashmaning yakuniy haroratini aniqlang.</li>
+</ol>
+<details><summary><b>O‘qituvchi uchun javoblar (ochish)</b></summary><ol><li>252 000 J</li><li>46 000 J</li><li>48°C</li></ol></details>
+</section>
+
+<section>
+<h2>7. Guruhli amaliy tajriba</h2>
+<p>Sinfni uch guruhga ajrating:</p>
+<ul><li><b>1-guruh — Issiqlik o‘tkazuvchilar:</b> metall, yog‘och va plastik buyumlarning issiqlik o‘tkazishini taqqoslaydi.</li>
+<li><b>2-guruh — Issiqlik tadqiqotchilari:</b> issiq va sovuq suvni aralashtirib, haroratni kuzatadi.</li>
+<li><b>3-guruh — Hisobchilar:</b> tajriba natijalaridan foydalanib, issiqlik miqdori va issiqlik balansini hisoblaydi.</li></ul>
+<p><b>Muhokama:</b> Nima sababdan aralashmaning oxirgi harorati issiq va sovuq suv haroratlari orasida bo‘ladi?</p>
+<div class="note"><b>Xavfsizlik:</b> qaynoq suv bilan ishlashda faqat o‘qituvchi nazorati ostida ish olib boriladi.</div>
+</section>
+
+<section>
+<h2>8. Darsni yakunlash — asosiy formulalar</h2>
+<div class="formula">Issiqlik miqdori: Q = cm(t₂ − t₁)</div>
+<div class="formula">Issiqlik balansi: Q<sub>berilgan</sub> = Q<sub>olingan</sub></div>
+<div class="formula">Ikki jism uchun: c₁m₁(t₁ − t) = c₂m₂(t − t₂)</div>
+<p><b>Kutiladigan natija:</b> o‘quvchilar issiqlik almashinuvining turlarini farqlaydi, issiqlik miqdorini hisoblaydi, issiqlik balansi tenglamasini tushunadi va amaliy masalalarda qo‘llay oladi.</p>
+</section>
+
+<section>
+<h2>Uyga vazifa</h2>
+<ol><li>Issiqlik miqdori va issiqlik almashinuvi haqida o‘qib kelish.</li><li>Issiqlik almashinuvining uch turiga bittadan hayotiy misol yozish.</li><li>Issiqlik miqdori formulasiga oid 2 ta masala tuzish va yechish.</li><li>Issiqlik balansi qonuniga asoslangan tajriba videosini tayyorlash yoki chizmasini chizish.</li></ol>
+</section>
+
+<section>
+<h2>45 daqiqalik dars taqsimoti</h2>
+<table><tr><th>Dars bosqichi</th><th>Vaqt</th></tr><tr><td>Tashkiliy qism</td><td>3 daqiqa</td></tr><tr><td>O‘tgan mavzuni takrorlash</td><td>5 daqiqa</td></tr><tr><td>Yangi mavzu bayoni</td><td>15 daqiqa</td></tr><tr><td>Animatsion simulyatsiyalar</td><td>8 daqiqa</td></tr><tr><td>Masala va testlar</td><td>10 daqiqa</td></tr><tr><td>Yakunlash va uyga vazifa</td><td>4 daqiqa</td></tr><tr><th>Jami</th><th>45 daqiqa</th></tr></table>
+</section>
+</main>
+<footer>9-sinf fizika · II bob · 17-mavzu: Issiqlik miqdori</footer>
+<script>
+const $=id=>document.getElementById(id);
+function fmt(n){return Math.round(n).toLocaleString('uz-UZ')}
+function updateHeating(){
+ const m=+$('mass').value,d=+$('delta').value,q=4200*m*d;
+ $('massOut').textContent=m.toFixed(1);$('deltaOut').textContent=d;
+ $('heatResult').textContent=fmt(q)+' J';$('heatFormula').textContent=`Q = 4200 × ${m} × ${d}`;
+ drawHeating(d);
+}
+function drawHeating(d){
+ const c=$('heatingCanvas'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);
+ x.fillStyle='#dbeafe';x.fillRect(70,25,260,135);x.fillStyle='#38bdf8';x.fillRect(80,70,240,80);
+ x.strokeStyle='#334155';x.lineWidth=5;x.strokeRect(70,25,260,135);
+ x.fillStyle='#0f172a';x.font='22px sans-serif';x.fillText('Suv',165,55);
+ for(let i=0;i<9;i++){let px=95+(i*29)%210,py=82+(i*37)%58; x.beginPath();x.arc(px,py,5,0,Math.PI*2);x.fillStyle=i%2?'#0284c7':'#ef4444';x.fill()}
+ x.fillStyle='#b45309';x.fillRect(150,165,100,8);x.fillStyle='#f97316';x.beginPath();x.moveTo(170,164);x.lineTo(185,130);x.lineTo(200,164);x.fill();x.beginPath();x.moveTo(205,164);x.lineTo(220,130);x.lineTo(235,164);x.fill();
+ x.fillStyle='#0f172a';x.font='20px sans-serif';x.fillText(`Harorat +${d}°C`,400,90);x.fillText('Issiqlik berilmoqda',400,125);
+}
+['mass','delta'].forEach(id=>$(id).addEventListener('input',updateHeating));
+function updateMix(){
+ const mh=+$('hotM').value,mc=+$('coldM').value,th=+$('hotT').value,tc=+$('coldT').value;
+ const t=(mh*th+mc*tc)/(mh+mc),q=4200*mh*(th-t);
+ $('hotTOut').textContent=th;$('hotMOut').textContent=mh.toFixed(1);$('coldTOut').textContent=tc;$('coldMOut').textContent=mc.toFixed(1);
+ $('finalT').textContent=t.toFixed(1)+'°C';$('givenQ').textContent=fmt(q)+' J';$('receivedQ').textContent=fmt(q)+' J';
+ $('balanceNote').textContent='Issiqlik balansi saqlanadi: berilgan va olingan issiqlik miqdorlari teng.';
+ drawMix(th,tc,t);
+}
+function drawMix(th,tc,t){
+ const c=$('mixCanvas'),x=c.getContext('2d');x.clearRect(0,0,c.width,c.height);
+ const drawCup=(cx,color,label,temp)=>{x.fillStyle=color;x.beginPath();x.moveTo(cx,65);x.lineTo(cx+150,65);x.lineTo(cx+132,185);x.lineTo(cx+18,185);x.closePath();x.fill();x.strokeStyle='#334155';x.lineWidth=4;x.stroke();x.fillStyle='#0f172a';x.font='20px sans-serif';x.fillText(label,cx+28,42);x.fillText(temp+'°C',cx+48,215)};
+ drawCup(70,'#f87171','Issiq suv',th);drawCup(680,'#60a5fa','Sovuq suv',tc);
+ x.strokeStyle='#64748b';x.lineWidth=7;x.beginPath();x.moveTo(260,120);x.lineTo(620,120);x.stroke();x.fillStyle='#64748b';x.beginPath();x.moveTo(620,108);x.lineTo(645,120);x.lineTo(620,132);x.fill();
+ x.fillStyle='#0f172a';x.font='bold 25px sans-serif';x.fillText('Aralashtirish',355,88);
+ x.fillStyle='#16a34a';x.font='bold 26px sans-serif';x.fillText('Yakuniy: '+t.toFixed(1)+'°C',340,175);
+}
+['hotM','coldM','hotT','coldT'].forEach(id=>$(id).addEventListener('input',updateMix));
+$('resetMix').addEventListener('click',()=>{[['hotM',.2],['coldM',.3],['hotT',80],['coldT',20]].forEach(([id,v])=>$(id).value=v);updateMix()});
+const qs=[
+ {q:'Issiqlik miqdori qaysi harf bilan belgilanadi?',a:['T','Q','m','c'],c:1,e:'Issiqlik miqdori Q bilan belgilanadi.'},
+ {q:'Issiqlik miqdorining SI sistemasidagi birligi?',a:['Vatt','Nyuton','Joul','Paskal'],c:2,e:'Issiqlik miqdori joul (J) bilan o‘lchanadi.'},
+ {q:'Quyoshdan Yerga issiqlik qanday uzatiladi?',a:['Konveksiya','Issiqlik o‘tkazuvchanlik','Nurlanish','Bug‘lanish'],c:2,e:'Quyosh va Yer orasidagi vakuum orqali issiqlik nurlanish bilan uzatiladi.'},
+ {q:'Issiqlik balansi tenglamasi qaysi?',a:['F=ma','Q=cmΔt','Qberilgan=Qolingan','p=F/S'],c:2,e:'Tashqi muhitga issiqlik yo‘qotilmasa, berilgan issiqlik olinganiga teng.'},
+ {q:'Suvning solishtirma issiqlik sig‘imi qancha?',a:['4200 J/(kg·°C)','100 J/(kg·°C)','900 J/(kg·°C)','500 J/(kg·°C)'],c:0,e:'Suv uchun c = 4200 J/(kg·°C).'}
+];
+function renderQuiz(){ $('quiz').innerHTML=qs.map((q,i)=>`<div class="quiz-q"><b>${i+1}. ${q.q}</b>${q.a.map((a,j)=>`<label><input type="radio" name="q${i}" value="${j}"> ${a}</label>`).join('')}<div class="feedback" id="fb${i}"></div></div>`).join('');}
+$('checkQuiz').addEventListener('click',()=>{let score=0,done=0;qs.forEach((q,i)=>{let v=document.querySelector(`input[name="q${i}"]:checked`);let fb=$('fb'+i);if(v){done++;if(+v.value===q.c){score++;fb.textContent='✓ To‘g‘ri. '+q.e;fb.style.color='#15803d'}else{fb.textContent='✗ To‘g‘ri javob: '+q.a[q.c]+'. '+q.e;fb.style.color='#b91c1c'}}else{fb.textContent='Javob tanlanmagan.';fb.style.color='#b45309'}});$('quizResult').textContent=done<qs.length?` ${done}/5 savolga javob berildi. ${score} ta to‘g‘ri. Qolgan savollarga ham javob bering.`:`Natija: ${score}/5 ta to‘g‘ri javob.`});
+$('retryQuiz').addEventListener('click',()=>{renderQuiz();$('quizResult').textContent='Test qayta boshlandi.'});
+updateHeating();updateMix();renderQuiz();
+</script>
+</body>
+</html>

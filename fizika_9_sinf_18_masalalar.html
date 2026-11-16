@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="uz">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>9-sinf fizika: 18-§ Masalalar yechish</title>
+<style>
+:root{--surface-0:#f5f5f2;--surface-1:#eeede8;--surface-2:#fff;--text-primary:#1a1a18;--text-secondary:#5f5e5a;--text-success:#3b6d11;--text-danger:#a32d2d;--text-warning:#854f0b;--text-accent:#185fa5;--bg-accent:#e6f1fb;--border:rgba(0,0,0,.15);--border-strong:rgba(0,0,0,.3);--border-accent:#378add;--radius:8px}
+@media (prefers-color-scheme:dark){:root{--surface-0:#1e1e1c;--surface-1:#2c2c2a;--surface-2:#262624;--text-primary:#f1efe8;--text-secondary:#b4b2a9;--text-success:#97c459;--text-danger:#f09595;--text-warning:#ef9f27;--text-accent:#85b7eb;--bg-accent:#0c447c;--border:rgba(255,255,255,.18);--border-strong:rgba(255,255,255,.35);--border-accent:#378add}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--surface-0);color:var(--text-primary);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6;font-size:16px}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:22px;font-weight:500;margin:0 0 4px}
+h2{font-size:18px;font-weight:500;margin:24px 0 6px}
+p,li{font-size:15px}
+.sub{color:var(--text-secondary);margin:0 0 16px;font-size:14px}
+button,select{font:inherit;color:var(--text-primary);background:transparent;border:.5px solid var(--border-strong);border-radius:var(--radius);padding:8px 12px;cursor:pointer}
+button:hover{background:var(--surface-1)}
+select{background:var(--surface-2)}
+input[type=range]{accent-color:#378add}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0)}
+.tb{font-size:14px;padding:10px 6px}
+.tb.on{background:var(--bg-accent);color:var(--text-accent);border-color:var(--border-accent)}
+.card{background:var(--surface-1);border-radius:var(--radius);padding:10px 12px;margin:0 0 8px}
+.f{font-size:20px;font-weight:500;margin:0}
+.s{font-size:13px;color:var(--text-secondary);margin:2px 0 0}
+.row{display:flex;align-items:center;gap:10px;margin:8px 0;font-size:14px}
+.row label{min-width:58px;color:var(--text-secondary)}
+.row input[type=range],.row select{flex:1}
+.val{min-width:64px;text-align:right;font-weight:500}
+.q{border-top:.5px solid var(--border);margin-top:14px;padding-top:12px}
+.q button{display:block;width:100%;text-align:left;margin:6px 0;font-size:14px}
+.fb{font-size:13px;margin:6px 0 0}
+.m{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0}
+.mc{background:var(--surface-1);border-radius:var(--radius);padding:8px 10px}
+.mc span{display:block;font-size:12px;color:var(--text-secondary)}
+.mc b{font-size:18px;font-weight:500}
+.bx{border:.5px solid var(--border);border-radius:var(--radius);width:100%;display:block}
+.bt{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:8px 0}
+.bt button{font-size:14px}
+.tabs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:0 0 12px}
+</style>
+</head>
+<body>
+<main>
+<h1>9-sinf fizika: 18-§ Masalalar yechish</h1>
+<p class="sub">1-bob. Formulalar, ichki energiya, gaz ishi va issiqlik miqdori: simulyatsiyalar va testlar</p>
+
+<h2 class="sr-only">Simulyatsiyalar</h2>
+<div class="tabs">
+<button class="tb on" data-i="0">1. Formulalar</button>
+<button class="tb" data-i="1">2. Ichki energiya</button>
+<button class="tb" data-i="2">3. Gaz ishi</button>
+<button class="tb" data-i="3">4. Issiqlik miqdori</button>
+</div>
+
+<div class="pn" id="p0">
+<div class="card"><p class="f">ΔU = A + Q</p><p class="s">A: jism ustida bajarilgan ish, Q: olingan issiqlik (J)</p></div>
+<div class="card"><p class="f">Q = ΔU + A′</p><p class="s">A′: gazning o'zi bajargan ish (A′ = −A)</p></div>
+<div class="card"><p class="f">A′ = p · ΔV</p><p class="s">p: bosim (Pa), ΔV = V₂ − V₁ (m³)</p></div>
+<div class="card"><p class="f">Q = c · m · (t₂ − t₁)</p><p class="s">c: solishtirma issiqlik sig'imi, J/(kg·°C)</p></div>
+<div class="card"><p class="s" style="margin:0">Ishora qoidasi: qizisa Q &gt; 0, sovisa Q &lt; 0; gaz kengaysa A′ &gt; 0. Birliklar: 1 kJ = 1000 J, 1 kPa·L = 1 J.</p></div>
+<div class="q" id="q0"></div>
+</div>
+
+<div class="pn" id="p1">
+<canvas id="cv" class="bx" width="340" height="150"></canvas>
+<div class="bt">
+<button id="bA">Ishqalash: A +50 J</button>
+<button id="bH">Qizdirish: Q +50 J</button>
+<button id="bC">Sovutish: Q −50 J</button>
+<button id="bR">Qayta boshlash</button>
+</div>
+<div class="m">
+<div class="mc"><span>Ish A</span><b id="rA">0 J</b></div>
+<div class="mc"><span>Issiqlik Q</span><b id="rQ">0 J</b></div>
+<div class="mc" style="grid-column:span 2"><span>Ichki energiya o'zgarishi ΔU = A + Q</span><b id="rU">0 J</b></div>
+</div>
+<div class="q" id="q1"></div>
+</div>
+
+<div class="pn" id="p2">
+<svg id="gs" viewBox="0 0 340 110" class="bx" role="img"><title>Porshenli silindr</title>
+<rect id="gasR" x="20" y="15" width="32" height="70" fill="#F09595" opacity="0.5"/>
+<rect x="20" y="15" width="190" height="70" fill="none" stroke="#888780" stroke-width="2"/>
+<line id="rod" x1="60" y1="50" x2="100" y2="50" stroke="#888780" stroke-width="3"/>
+<rect id="pis" x="52" y="15" width="8" height="70" fill="#534AB7"/>
+</svg>
+<svg id="gg" viewBox="0 0 340 130" class="bx" style="margin-top:8px" role="img"><title>p-V grafigi</title>
+<line x1="40" y1="105" x2="320" y2="105" stroke="#888780"/><line x1="40" y1="10" x2="40" y2="105" stroke="#888780"/>
+<rect id="area" x="96" y="60" width="0" height="45" fill="#1D9E75" opacity="0.55"/>
+<text x="322" y="118" font-size="11" fill="#888780" text-anchor="end">V, L</text>
+<text x="46" y="16" font-size="11" fill="#888780">p, kPa</text>
+<text x="96" y="120" font-size="11" fill="#888780" text-anchor="middle">2</text>
+<text id="v2t" x="180" y="120" font-size="11" fill="#888780" text-anchor="middle">5</text>
+</svg>
+<div class="row"><label>p</label><input type="range" id="gp" min="100" max="400" step="50" value="200"><span class="val" id="gpo">200 kPa</span></div>
+<div class="row"><label>V₂</label><input type="range" id="gv" min="3" max="10" step="1" value="5"><span class="val" id="gvo">5 L</span></div>
+<div class="bt"><button id="gPlay">Kengaytirish</button><button id="gReset">Boshiga qaytish</button></div>
+<div class="m">
+<div class="mc"><span>Hozirgi ish A′</span><b id="gA">0 J</b></div>
+<div class="mc"><span>Yakuniy A′ = p·ΔV</span><b id="gF">600 J</b></div>
+</div>
+<div class="q" id="q2"></div>
+</div>
+
+<div class="pn" id="p3">
+<svg id="ts" viewBox="0 0 340 150" class="bx" role="img"><title>Idish va termometr</title>
+<rect id="liq" x="41" y="60" width="118" height="70" fill="#378ADD" opacity="0.6"/>
+<rect x="40" y="20" width="120" height="110" fill="none" stroke="#888780" stroke-width="2"/>
+<ellipse id="fl1" cx="75" cy="141" rx="8" ry="7" fill="#EF9F27"/><ellipse id="fl2" cx="100" cy="141" rx="8" ry="7" fill="#EF9F27"/><ellipse id="fl3" cx="125" cy="141" rx="8" ry="7" fill="#EF9F27"/>
+<rect x="220" y="15" width="14" height="110" rx="7" fill="none" stroke="#888780" stroke-width="2"/>
+<rect id="th" x="222" y="115" width="10" height="8" fill="#E24B4A"/>
+<text x="240" y="125" font-size="11" fill="#888780">0</text><text x="240" y="74" font-size="11" fill="#888780">100</text><text x="240" y="26" font-size="11" fill="#888780">200 °C</text>
+<text id="tt" x="270" y="75" font-size="16" font-weight="500" fill="currentColor"></text>
+</svg>
+<div class="row"><label>Modda</label><select id="mat"><option value="4200">Suv (4200)</option><option value="920">Alyuminiy (920)</option><option value="380">Mis (380)</option><option value="460">Po'lat (460)</option></select></div>
+<div class="row"><label>m</label><input type="range" id="tm" min="0.1" max="2" step="0.1" value="1"><span class="val" id="tmo">1 kg</span></div>
+<div class="row"><label>Q</label><input type="range" id="tq" min="0" max="200" step="5" value="100"><span class="val" id="tqo">100 kJ</span></div>
+<div class="bt"><button id="tPlay">Qizdirishni boshlash</button></div>
+<div class="m">
+<div class="mc"><span>Qizish ΔT</span><b id="tD">0 °C</b></div>
+<div class="mc"><span>Oxirgi t₂ (t₁ = 20 °C)</span><b id="tT">0 °C</b></div>
+</div>
+<p class="fb" id="tN" style="color:var(--text-warning)"></p>
+<div class="q" id="q3"></div>
+</div>
+
+<h2>Dars mazmuni</h2>
+<p><b>1. Formulalar.</b> ΔU = A + Q: ichki energiya jism ustida bajarilgan ish va olingan issiqlik hisobiga o'zgaradi. Q = ΔU + A′: gaz olgan issiqlik uning ichki energiyasini oshiradi va gaz ish bajarishiga sarflanadi.</p>
+<p><b>2. Ichki energiyani o'zgartirish.</b> Ikki usul: ish bajarish (ishqalash, siqish) va issiqlik uzatish (qizdirish, sovutish). Namuna: jism ustida 400 J ish bajarildi, u 150 J issiqlik berdi (Q = −150 J). ΔU = 400 − 150 = 250 J.</p>
+<p><b>3. Gaz ishi.</b> Gaz kengayganda ish bajaradi: A′ = p·ΔV. Grafikda bu p–V diagrammadagi to'rtburchak yuzi. Namuna: p = 150 kPa, hajm 3 L dan 7 L gacha. A′ = 150 · 4 = 600 J.</p>
+<p><b>4. Issiqlik miqdori.</b> Q = c·m·(t₂ − t₁). c qancha katta bo'lsa, modda shuncha sekin qiziydi. Namuna: 0,5 kg alyuminiy (c = 920) 20 °C dan 100 °C gacha. Q = 920 · 0,5 · 80 = 36 800 J ≈ 36,8 kJ.</p>
+
+<h2>Uy vazifasi</h2>
+<ol>
+<li>Gaz 300 J issiqlik oldi va 120 J ish bajardi. ΔU = ?</li>
+<li>Jism ustida 80 J ish bajarildi va u 20 J issiqlik oldi. ΔU = ?</li>
+<li>Bosim 2·10⁵ Pa, hajm 0,002 m³ dan 0,005 m³ gacha ortdi. A′ = ?</li>
+<li>3 kg suv 20 °C dan 50 °C gacha qizdirildi. Q = ? (c = 4200)</li>
+<li>200 g mis 25 °C dan 125 °C gacha qizdirildi. Q = ? (c = 380)</li>
+<li>2 kg po'lat 46 kJ issiqlik oldi. Necha °C ga qizidi? (c = 460)</li>
+<li>Ichki energiyani o'zgartirishning ikki usulini kundalik hayotdan 2 tadan misol bilan yozing.</li>
+<li>Simulyatsiyada alyuminiy va misni bir xil m va Q bilan qizdiring. Qaysi biri tezroq qiziydi va nima uchun?</li>
+</ol>
+<details><summary>Javoblar (tekshirish uchun)</summary>
+<p>1) 180 J, 2) 100 J, 3) 600 J, 4) 378 kJ, 5) 7,6 kJ, 6) 50 °C.</p>
+</details>
+</main>
+
+<script>
+const $=i=>document.getElementById(i);
+function quiz(el,q,opts,ok,ex){let h='<p style="font-size:14px;font-weight:500;margin:0 0 4px">'+q+'</p>';opts.forEach((o,i)=>{h+='<button data-i="'+i+'">'+o+'</button>'});h+='<p class="fb"></p>';el.innerHTML=h;
+el.querySelectorAll('button').forEach(b=>{b.onclick=()=>{const f=el.querySelector('.fb');if(+b.dataset.i===ok){f.style.color='var(--text-success)';f.textContent=`To'g'ri. `+ex}else{f.style.color='var(--text-danger)';f.textContent=`Noto'g'ri, yana urinib ko'ring.`}}})}
+quiz($('q0'),`Gaz 500 J issiqlik oldi va 200 J ish bajardi. ΔU = ?`,['700 J','300 J','−300 J'],1,'Q = ΔU + A′ dan ΔU = 500 − 200 = 300 J.');
+quiz($('q1'),`Qo'llarni ishqalaganda ichki energiya qaysi usulda o'zgaradi?`,['Issiqlik uzatish','Ish bajarish','Nurlanish'],1,`Ishqalanish kuchi ish bajaradi.`);
+quiz($('q2'),`p = 200 kPa, hajm 2 L dan 5 L gacha ortdi. A′ = ?`,['400 J','600 J','1000 J'],1,'A′ = 200 · 3 = 600 J.');
+quiz($('q3'),`2 kg suv 10 °C dan 30 °C gacha qizidi (c = 4200). Q = ?`,['84 kJ','168 kJ','252 kJ'],1,'Q = 4200 · 2 · 20 = 168 000 J = 168 kJ.');
+
+const tabs=document.querySelectorAll('.tb'),pn=document.querySelectorAll('.pn');let act=0;
+function show(i){act=i;pn.forEach((p,k)=>{p.style.display=k===i?'block':'none'});tabs.forEach((t,k)=>{t.classList.toggle('on',k===i)})}
+tabs.forEach(t=>{t.onclick=()=>show(+t.dataset.i)});
+
+const cv=$('cv'),cx=cv.getContext('2d');let E=100,A=0,Q=0;const P=[];
+for(let i=0;i<28;i++)P.push({x:10+Math.random()*320,y:10+Math.random()*130,a:Math.random()*6.28});
+function upd1(){$('rA').textContent=A+' J';$('rQ').textContent=Q+' J';$('rU').textContent=(A+Q)+' J'}
+$('bA').onclick=()=>{A+=50;E+=50;upd1()};
+$('bH').onclick=()=>{Q+=50;E+=50;upd1()};
+$('bC').onclick=()=>{Q-=50;E=Math.max(10,E-50);upd1()};
+$('bR').onclick=()=>{A=0;Q=0;E=100;upd1()};
+function loop(){if(act===1){cx.clearRect(0,0,340,150);const sp=1.6*Math.sqrt(Math.max(E,10)/100);const h=Math.round(220-Math.min(E,400)/400*220);
+P.forEach(p=>{p.x+=Math.cos(p.a)*sp;p.y+=Math.sin(p.a)*sp;if(p.x<8||p.x>332){p.a=Math.PI-p.a;p.x=Math.max(8,Math.min(332,p.x))}if(p.y<8||p.y>142){p.a=-p.a;p.y=Math.max(8,Math.min(142,p.y))}
+cx.beginPath();cx.arc(p.x,p.y,6,0,6.283);cx.fillStyle='hsl('+h+',70%,50%)';cx.fill()})}
+requestAnimationFrame(loop)}
+loop();
+
+const gp=$('gp'),gv=$('gv');let gAnim=null;
+function gas(pr){const p=+gp.value,v2=+gv.value,V=2+(v2-2)*pr;const px=20+V*18;
+$('pis').setAttribute('x',px);$('gasR').setAttribute('width',V*18);$('rod').setAttribute('x1',px+8);$('rod').setAttribute('x2',Math.min(335,px+60));
+const hh=p*0.22;$('area').setAttribute('y',105-hh);$('area').setAttribute('height',hh);$('area').setAttribute('width',(V-2)*28);
+$('v2t').setAttribute('x',40+v2*28);$('v2t').textContent=v2;
+$('gA').textContent=Math.round(p*(V-2))+' J';$('gF').textContent=(p*(v2-2))+' J'}
+function gsl(){if(gAnim)cancelAnimationFrame(gAnim);$('gpo').textContent=gp.value+' kPa';$('gvo').textContent=gv.value+' L';gas(0)}
+gp.oninput=gsl;gv.oninput=gsl;$('gReset').onclick=gsl;
+$('gPlay').onclick=()=>{if(gAnim)cancelAnimationFrame(gAnim);const t0=performance.now();const st=n=>{const pr=Math.min(1,(n-t0)/2500);gas(pr);if(pr<1)gAnim=requestAnimationFrame(st)};gAnim=requestAnimationFrame(st)};
+gsl();
+
+const mat=$('mat'),tm=$('tm'),tq=$('tq');let tAnim=null;
+function therm(pr){const c=+mat.value,m=+tm.value,q=+tq.value*1000*pr;const d=q/(c*m),T=20+d;
+const hgt=Math.max(4,Math.min(104,T/200*104));$('th').setAttribute('y',123-hgt);$('th').setAttribute('height',hgt);
+const hue=Math.round(220-Math.min(T,200)/200*220);$('liq').setAttribute('fill','hsl('+hue+',70%,55%)');
+$('tD').textContent=d.toFixed(1)+' °C';$('tT').textContent=T.toFixed(1)+' °C';$('tt').textContent=Math.round(T)+' °C';
+const f=pr>0&&pr<1?'1':'0';['fl1','fl2','fl3'].forEach(i=>{$(i).style.opacity=f});
+$('tN').textContent=(c===4200&&T>100)?`Suv 100 °C da qaynaydi, formula faqat qaynashgacha to'g'ri.`:''}
+function tsl(){if(tAnim)cancelAnimationFrame(tAnim);$('tmo').textContent=tm.value+' kg';$('tqo').textContent=tq.value+' kJ';therm(1)}
+mat.onchange=tsl;tm.oninput=tsl;tq.oninput=tsl;
+$('tPlay').onclick=()=>{if(tAnim)cancelAnimationFrame(tAnim);const t0=performance.now();const st=n=>{const pr=Math.min(1,(n-t0)/3000);therm(pr);if(pr<1)tAnim=requestAnimationFrame(st)};tAnim=requestAnimationFrame(st)};
+tsl();
+show(0);
+</script>
+</body>
+</html>
